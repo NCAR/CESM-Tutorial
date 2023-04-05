@@ -5,42 +5,101 @@ format: jb-book
 root: README
 
 parts:
+- caption: Introduction
+  chapters:
+    - file: notebooks/introduction/using_jupyter_notebooks
+    - file: notebooks/introduction/running_on_cheyenne
+      sections:
+      - file: notebooks/introduction/cheyenne/terminals
+      - file: notebooks/introduction/cheyenne/jupyterhub
+
 - caption: The Basics of Running CESM
   chapters:
-    - file: notebooks/basics/downloading
-    - file: notebooks/basics/running
+    - file: notebooks/basics/overview
+    - file: notebooks/basics/setting_up_the_workspace
+    - file: notebooks/basics/downloading_cesm
+      sections:
+      - file: notebooks/basics/downloading_cesm/git_clone
+      - file: notebooks/basics/downloading_cesm/git_checkout
+      - file: notebooks/basics/downloading_cesm/manage_externals
+    - file: notebooks/basics/the_cesm_code
+      sections:
+      - file: notebooks/basics/the_cesm_code/cesm_components
+      - file: notebooks/basics/the_cesm_code/inputdata
+    - file: notebooks/basics/your_first_cesm_run
+      sections:
+      - file: notebooks/basics/your_first_cesm_run/basic_workflow
+      - file: notebooks/basics/your_first_cesm_run/checking_queues_and_jobs
+      - file: notebooks/basics/your_first_cesm_run/case_directory_and_documentation
 
-- caption: Simple Modifications
+- caption: Simple XML Modifications
   chapters:
-    - file: notebooks/modifications/simple/start_stop
-    - file: notebooks/modifications/simple/restart
-    - file: notebooks/modifications/simple/run_length
-    - file: notebooks/modifications/simple/run_type
+    - file: notebooks/modifications/xml/overview
+    - file: notebooks/modifications/xml/model_control_files
+    - file: notebooks/modifications/xml/run_length
+      sections:
+      - file: notebooks/modifications/xml/run_length/starting_and_stopping
+      - file: notebooks/modifications/xml/run_length/restarting
+      - file: notebooks/modifications/xml/run_length/changing_run_length
+      - file: notebooks/modifications/xml/run_length/number_of_submissions
+      - file: notebooks/modifications/xml/run_length/timing_files
+    - file: notebooks/modifications/xml/modify_run_type
+      sections: 
+      - file: notebooks/modifications/xml/modify_run_type/hybrid_branch_restart
+      - file: notebooks/modifications/xml/modify_run_type/run_variables
+    - file: notebooks/modifications/xml/copying_cases
+    - file: notebooks/modifications/xml/physics_timestep
 
 - caption: Namelist Modifications
   chapters:
+    - file: notebooks/modifications/namelist/overview
+      sections:
+      - file: notebooks/modifications/namelist/overview/casedocs
+    - file: notebooks/modifications/namelist/basics
+      sections:
+      - file: notebooks/modifications/namelist/basics/preview_namelists
+      - file: notebooks/modifications/namelist/basics/cam
+      - file: notebooks/modifications/namelist/basics/other_components
     - file: notebooks/modifications/namelist/output
       sections:
       - file: notebooks/modifications/namelist/output/frequency
-      - file: notebooks/modifications/namelist/output/files
-      - file: notebooks/modifications/namelist/output/variables
 
 - caption: Source Modifications
   chapters:
-    - file: notebooks/modifications/source/addfld
-    - file: notebooks/modifications/source/physics
+    - file: notebooks/modifications/source/basics
+    - file: notebooks/modifications/source/add_fields
+      sections:
+      - file: notebooks/modifications/source/add_fields/cam
+      - file: notebooks/modifications/source/add_fields/clm
+      - file: notebooks/modifications/source/add_fields/pop
+    - file: notebooks/modifications/source/modifying_physics
 
 - caption: Troubleshooting
   chapters:
-    - file: notebooks/troubleshooting
+    - file: notebooks/troubleshooting/troubleshooting
+    - file: notebooks/troubleshooting/log_files
 
 - caption: Diagnostics
   chapters:
-    - file: notebooks/diagnostics/plot_fields
+    - file: notebooks/diagnostics/plotting_fields
     - file: notebooks/diagnostics/regridding
     - file: notebooks/diagnostics/packages
-      sections:
-      - file: notebooks/diagnostics/packages/adf
-      - file: notebooks/diagnostics/packages/other
+    - file: notebooks/diagnostics/geocat
+    - file: notebooks/diagnostics/esds
+
+- caption: Challenge Exercises
+  chapters:
+    - file: notebooks/challenge/breakout1
+
+- caption: Useful Tools
+  chapters:
+    - file: notebooks/tools/jupyter_notebooks
+    - file: notebooks/tools/python
+    - file: notebooks/tools/netcdf_tools
+    - file: notebooks/tools/github
+    - file: notebooks/tools/unix_basics
+    - file: notebooks/tools/fortran
+    - file: notebooks/tools/text_editors
+
 
 
