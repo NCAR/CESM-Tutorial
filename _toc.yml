@@ -52,27 +52,27 @@ parts:
 
 - caption: Namelist Modifications
   chapters:
-    - file: notebooks/modifications/namelist/overview
+    - file: notebooks/namelist/overview
       sections:
-      - file: notebooks/modifications/namelist/overview/casedocs
-    - file: notebooks/modifications/namelist/basics
+      - file: notebooks/namelist/overview/casedocs
+      - file: notebooks/namelist/basics
       sections:
-      - file: notebooks/modifications/namelist/basics/preview_namelists
-      - file: notebooks/modifications/namelist/basics/cam
-      - file: notebooks/modifications/namelist/basics/other_components
-    - file: notebooks/modifications/namelist/output
+      - file: notebooks/namelist/basics/preview_namelists
+      - file: notebooks/namelist/basics/cam
+      - file: notebooks/namelist/basics/other_components
+    - file: notebooks/namelist/output
       sections:
-      - file: notebooks/modifications/namelist/output/frequency
+      - file: notebooks/namelist/output/frequency
 
 - caption: Source Modifications
   chapters:
-    - file: notebooks/modifications/source/basics
-    - file: notebooks/modifications/source/add_fields
+    - file: notebooks/sourcemods/basics
+    - file: notebooks/sourcemods/add_fields
       sections:
-      - file: notebooks/modifications/source/add_fields/cam
-      - file: notebooks/modifications/source/add_fields/clm
-      - file: notebooks/modifications/source/add_fields/pop
-    - file: notebooks/modifications/source/modifying_physics
+      - file: notebooks/sourcemods/add_fields/cam
+      - file: notebooks/sourcemods/add_fields/clm
+      - file: notebooks/sourcemods/add_fields/pop
+    - file: notebooks/sourcemods/modifying_physics
 
 - caption: Troubleshooting
   chapters:
