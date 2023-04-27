@@ -53,17 +53,13 @@ parts:
 - caption: Namelist Modifications
   chapters:
     - file: notebooks/namelist/overview
-      sections:
-      - file: notebooks/namelist/overview/casedocs
-      - file: notebooks/namelist/basics
-      sections:
-      - file: notebooks/namelist/basics/preview_namelists
-      - file: notebooks/namelist/basics/cam
-      - file: notebooks/namelist/basics/other_components
+    - file: notebooks/namelist/documentation
     - file: notebooks/namelist/output
       sections:
-      - file: notebooks/namelist/output/frequency
-
+      - file: notebooks/namelist/output/output_cam
+      - file: notebooks/namelist/output/output_clm
+      - file: notebooks/namelist/output/output_cice
+      
 - caption: Source Modifications
   chapters:
     - file: notebooks/sourcemods/basics
