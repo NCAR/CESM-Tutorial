@@ -59,6 +59,7 @@ parts:
       - file: notebooks/namelist/output/output_cam
       - file: notebooks/namelist/output/output_clm
       - file: notebooks/namelist/output/output_cice
+      - file: notebooks/namelist/output/output_pop
       
 - caption: Source Modifications
   chapters:
