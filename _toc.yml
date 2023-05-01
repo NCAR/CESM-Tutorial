@@ -52,27 +52,24 @@ parts:
 
 - caption: Namelist Modifications
   chapters:
-    - file: notebooks/modifications/namelist/overview
+    - file: notebooks/namelist/overview
+    - file: notebooks/namelist/documentation
+    - file: notebooks/namelist/output
       sections:
-      - file: notebooks/modifications/namelist/overview/casedocs
-    - file: notebooks/modifications/namelist/basics
-      sections:
-      - file: notebooks/modifications/namelist/basics/preview_namelists
-      - file: notebooks/modifications/namelist/basics/cam
-      - file: notebooks/modifications/namelist/basics/other_components
-    - file: notebooks/modifications/namelist/output
-      sections:
-      - file: notebooks/modifications/namelist/output/frequency
-
+      - file: notebooks/namelist/output/output_cam
+      - file: notebooks/namelist/output/output_clm
+      - file: notebooks/namelist/output/output_cice
+      - file: notebooks/namelist/output/output_pop
+      
 - caption: Source Modifications
   chapters:
-    - file: notebooks/modifications/source/basics
-    - file: notebooks/modifications/source/add_fields
+    - file: notebooks/sourcemods/basics
+    - file: notebooks/sourcemods/add_fields
       sections:
-      - file: notebooks/modifications/source/add_fields/cam
-      - file: notebooks/modifications/source/add_fields/clm
-      - file: notebooks/modifications/source/add_fields/pop
-    - file: notebooks/modifications/source/modifying_physics
+      - file: notebooks/sourcemods/add_fields/cam
+      - file: notebooks/sourcemods/add_fields/clm
+      - file: notebooks/sourcemods/add_fields/pop
+    - file: notebooks/sourcemods/modifying_physics
 
 - caption: Troubleshooting
   chapters:
@@ -93,13 +90,13 @@ parts:
 
 - caption: Useful Tools
   chapters:
-    - file: notebooks/tools/jupyter_notebooks
-    - file: notebooks/tools/python
-    - file: notebooks/tools/netcdf_tools
-    - file: notebooks/tools/github
+    - file: notebooks/tools/cesm_data_availability
     - file: notebooks/tools/unix_basics
     - file: notebooks/tools/fortran
-    - file: notebooks/tools/text_editors
+    - file: notebooks/tools/github
+    - file: notebooks/tools/text_editors    
+    - file: notebooks/tools/netcdf_tools
+    - file: notebooks/tools/analysis_tools
 
 
 
