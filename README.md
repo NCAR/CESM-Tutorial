@@ -3,9 +3,7 @@
 
 <br>
 
-This repository includes materials for the Community Earth System Model (CESM) tutorial. 
-
-Please see the [CESM webpage](https://www.cesm.ucar.edu/events/tutorials) for the most up to date information about when the tutorial will be offered in Boulder, Colorado.
+This repository includes materials for the Community Earth System Model (CESM) tutorial. These materials are designed to be used during the annual CESM tutorial and serve as reference documentation for any CESM user.
 
 ## Goals of This Tutorial
 
@@ -32,6 +30,8 @@ NCAR created the Community Climate Model (CCM) in 1983 that included a global at
 The CESM project has a strong commitment to Community involvment in governance and development of the CESM. We welcome and strongly encourage anyone interested to join the [CESM working groups](https://www.cesm.ucar.edu/working-groups) to participate more fully in the CESM project and model development. 
 
 There is also a long history of open, community workshops. The first community workshop was held in 1996 and continues annually today. We hope to see you at a future [CESM workshop](https://www.cesm.ucar.edu/events/workshops)!
+
+The CESM tutorial has been offered regularly since 2010 and is typically offered annually during the summer. If you are interested in attending the tutorial and have not attended a tutorial before, please see the [CESM webpage](https://www.cesm.ucar.edu/events/tutorials) for the most up to date information about when the tutorial will next be offered in Boulder, Colorado and the timeline for applying.
 
 <br>
 
