@@ -90,13 +90,13 @@ parts:
 
 - caption: Useful Tools
   chapters:
-    - file: notebooks/tools/jupyter_notebooks
-    - file: notebooks/tools/python
-    - file: notebooks/tools/netcdf_tools
-    - file: notebooks/tools/github
+    - file: notebooks/tools/cesm_data_availability
     - file: notebooks/tools/unix_basics
     - file: notebooks/tools/fortran
-    - file: notebooks/tools/text_editors
+    - file: notebooks/tools/github
+    - file: notebooks/tools/text_editors    
+    - file: notebooks/tools/netcdf_tools
+    - file: notebooks/tools/analysis_tools
 
 
 
