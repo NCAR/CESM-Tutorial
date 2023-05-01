@@ -9,9 +9,6 @@ parts:
   chapters:
     - file: notebooks/introduction/using_jupyter_notebooks
     - file: notebooks/introduction/running_on_cheyenne
-      sections:
-      - file: notebooks/introduction/cheyenne/terminals
-      - file: notebooks/introduction/cheyenne/jupyterhub
 
 - caption: The Basics of Running CESM
   chapters:
@@ -97,6 +94,7 @@ parts:
     - file: notebooks/tools/unix_basics
       sections:
       - file: notebooks/tools/unix/terminals
+      - file: notebooks/tools/unix/modules
       - file: notebooks/tools/unix/text_editors
     - file: notebooks/tools/fortran
     - file: notebooks/tools/github
