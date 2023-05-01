@@ -3,7 +3,7 @@
 
 <br>
 
-This repository includes materials for the Community Earth System Model (CESM) tutorial. These materials are designed to be used during the annual CESM tutorial and serve as reference documentation for any CESM user.
+This repository includes materials for the Community Earth System Model (CESM) tutorial. These materials are designed to be used during the annual CESM tutorial and serve as reference documentation for any CESM user. The materials and notebooks in this tutorial are published as a Jupyter book here to allow for searchable online documentation, but to run the actual commands presented you will need to use a terminal window. 
 
 ## Goals of This Tutorial
 
@@ -16,8 +16,6 @@ This tutorial includes the following topics:
 * Troubleshooting
 * Basic diagnostics
 * Useful tools
-
-The materials and notebooks in this tutorial are published as a Jupyter book here to allow for searchable online documentation, but to run the actual commands you will need a termina window. 
 
 ## Getting Further CESM Technical Help
 
