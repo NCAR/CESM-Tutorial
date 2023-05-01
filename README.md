@@ -8,14 +8,15 @@ This repository includes materials for the Community Earth System Model (CESM) t
 Please see the [CESM webpage](https://www.cesm.ucar.edu/events/tutorials) for the most up to date information about when the tutorial will be offered in Boulder, Colorado.
 
 ## Goals of This Tutorial
-This tutorial is designed as an introduction to running the CESM model. **By the end of this online tutorial you should learn how to run and modify the model and use the output.** This tutorial includes the following topics:
+This tutorial is designed as an introduction to running the CESM model. **By the end of this online tutorial you should learn how to run and modify the model and use the output.** 
 
-The basics of running CESM
-Simple modifications of xml files, source code, and namelists
-Some challenge exercises
-Troubleshooting
-Basic Diagnostics
-Useful tools
+This tutorial includes the following topics:
+* The basics of running CESM
+* Simple modifications of xml files, source code, and namelists
+* Some challenge exercises
+* Troubleshooting
+* Basic diagnostics
+* Useful tools
 
 The materials and notebooks in this tutorial are published as a Jupyter book here to allow for searchable online documentation, but to run the actual commands you will need a termina window. 
 
