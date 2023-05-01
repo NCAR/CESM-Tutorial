@@ -9,9 +9,6 @@ parts:
   chapters:
     - file: notebooks/introduction/using_jupyter_notebooks
     - file: notebooks/introduction/running_on_cheyenne
-      sections:
-      - file: notebooks/introduction/cheyenne/terminals
-      - file: notebooks/introduction/cheyenne/jupyterhub
 
 - caption: The Basics of Running CESM
   chapters:
@@ -90,11 +87,17 @@ parts:
 
 - caption: Useful Tools
   chapters:
-    - file: notebooks/tools/cesm_data_availability
+    - file: notebooks/tools/community_experiments
+      sections:
+      - file: notebooks/tools/cesm_expts/clim_data_gateway
+      - file: notebooks/tools/cesm_expts/clim_data_guide
     - file: notebooks/tools/unix_basics
+      sections:
+      - file: notebooks/tools/unix/terminals
+      - file: notebooks/tools/unix/modules
+      - file: notebooks/tools/unix/text_editors
     - file: notebooks/tools/fortran
     - file: notebooks/tools/github
-    - file: notebooks/tools/text_editors    
     - file: notebooks/tools/netcdf_tools
     - file: notebooks/tools/analysis_tools
 
