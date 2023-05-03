@@ -60,7 +60,7 @@ parts:
       
 - caption: Source Modifications
   chapters:
-    - file: notebooks/sourcemods/basics
+    - file: notebooks/sourcemods/overview
     - file: notebooks/sourcemods/add_fields
       sections:
       - file: notebooks/sourcemods/add_fields/cam
