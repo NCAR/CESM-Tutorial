@@ -57,6 +57,7 @@ parts:
       - file: notebooks/namelist/output/output_clm
       - file: notebooks/namelist/output/output_cice
       - file: notebooks/namelist/output/output_pop
+    - file: notebooks/namelist/exercise_tuning_parameter
       
 - caption: Source Modifications
   chapters:
