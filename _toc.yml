@@ -62,7 +62,7 @@ parts:
   chapters:
     - file: notebooks/sourcemods/overview
     - file: notebooks/sourcemods/add_fields_cam
-    - file: notebooks/sourcemods/modifying_physics
+    - file: notebooks/sourcemods/exercise_add_field
 
 - caption: Troubleshooting
   chapters:
