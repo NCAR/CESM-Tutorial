@@ -60,12 +60,8 @@ parts:
       
 - caption: Source Modifications
   chapters:
-    - file: notebooks/sourcemods/basics
-    - file: notebooks/sourcemods/add_fields
-      sections:
-      - file: notebooks/sourcemods/add_fields/cam
-      - file: notebooks/sourcemods/add_fields/clm
-      - file: notebooks/sourcemods/add_fields/pop
+    - file: notebooks/sourcemods/overview
+    - file: notebooks/sourcemods/add_fields_cam
     - file: notebooks/sourcemods/modifying_physics
 
 - caption: Troubleshooting
