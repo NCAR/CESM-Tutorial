@@ -59,7 +59,7 @@ parts:
       - file: notebooks/namelist/output/output_pop
     - file: notebooks/namelist/exercises_overview
       sections:
-      - file: notebooks/namelist/exercisea/exercise_cam_ouput
+      - file: notebooks/namelist/exercises/exercise_cam_ouput
       - file: notebooks/namelist/exercises/exercise_tuning_parameter
     
 - caption: Source Modifications
