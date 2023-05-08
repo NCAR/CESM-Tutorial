@@ -72,8 +72,10 @@ parts:
 
 - caption: Troubleshooting
   chapters:
-    - file: notebooks/troubleshooting/troubleshooting
-    - file: notebooks/troubleshooting/log_files
+    - file: notebooks/troubleshooting/overview
+    - file: notebooks/troubleshooting/exercises_overview
+      sections:
+      - file: notebooks/troubleshooting/exercises/troubleshooting_cam
 
 - caption: Diagnostics
   chapters:
