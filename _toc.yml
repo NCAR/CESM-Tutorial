@@ -66,7 +66,9 @@ parts:
   chapters:
     - file: notebooks/sourcemods/overview
     - file: notebooks/sourcemods/add_fields_cam
-    - file: notebooks/sourcemods/exercise_add_field
+    - file: notebooks/sourcemods/exercises_overview
+      sections:
+      - file: notebooks/sourcemods/exercises/exercise_add_field
 
 - caption: Troubleshooting
   chapters:
