@@ -65,14 +65,6 @@ parts:
       sections:
       - file: notebooks/namelist/exercises/exercise_cam_output
       - file: notebooks/namelist/exercises/exercise_tuning_parameter
-    
-- caption: Source Modifications
-  chapters:
-    - file: notebooks/sourcemods/overview
-    - file: notebooks/sourcemods/add_fields_cam
-    - file: notebooks/sourcemods/exercises_overview
-      sections:
-      - file: notebooks/sourcemods/exercises/exercise_add_field
 
 - caption: Troubleshooting
   chapters:
@@ -80,6 +72,14 @@ parts:
     - file: notebooks/troubleshooting/exercises_overview
       sections:
       - file: notebooks/troubleshooting/exercises/troubleshooting_cam
+      
+- caption: Source Modifications
+  chapters:
+    - file: notebooks/sourcemods/overview
+    - file: notebooks/sourcemods/add_fields_cam
+    - file: notebooks/sourcemods/exercises_overview
+      sections:
+      - file: notebooks/sourcemods/exercises/exercise_add_field
 
 - caption: Diagnostics
   chapters:
