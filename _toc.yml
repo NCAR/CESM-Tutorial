@@ -96,6 +96,10 @@ parts:
       sections:
       - file: notebooks/challenge/cam/exercise_1
       - file: notebooks/challenge/cam/exercise_2
+    - file: notebooks/challenge/cam-chem
+      sections:
+      - file: notebooks/challenge/cam-chem/exercise_1
+      - file: notebooks/challenge/cam-chem/exercise_2
     - file: notebooks/challenge/biogeochemistry
     - file: notebooks/challenge/land_ice
     - file: notebooks/challenge/land
