@@ -100,20 +100,20 @@ parts:
       sections:
       - file: notebooks/challenge/cam-chem/exercise_1
       - file: notebooks/challenge/cam-chem/exercise_2
-    - file: notebooks/challenge/biogeochemistry
-    - file: notebooks/challenge/land_ice
-    - file: notebooks/challenge/land
+    - file: notebooks/challenge/cism
+    - file: notebooks/challenge/clm_ctsm
+    - file: notebooks/challenge/cice
+      sections:
+      - file: notebooks/challenge/cice/cice_exercise_1
+      - file: notebooks/challenge/cice/cice_exercise_2
+      - file: notebooks/challenge/cice/cice_exercise_3
     - file: notebooks/challenge/pop
       sections:
       - file: notebooks/challenge/pop/pop_exercise_1
       - file: notebooks/challenge/pop/pop_exercise_2
       - file: notebooks/challenge/pop/pop_exercise_3
       - file: notebooks/challenge/pop/pop_exercise_4
-    - file: notebooks/challenge/cice
-      sections:
-      - file: notebooks/challenge/cice/cice_exercise_1
-      - file: notebooks/challenge/cice/cice_exercise_2
-      - file: notebooks/challenge/cice/cice_exercise_3
+    - file: notebooks/challenge/biogeochemistry
 
 - caption: Useful Tools
   chapters:
