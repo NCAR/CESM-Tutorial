@@ -51,6 +51,7 @@ parts:
       - file: notebooks/modifications/xml/exercises/xml_length_exercise
       - file: notebooks/modifications/xml/exercises/xml_runtype_exercise
       - file: notebooks/modifications/xml/exercises/xml_timestep_exercise
+
 - caption: Namelist Modifications
   chapters:
     - file: notebooks/namelist/overview
@@ -65,13 +66,6 @@ parts:
       sections:
       - file: notebooks/namelist/exercises/exercise_cam_output
       - file: notebooks/namelist/exercises/exercise_tuning_parameter
-
-- caption: Troubleshooting
-  chapters:
-    - file: notebooks/troubleshooting/overview
-    - file: notebooks/troubleshooting/exercises_overview
-      sections:
-      - file: notebooks/troubleshooting/exercises/troubleshooting_cam
       
 - caption: Source Modifications
   chapters:
@@ -80,6 +74,13 @@ parts:
     - file: notebooks/sourcemods/exercises_overview
       sections:
       - file: notebooks/sourcemods/exercises/exercise_add_field
+
+- caption: Troubleshooting
+  chapters:
+    - file: notebooks/troubleshooting/overview
+    - file: notebooks/troubleshooting/exercises_overview
+      sections:
+      - file: notebooks/troubleshooting/exercises/troubleshooting_cam
 
 - caption: Diagnostics
   chapters:
@@ -91,7 +92,12 @@ parts:
 
 - caption: Challenge Exercises
   chapters:
-    - file: notebooks/challenge/breakout1
+    - file: notebooks/challenge/atmosphere
+    - file: notebooks/challenge/biogeochemistry
+    - file: notebooks/challenge/land_ice
+    - file: notebooks/challenge/land
+    - file: notebooks/challenge/ocean
+    - file: notebooks/challenge/sea_ice
 
 - caption: Useful Tools
   chapters:
