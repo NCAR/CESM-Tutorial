@@ -103,8 +103,17 @@ parts:
     - file: notebooks/challenge/biogeochemistry
     - file: notebooks/challenge/land_ice
     - file: notebooks/challenge/land
-    - file: notebooks/challenge/ocean
-    - file: notebooks/challenge/sea_ice
+    - file: notebooks/challenge/pop
+      sections:
+      - file: notebooks/challenge/pop/pop_exercise_1
+      - file: notebooks/challenge/pop/pop_exercise_2
+      - file: notebooks/challenge/pop/pop_exercise_3
+      - file: notebooks/challenge/pop/pop_exercise_4
+    - file: notebooks/challenge/cice
+      sections:
+      - file: notebooks/challenge/cice/cice_exercise_1
+      - file: notebooks/challenge/cice/cice_exercise_2
+      - file: notebooks/challenge/cice/cice_exercise_3
 
 - caption: Useful Tools
   chapters:
