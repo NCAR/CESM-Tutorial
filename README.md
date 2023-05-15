@@ -35,6 +35,17 @@ The CESM tutorial has been offered regularly since 2010 and is typically offered
 
 This material is based upon work supported by the National Center for Atmospheric Research (NCAR), which is a major facility sponsored by the National Science Foundation (NSF) under Cooperative Agreement No. 1852977. Staff time on this project was also supported by the Climate and Global Dynamics (CGD) laboratory.
 
+## Acknowledgements
+
+A number of people have been critical to this effort, including:
+
+- Alice DuVivier, Cecile Hannay, Peter Lawrence, and Hui Li, who serve on the CESM tutorial committee and put together the tutorial materials.
+- Brian Dobbins, who led technical aspects of the tutorial materials. 
+- Gunter Leguy, Gustavo Marques, Jesse Nusbaumer, and Adam Phillips, who serve on the CESM tutorial committee and helped test materials.
+- Elizabeth Faircloth, who supports the CESM program administratively and without whom everything would probably fall apart.
+- Gokhan Danabasoglu, who supported this effort as CESM chief scientist.
+- Testers
+
 <br>
 
 <div>
