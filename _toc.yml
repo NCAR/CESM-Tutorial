@@ -114,6 +114,8 @@ parts:
       - file: notebooks/challenge/pop/pop_exercise_3
       - file: notebooks/challenge/pop/pop_exercise_4
     - file: notebooks/challenge/biogeochemistry
+      sections:
+      - file: notebooks/challenge/bgc/bgc_exercise_1
 
 - caption: Useful Tools
   chapters:
