@@ -7,8 +7,7 @@ root: README
 parts:
 - caption: Introduction
   chapters:
-    - file: notebooks/introduction/using_jupyter_notebooks
-    - file: notebooks/introduction/running_on_cheyenne
+    - file: notebooks/introduction/intro
 
 - caption: The Basics of Running CESM
   chapters:
