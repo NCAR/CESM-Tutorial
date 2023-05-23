@@ -7,8 +7,7 @@ root: README
 parts:
 - caption: Introduction
   chapters:
-    - file: notebooks/introduction/using_jupyter_notebooks
-    - file: notebooks/introduction/running_on_cheyenne
+    - file: notebooks/introduction/intro
 
 - caption: The Basics of Running CESM
   chapters:
@@ -100,11 +99,22 @@ parts:
       sections:
       - file: notebooks/challenge/cam-chem/exercise_1
       - file: notebooks/challenge/cam-chem/exercise_2
+    - file: notebooks/challenge/cism
+    - file: notebooks/challenge/clm_ctsm
+    - file: notebooks/challenge/cice
+      sections:
+      - file: notebooks/challenge/cice/cice_exercise_1
+      - file: notebooks/challenge/cice/cice_exercise_2
+      - file: notebooks/challenge/cice/cice_exercise_3
+    - file: notebooks/challenge/pop
+      sections:
+      - file: notebooks/challenge/pop/pop_exercise_1
+      - file: notebooks/challenge/pop/pop_exercise_2
+      - file: notebooks/challenge/pop/pop_exercise_3
+      - file: notebooks/challenge/pop/pop_exercise_4
     - file: notebooks/challenge/biogeochemistry
-    - file: notebooks/challenge/land_ice
-    - file: notebooks/challenge/land
-    - file: notebooks/challenge/ocean
-    - file: notebooks/challenge/sea_ice
+      sections:
+      - file: notebooks/challenge/bgc/bgc_exercise_1
 
 - caption: Useful Tools
   chapters:
