@@ -6,8 +6,8 @@ on:
 
 jobs:
   build:
+    if: github.repository == 'NCAR/CESM-Tutorial'
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python
