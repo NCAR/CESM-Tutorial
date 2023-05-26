@@ -18,7 +18,7 @@ parts:
     - file: notebooks/basics/exercises1_overview
       sections:
       - file: notebooks/basics/exercises1/cheyenne_login
-      - file: notebooks/basics/exercises1/github
+      - file: notebooks/basics/exercises1/github_explore
       - file: notebooks/basics/exercises1/git_clone
       - file: notebooks/basics/exercises1/git_checkout
       - file: notebooks/basics/exercises1/manage_externals
