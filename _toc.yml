@@ -73,6 +73,13 @@ parts:
       sections:
       - file: notebooks/namelist/exercises/exercise_cam_output
       - file: notebooks/namelist/exercises/exercise_tuning_parameter
+
+- caption: Troubleshooting
+  chapters:
+    - file: notebooks/troubleshooting/overview
+    - file: notebooks/troubleshooting/exercises_overview
+      sections:
+      - file: notebooks/troubleshooting/exercises/troubleshooting_cam
       
 - caption: Source Modifications
   chapters:
@@ -81,13 +88,6 @@ parts:
     - file: notebooks/sourcemods/exercises_overview
       sections:
       - file: notebooks/sourcemods/exercises/exercise_add_field
-
-- caption: Troubleshooting
-  chapters:
-    - file: notebooks/troubleshooting/overview
-    - file: notebooks/troubleshooting/exercises_overview
-      sections:
-      - file: notebooks/troubleshooting/exercises/troubleshooting_cam
 
 - caption: Diagnostics
   chapters:
@@ -103,6 +103,11 @@ parts:
       sections:
       - file: notebooks/challenge/cam/exercise_1
       - file: notebooks/challenge/cam/exercise_2
+      - file: notebooks/challenge/cam/exercise_3
+      - file: notebooks/challenge/cam/exercise_4
+      - file: notebooks/challenge/cam/exercise_5
+      - file: notebooks/challenge/cam/exercise_6
+      - file: notebooks/challenge/cam/exercise_7
     - file: notebooks/challenge/cam-chem
       sections:
       - file: notebooks/challenge/cam-chem/exercise_1
