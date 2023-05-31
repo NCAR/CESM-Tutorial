@@ -12,22 +12,30 @@ parts:
 - caption: The Basics of Running CESM
   chapters:
     - file: notebooks/basics/overview
-    - file: notebooks/basics/setting_up_the_workspace
-    - file: notebooks/basics/downloading_cesm
+    - file: notebooks/basics/cesm_coupling
+    - file: notebooks/basics/cesm_quickstart
+    - file: notebooks/basics/cesm_workspaces
+    - file: notebooks/basics/exercises1_overview
       sections:
-      - file: notebooks/basics/downloading_cesm/git_clone
-      - file: notebooks/basics/downloading_cesm/git_checkout
-      - file: notebooks/basics/downloading_cesm/manage_externals
+      - file: notebooks/basics/exercises1/cheyenne_login
+      - file: notebooks/basics/exercises1/github_explore
+      - file: notebooks/basics/exercises1/git_clone
+      - file: notebooks/basics/exercises1/git_checkout
+      - file: notebooks/basics/exercises1/manage_externals
+      - file: notebooks/basics/exercises1/explore_sourcecode
     - file: notebooks/basics/the_cesm_code
       sections:
       - file: notebooks/basics/the_cesm_code/cesm_components
       - file: notebooks/basics/the_cesm_code/inputdata
-    - file: notebooks/basics/your_first_cesm_run
+    - file: notebooks/basics/running_cesm
       sections:
-      - file: notebooks/basics/your_first_cesm_run/basic_workflow
-      - file: notebooks/basics/your_first_cesm_run/copying_cases
-      - file: notebooks/basics/your_first_cesm_run/checking_queues_and_jobs
-      - file: notebooks/basics/your_first_cesm_run/case_directory_and_documentation
+      - file: notebooks/basics/running_cesm/basic_workflow
+      - file: notebooks/basics/running_cesm/copying_cases
+      - file: notebooks/basics/running_cesm/checking_queues_and_jobs
+      - file: notebooks/basics/running_cesm/case_directory_and_documentation
+    - file: notebooks/basics/exercises2_overview
+      sections:
+      - file: notebooks/basics/exercises2/
 
 - caption: Simple XML Modifications
   chapters:
@@ -65,6 +73,13 @@ parts:
       sections:
       - file: notebooks/namelist/exercises/exercise_cam_output
       - file: notebooks/namelist/exercises/exercise_tuning_parameter
+
+- caption: Troubleshooting
+  chapters:
+    - file: notebooks/troubleshooting/overview
+    - file: notebooks/troubleshooting/exercises_overview
+      sections:
+      - file: notebooks/troubleshooting/exercises/troubleshooting_cam
       
 - caption: Source Modifications
   chapters:
@@ -73,13 +88,6 @@ parts:
     - file: notebooks/sourcemods/exercises_overview
       sections:
       - file: notebooks/sourcemods/exercises/exercise_add_field
-
-- caption: Troubleshooting
-  chapters:
-    - file: notebooks/troubleshooting/overview
-    - file: notebooks/troubleshooting/exercises_overview
-      sections:
-      - file: notebooks/troubleshooting/exercises/troubleshooting_cam
 
 - caption: Diagnostics
   chapters:
@@ -95,6 +103,11 @@ parts:
       sections:
       - file: notebooks/challenge/cam/exercise_1
       - file: notebooks/challenge/cam/exercise_2
+      - file: notebooks/challenge/cam/exercise_3
+      - file: notebooks/challenge/cam/exercise_4
+      - file: notebooks/challenge/cam/exercise_5
+      - file: notebooks/challenge/cam/exercise_6
+      - file: notebooks/challenge/cam/exercise_7
     - file: notebooks/challenge/cam-chem
       sections:
       - file: notebooks/challenge/cam-chem/exercise_1
