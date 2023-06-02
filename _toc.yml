@@ -19,10 +19,9 @@ parts:
       sections:
       - file: notebooks/basics/exercises1/cheyenne_login
       - file: notebooks/basics/exercises1/github_explore
-      - file: notebooks/basics/exercises1/git_clone
-      - file: notebooks/basics/exercises1/git_checkout
-      - file: notebooks/basics/exercises1/manage_externals
-      - file: notebooks/basics/exercises1/explore_sourcecode
+      - file: notebooks/basics/exercises1/git_download_cesm
+      - file: notebooks/basics/exercises1/cesm_code_explore
+      - file: notebooks/basics/exercises1/additional_exercises
     - file: notebooks/basics/the_cesm_code
       sections:
       - file: notebooks/basics/the_cesm_code/cesm_components
