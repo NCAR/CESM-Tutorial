@@ -111,7 +111,11 @@ parts:
       sections:
       - file: notebooks/challenge/cam-chem/exercise_1
       - file: notebooks/challenge/cam-chem/exercise_2
-    - file: notebooks/challenge/cism/cism
+    - file: notebooks/challenge/cism
+      sections:
+      - file: notebooks/challenge/cism/cism_exercise_1
+      - file: notebooks/challenge/cism/cism_exercise_2
+      - file: notebooks/challenge/cism/cism_exercise_3
     - file: notebooks/challenge/clm_ctsm
     - file: notebooks/challenge/cice
       sections:
