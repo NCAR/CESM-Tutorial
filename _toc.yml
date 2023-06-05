@@ -43,10 +43,12 @@ parts:
     - file: notebooks/basics/getting_help
     - file: notebooks/basics/exercises2_overview
       sections:
-      - file: notebooks/basics/exercises2/cheyenne_login
-      - file: notebooks/basics/exercises2/github_explore
-      - file: notebooks/basics/exercises2/git_download_cesm
-      - file: notebooks/basics/exercises2/cesm_code_explore
+      - file: notebooks/basics/exercises2/create_setup_build_B1850
+      - file: notebooks/basics/exercises2/submit_monitor_B1850
+      - file: notebooks/basics/exercises2/examine_history_B1850
+      - file: notebooks/basics/exercises2/update_resubmit_B1850
+      - file: notebooks/basics/exercises2/reexamine_history_B1850
+      - file: notebooks/basics/exercises2/clone_examine_B1850
       - file: notebooks/basics/exercises2/additional_exercises
 
 - caption: Simple XML Modifications
@@ -101,7 +103,7 @@ parts:
       sections:
       - file: notebooks/sourcemods/exercises/exercise_add_field
       - file: notebooks/sourcemods/exercises/exercise_rain_threshold
-      
+    
 - caption: Diagnostics
   chapters:
     - file: notebooks/diagnostics/plotting_fields
