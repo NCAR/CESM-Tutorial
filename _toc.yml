@@ -22,19 +22,32 @@ parts:
       - file: notebooks/basics/exercises1/git_download_cesm
       - file: notebooks/basics/exercises1/cesm_code_explore
       - file: notebooks/basics/exercises1/additional_exercises
-    - file: notebooks/basics/the_cesm_code
+    - file: notebooks/basics/cesm_workflow
       sections:
-      - file: notebooks/basics/the_cesm_code/cesm_components
-      - file: notebooks/basics/the_cesm_code/inputdata
-    - file: notebooks/basics/running_cesm
-      sections:
-      - file: notebooks/basics/running_cesm/basic_workflow
-      - file: notebooks/basics/running_cesm/copying_cases
-      - file: notebooks/basics/running_cesm/checking_queues_and_jobs
-      - file: notebooks/basics/running_cesm/case_directory_and_documentation
+      - file: notebooks/basics/cesm_workflow/create_newcase_command
+      - file: notebooks/basics/cesm_workflow/create_newcase_casename
+      - file: notebooks/basics/cesm_workflow/create_newcase_resolution
+      - file: notebooks/basics/cesm_workflow/create_newcase_compset
+      - file: notebooks/basics/cesm_workflow/create_newcase_output
+      - file: notebooks/basics/cesm_workflow/case_root
+      - file: notebooks/basics/cesm_workflow/case_xml_files
+      - file: notebooks/basics/cesm_workflow/case_xml_change
+      - file: notebooks/basics/cesm_workflow/case_setup
+      - file: notebooks/basics/cesm_workflow/case_setup_updated
+      - file: notebooks/basics/cesm_workflow/case_build
+      - file: notebooks/basics/cesm_workflow/case_submit
+      - file: notebooks/basics/cesm_workflow/checking_jobs_and_status
+      - file: notebooks/basics/cesm_workflow/create_clone_command
+    - file: notebooks/basics/postprocessing
+    - file: notebooks/basics/porting
+    - file: notebooks/basics/getting_help
     - file: notebooks/basics/exercises2_overview
       sections:
-      - file: notebooks/basics/exercises2/
+      - file: notebooks/basics/exercises2/cheyenne_login
+      - file: notebooks/basics/exercises2/github_explore
+      - file: notebooks/basics/exercises2/git_download_cesm
+      - file: notebooks/basics/exercises2/cesm_code_explore
+      - file: notebooks/basics/exercises2/additional_exercises
 
 - caption: Simple XML Modifications
   chapters:
