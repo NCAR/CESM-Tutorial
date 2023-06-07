@@ -47,6 +47,7 @@ chapters:
     - file: notebooks/basics/exercises2/update_resubmit_B1850
     - file: notebooks/basics/exercises2/reexamine_history_B1850
     - file: notebooks/basics/exercises2/clone_examine_B1850
+    - file: notebooks/basics/exercises2/review_questions
     - file: notebooks/basics/exercises2/additional_exercises
       
 - file: notebooks/modifications/xml
