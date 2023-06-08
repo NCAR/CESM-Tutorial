@@ -101,7 +101,6 @@ chapters:
   - file: notebooks/sourcemods/exercises_overview
     sections:
     - file: notebooks/sourcemods/exercises/exercise_add_field
-    - file: notebooks/sourcemods/exercises/exercise_rain_threshold
       
 - file: notebooks/diagnostics
   sections:
