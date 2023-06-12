@@ -104,6 +104,18 @@ chapters:
       
 - file: notebooks/diagnostics
   sections:
+  - file: notebooks/diagnostics/cam
+  - file: notebooks/diagnostics/cam-chem
+  - file: notebooks/diagnostics/cism
+  - file: notebooks/diagnostics/cice
+    sections:
+    - file: notebooks/diagnostics/cice/basics
+    - file: notebooks/diagnostics/cice/advanced
+  - file: notebooks/diagnostics/clm_ctsm
+  - file: notebooks/diagnostics/pop
+    sections:
+    - file: notebooks/diagnostics/pop/basics
+    - file: notebooks/diagnostics/pop/advanced
   - file: notebooks/diagnostics/plotting_fields
   - file: notebooks/diagnostics/regridding
   - file: notebooks/diagnostics/packages
