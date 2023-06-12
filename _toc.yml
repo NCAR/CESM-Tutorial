@@ -44,9 +44,6 @@ chapters:
     - file: notebooks/basics/exercises2/create_setup_build_B1850
     - file: notebooks/basics/exercises2/submit_monitor_B1850
     - file: notebooks/basics/exercises2/examine_history_B1850
-    - file: notebooks/basics/exercises2/update_resubmit_B1850
-    - file: notebooks/basics/exercises2/reexamine_history_B1850
-    - file: notebooks/basics/exercises2/clone_examine_B1850
     - file: notebooks/basics/exercises2/review_questions
     - file: notebooks/basics/exercises2/additional_exercises
       
