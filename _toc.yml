@@ -123,13 +123,13 @@ chapters:
   sections:
   - file: notebooks/challenge/cam
     sections:
-    - file: notebooks/challenge/cam/exercise_1
-    - file: notebooks/challenge/cam/exercise_2
-    - file: notebooks/challenge/cam/exercise_3
-    - file: notebooks/challenge/cam/exercise_4
-    - file: notebooks/challenge/cam/exercise_5
-    - file: notebooks/challenge/cam/exercise_6
-    - file: notebooks/challenge/cam/exercise_7
+    - file: notebooks/challenge/cam/cam_exercise_1
+    - file: notebooks/challenge/cam/cam_exercise_2
+    - file: notebooks/challenge/cam/cam_exercise_3
+    - file: notebooks/challenge/cam/cam_exercise_4
+    - file: notebooks/challenge/cam/cam_exercise_5
+    - file: notebooks/challenge/cam/cam_exercise_6
+    - file: notebooks/challenge/cam/cam_exercise_7
   - file: notebooks/challenge/cam-chem
     sections:
     - file: notebooks/challenge/cam-chem/exercise_1
@@ -140,6 +140,10 @@ chapters:
     - file: notebooks/challenge/cism/cism_exercise_2
     - file: notebooks/challenge/cism/cism_exercise_3
   - file: notebooks/challenge/clm_ctsm
+    sections:
+    - file: notebooks/challenge/clm_ctsm/clm_exercise_1
+    - file: notebooks/challenge/clm_ctsm/clm_exercise_2
+    - file: notebooks/challenge/clm_ctsm/clm_exercise_3  
   - file: notebooks/challenge/cice
     sections:
     - file: notebooks/challenge/cice/cice_exercise_1
@@ -151,7 +155,7 @@ chapters:
     - file: notebooks/challenge/pop/pop_exercise_2
     - file: notebooks/challenge/pop/pop_exercise_3
     - file: notebooks/challenge/pop/pop_exercise_4
-  - file: notebooks/challenge/biogeochemistry
+  - file: notebooks/challenge/bgc
     sections:
     - file: notebooks/challenge/bgc/bgc_exercise_1
 
