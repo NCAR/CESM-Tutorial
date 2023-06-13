@@ -130,10 +130,10 @@ chapters:
     - file: notebooks/challenge/cam/exercise_5
     - file: notebooks/challenge/cam/exercise_6
     - file: notebooks/challenge/cam/exercise_7
-  - file: notebooks/challenge/cam-chem
+  - file: notebooks/challenge/cam-chem_waccm
     sections:
-    - file: notebooks/challenge/cam-chem/exercise_1
-    - file: notebooks/challenge/cam-chem/exercise_2
+    - file: notebooks/challenge/cam-chem_waccm/exercise_1
+    - file: notebooks/challenge/cam-chem_waccm/exercise_2
   - file: notebooks/challenge/cism
     sections:
     - file: notebooks/challenge/cism/cism_exercise_1
