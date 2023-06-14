@@ -5,12 +5,15 @@ format: jb-book
 root: README
 
 chapters:
-- file: notebooks/introduction/intro
+- file: notebooks/intro
+  sections:
+  - file: notebooks/introduction/overview
+  - file: notebooks/introduction/cesm_coupling
+  - file: notebooks/introduction/intro
+  - file: notebooks/introduction/overview
 
 - file: notebooks/basics
   sections:
-  - file: notebooks/basics/overview
-  - file: notebooks/basics/cesm_coupling
   - file: notebooks/basics/cesm_quickstart
   - file: notebooks/basics/cesm_workspaces
   - file: notebooks/basics/exercises1_overview
@@ -156,20 +159,23 @@ chapters:
     sections:
     - file: notebooks/challenge/bgc/bgc_exercise_1
 
-- file: notebooks/tools
+- file: notebooks/resources
   sections:
-  - file: notebooks/tools/unix_basics
+  - file: notebooks/resources/unix_basics
     sections:
-    - file: notebooks/tools/unix/terminals
-    - file: notebooks/tools/unix/modules
-    - file: notebooks/tools/unix/text_editors
+    - file: notebooks/resources/unix/terminals
+    - file: notebooks/resources/unix/modules
+    - file: notebooks/resources/unix/text_editors
   sections:
-  - file: notebooks/tools/community_experiments
+  - file: notebooks/resources/community_experiments
     sections:
-    - file: notebooks/tools/cesm_expts/clim_data_gateway
-    - file: notebooks/tools/cesm_expts/clim_data_guide
-  - file: notebooks/tools/fortran
-  - file: notebooks/tools/github
-  - file: notebooks/tools/netcdf_tools
+    - file: notebooks/resources/cesm_expts/clim_data_gateway
+    - file: notebooks/resources/cesm_expts/clim_data_guide
+  - file: notebooks/resources/fortran
+  - file: notebooks/resources/github
+  - file: notebooks/resources/netcdf_tools
+  - file: notebooks/resources/postprocessing
+  - file: notebooks/resources/porting
+  - file: notebooks/resources/getting_help
   
   
