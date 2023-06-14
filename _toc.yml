@@ -157,6 +157,7 @@ chapters:
     - file: notebooks/challenge/bgc/bgc_exercise_1
 
 - file: notebooks/tools
+  sections:
   - file: notebooks/tools/unix_basics
     sections:
     - file: notebooks/tools/unix/terminals
