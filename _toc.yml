@@ -10,7 +10,6 @@ chapters:
   - file: notebooks/introduction/overview
   - file: notebooks/introduction/cesm_coupling
   - file: notebooks/introduction/intro
-  - file: notebooks/introduction/overview
 
 - file: notebooks/basics
   sections:
