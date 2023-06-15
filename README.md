@@ -5,23 +5,15 @@
 
 NCAR created the Community Climate Model (CCM) in 1983 that included a global atmosphere. In 1994, NCAR scientists started to develop the Climate System Model (CSM) that included models of the atmosphere, land surface, ocean, and sea ice. In order to recognize the Community of users and sponsors, the CSM was renamed to the Community Climate System Model (CCSM). With addititons, including an ice sheet and biogeochemical modeling, the model was renamed to the Community Earth System Model (CESM) in 2013. 
 
-This repository includes materials designed to be an introudction to running the CESM. The materials are used during the annual CESM tutorial and serve as reference documentation for any CESM user. **These tutorial materials are designed for the CESM version 2 (CESM2)**.
+This repository includes materials designed to be an introduction to running the CESM. The materials are used during the annual CESM tutorial and serve as reference documentation for any CESM user. **These tutorial materials are designed for the CESM version 2 (CESM2)**.
 
 ## Goals of This Tutorial
 
 **By the end of this online tutorial you should be able to run and modify the model and use the output.** 
 
-This tutorial includes the following topics:
-* The basics of running CESM
-* Simple modifications of xml files, source code, and namelists
-* Some challenge exercises
-* Troubleshooting
-* Basic diagnostics
-* Useful tools
-
 ## Yearly In-Person Tutorials
 
-The CESM tutorial has been offered regularly since 2010 and is typically offered annually during the summer. If you are interested in attending the tutorial and have not attended a tutorial before, please see the [CESM webpage](https://www.cesm.ucar.edu/events/tutorials) for the most up to date information about when the tutorial will next be offered in Boulder, Colorado and the timeline for applying.
+The CESM tutorial has been offered regularly since 2010 and is typically offered annually during the summer. If you are interested in attending the tutorial, please see the [CESM webpage](https://www.cesm.ucar.edu/events/tutorials) for the most up to date information about when the tutorial will next be offered in Boulder, Colorado and the timeline for applying.
 
 ## CESM Project Funding 
 
@@ -34,7 +26,7 @@ A number of people have been critical to this effort, including:
 - Gunter Leguy, Gustavo Marques, and Adam Phillips, who serve on the CESM tutorial committee and helped test materials.
 - Elizabeth Faircloth, who supports the CESM program administratively and without whom everything would probably fall apart.
 - Gokhan Danabasoglu, who supported this effort as CESM chief scientist.
-- Testers
+- Testers, others...
 
 <br>
 
