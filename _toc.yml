@@ -168,15 +168,14 @@ chapters:
 
 - file: notebooks/resources
   sections:
-  - file: notebooks/resources/NCAR_hpc
   - file: notebooks/resources/terminals
   - file: notebooks/resources/unix
   - file: notebooks/resources/modules
   - file: notebooks/resources/text_editors
   - file: notebooks/resources/fortran
   - file: notebooks/resources/github
-  - file: notebooks/resources/netcdf_tools
-  - file: notebooks/resources/postprocessing
+  - file: notebooks/resources/netcdf
   - file: notebooks/resources/porting
+  - file: notebooks/resources/postprocessing
   
   
