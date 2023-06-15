@@ -7,9 +7,11 @@ root: README
 chapters:
 - file: notebooks/intro
   sections:
-  - file: notebooks/introduction/overview
-  - file: notebooks/introduction/cesm_coupling
-  - file: notebooks/introduction/intro
+  - file: notebooks/intro/overview
+  - file: notebooks/intro/coupling
+  - file: notebooks/intro/working_groups
+  - file: notebooks/intro/getting_help
+  - file: notebooks/intro/prereqs
 
 - file: notebooks/basics
   sections:
