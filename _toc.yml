@@ -4,146 +4,178 @@
 format: jb-book
 root: README
 
-parts:
-- caption: Introduction
-  chapters:
-    - file: notebooks/introduction/intro
+chapters:
+- file: notebooks/prereqs
+  sections:
+  - file: notebooks/prereqs/exercises
 
-- caption: The Basics of Running CESM
-  chapters:
-    - file: notebooks/basics/overview
-    - file: notebooks/basics/cesm_coupling
-    - file: notebooks/basics/cesm_quickstart
-    - file: notebooks/basics/cesm_workspaces
-    - file: notebooks/basics/exercises1_overview
-      sections:
-      - file: notebooks/basics/exercises1/cheyenne_login
-      - file: notebooks/basics/exercises1/github_explore
-      - file: notebooks/basics/exercises1/git_clone
-      - file: notebooks/basics/exercises1/git_checkout
-      - file: notebooks/basics/exercises1/manage_externals
-      - file: notebooks/basics/exercises1/explore_sourcecode
-    - file: notebooks/basics/the_cesm_code
-      sections:
-      - file: notebooks/basics/the_cesm_code/cesm_components
-      - file: notebooks/basics/the_cesm_code/inputdata
-    - file: notebooks/basics/running_cesm
-      sections:
-      - file: notebooks/basics/running_cesm/basic_workflow
-      - file: notebooks/basics/running_cesm/copying_cases
-      - file: notebooks/basics/running_cesm/checking_queues_and_jobs
-      - file: notebooks/basics/running_cesm/case_directory_and_documentation
-    - file: notebooks/basics/exercises2_overview
-      sections:
-      - file: notebooks/basics/exercises2/
+- file: notebooks/intro
+  sections:
+  - file: notebooks/intro/components
+  - file: notebooks/intro/coupling
+  - file: notebooks/intro/project
+  - file: notebooks/intro/getting_help
+  - file: notebooks/intro/community_experiments
+    sections:
+    - file: notebooks/intro/cesm_expts/clim_data_gateway
+    - file: notebooks/intro/cesm_expts/clim_data_guide
 
-- caption: Simple XML Modifications
-  chapters:
-    - file: notebooks/modifications/xml/overview
-    - file: notebooks/modifications/xml/model_control_files
-    - file: notebooks/modifications/xml/run_length
-      sections:
-      - file: notebooks/modifications/xml/run_length/starting_and_stopping
-      - file: notebooks/modifications/xml/run_length/restarting
-      - file: notebooks/modifications/xml/run_length/changing_run_length
-      - file: notebooks/modifications/xml/run_length/timing_files
-    - file: notebooks/modifications/xml/modify_run_type
-      sections: 
-      - file: notebooks/modifications/xml/modify_run_type/hybrid_branch_restart
-      - file: notebooks/modifications/xml/modify_run_type/run_variables
-    - file: notebooks/modifications/xml/physics_timestep
-    - file: notebooks/modifications/xml/other_xml_variables
-    - file: notebooks/modifications/xml/exercises
-      sections:
-      - file: notebooks/modifications/xml/exercises/xml_length_exercise
-      - file: notebooks/modifications/xml/exercises/xml_runtype_exercise
-      - file: notebooks/modifications/xml/exercises/xml_timestep_exercise
-
-- caption: Namelist Modifications
-  chapters:
-    - file: notebooks/namelist/overview
-    - file: notebooks/namelist/documentation
-    - file: notebooks/namelist/output
-      sections:
-      - file: notebooks/namelist/output/output_cam
-      - file: notebooks/namelist/output/output_clm
-      - file: notebooks/namelist/output/output_cice
-      - file: notebooks/namelist/output/output_pop
-    - file: notebooks/namelist/exercises_overview
-      sections:
-      - file: notebooks/namelist/exercises/exercise_cam_output
-      - file: notebooks/namelist/exercises/exercise_tuning_parameter
-
-- caption: Troubleshooting
-  chapters:
-    - file: notebooks/troubleshooting/overview
-    - file: notebooks/troubleshooting/exercises_overview
-      sections:
-      - file: notebooks/troubleshooting/exercises/troubleshooting_cam
+- file: notebooks/basics
+  sections:
+  - file: notebooks/basics/one_time_overview
+    sections:
+    - file: notebooks/basics/one_time/cesm_workspaces
+    - file: notebooks/basics/one_time/git_download_cesm
+    - file: notebooks/basics/one_time/cesm_code_explore
+  - file: notebooks/basics/cesm_workflow
+    sections:
+    - file: notebooks/basics/cesm_workflow/create_newcase_command
+    - file: notebooks/basics/cesm_workflow/create_newcase_casename
+    - file: notebooks/basics/cesm_workflow/create_newcase_resolution
+    - file: notebooks/basics/cesm_workflow/create_newcase_compset
+    - file: notebooks/basics/cesm_workflow/create_newcase_output
+    - file: notebooks/basics/cesm_workflow/case_root
+    - file: notebooks/basics/cesm_workflow/case_xml_files
+    - file: notebooks/basics/cesm_workflow/case_xml_change
+    - file: notebooks/basics/cesm_workflow/case_setup
+    - file: notebooks/basics/cesm_workflow/case_setup_updated
+    - file: notebooks/basics/cesm_workflow/case_build
+    - file: notebooks/basics/cesm_workflow/case_submit
+    - file: notebooks/basics/cesm_workflow/checking_jobs_and_status
+    - file: notebooks/basics/cesm_workflow/create_clone_command
+  - file: notebooks/basics/postprocessing
+  - file: notebooks/basics/porting
+  - file: notebooks/basics/getting_help
+  - file: notebooks/basics/exercises2_overview
+    sections:
+    - file: notebooks/basics/exercises2/create_setup_build_B1850
+    - file: notebooks/basics/exercises2/submit_monitor_B1850
+    - file: notebooks/basics/exercises2/examine_history_B1850
+    - file: notebooks/basics/exercises2/review_questions
+    - file: notebooks/basics/exercises2/additional_exercises
       
-- caption: Source Modifications
-  chapters:
-    - file: notebooks/sourcemods/overview
-    - file: notebooks/sourcemods/add_fields_cam
-    - file: notebooks/sourcemods/exercises_overview
-      sections:
-      - file: notebooks/sourcemods/exercises/exercise_add_field
+- file: notebooks/modifications/xml
+  sections:
+  - file: notebooks/modifications/xml/overview
+  - file: notebooks/modifications/xml/model_control_files
+  - file: notebooks/modifications/xml/run_length
+    sections:
+    - file: notebooks/modifications/xml/run_length/starting_and_stopping
+    - file: notebooks/modifications/xml/run_length/restarting
+    - file: notebooks/modifications/xml/run_length/changing_run_length
+    - file: notebooks/modifications/xml/run_length/timing_files
+  - file: notebooks/modifications/xml/modify_run_type
+    sections: 
+    - file: notebooks/modifications/xml/modify_run_type/hybrid_branch_restart
+    - file: notebooks/modifications/xml/modify_run_type/run_variables
+  - file: notebooks/modifications/xml/physics_timestep
+  - file: notebooks/modifications/xml/other_xml_variables
+  - file: notebooks/modifications/xml/exercises
+    sections:
+    - file: notebooks/modifications/xml/exercises/xml_length_exercise
+    - file: notebooks/modifications/xml/exercises/xml_runtype_exercise
+    - file: notebooks/modifications/xml/exercises/xml_timestep_exercise
 
-- caption: Diagnostics
-  chapters:
-    - file: notebooks/diagnostics/plotting_fields
-    - file: notebooks/diagnostics/regridding
-    - file: notebooks/diagnostics/packages
-    - file: notebooks/diagnostics/geocat
-    - file: notebooks/diagnostics/esds
+- file: notebooks/namelist
+  sections:
+  - file: notebooks/namelist/overview
+  - file: notebooks/namelist/documentation
+  - file: notebooks/namelist/output
+    sections:
+    - file: notebooks/namelist/output/output_cam
+    - file: notebooks/namelist/output/output_clm
+    - file: notebooks/namelist/output/output_cice
+    - file: notebooks/namelist/output/output_pop
+  - file: notebooks/namelist/exercises_overview
+    sections:
+    - file: notebooks/namelist/exercises/exercise_cam_output
+    - file: notebooks/namelist/exercises/exercise_tuning_parameter
 
-- caption: Challenge Exercises
-  chapters:
-    - file: notebooks/challenge/cam
-      sections:
-      - file: notebooks/challenge/cam/exercise_1
-      - file: notebooks/challenge/cam/exercise_2
-      - file: notebooks/challenge/cam/exercise_3
-      - file: notebooks/challenge/cam/exercise_4
-      - file: notebooks/challenge/cam/exercise_5
-      - file: notebooks/challenge/cam/exercise_6
-      - file: notebooks/challenge/cam/exercise_7
-    - file: notebooks/challenge/cam-chem
-      sections:
-      - file: notebooks/challenge/cam-chem/exercise_1
-      - file: notebooks/challenge/cam-chem/exercise_2
-    - file: notebooks/challenge/cism
-    - file: notebooks/challenge/clm_ctsm
-    - file: notebooks/challenge/cice
-      sections:
-      - file: notebooks/challenge/cice/cice_exercise_1
-      - file: notebooks/challenge/cice/cice_exercise_2
-      - file: notebooks/challenge/cice/cice_exercise_3
-    - file: notebooks/challenge/pop
-      sections:
-      - file: notebooks/challenge/pop/pop_exercise_1
-      - file: notebooks/challenge/pop/pop_exercise_2
-      - file: notebooks/challenge/pop/pop_exercise_3
-      - file: notebooks/challenge/pop/pop_exercise_4
-    - file: notebooks/challenge/biogeochemistry
-      sections:
-      - file: notebooks/challenge/bgc/bgc_exercise_1
+- file: notebooks/troubleshooting
+  sections:
+  - file: notebooks/troubleshooting/log_files
+  - file: notebooks/troubleshooting/debugging_flag
+  - file: notebooks/troubleshooting/exercises_overview
+    sections:
+    - file: notebooks/troubleshooting/exercises/troubleshooting_cam
+      
+- file: notebooks/sourcemods
+  sections:
+  - file: notebooks/sourcemods/overview
+  - file: notebooks/sourcemods/add_fields_cam
+  - file: notebooks/sourcemods/exercises_overview
+    sections:
+    - file: notebooks/sourcemods/exercises/exercise_add_field
+      
+- file: notebooks/diagnostics
+  sections:
+  - file: notebooks/diagnostics/cam
+  - file: notebooks/diagnostics/cam-chem_waccm
+  - file: notebooks/diagnostics/cice
+    sections:
+    - file: notebooks/diagnostics/cice/basics
+    - file: notebooks/diagnostics/cice/advanced
+  - file: notebooks/diagnostics/clm_ctsm
+  - file: notebooks/diagnostics/pop
+  - file: notebooks/diagnostics/advanced
+    sections:
+    - file: notebooks/diagnostics/advanced/analysis_tools
+    - file: notebooks/diagnostics/advanced/regridding
+    - file: notebooks/diagnostics/advanced/timeseries
+    - file: notebooks/diagnostics/advanced/large_ensembles
+    - file: notebooks/diagnostics/advanced/postprocessing
 
-- caption: Useful Tools
-  chapters:
-    - file: notebooks/tools/community_experiments
-      sections:
-      - file: notebooks/tools/cesm_expts/clim_data_gateway
-      - file: notebooks/tools/cesm_expts/clim_data_guide
-    - file: notebooks/tools/unix_basics
-      sections:
-      - file: notebooks/tools/unix/terminals
-      - file: notebooks/tools/unix/modules
-      - file: notebooks/tools/unix/text_editors
-    - file: notebooks/tools/fortran
-    - file: notebooks/tools/github
-    - file: notebooks/tools/netcdf_tools
-    - file: notebooks/tools/analysis_tools
+- file: notebooks/challenge
+  sections:
+  - file: notebooks/challenge/cam
+    sections:
+    - file: notebooks/challenge/cam/exercise_1
+    - file: notebooks/challenge/cam/exercise_2
+    - file: notebooks/challenge/cam/exercise_3
+    - file: notebooks/challenge/cam/exercise_4
+    - file: notebooks/challenge/cam/exercise_5
+    - file: notebooks/challenge/cam/exercise_6
+    - file: notebooks/challenge/cam/exercise_7
+  - file: notebooks/challenge/cam-chem_waccm
+    sections:
+    - file: notebooks/challenge/cam-chem_waccm/exercise_1
+    - file: notebooks/challenge/cam-chem_waccm/exercise_2
+  - file: notebooks/challenge/cice
+    sections:
+    - file: notebooks/challenge/cice/cice_exercise_1
+    - file: notebooks/challenge/cice/cice_exercise_2
+    - file: notebooks/challenge/cice/cice_exercise_3
+  - file: notebooks/challenge/cism
+    sections:
+    - file: notebooks/challenge/cism/cism_exercise_1
+    - file: notebooks/challenge/cism/cism_exercise_2
+    - file: notebooks/challenge/cism/cism_exercise_3
+  - file: notebooks/challenge/clm_ctsm
+    sections:
+    - file: notebooks/challenge/clm_ctsm/clm_exercise_1
+    - file: notebooks/challenge/clm_ctsm/clm_exercise_2
+    - file: notebooks/challenge/clm_ctsm/clm_exercise_3  
+  - file: notebooks/challenge/pop
+    sections:
+    - file: notebooks/challenge/pop/pop_exercise_1
+    - file: notebooks/challenge/pop/pop_exercise_2
+    - file: notebooks/challenge/pop/pop_exercise_3
+    - file: notebooks/challenge/pop/pop_exercise_4
+  - file: notebooks/challenge/bgc
+    sections:
+    - file: notebooks/challenge/bgc/bgc_exercise_1
 
-
-
+- file: notebooks/resources
+  sections:
+  - file: notebooks/resources/terminals
+  - file: notebooks/resources/unix
+  - file: notebooks/resources/modules
+  - file: notebooks/resources/text_editors
+  - file: notebooks/resources/fortran
+  - file: notebooks/resources/github
+  - file: notebooks/resources/github_explore
+  - file: notebooks/resources/netcdf
+  - file: notebooks/resources/porting
+  - file: notebooks/resources/postprocessing
+  
+  
