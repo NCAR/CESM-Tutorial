@@ -5,7 +5,7 @@
 
 NCAR created the Community Climate Model (CCM) in 1983 that included a global atmosphere. In 1994, NCAR scientists started to develop the Climate System Model (CSM) that included models of the atmosphere, land surface, ocean, and sea ice. In order to recognize the Community of users and sponsors, the CSM was renamed to the Community Climate System Model (CCSM). With addititons, including an ice sheet and biogeochemical modeling, the model was renamed to the Community Earth System Model (CESM) in 2013. 
 
-This repository includes materials designed to be an introudction to running the CESM. The materials are used during the annual CESM tutorial and serve as reference documentation for any CESM user. **The tutorial materials are designed for the CESM version 2 (CESM2)**
+This repository includes materials designed to be an introudction to running the CESM. The materials are used during the annual CESM tutorial and serve as reference documentation for any CESM user. **These tutorial materials are designed for the CESM version 2 (CESM2)**.
 
 ## Goals of This Tutorial
 
