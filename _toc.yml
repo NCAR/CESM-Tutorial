@@ -29,11 +29,7 @@ chapters:
     - file: notebooks/basics/one_time/cesm_code_explore
   - file: notebooks/basics/cesm_workflow
     sections:
-    - file: notebooks/basics/cesm_workflow/create_newcase_command
-    - file: notebooks/basics/cesm_workflow/create_newcase_casename
-    - file: notebooks/basics/cesm_workflow/create_newcase_resolution
-    - file: notebooks/basics/cesm_workflow/create_newcase_compset
-    - file: notebooks/basics/cesm_workflow/create_newcase_output
+    - file: notebooks/basics/cesm_workflow/create_newcase
     - file: notebooks/basics/cesm_workflow/case_root
     - file: notebooks/basics/cesm_workflow/case_xml_files
     - file: notebooks/basics/cesm_workflow/case_xml_change
