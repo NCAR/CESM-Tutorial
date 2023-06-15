@@ -90,7 +90,8 @@ chapters:
 
 - file: notebooks/troubleshooting
   sections:
-  - file: notebooks/troubleshooting/overview
+  - file: notebooks/troubleshooting/log_files
+  - file: notebooks/troubleshooting/debugging_flag
   - file: notebooks/troubleshooting/exercises_overview
     sections:
     - file: notebooks/troubleshooting/exercises/troubleshooting_cam
