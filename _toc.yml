@@ -6,6 +6,8 @@ root: README
 
 chapters:
 - file: notebooks/prereqs
+  sections:
+  - file: notebooks/prereqs/exercises
 
 - file: notebooks/intro
   sections:
@@ -20,14 +22,11 @@ chapters:
 
 - file: notebooks/basics
   sections:
-  - file: notebooks/basics/cesm_workspaces
-  - file: notebooks/basics/exercises1_overview
+  - file: notebooks/basics/one_time_overview
     sections:
-    - file: notebooks/basics/exercises1/cheyenne_login
-    - file: notebooks/basics/exercises1/github_explore
-    - file: notebooks/basics/exercises1/git_download_cesm
-    - file: notebooks/basics/exercises1/cesm_code_explore
-    - file: notebooks/basics/exercises1/additional_exercises
+    - file: notebooks/basics/one_time/cesm_workspaces
+    - file: notebooks/basics/one_time/git_download_cesm
+    - file: notebooks/basics/one_time/cesm_code_explore
   - file: notebooks/basics/cesm_workflow
     sections:
     - file: notebooks/basics/cesm_workflow/create_newcase_command
@@ -124,6 +123,7 @@ chapters:
     - file: notebooks/diagnostics/advanced/regridding
     - file: notebooks/diagnostics/advanced/timeseries
     - file: notebooks/diagnostics/advanced/large_ensembles
+    - file: notebooks/diagnostics/advanced/postprocessing
 
 - file: notebooks/challenge
   sections:
@@ -173,6 +173,7 @@ chapters:
   - file: notebooks/resources/text_editors
   - file: notebooks/resources/fortran
   - file: notebooks/resources/github
+  - file: notebooks/resources/github_explore
   - file: notebooks/resources/netcdf
   - file: notebooks/resources/porting
   - file: notebooks/resources/postprocessing
