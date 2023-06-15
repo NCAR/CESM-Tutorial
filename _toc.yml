@@ -20,7 +20,6 @@ chapters:
 
 - file: notebooks/basics
   sections:
-  - file: notebooks/basics/cesm_quickstart
   - file: notebooks/basics/cesm_workspaces
   - file: notebooks/basics/exercises1_overview
     sections:
