@@ -5,13 +5,15 @@ format: jb-book
 root: README
 
 chapters:
+- file: notebooks/prereqs
+
 - file: notebooks/intro
   sections:
-  - file: notebooks/intro/overview
+  - file: notebooks/intro/components
   - file: notebooks/intro/coupling
-  - file: notebooks/intro/working_groups
+  - file: notebooks/intro/project
+  - file: notebooks/intro/community_experiments
   - file: notebooks/intro/getting_help
-  - file: notebooks/intro/prereqs
 
 - file: notebooks/basics
   sections:
