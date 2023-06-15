@@ -40,13 +40,13 @@ chapters:
   - file: notebooks/basics/postprocessing
   - file: notebooks/basics/porting
   - file: notebooks/basics/getting_help
-  - file: notebooks/basics/exercises2_overview
+  - file: notebooks/basics/exercises_overview
     sections:
-    - file: notebooks/basics/exercises2/create_setup_build_B1850
-    - file: notebooks/basics/exercises2/submit_monitor_B1850
-    - file: notebooks/basics/exercises2/examine_history_B1850
-    - file: notebooks/basics/exercises2/review_questions
-    - file: notebooks/basics/exercises2/additional_exercises
+    - file: notebooks/basics/exercises/b1850
+    - file: notebooks/basics/exercises/examine_history_B1850
+    - file: notebooks/basics/exercises/create_setup_build_B1850
+    - file: notebooks/basics/exercises/submit_monitor_B1850
+    - file: notebooks/basics/exercises/review_questions
       
 - file: notebooks/modifications/xml
   sections:
@@ -105,10 +105,12 @@ chapters:
       
 - file: notebooks/diagnostics
   sections:
+  - file: notebooks/diagnostics/timeseries
   - file: notebooks/diagnostics/cam
   - file: notebooks/diagnostics/cam-chem_waccm
   - file: notebooks/diagnostics/cice
     sections:
+    - file: notebooks/diagnostics/cice/seaice_diagnostics
     - file: notebooks/diagnostics/cice/basics
     - file: notebooks/diagnostics/cice/advanced
   - file: notebooks/diagnostics/clm_ctsm
@@ -117,8 +119,8 @@ chapters:
     sections:
     - file: notebooks/diagnostics/advanced/analysis_tools
     - file: notebooks/diagnostics/advanced/regridding
-    - file: notebooks/diagnostics/advanced/timeseries
     - file: notebooks/diagnostics/advanced/large_ensembles
+    - file: notebooks/diagnostics/advanced/cvdp
     - file: notebooks/diagnostics/advanced/postprocessing
 
 - file: notebooks/challenge
