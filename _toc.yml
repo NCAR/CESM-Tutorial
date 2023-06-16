@@ -168,13 +168,10 @@ chapters:
   sections:
   - file: notebooks/resources/terminals
   - file: notebooks/resources/unix
-  - file: notebooks/resources/modules
   - file: notebooks/resources/text_editors
-  - file: notebooks/resources/fortran
   - file: notebooks/resources/github
-  - file: notebooks/resources/github_explore
+  - file: notebooks/resources/fortran
   - file: notebooks/resources/netcdf
   - file: notebooks/resources/porting
-  - file: notebooks/resources/postprocessing
   
   
