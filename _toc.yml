@@ -25,22 +25,17 @@ chapters:
   - file: notebooks/basics/one_time_overview
     sections:
     - file: notebooks/basics/one_time/cesm_workspaces
-    - file: notebooks/basics/one_time/case_dir
     - file: notebooks/basics/one_time/git_download_cesm
     - file: notebooks/basics/one_time/cesm_code_explore
   - file: notebooks/basics/cesm_workflow
     sections:
     - file: notebooks/basics/cesm_workflow/create_newcase
-    - file: notebooks/basics/cesm_workflow/case_root
     - file: notebooks/basics/cesm_workflow/case_setup
     - file: notebooks/basics/cesm_workflow/case_build
     - file: notebooks/basics/cesm_workflow/case_submit
     - file: notebooks/basics/cesm_workflow/model_output
     - file: notebooks/basics/cesm_workflow/checking_jobs_and_status
     - file: notebooks/basics/cesm_workflow/create_clone
-  - file: notebooks/basics/postprocessing
-  - file: notebooks/basics/porting
-  - file: notebooks/basics/getting_help
   - file: notebooks/basics/exercises_overview
     sections:
     - file: notebooks/basics/exercises/first_B1850
