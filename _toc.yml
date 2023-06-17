@@ -5,11 +5,11 @@ format: jb-book
 root: README
 
 chapters:
-- file: notebooks/prereqs
+- file: notebooks/prereqs/prereqs_overview
   sections:
   - file: notebooks/prereqs/exercises
 
-- file: notebooks/intro
+- file: notebooks/intro/intro_overview
   sections:
   - file: notebooks/intro/components
   - file: notebooks/intro/coupling
@@ -20,7 +20,7 @@ chapters:
     - file: notebooks/intro/cesm_expts/clim_data_gateway
     - file: notebooks/intro/cesm_expts/clim_data_guide
 
-- file: notebooks/basics
+- file: notebooks/basics/basics_overview
   sections:
   - file: notebooks/basics/one_time_overview
     sections:
@@ -159,7 +159,7 @@ chapters:
     sections:
     - file: notebooks/challenge/bgc/bgc_exercise_1
 
-- file: notebooks/resources
+- file: notebooks/resources/resources_overview
   sections:
   - file: notebooks/resources/terminals
   - file: notebooks/resources/unix
