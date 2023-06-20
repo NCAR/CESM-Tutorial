@@ -106,7 +106,6 @@ chapters:
   - file: notebooks/diagnostics/cam-chem_waccm
   - file: notebooks/diagnostics/cice
     sections:
-    - file: notebooks/diagnostics/cice/seaice_diagnostics
     - file: notebooks/diagnostics/cice/basics
     - file: notebooks/diagnostics/cice/advanced
   - file: notebooks/diagnostics/clm_ctsm
