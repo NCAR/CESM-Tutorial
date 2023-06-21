@@ -109,7 +109,11 @@ chapters:
     - file: notebooks/diagnostics/cice/basics
     - file: notebooks/diagnostics/cice/advanced
   - file: notebooks/diagnostics/clm_ctsm
+    sections:
+    - file: notebooks/diagnostics/clm_ctsm/basics
   - file: notebooks/diagnostics/pop
+    sections:
+    - file: notebooks/diagnostics/pop/basics
   - file: notebooks/diagnostics/advanced
     sections:
     - file: notebooks/diagnostics/advanced/analysis_tools
