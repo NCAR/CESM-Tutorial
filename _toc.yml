@@ -5,10 +5,6 @@ format: jb-book
 root: README
 
 chapters:
-- file: notebooks/prereqs/prereqs_overview
-  sections:
-  - file: notebooks/prereqs/exercises
-
 - file: notebooks/intro/intro_overview
   sections:
   - file: notebooks/intro/components
@@ -19,6 +15,10 @@ chapters:
     sections:
     - file: notebooks/intro/cesm_expts/clim_data_gateway
     - file: notebooks/intro/cesm_expts/clim_data_guide
+
+- file: notebooks/prereqs/prereqs_overview
+  sections:
+  - file: notebooks/prereqs/exercises
 
 - file: notebooks/basics/basics_overview
   sections:
