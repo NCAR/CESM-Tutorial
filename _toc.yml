@@ -5,10 +5,6 @@ format: jb-book
 root: README
 
 chapters:
-- file: notebooks/prereqs/prereqs_overview
-  sections:
-  - file: notebooks/prereqs/exercises
-
 - file: notebooks/intro/intro_overview
   sections:
   - file: notebooks/intro/components
@@ -19,6 +15,10 @@ chapters:
     sections:
     - file: notebooks/intro/cesm_expts/clim_data_gateway
     - file: notebooks/intro/cesm_expts/clim_data_guide
+
+- file: notebooks/prereqs/prereqs_overview
+  sections:
+  - file: notebooks/prereqs/exercises
 
 - file: notebooks/basics/basics_overview
   sections:
@@ -106,11 +106,14 @@ chapters:
   - file: notebooks/diagnostics/cam-chem_waccm
   - file: notebooks/diagnostics/cice
     sections:
-    - file: notebooks/diagnostics/cice/seaice_diagnostics
     - file: notebooks/diagnostics/cice/basics
     - file: notebooks/diagnostics/cice/advanced
   - file: notebooks/diagnostics/clm_ctsm
+    sections:
+    - file: notebooks/diagnostics/clm_ctsm/basics
   - file: notebooks/diagnostics/pop
+    sections:
+    - file: notebooks/diagnostics/pop/basics
   - file: notebooks/diagnostics/advanced
     sections:
     - file: notebooks/diagnostics/advanced/analysis_tools
