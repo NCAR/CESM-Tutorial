@@ -103,6 +103,9 @@ chapters:
   sections:
   - file: notebooks/diagnostics/timeseries
   - file: notebooks/diagnostics/cam
+    - file: notebooks/diagnostics/cam/basics
+    - file: notebooks/diagnostics/cam/advanced
+    - file: notebooks/diagnostics/cam/cam_se_native_example  
   - file: notebooks/diagnostics/cam-chem_waccm
   - file: notebooks/diagnostics/cice
     sections:
