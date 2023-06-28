@@ -5,51 +5,50 @@ format: jb-book
 root: README
 
 chapters:
-- file: notebooks/introduction/intro
-
-- file: notebooks/basics
+- file: notebooks/intro/intro_overview
   sections:
-  - file: notebooks/basics/overview
-  - file: notebooks/basics/cesm_coupling
-  - file: notebooks/basics/cesm_quickstart
-  - file: notebooks/basics/cesm_workspaces
-  - file: notebooks/basics/exercises1_overview
+  - file: notebooks/intro/components
+  - file: notebooks/intro/coupling
+  - file: notebooks/intro/project
+  - file: notebooks/intro/getting_help
+  - file: notebooks/intro/community_experiments
     sections:
-    - file: notebooks/basics/exercises1/cheyenne_login
-    - file: notebooks/basics/exercises1/github_explore
-    - file: notebooks/basics/exercises1/git_download_cesm
-    - file: notebooks/basics/exercises1/cesm_code_explore
-    - file: notebooks/basics/exercises1/additional_exercises
+    - file: notebooks/intro/cesm_expts/clim_data_gateway
+    - file: notebooks/intro/cesm_expts/clim_data_guide
+
+- file: notebooks/prereqs/prereqs_overview
+  sections:
+  - file: notebooks/prereqs/exercises
+
+- file: notebooks/basics/basics_overview
+  sections:
+  - file: notebooks/basics/one_time_overview
+    sections:
+    - file: notebooks/basics/one_time/cesm_workspaces
+    - file: notebooks/basics/one_time/git_download_cesm
+    - file: notebooks/basics/one_time/cesm_code_explore
   - file: notebooks/basics/cesm_workflow
     sections:
-    - file: notebooks/basics/cesm_workflow/create_newcase_command
-    - file: notebooks/basics/cesm_workflow/create_newcase_casename
-    - file: notebooks/basics/cesm_workflow/create_newcase_resolution
-    - file: notebooks/basics/cesm_workflow/create_newcase_compset
-    - file: notebooks/basics/cesm_workflow/create_newcase_output
-    - file: notebooks/basics/cesm_workflow/case_root
-    - file: notebooks/basics/cesm_workflow/case_xml_files
-    - file: notebooks/basics/cesm_workflow/case_xml_change
+    - file: notebooks/basics/cesm_workflow/create_newcase
     - file: notebooks/basics/cesm_workflow/case_setup
-    - file: notebooks/basics/cesm_workflow/case_setup_updated
     - file: notebooks/basics/cesm_workflow/case_build
     - file: notebooks/basics/cesm_workflow/case_submit
+    - file: notebooks/basics/cesm_workflow/model_output
     - file: notebooks/basics/cesm_workflow/checking_jobs_and_status
-    - file: notebooks/basics/cesm_workflow/create_clone_command
-  - file: notebooks/basics/postprocessing
-  - file: notebooks/basics/porting
-  - file: notebooks/basics/getting_help
-  - file: notebooks/basics/exercises2_overview
+    - file: notebooks/basics/cesm_workflow/create_clone
+  - file: notebooks/basics/exercises_overview
     sections:
-    - file: notebooks/basics/exercises2/create_setup_build_B1850
-    - file: notebooks/basics/exercises2/submit_monitor_B1850
-    - file: notebooks/basics/exercises2/examine_history_B1850
-    - file: notebooks/basics/exercises2/review_questions
-    - file: notebooks/basics/exercises2/additional_exercises
+    - file: notebooks/basics/exercises/first_B1850
+    - file: notebooks/basics/exercises/second_B1850
+    - file: notebooks/basics/exercises/examine_history_B1850
+    - file: notebooks/basics/exercises/extra
+    - file: notebooks/basics/exercises/review_questions
       
 - file: notebooks/modifications/xml
   sections:
   - file: notebooks/modifications/xml/overview
+  - file: notebooks/modifications/xml/case_xml_files
+  - file: notebooks/modifications/xml/case_xml_change
   - file: notebooks/modifications/xml/model_control_files
   - file: notebooks/modifications/xml/run_length
     sections:
@@ -86,7 +85,8 @@ chapters:
 
 - file: notebooks/troubleshooting
   sections:
-  - file: notebooks/troubleshooting/overview
+  - file: notebooks/troubleshooting/log_files
+  - file: notebooks/troubleshooting/debugging_flag
   - file: notebooks/troubleshooting/exercises_overview
     sections:
     - file: notebooks/troubleshooting/exercises/troubleshooting_cam
@@ -101,23 +101,30 @@ chapters:
       
 - file: notebooks/diagnostics
   sections:
+  - file: notebooks/diagnostics/timeseries
   - file: notebooks/diagnostics/cam
-  - file: notebooks/diagnostics/cam-chem
-  - file: notebooks/diagnostics/cism
+    sections:
+    - file: notebooks/diagnostics/cam/basics
+    - file: notebooks/diagnostics/cam/advanced
+    - file: notebooks/diagnostics/cam/cam_se_native_example
+  - file: notebooks/diagnostics/cam-chem_waccm
   - file: notebooks/diagnostics/cice
     sections:
     - file: notebooks/diagnostics/cice/basics
     - file: notebooks/diagnostics/cice/advanced
   - file: notebooks/diagnostics/clm_ctsm
+    sections:
+    - file: notebooks/diagnostics/clm_ctsm/basics
   - file: notebooks/diagnostics/pop
     sections:
     - file: notebooks/diagnostics/pop/basics
-    - file: notebooks/diagnostics/pop/advanced
-  - file: notebooks/diagnostics/plotting_fields
-  - file: notebooks/diagnostics/regridding
-  - file: notebooks/diagnostics/packages
-  - file: notebooks/diagnostics/geocat
-  - file: notebooks/diagnostics/esds
+  - file: notebooks/diagnostics/advanced
+    sections:
+    - file: notebooks/diagnostics/advanced/analysis_tools
+    - file: notebooks/diagnostics/advanced/regridding
+    - file: notebooks/diagnostics/advanced/large_ensembles
+    - file: notebooks/diagnostics/advanced/cvdp
+    - file: notebooks/diagnostics/advanced/postprocessing
 
 - file: notebooks/challenge
   sections:
@@ -129,46 +136,43 @@ chapters:
     - file: notebooks/challenge/cam/exercise_4
     - file: notebooks/challenge/cam/exercise_5
     - file: notebooks/challenge/cam/exercise_6
-    - file: notebooks/challenge/cam/exercise_7
-  - file: notebooks/challenge/cam-chem
+  - file: notebooks/challenge/cam-chem_waccm
     sections:
-    - file: notebooks/challenge/cam-chem/exercise_1
-    - file: notebooks/challenge/cam-chem/exercise_2
+    - file: notebooks/challenge/cam-chem_waccm/exercise_1
+    - file: notebooks/challenge/cam-chem_waccm/exercise_2
+  - file: notebooks/challenge/cice
+    sections:
+    - file: notebooks/challenge/cice/cice_exercise_1
+    - file: notebooks/challenge/cice/cice_exercise_2
+    - file: notebooks/challenge/cice/cice_exercise_3
   - file: notebooks/challenge/cism
     sections:
     - file: notebooks/challenge/cism/cism_exercise_1
     - file: notebooks/challenge/cism/cism_exercise_2
     - file: notebooks/challenge/cism/cism_exercise_3
   - file: notebooks/challenge/clm_ctsm
-  - file: notebooks/challenge/cice
     sections:
-    - file: notebooks/challenge/cice/cice_exercise_1
-    - file: notebooks/challenge/cice/cice_exercise_2
-    - file: notebooks/challenge/cice/cice_exercise_3
+    - file: notebooks/challenge/clm_ctsm/clm_exercise_1
+    - file: notebooks/challenge/clm_ctsm/clm_exercise_2
+    - file: notebooks/challenge/clm_ctsm/clm_exercise_3  
   - file: notebooks/challenge/pop
     sections:
     - file: notebooks/challenge/pop/pop_exercise_1
     - file: notebooks/challenge/pop/pop_exercise_2
     - file: notebooks/challenge/pop/pop_exercise_3
     - file: notebooks/challenge/pop/pop_exercise_4
-  - file: notebooks/challenge/biogeochemistry
+  - file: notebooks/challenge/bgc
     sections:
     - file: notebooks/challenge/bgc/bgc_exercise_1
 
-- file: notebooks/tools
+- file: notebooks/resources/resources_overview
   sections:
-  - file: notebooks/tools/community_experiments
-    sections:
-    - file: notebooks/tools/cesm_expts/clim_data_gateway
-    - file: notebooks/tools/cesm_expts/clim_data_guide
-  - file: notebooks/tools/unix_basics
-    sections:
-    - file: notebooks/tools/unix/terminals
-    - file: notebooks/tools/unix/modules
-    - file: notebooks/tools/unix/text_editors
-  - file: notebooks/tools/fortran
-  - file: notebooks/tools/github
-  - file: notebooks/tools/netcdf_tools
-  - file: notebooks/tools/analysis_tools
+  - file: notebooks/resources/terminals
+  - file: notebooks/resources/unix
+  - file: notebooks/resources/text_editors
+  - file: notebooks/resources/github
+  - file: notebooks/resources/fortran
+  - file: notebooks/resources/netcdf
+  - file: notebooks/resources/porting
   
   
