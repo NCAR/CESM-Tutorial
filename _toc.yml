@@ -107,14 +107,14 @@ chapters:
     - file: notebooks/diagnostics/cam/advanced
     - file: notebooks/diagnostics/cam/cam_se_native_example
   - file: notebooks/diagnostics/cam-chem_waccm
-  - file: notebooks/diagnostics/cice
+  - file: notebooks/diagnostics/cice/cice
     sections:
     - file: notebooks/diagnostics/cice/basics
     - file: notebooks/diagnostics/cice/advanced
-  - file: notebooks/diagnostics/clm_ctsm
+  - file: notebooks/diagnostics/clm_ctsm/clm_ctsm
     sections:
     - file: notebooks/diagnostics/clm_ctsm/basics
-  - file: notebooks/diagnostics/pop
+  - file: notebooks/diagnostics/pop/pop
     sections:
     - file: notebooks/diagnostics/pop/basics
   - file: notebooks/diagnostics/additional/additional
