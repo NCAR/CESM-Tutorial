@@ -99,34 +99,32 @@ chapters:
     sections:
     - file: notebooks/sourcemods/exercises/exercise_add_field
       
-- file: notebooks/diagnostics
+- file: notebooks/diagnostics/diagnostics
   sections:
-  - file: notebooks/diagnostics/timeseries
   - file: notebooks/diagnostics/cam
     sections:
     - file: notebooks/diagnostics/cam/basics
     - file: notebooks/diagnostics/cam/advanced
     - file: notebooks/diagnostics/cam/cam_se_native_example
   - file: notebooks/diagnostics/cam-chem_waccm
-  - file: notebooks/diagnostics/cice
+  - file: notebooks/diagnostics/cice/cice
     sections:
     - file: notebooks/diagnostics/cice/basics
     - file: notebooks/diagnostics/cice/advanced
-  - file: notebooks/diagnostics/clm_ctsm
+  - file: notebooks/diagnostics/clm_ctsm/clm_ctsm
     sections:
     - file: notebooks/diagnostics/clm_ctsm/basics
-  - file: notebooks/diagnostics/pop
+  - file: notebooks/diagnostics/pop/pop
     sections:
     - file: notebooks/diagnostics/pop/basics
-  - file: notebooks/diagnostics/advanced
+  - file: notebooks/diagnostics/additional/additional
     sections:
-    - file: notebooks/diagnostics/advanced/analysis_tools
-    - file: notebooks/diagnostics/advanced/regridding
-    - file: notebooks/diagnostics/advanced/large_ensembles
-    - file: notebooks/diagnostics/advanced/cvdp
-    - file: notebooks/diagnostics/advanced/postprocessing
+    - file: notebooks/diagnostics/additional/postprocessing
+    - file: notebooks/diagnostics/additional/cvdp
+    - file: notebooks/diagnostics/additional/large_ensembles
+    - file: notebooks/diagnostics/additional/analysis_tools
 
-- file: notebooks/challenge
+- file: notebooks/challenge/challenge
   sections:
   - file: notebooks/challenge/cam
     sections:
@@ -140,7 +138,7 @@ chapters:
     sections:
     - file: notebooks/challenge/cam-chem_waccm/exercise_1
     - file: notebooks/challenge/cam-chem_waccm/exercise_2
-  - file: notebooks/challenge/cice
+  - file: notebooks/challenge/cice/cice
     sections:
     - file: notebooks/challenge/cice/cice_exercise_1
     - file: notebooks/challenge/cice/cice_exercise_2
@@ -150,12 +148,12 @@ chapters:
     - file: notebooks/challenge/cism/cism_exercise_1
     - file: notebooks/challenge/cism/cism_exercise_2
     - file: notebooks/challenge/cism/cism_exercise_3
-  - file: notebooks/challenge/clm_ctsm
+  - file: notebooks/challenge/clm_ctsm/clm_ctsm
     sections:
     - file: notebooks/challenge/clm_ctsm/clm_exercise_1
     - file: notebooks/challenge/clm_ctsm/clm_exercise_2
     - file: notebooks/challenge/clm_ctsm/clm_exercise_3  
-  - file: notebooks/challenge/pop
+  - file: notebooks/challenge/pop/pop
     sections:
     - file: notebooks/challenge/pop/pop_exercise_1
     - file: notebooks/challenge/pop/pop_exercise_2
