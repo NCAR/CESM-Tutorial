@@ -3,18 +3,17 @@
 
 <br>
 
-NCAR created the Community Climate Model (CCM) in 1983 that included a global atmosphere. In 1994, NCAR scientists started to develop the Climate System Model (CSM) that included models of the atmosphere, land surface, ocean, and sea ice. In order to recognize the Community of users and sponsors, the CSM was renamed to the Community Climate System Model (CCSM). With addititons, including an ice sheet and biogeochemical modeling, the model was renamed to the Community Earth System Model (CESM) in 2013. 
+In 1983 NCAR created the _Community Climate Model_ (CCM) as a freely available global atmosphere model for use by the climate research community. The scope of CCM development continued to expand and in 1994 NCAR scientists released the _Climate System Model_ (CSM), a global model that included component models for the atmosphere, land surface, ocean, and sea-ice, communicating through a central coupler component. To recognize the broad community of users and sponsors contributing to this effort, the CSM was renamed the _Community Climate System Model_ (CCSM). The CCSM model evolved to include ice sheet and biogeochemical modeling and was renamed the _Community Earth System Model_ (CESM) in 2013.
 
-This repository includes materials designed to be an introduction to running the CESM. The materials are used during the annual CESM tutorial and serve as reference documentation for any CESM user. 
+This repository includes materials designed to be an introduction to running the CESM. The materials were developed to support the CESM tutorial and serve as reference documentation for all CESM users.
 
 ## Goals of This Tutorial
 
-**By the end of this online tutorial you should be able to run and modify the model and use the output.** 
-**These tutorial materials are designed for the CESM version 2 (CESM2)**.
+**Through this online tutorial you will learn how to run the CESM model, modify the model experiments, and use the model output. These tutorial materials are designed for the CESM version 2 (CESM2)**
 
 ## Yearly In-Person Tutorials
 
-The CESM tutorial has been offered regularly since 2010 and is typically offered annually during the summer. If you are interested in attending the tutorial, please see the [CESM webpage](https://www.cesm.ucar.edu/events/tutorials) for the most up to date information about when the tutorial will next be offered in Boulder, Colorado and the timeline for applying.
+The CESM tutorial was started in 2010 and is typically offered as an in-person summer workshop. If you are interested in attending the tutorial, please see the [CESM webpage](https://www.cesm.ucar.edu/events/tutorials) for the most up to date information about when the tutorial will next be offered in Boulder, Colorado and the timeline for applying.
 
 ## CESM Project Funding 
 
