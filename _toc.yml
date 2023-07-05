@@ -23,10 +23,10 @@ chapters:
 - file: notebooks/basics/basics_overview
   sections:
   - file: notebooks/basics/cesm_workspaces
-  - file: notebooks/basics/one_time_overview
+  - file: notebooks/basics/code_overview
     sections:
-    - file: notebooks/basics/one_time/git_download_cesm
-    - file: notebooks/basics/one_time/cesm_code_explore
+    - file: notebooks/basics/code/git_download_cesm
+    - file: notebooks/basics/code/cesm_code_explore
   - file: notebooks/basics/cesm_workflow
     sections:
     - file: notebooks/basics/cesm_workflow/create_newcase
