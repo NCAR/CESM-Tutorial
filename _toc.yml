@@ -68,7 +68,7 @@ chapters:
     - file: notebooks/modifications/xml/exercises/xml_runtype_exercise
     - file: notebooks/modifications/xml/exercises/xml_timestep_exercise
 
-- file: notebooks/namelist
+- file: notebooks/namelist/namelist
   sections:
   - file: notebooks/namelist/overview
   - file: notebooks/namelist/documentation
@@ -83,7 +83,7 @@ chapters:
     - file: notebooks/namelist/exercises/exercise_cam_output
     - file: notebooks/namelist/exercises/exercise_tuning_parameter
 
-- file: notebooks/troubleshooting
+- file: notebooks/troubleshooting/troubleshooting
   sections:
   - file: notebooks/troubleshooting/log_files
   - file: notebooks/troubleshooting/debugging_flag
@@ -91,7 +91,7 @@ chapters:
     sections:
     - file: notebooks/troubleshooting/exercises/troubleshooting_cam
       
-- file: notebooks/sourcemods
+- file: notebooks/sourcemods/sourcemods
   sections:
   - file: notebooks/sourcemods/overview
   - file: notebooks/sourcemods/add_fields_cam
