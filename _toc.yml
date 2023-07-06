@@ -121,7 +121,6 @@ chapters:
     sections:
     - file: notebooks/diagnostics/additional/postprocessing
     - file: notebooks/diagnostics/additional/cvdp
-    - file: notebooks/diagnostics/additional/large_ensembles
     - file: notebooks/diagnostics/additional/analysis_tools
 
 - file: notebooks/challenge/challenge
@@ -138,7 +137,7 @@ chapters:
     sections:
     - file: notebooks/challenge/cam-chem_waccm/exercise_1
     - file: notebooks/challenge/cam-chem_waccm/exercise_2
-  - file: notebooks/challenge/cice/cice
+  - file: notebooks/challenge/cice
     sections:
     - file: notebooks/challenge/cice/cice_exercise_1
     - file: notebooks/challenge/cice/cice_exercise_2
@@ -148,12 +147,12 @@ chapters:
     - file: notebooks/challenge/cism/cism_exercise_1
     - file: notebooks/challenge/cism/cism_exercise_2
     - file: notebooks/challenge/cism/cism_exercise_3
-  - file: notebooks/challenge/clm_ctsm/clm_ctsm
+  - file: notebooks/challenge/clm_ctsm
     sections:
     - file: notebooks/challenge/clm_ctsm/clm_exercise_1
     - file: notebooks/challenge/clm_ctsm/clm_exercise_2
     - file: notebooks/challenge/clm_ctsm/clm_exercise_3  
-  - file: notebooks/challenge/pop/pop
+  - file: notebooks/challenge/pop
     sections:
     - file: notebooks/challenge/pop/pop_exercise_1
     - file: notebooks/challenge/pop/pop_exercise_2
