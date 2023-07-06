@@ -101,7 +101,6 @@ chapters:
       
 - file: notebooks/diagnostics/diagnostics
   sections:
-  - file: notebooks/diagnostics/postprocessing
   - file: notebooks/diagnostics/cam/cam
     sections:
     - file: notebooks/diagnostics/cam/basics_cam
@@ -120,6 +119,7 @@ chapters:
     - file: notebooks/diagnostics/pop/basics_pop
   - file: notebooks/diagnostics/additional/additional
     sections:
+    - file: notebooks/diagnostics/additional/postprocessing
     - file: notebooks/diagnostics/additional/cvdp
     - file: notebooks/diagnostics/additional/analysis_tools
 
