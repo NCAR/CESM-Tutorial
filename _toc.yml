@@ -117,6 +117,7 @@ chapters:
   - file: notebooks/diagnostics/pop/pop
     sections:
     - file: notebooks/diagnostics/pop/basics
+    - file: notebooks/diagnostics/pop/advanced
   - file: notebooks/diagnostics/additional/additional
     sections:
     - file: notebooks/diagnostics/additional/postprocessing
