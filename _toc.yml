@@ -43,7 +43,7 @@ chapters:
     - file: notebooks/basics/exercises/examine_history_B1850
     - file: notebooks/basics/exercises/extra
     - file: notebooks/basics/exercises/review_questions
-      
+
 - file: notebooks/modifications/xml
   sections:
   - file: notebooks/modifications/xml/overview
@@ -57,7 +57,7 @@ chapters:
     - file: notebooks/modifications/xml/run_length/changing_run_length
     - file: notebooks/modifications/xml/run_length/timing_files
   - file: notebooks/modifications/xml/modify_run_type
-    sections: 
+    sections:
     - file: notebooks/modifications/xml/modify_run_type/hybrid_branch_restart
     - file: notebooks/modifications/xml/modify_run_type/run_variables
   - file: notebooks/modifications/xml/physics_timestep
@@ -90,7 +90,7 @@ chapters:
   - file: notebooks/troubleshooting/exercises_overview
     sections:
     - file: notebooks/troubleshooting/exercises/troubleshooting_cam
-      
+
 - file: notebooks/sourcemods/sourcemods
   sections:
   - file: notebooks/sourcemods/overview
@@ -98,7 +98,7 @@ chapters:
   - file: notebooks/sourcemods/exercises_overview
     sections:
     - file: notebooks/sourcemods/exercises/exercise_add_field
-      
+
 - file: notebooks/diagnostics/diagnostics
   sections:
   - file: notebooks/diagnostics/cam/cam
@@ -117,6 +117,7 @@ chapters:
   - file: notebooks/diagnostics/pop/pop
     sections:
     - file: notebooks/diagnostics/pop/basics_pop
+    - file: notebooks/diagnostics/pop/advanced_pop
   - file: notebooks/diagnostics/additional/additional
     sections:
     - file: notebooks/diagnostics/additional/postprocessing
@@ -151,7 +152,7 @@ chapters:
     sections:
     - file: notebooks/challenge/clm_ctsm/clm_exercise_1
     - file: notebooks/challenge/clm_ctsm/clm_exercise_2
-    - file: notebooks/challenge/clm_ctsm/clm_exercise_3  
+    - file: notebooks/challenge/clm_ctsm/clm_exercise_3
   - file: notebooks/challenge/pop/pop
     sections:
     - file: notebooks/challenge/pop/pop_exercise_1
@@ -171,5 +172,5 @@ chapters:
   - file: notebooks/resources/fortran
   - file: notebooks/resources/netcdf
   - file: notebooks/resources/porting
-  
-  
+
+
