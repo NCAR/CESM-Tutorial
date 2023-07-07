@@ -1,8 +1,14 @@
 #git config --global core.excludesfile '~/.gitignore'
 #echo '.ipynb_checkpoints' >> ~/.gitignore
 
+#Ignore Jupyter notebook checkpoints
 .ipynb_checkpoints
 
+#Ignore build directories
 _build
 
+#Ignore text editor file backups
 *~
+
+#Ignore dask worker files
+dask-worker.*
