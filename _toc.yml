@@ -165,6 +165,7 @@ chapters:
 
 - file: notebooks/resources/resources_overview
   sections:
+  - file: notebooks/resources/profile
   - file: notebooks/resources/terminals
   - file: notebooks/resources/unix
   - file: notebooks/resources/text_editors
