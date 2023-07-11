@@ -138,6 +138,8 @@ chapters:
     sections:
     - file: notebooks/challenge/cam-chem_waccm/exercise_1
     - file: notebooks/challenge/cam-chem_waccm/exercise_2
+    - file: notebooks/challenge/cam-chem_waccm/exercise_3
+    - file: notebooks/challenge/cam-chem_waccm/visualization
   - file: notebooks/challenge/cice/cice
     sections:
     - file: notebooks/challenge/cice/cice_exercise_1
