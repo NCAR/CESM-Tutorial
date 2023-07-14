@@ -43,7 +43,7 @@ chapters:
     - file: notebooks/basics/exercises/examine_history_B1850
     - file: notebooks/basics/exercises/extra
     - file: notebooks/basics/exercises/review_questions
-      
+
 - file: notebooks/modifications/xml
   sections:
   - file: notebooks/modifications/xml/overview
@@ -57,7 +57,7 @@ chapters:
     - file: notebooks/modifications/xml/run_length/changing_run_length
     - file: notebooks/modifications/xml/run_length/timing_files
   - file: notebooks/modifications/xml/modify_run_type
-    sections: 
+    sections:
     - file: notebooks/modifications/xml/modify_run_type/hybrid_branch_restart
     - file: notebooks/modifications/xml/modify_run_type/run_variables
   - file: notebooks/modifications/xml/physics_timestep
@@ -90,7 +90,7 @@ chapters:
   - file: notebooks/troubleshooting/exercises_overview
     sections:
     - file: notebooks/troubleshooting/exercises/troubleshooting_cam
-      
+
 - file: notebooks/sourcemods/sourcemods
   sections:
   - file: notebooks/sourcemods/overview
@@ -98,25 +98,26 @@ chapters:
   - file: notebooks/sourcemods/exercises_overview
     sections:
     - file: notebooks/sourcemods/exercises/exercise_add_field
-      
+
 - file: notebooks/diagnostics/diagnostics
   sections:
-  - file: notebooks/diagnostics/cam
+  - file: notebooks/diagnostics/cam/cam
     sections:
-    - file: notebooks/diagnostics/cam/basics
-    - file: notebooks/diagnostics/cam/advanced
+    - file: notebooks/diagnostics/cam/basics_cam
+    - file: notebooks/diagnostics/cam/advanced_cam
     - file: notebooks/diagnostics/cam/cam_se_native_example
   - file: notebooks/diagnostics/cam-chem_waccm
   - file: notebooks/diagnostics/cice/cice
     sections:
-    - file: notebooks/diagnostics/cice/basics
-    - file: notebooks/diagnostics/cice/advanced
+    - file: notebooks/diagnostics/cice/basics_cice
+    - file: notebooks/diagnostics/cice/advanced_cice
   - file: notebooks/diagnostics/clm_ctsm/clm_ctsm
     sections:
-    - file: notebooks/diagnostics/clm_ctsm/basics
+    - file: notebooks/diagnostics/clm_ctsm/basics_clm
   - file: notebooks/diagnostics/pop/pop
     sections:
-    - file: notebooks/diagnostics/pop/basics
+    - file: notebooks/diagnostics/pop/basics_pop
+    - file: notebooks/diagnostics/pop/advanced_pop
   - file: notebooks/diagnostics/additional/additional
     sections:
     - file: notebooks/diagnostics/additional/postprocessing
@@ -125,7 +126,7 @@ chapters:
 
 - file: notebooks/challenge/challenge
   sections:
-  - file: notebooks/challenge/cam
+  - file: notebooks/challenge/cam/cam
     sections:
     - file: notebooks/challenge/cam/exercise_1
     - file: notebooks/challenge/cam/exercise_2
@@ -133,37 +134,40 @@ chapters:
     - file: notebooks/challenge/cam/exercise_4
     - file: notebooks/challenge/cam/exercise_5
     - file: notebooks/challenge/cam/exercise_6
-  - file: notebooks/challenge/cam-chem_waccm
+  - file: notebooks/challenge/cam-chem_waccm/cam-chem_waccm
     sections:
     - file: notebooks/challenge/cam-chem_waccm/exercise_1
     - file: notebooks/challenge/cam-chem_waccm/exercise_2
-  - file: notebooks/challenge/cice
+    - file: notebooks/challenge/cam-chem_waccm/exercise_3
+    - file: notebooks/challenge/cam-chem_waccm/visualization
+  - file: notebooks/challenge/cice/cice
     sections:
     - file: notebooks/challenge/cice/cice_exercise_1
     - file: notebooks/challenge/cice/cice_exercise_2
     - file: notebooks/challenge/cice/cice_exercise_3
-  - file: notebooks/challenge/cism
+  - file: notebooks/challenge/cism/cism
     sections:
     - file: notebooks/challenge/cism/cism_exercise_1
     - file: notebooks/challenge/cism/cism_exercise_2
     - file: notebooks/challenge/cism/cism_exercise_3
-  - file: notebooks/challenge/clm_ctsm
+  - file: notebooks/challenge/clm_ctsm/clm_ctsm
     sections:
     - file: notebooks/challenge/clm_ctsm/clm_exercise_1
     - file: notebooks/challenge/clm_ctsm/clm_exercise_2
-    - file: notebooks/challenge/clm_ctsm/clm_exercise_3  
-  - file: notebooks/challenge/pop
+    - file: notebooks/challenge/clm_ctsm/clm_exercise_3
+  - file: notebooks/challenge/pop/pop
     sections:
     - file: notebooks/challenge/pop/pop_exercise_1
     - file: notebooks/challenge/pop/pop_exercise_2
     - file: notebooks/challenge/pop/pop_exercise_3
     - file: notebooks/challenge/pop/pop_exercise_4
-  - file: notebooks/challenge/bgc
+  - file: notebooks/challenge/bgc/bgc
     sections:
     - file: notebooks/challenge/bgc/bgc_exercise_1
 
 - file: notebooks/resources/resources_overview
   sections:
+  - file: notebooks/resources/profile
   - file: notebooks/resources/terminals
   - file: notebooks/resources/unix
   - file: notebooks/resources/text_editors
@@ -171,5 +175,5 @@ chapters:
   - file: notebooks/resources/fortran
   - file: notebooks/resources/netcdf
   - file: notebooks/resources/porting
-  
-  
+
+
