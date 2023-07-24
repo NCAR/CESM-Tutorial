@@ -98,6 +98,7 @@ chapters:
   - file: notebooks/sourcemods/exercises_overview
     sections:
     - file: notebooks/sourcemods/exercises/exercise_add_field
+    - file: notebooks/sourcemods/exercises/exercise_rain_threshold
 
 - file: notebooks/diagnostics/diagnostics
   sections:
@@ -107,10 +108,6 @@ chapters:
     - file: notebooks/diagnostics/cam/advanced_cam
     - file: notebooks/diagnostics/cam/cam_se_native_example
   - file: notebooks/diagnostics/cam-chem_waccm
-  - file: notebooks/diagnostics/cice/cice
-    sections:
-    - file: notebooks/diagnostics/cice/basics_cice
-    - file: notebooks/diagnostics/cice/advanced_cice
   - file: notebooks/diagnostics/clm_ctsm/clm_ctsm
     sections:
     - file: notebooks/diagnostics/clm_ctsm/basics_clm
@@ -118,6 +115,10 @@ chapters:
     sections:
     - file: notebooks/diagnostics/pop/basics_pop
     - file: notebooks/diagnostics/pop/advanced_pop
+  - file: notebooks/diagnostics/cice/cice
+    sections:
+    - file: notebooks/diagnostics/cice/basics_cice
+    - file: notebooks/diagnostics/cice/advanced_cice
   - file: notebooks/diagnostics/additional/additional
     sections:
     - file: notebooks/diagnostics/additional/postprocessing
@@ -140,16 +141,6 @@ chapters:
     - file: notebooks/challenge/cam-chem_waccm/exercise_2
     - file: notebooks/challenge/cam-chem_waccm/exercise_3
     - file: notebooks/challenge/cam-chem_waccm/visualization
-  - file: notebooks/challenge/cice/cice
-    sections:
-    - file: notebooks/challenge/cice/cice_exercise_1
-    - file: notebooks/challenge/cice/cice_exercise_2
-    - file: notebooks/challenge/cice/cice_exercise_3
-  - file: notebooks/challenge/cism/cism
-    sections:
-    - file: notebooks/challenge/cism/cism_exercise_1
-    - file: notebooks/challenge/cism/cism_exercise_2
-    - file: notebooks/challenge/cism/cism_exercise_3
   - file: notebooks/challenge/clm_ctsm/clm_ctsm
     sections:
     - file: notebooks/challenge/clm_ctsm/clm_exercise_1
@@ -161,6 +152,16 @@ chapters:
     - file: notebooks/challenge/pop/pop_exercise_2
     - file: notebooks/challenge/pop/pop_exercise_3
     - file: notebooks/challenge/pop/pop_exercise_4
+  - file: notebooks/challenge/cice/cice
+    sections:
+    - file: notebooks/challenge/cice/cice_exercise_1
+    - file: notebooks/challenge/cice/cice_exercise_2
+    - file: notebooks/challenge/cice/cice_exercise_3
+  - file: notebooks/challenge/cism/cism
+    sections:
+    - file: notebooks/challenge/cism/cism_exercise_1
+    - file: notebooks/challenge/cism/cism_exercise_2
+    - file: notebooks/challenge/cism/cism_exercise_3
   - file: notebooks/challenge/bgc/bgc
     sections:
     - file: notebooks/challenge/bgc/bgc_exercise_1
