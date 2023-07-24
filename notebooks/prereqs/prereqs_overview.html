@@ -1,0 +1,840 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Prerequisites for Success &#8212; CESM Tutorial</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/prereqs/prereqs_overview';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Exercise Overview" href="exercises.html" />
+    <link rel="prev" title="Climate Data Guide" href="../intro/cesm_expts/clim_data_guide.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/ncar_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/ncar_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Welcome to the CESM Tutorial
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro/intro_overview.html">Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro/components.html">Model Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/coupling.html">Shared Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/project.html">Project Organization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/getting_help.html">Getting Help</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../intro/community_experiments.html">Community Experiments</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../intro/cesm_expts/clim_data_gateway.html">Climate Data Gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../intro/cesm_expts/clim_data_guide.html">Climate Data Guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Prerequisites for Success</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="exercises.html">Exercise Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../basics/basics_overview.html">Basics</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../basics/cesm_workspaces.html">Workspaces</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../basics/code_overview.html">CESM code</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../basics/code/git_download_cesm.html">Download CESM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../basics/code/cesm_code_explore.html">Explore CESM Code</a></li>
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../basics/cesm_workflow.html">CESM Workflow</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../basics/cesm_workflow/create_newcase.html">Create New Case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../basics/cesm_workflow/case_setup.html">Case Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../basics/cesm_workflow/case_build.html">Case Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../basics/cesm_workflow/case_submit.html">Case Submit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../basics/cesm_workflow/model_output.html">Model Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../basics/cesm_workflow/checking_jobs_and_status.html">Checking Your Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../basics/cesm_workflow/create_clone.html">Create Clone</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../basics/exercises_overview.html">Exercise Overview</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../basics/exercises/first_B1850.html">Your first CESM run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../basics/exercises/second_B1850.html">Extending your run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../basics/exercises/examine_history_B1850.html">Examine History Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../basics/exercises/extra.html">Explore Further</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../basics/exercises/review_questions.html">Review Questions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../modifications/xml.html">Simple XML Modifications</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modifications/xml/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modifications/xml/model_control_files.html">How to Modify XML Files (*.xml)</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../modifications/xml/run_length.html">Controlling Run Length</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../modifications/xml/run_length/starting_and_stopping.html">Starting and Stopping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../modifications/xml/run_length/restarting.html">Restarting a Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../modifications/xml/run_length/changing_run_length.html">Changing Run Length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../modifications/xml/run_length/timing_files.html">Using Timing Files</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../modifications/xml/modify_run_type.html">Modifying the Type of Run</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../modifications/xml/modify_run_type/hybrid_branch_restart.html">Hybrid, Branch and Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../modifications/xml/modify_run_type/run_variables.html">Variables Related to Run Type</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../modifications/xml/physics_timestep.html">Physics Timestep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modifications/xml/other_xml_variables.html">Other Useful XML Variables</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../modifications/xml/exercises.html">Exercise Overview</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../modifications/xml/exercises/xml_length_exercise.html">Exercise 1: Modify run length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../modifications/xml/exercises/xml_runtype_exercise.html">Exercise 2: Modify run type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../modifications/xml/exercises/xml_timestep_exercise.html">Exercise 3: Change physics timestep</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../namelist/namelist.html">Namelist Modifications</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../namelist/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../namelist/documentation.html">Namelist Variables Documentation</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../namelist/output.html">Customizing Output</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../namelist/output/output_cam.html">Customize CAM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../namelist/output/output_clm.html">Customize CLM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../namelist/output/output_cice.html">Customize CICE output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../namelist/output/output_pop.html">Customize POP output</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../namelist/exercises_overview.html">Exercise Overview</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../namelist/exercises/exercise_cam_output.html">Modify CAM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../namelist/exercises/exercise_tuning_parameter.html">Change a tuning parameter in CAM</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../troubleshooting/troubleshooting.html">Troubleshooting runtime errors</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/log_files.html">The log files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/debugging_flag.html">Adding debugging info</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../troubleshooting/exercises_overview.html">Exercise Overview</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/exercises/troubleshooting_cam.html">Debugging CAM</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../sourcemods/sourcemods.html">Source Modifications</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sourcemods/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sourcemods/add_fields_cam.html">Source Modification Example</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../sourcemods/exercises_overview.html">Exercise Overview</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sourcemods/exercises/exercise_add_field.html">Add output variable in CAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sourcemods/exercises/exercise_rain_threshold.html">Modify the <code class="docutils literal notranslate"><span class="pre">rain_threshold</span></code> in CLM</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../diagnostics/diagnostics.html">Diagnostics</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../diagnostics/cam/cam.html">Atmosphere</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagnostics/cam/basics_cam.html">Basic Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagnostics/cam/advanced_cam.html">Advanced Plotting</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../diagnostics/clm_ctsm/clm_ctsm.html">Land</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagnostics/clm_ctsm/basics_clm.html">Basic Plotting</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../diagnostics/pop/pop.html">Ocean</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagnostics/pop/basics_pop.html">Basic Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagnostics/pop/advanced_pop.html">Advanced Plotting</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../diagnostics/cice/cice.html">Sea Ice</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagnostics/cice/basics_cice.html">Basic Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagnostics/cice/advanced_cice.html">Advanced Plotting</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../diagnostics/additional/additional.html">Additional Topics</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../diagnostics/additional/postprocessing.html">Postprocessing data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagnostics/additional/cvdp.html">CVDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../diagnostics/additional/analysis_tools.html">CESM analysis tools</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../challenge/challenge.html">Challenge Exercises</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../challenge/cam/cam.html">Atmosphere</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/cam/exercise_1.html">1: Control case: F2000climo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/cam/exercise_2.html">2: Historical compset: FHIST</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/cam/exercise_3.html">3: Starting FHIST from spunup state in 1850</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/cam/exercise_4.html">4: Increase orographic height over the western US</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/cam/exercise_5.html">5: Modify sea surface temperature in the tropics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/cam/exercise_6.html">6: Adjust threshold for deep convection over land</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../challenge/cam-chem_waccm/cam-chem_waccm.html">Atmospheric chemistry</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/cam-chem_waccm/exercise_1.html">1: Control case: running with chemistry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/cam-chem_waccm/exercise_2.html">2: Test case: changing the chemistry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/cam-chem_waccm/exercise_3.html">3: Test case: changing the emissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/cam-chem_waccm/visualization.html">4: Visualization option with GEOV</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../challenge/clm_ctsm/clm_ctsm.html">Land</a><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-28"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/clm_ctsm/clm_exercise_1.html">1: Control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/clm_ctsm/clm_exercise_2.html">2: Use the BGC model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/clm_ctsm/clm_exercise_3.html">3: Modify input data</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../challenge/pop/pop.html">Ocean</a><input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-29"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/pop/pop_exercise_1.html">1: Control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/pop/pop_exercise_2.html">2: Turn off parameterization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/pop/pop_exercise_3.html">3: Modify wind stress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/pop/pop_exercise_4.html">4: Turn on the ecosystem</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../challenge/cice/cice.html">Sea Ice</a><input class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-30"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/cice/cice_exercise_1.html">1: Control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/cice/cice_exercise_2.html">2: Tune the albedo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/cice/cice_exercise_3.html">3: Modify the snow conductivity</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../challenge/cism/cism.html">Land Ice</a><input class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-31"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/cism/cism_exercise_1.html">CISM Challenge Exercise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/cism/cism_exercise_2.html">Looking at the simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/cism/cism_exercise_3.html">Computing ice sheet related sea level change from a CISM simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../challenge/bgc/bgc.html">Biogeochemistry</a><input class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-32"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../challenge/bgc/bgc_exercise_1.html">1: Set up a BGC case</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../resources/resources_overview.html">Resources</a><input class="toctree-checkbox" id="toctree-checkbox-33" name="toctree-checkbox-33" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-33"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../resources/profile.html">NCAR HPC Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../resources/terminals.html">Terminal Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../resources/unix.html">UNIX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../resources/text_editors.html">Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../resources/github.html">Github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../resources/fortran.html">Fortran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../resources/netcdf.html">NetCDF files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../resources/porting.html">Porting</a></li>
+
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NCAR/CESM-Tutorial" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NCAR/CESM-Tutorial/issues/new?title=Issue%20on%20page%20%2Fnotebooks/prereqs/prereqs_overview.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/prereqs/prereqs_overview.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Prerequisites for Success</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminal-windows">Terminal windows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unix">UNIX</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ncar-high-performance-computing-hpc">NCAR High Performance Computing (HPC)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x11">X11</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-on-cheyenne">Running on Cheyenne</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#porting">Porting</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-casper">Using Casper</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-jupyterhub">Using JupyterHub</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-on-ncar-hpc">Modules on NCAR HPC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-what-modules-are-loaded-in-your-environment">Checking what modules are loaded in your environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-what-modules-are-available">Checking what modules are available</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-a-new-module-to-your-environment">Loading a new module to your environment</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="prerequisites-for-success">
+<h1>Prerequisites for Success<a class="headerlink" href="#prerequisites-for-success" title="Permalink to this heading">#</a></h1>
+<p>NOTE: Although the materials and notebooks in this tutorial are published as a Jupyter Book, <strong>you will need to use a terminal window to actually run the commands presented in this tutorial.</strong></p>
+<p>To successfully complete this tutorial you will:</p>
+<ul class="simple">
+<li><p>Utilize a terminal window</p></li>
+<li><p>Issue commands at the command line using UNIX</p></li>
+<li><p>Need to be able to access and run on the NCAR HPC assets (HPC = High Performance Computing)</p></li>
+<li><p>Use JupyterHub for some basic diagnostic plotting</p></li>
+</ul>
+<p>The links below provide more information about these topics. If you are not familiar any of the four topics above, we strongly recommend that you read through the following sections.</p>
+<section id="terminal-windows">
+<h2>Terminal windows<a class="headerlink" href="#terminal-windows" title="Permalink to this heading">#</a></h2>
+<p>For most of these tutorial exercises, we assume that you will use the online documentation in tandem with an open terminal window. The commands described in these materials will be entered at the command line in your terminal window.</p>
+<p>If you are unfamiliar with opening terminal windows, we suggest you use the link below to learn more about terminal windows.</p>
+<div class="alert alert-info" style="text-align: center;">
+<p><a class="reference external" href="https://ncar.github.io/CESM-Tutorial/notebooks/resources/terminals.html#terminal-windows">Terminals</a></p>
+</div></section>
+<section id="unix">
+<h2>UNIX<a class="headerlink" href="#unix" title="Permalink to this heading">#</a></h2>
+<p>The commands described in these materials will be entered in a UNIX environment. If you are unfamiliar with navigating a UNIX environment, we suggest you use the link below to learn more about UNIX.</p>
+<div class="alert alert-info" style="text-align: center;">
+<p><a class="reference external" href="https://ncar.github.io/CESM-Tutorial/notebooks/resources/unix.html#unix">UNIX</a></p>
+</div></section>
+<section id="ncar-high-performance-computing-hpc">
+<h2>NCAR High Performance Computing (HPC)<a class="headerlink" href="#ncar-high-performance-computing-hpc" title="Permalink to this heading">#</a></h2>
+<section id="x11">
+<h3>X11<a class="headerlink" href="#x11" title="Permalink to this heading">#</a></h3>
+<p>X11 forwarding is an SSH protocol that enables users to run graphical applications on a remote server and interact with them using their local display and I/O devices. It is frequently used by CESM developers for securely interacting with NCAR HPC remote machines.</p>
+<p>When you log in to the NCAR HPC machines, we recommend you use X11 forwarding. You can do this by adding the <code class="docutils literal notranslate"><span class="pre">-XY</span></code> option when logging into the machines with <code class="docutils literal notranslate"><span class="pre">SSH</span></code>. More information about logging into the NCAR HPC follows below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">XY</span> <span class="n">username</span><span class="nd">@cheyenne</span><span class="o">.</span><span class="n">ucar</span><span class="o">.</span><span class="n">edu</span> 
+</pre></div>
+</div>
+<p>OR</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">XY</span> <span class="n">username</span><span class="nd">@casper</span><span class="o">.</span><span class="n">ucar</span><span class="o">.</span><span class="n">edu</span>
+</pre></div>
+</div>
+<div class="alert alert-info" style="text-align: center;">
+<p><a class="reference external" href="https://arc.ucar.edu/knowledge_base/72581213#QuickstartonCheyenne-LogginginonanNCARsystem">CISL Documentation on Using X11</a></p>
+</div></section>
+<section id="running-on-cheyenne">
+<h3>Running on Cheyenne<a class="headerlink" href="#running-on-cheyenne" title="Permalink to this heading">#</a></h3>
+<p>This tutorial material is designed for use with the Cheyenne HPC system. All of your CESM experiment builds and jobs will be run on Cheyenne.</p>
+<p>Please see the link below for more information about the Cheyenne system, including a quick start guide with information about logging into Cheyenne from a terminal, setting up your environment, submitting jobs, etc.</p>
+<div class="alert alert-info" style="text-align: center;">
+<p><a class="reference external" href="https://arc.ucar.edu/knowledge_base/70549542">CISL Documentation on Using Cheyenne HPC</a></p>
+</div><section id="porting">
+<h4>Porting<a class="headerlink" href="#porting" title="Permalink to this heading">#</a></h4>
+<p>This tutorial assumes that you are using NCAR HPC assets. In order to run the CESM on a <strong><em>different</em></strong> computing platform, you will first need to port the CESM code to that environment/machine. We provide information about how to port the model code in the <a class="reference external" href="https://ncar.github.io/CESM-Tutorial/notebooks/resources/porting.html">porting section</a>.</p>
+</section>
+</section>
+<section id="using-casper">
+<h3>Using Casper<a class="headerlink" href="#using-casper" title="Permalink to this heading">#</a></h3>
+<p>The Casper cluster is a system of specialized data analysis and visualization resources. Casper is not used for building or running CESM, but it is used for CESM data analysis. We will use Casper for the diagnostics section of the lab activities. To utilize the <strong><em>additional</em></strong> analysis tools described in the <a class="reference external" href="https://ncar.github.io/CESM-Tutorial/notebooks/diagnostics/additional/analysis_tools.html">analysis tools section</a> you will also want to use Casper.</p>
+<div class="alert alert-info" style="text-align: center;">
+<p><a class="reference external" href="https://arc.ucar.edu/knowledge_base/70549550">CISL Documentation on Using Casper Cluster</a></p>
+</div></section>
+<section id="using-jupyterhub">
+<h3>Using JupyterHub<a class="headerlink" href="#using-jupyterhub" title="Permalink to this heading">#</a></h3>
+<p>The diagnostics section of this tutorial will use JupyterHub to run Jupyter Notebooks. You will need to login to the NCAR JupyterHub system to run the notebooks successfully.</p>
+<p>NOTE: To run a Jupyter cell</p>
+<ul>
+<li><p>Type your command into the cell</p></li>
+<li><p>To execute the command:</p>
+<ul class="simple">
+<li><p>Press <strong>shift+return</strong></p></li>
+</ul>
+  <div>
+  OR
+  <div>
+  - Select the cell then click the 'play' button at the top of the window
+</li>
+</ul>
+<p>To learn more about JupyterHub, please follow the link below.</p>
+<div class="alert alert-info" style="text-align: center;">
+<p><a class="reference external" href="https://arc.ucar.edu/knowledge_base/70549913">CISL Documentation about JupyterHub</a></p>
+</div></section>
+</section>
+<section id="modules-on-ncar-hpc">
+<h2>Modules on NCAR HPC<a class="headerlink" href="#modules-on-ncar-hpc" title="Permalink to this heading">#</a></h2>
+<p>NCAR maintains a number of different programs on the HPC systems that can be added to your user environment by executing the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code> command.</p>
+<p>We will use a few modules throughout this tutorial to visualize data, so you need to be able to check which modules you have loaded and to load necessary modules.</p>
+<p>We provide basic instructions below on how to check and load Modules, but to learn more about Modules on NCAR HPC, please follow the link below.</p>
+<div class="alert alert-info" style="text-align: center;">
+<p><a class="reference external" href="https://arc.ucar.edu/knowledge_base/72581272">CISL documentation on modules</a></p>
+</div><section id="checking-what-modules-are-loaded-in-your-environment">
+<h3>Checking what modules are loaded in your environment<a class="headerlink" href="#checking-what-modules-are-loaded-in-your-environment" title="Permalink to this heading">#</a></h3>
+<p>To check what modules you have loaded in your environment, use the following at the command line:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>list
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="checking-what-modules-are-available">
+<h3>Checking what modules are available<a class="headerlink" href="#checking-what-modules-are-available" title="Permalink to this heading">#</a></h3>
+<p>You can see which modules are available on the HPC resources by using the following at the command line:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>avail
+</pre></div>
+</div>
+</div>
+</div>
+<p>The command returns a list to the terminal window of the modules available to load to your environment.</p>
+<p><img alt="Modules" src="../../_images/modules.png" /></p>
+<p><em><p style="text-align: center;"> Figure: Some modules available on NCAR HPC resources. D: Default Module. L: Module is loaded. </p></em></p>
+<p>The modules highlighted in blue are text editors discussed further in the <a class="reference external" href="https://ncar.github.io/CESM-Tutorial/notebooks/resources/text_editors.html">text editors section</a>.</p>
+<p>The modules highlighted in red are netCDF tools that will be discussed further in the <a class="reference external" href="https://ncar.github.io/CESM-Tutorial/notebooks/resources/netcdf.html">netCDF section</a>.</p>
+<p>Note that there are many other analysis software tools available to load into your NCAR HPC environment. These include: idl, julia, matlab, R, python, ncl, etc. While some of these tools are discussed in the <a class="reference external" href="https://ncar.github.io/CESM-Tutorial/notebooks/diagnostics/additional/analysis_tools.html">analysis tools section</a>, we do not highlight them all here and encourage you to further explore your environment and needs.</p>
+</section>
+<section id="loading-a-new-module-to-your-environment">
+<h3>Loading a new module to your environment<a class="headerlink" href="#loading-a-new-module-to-your-environment" title="Permalink to this heading">#</a></h3>
+<p>You can load one of the available modules (here we show loading ncview) using the following at the command line:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>ncview
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-warning">
+<strong>NOTE: We will provide a file that will load necessary modules for those attending the in person tutorial.    </strong>
+</div></section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "bash"
+        },
+        kernelOptions: {
+            name: "bash",
+            path: "./notebooks/prereqs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'bash'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro/cesm_expts/clim_data_guide.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Climate Data Guide</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="exercises.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exercise Overview</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminal-windows">Terminal windows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unix">UNIX</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ncar-high-performance-computing-hpc">NCAR High Performance Computing (HPC)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#x11">X11</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-on-cheyenne">Running on Cheyenne</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#porting">Porting</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-casper">Using Casper</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-jupyterhub">Using JupyterHub</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules-on-ncar-hpc">Modules on NCAR HPC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-what-modules-are-loaded-in-your-environment">Checking what modules are loaded in your environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-what-modules-are-available">Checking what modules are available</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-a-new-module-to-your-environment">Loading a new module to your environment</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By NCAR/CGD Staff
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
