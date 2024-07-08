@@ -139,6 +139,7 @@ chapters:
   - file: notebooks/challenge/paleo/paleo
     sections:
     - file: notebooks/challenge/paleo/exercise_1
+    - file: notebooks/challenge/paleo/exercise_2
   - file: notebooks/challenge/cam-chem_waccm/cam-chem_waccm
     sections:
     - file: notebooks/challenge/cam-chem_waccm/exercise_1
