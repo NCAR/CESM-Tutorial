@@ -175,8 +175,11 @@ chapters:
 - file: notebooks/resources/resources_overview
   sections:
   - file: notebooks/resources/profile
+  - file: notebooks/resources/profile
   - file: notebooks/resources/terminals
   - file: notebooks/resources/unix
+    sections:
+    - file: notebooks/resources/unix-cheatsheet
   - file: notebooks/resources/text_editors
   - file: notebooks/resources/github
   - file: notebooks/resources/fortran
