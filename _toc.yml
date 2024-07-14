@@ -9,6 +9,7 @@ chapters:
   sections:
   - file: notebooks/intro/components
   - file: notebooks/intro/coupling
+  - file: notebooks/intro/cesm_webpage
   - file: notebooks/intro/project
   - file: notebooks/intro/getting_help
   - file: notebooks/intro/getting_involved
