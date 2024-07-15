@@ -8,11 +8,13 @@ chapters:
 - file: notebooks/intro/intro_overview
   sections:
   - file: notebooks/intro/components
-  - file: notebooks/intro/coupling
+    sections:
+    - file: notebooks/intro/coupling
   - file: notebooks/intro/cesm_webpage
-  - file: notebooks/intro/project
-  - file: notebooks/intro/getting_help
-  - file: notebooks/intro/getting_involved
+    sections:
+    - file: notebooks/intro/project
+    - file: notebooks/intro/getting_help
+    - file: notebooks/intro/getting_involved
   - file: notebooks/intro/community_experiments
     sections:
     - file: notebooks/intro/cesm_expts/clim_data_gateway
