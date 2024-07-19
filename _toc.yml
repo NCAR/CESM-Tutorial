@@ -173,6 +173,8 @@ chapters:
     - file: notebooks/diagnostics/additional/postprocessing
     - file: notebooks/diagnostics/additional/cvdp
     - file: notebooks/diagnostics/additional/analysis_tools
+    - file: notebooks/diagnostics/additional/adf
+    - file: notebooks/diagnostics/additional/uxarray
     
 - file: notebooks/resources/resources_overview
   sections:
