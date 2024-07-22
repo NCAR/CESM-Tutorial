@@ -168,6 +168,7 @@ chapters:
     sections:
     - file: notebooks/diagnostics/cice/basics_cice
     - file: notebooks/diagnostics/cice/advanced_cice
+  - file: notebooks/diagnostics/cupid
   - file: notebooks/diagnostics/additional/additional
     sections:
     - file: notebooks/diagnostics/additional/postprocessing
