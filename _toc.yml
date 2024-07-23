@@ -12,9 +12,9 @@ chapters:
     - file: notebooks/intro/coupling
   - file: notebooks/intro/cesm_webpage
     sections:
-    - file: notebooks/intro/project
-    - file: notebooks/intro/getting_help
+    - file: notebooks/intro/project 
     - file: notebooks/intro/getting_involved
+    - file: notebooks/intro/getting_help
   - file: notebooks/intro/community_experiments
     sections:
     - file: notebooks/intro/cesm_expts/clim_data_gateway
@@ -168,16 +168,20 @@ chapters:
     sections:
     - file: notebooks/diagnostics/cice/basics_cice
     - file: notebooks/diagnostics/cice/advanced_cice
+  - file: notebooks/diagnostics/cupid
   - file: notebooks/diagnostics/additional/additional
     sections:
     - file: notebooks/diagnostics/additional/postprocessing
     - file: notebooks/diagnostics/additional/cvdp
     - file: notebooks/diagnostics/additional/analysis_tools
+    - file: notebooks/diagnostics/additional/adf
+    - file: notebooks/diagnostics/additional/uxarray
     
 - file: notebooks/resources/resources_overview
   sections:
   - file: notebooks/resources/ncar_hpc
     sections:  
+    - file: notebooks/resources/ncar_hpc_module
     - file: notebooks/resources/profile
   - file: notebooks/resources/terminals
   - file: notebooks/resources/unix
