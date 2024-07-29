@@ -12,7 +12,7 @@ chapters:
     - file: notebooks/intro/coupling
   - file: notebooks/intro/cesm_webpage
     sections:
-    - file: notebooks/intro/project 
+    - file: notebooks/intro/project
     - file: notebooks/intro/getting_involved
     - file: notebooks/intro/getting_help
   - file: notebooks/intro/community_experiments
@@ -135,6 +135,7 @@ chapters:
     - file: notebooks/challenge/pop/pop_exercise_2
     - file: notebooks/challenge/pop/pop_exercise_3
     - file: notebooks/challenge/pop/pop_exercise_4
+    - file: notebooks/challenge/mom/mom_exercise_5
   - file: notebooks/challenge/cice/cice
     sections:
     - file: notebooks/challenge/cice/cice_exercise_1
@@ -164,6 +165,7 @@ chapters:
     sections:
     - file: notebooks/diagnostics/pop/basics_pop
     - file: notebooks/diagnostics/pop/advanced_pop
+    - file: notebooks/diagnostics/mom/basics_mom
   - file: notebooks/diagnostics/cice/cice
     sections:
     - file: notebooks/diagnostics/cice/basics_cice
@@ -176,11 +178,11 @@ chapters:
     - file: notebooks/diagnostics/additional/analysis_tools
     - file: notebooks/diagnostics/additional/adf
     - file: notebooks/diagnostics/additional/uxarray
-    
+
 - file: notebooks/resources/resources_overview
   sections:
   - file: notebooks/resources/ncar_hpc
-    sections:  
+    sections:
     - file: notebooks/resources/ncar_hpc_module
     - file: notebooks/resources/profile
   - file: notebooks/resources/terminals
