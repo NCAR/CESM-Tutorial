@@ -185,7 +185,7 @@ chapters:
   - file: notebooks/resources/ncar_hpc
     sections:
     - file: notebooks/resources/ncar_hpc_module
-    - file: notebooks/resources/profile
+    - file: notebooks/resources/tutorial_specific
   - file: notebooks/resources/terminals
   - file: notebooks/resources/unix
     sections:
