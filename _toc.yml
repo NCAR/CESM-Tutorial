@@ -185,10 +185,8 @@ chapters:
   - file: notebooks/resources/ncar_hpc
     sections:
     - file: notebooks/resources/ncar_hpc_module
-    - file: notebooks/resources/tutorial_specific
-      sections:
-      - file: notebooks/resources/tutorial_one_time_setup
-      - file: notebooks/resources/tutorial_queue_account
+    - file: notebooks/resources/tutorial_one_time_setup
+    - file: notebooks/resources/tutorial_queue_account
   - file: notebooks/resources/terminals
   - file: notebooks/resources/unix
     sections:
