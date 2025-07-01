@@ -1,0 +1,894 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>How to Modify XML Files (*.xml) &#8212; CESM Tutorial</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/modifications/xml/model_control_files';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Controlling Run Length" href="run_length.html" />
+    <link rel="prev" title="Overview" href="overview.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/ncar_logo.png" class="logo__image only-light" alt="CESM Tutorial - Home"/>
+    <script>document.write(`<img src="../../../_static/ncar_logo.png" class="logo__image only-dark" alt="CESM Tutorial - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../README.html">
+                    Welcome to the CESM Tutorial
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../intro/intro_overview.html">Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../intro/components.html">What is CESM ?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/coupling.html">CIME (Advanced)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../intro/cesm_webpage.html">CESM Webpage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/project.html">CESM Working Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/getting_involved.html">Getting Involved</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/getting_help.html">Getting Help</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../intro/community_experiments.html">Community Experiments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/cesm_expts/clim_data_gateway.html">Climate Data Gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/cesm_expts/clim_data_guide.html">Climate Data Guide</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../prereqs/prereqs_overview.html">Prerequisites for Success</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../prereqs/exercises.html">Exercise Overview</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../basics/basics_overview.html">Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/cesm_workspaces.html">Workspaces</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../basics/code_overview.html">CESM code</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/code/git_download_cesm.html">Download CESM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/code/cesm_code_explore.html">Explore CESM Code</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../basics/cesm_workflow.html">CESM Workflow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/create_newcase.html">Create New Case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/case_setup.html">Case Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/case_build.html">Case Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/case_submit.html">Case Submit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/model_output.html">Model Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/checking_jobs_and_status.html">Checking Your Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/create_clone.html">Create Clone (Advanced)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../basics/exercises_overview.html">Exercise Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/exercises/first_B1850.html">Your first CESM run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/exercises/second_B1850.html">Extending your run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/exercises/examine_history_B1850.html">Examine History Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/exercises/extra.html">Explore Further</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/exercises/review_questions.html">Review Questions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../xml.html">Simple XML Modifications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">How to Modify XML Files (*.xml)</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="run_length.html">Controlling Run Length</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="run_length/starting_and_stopping.html">Starting and Stopping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="run_length/restarting.html">Restarting a Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="run_length/changing_run_length.html">Changing Run Length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="run_length/timing_files.html">Using Timing Files</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="modify_run_type.html">Modifying the Type of Run</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="modify_run_type/hybrid_branch_restart.html">Hybrid, Branch and Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modify_run_type/run_variables.html">Variables Related to Run Type</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="physics_timestep.html">Physics Timestep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other_xml_variables.html">Other Useful XML Variables</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="exercises.html">Exercise Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="exercises/xml_length_exercise.html">Exercise 1: Modify run length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exercises/xml_runtype_exercise.html">Exercise 2: Modify run type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exercises/xml_timestep_exercise.html">Exercise 3: Change physics timestep</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../namelist/namelist.html">Namelist Modifications</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../namelist/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../namelist/documentation.html">Namelist Variables Documentation</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../namelist/output.html">Customizing Output</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_cam.html">Customize CAM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_clm.html">Customize CLM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_cice.html">Customize CICE output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_pop.html">Customize POP output</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../namelist/exercises_overview.html">Exercise Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/exercises/exercise_cam_output.html">Modify CAM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/exercises/exercise_tuning_parameter.html">Change a tuning parameter in CAM</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../troubleshooting/troubleshooting.html">Troubleshooting runtime errors</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../troubleshooting/log_files.html">The log files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../troubleshooting/debugging_flag.html">Adding debugging info</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../troubleshooting/exercises_overview.html">Exercise Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../troubleshooting/exercises/troubleshooting_cam.html">Debugging CAM</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../sourcemods/sourcemods.html">Source Modifications</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sourcemods/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sourcemods/add_fields_cam.html">Source Modification Example</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../sourcemods/exercises_overview.html">Exercise Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../sourcemods/exercises/exercise_add_field.html">Add output variable in CAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sourcemods/exercises/exercise_rain_threshold.html">Modify the <code class="docutils literal notranslate"><span class="pre">rain_threshold</span></code> in CLM</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../challenge/challenge.html">Challenge Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/cam/cam.html">Atmosphere</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam/exercise_1.html">1: Control case: F2000climo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam/exercise_2.html">2: Historical compset: FHIST</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam/exercise_3.html">3: Starting FHIST from spunup state in 1850</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam/exercise_4.html">4: Increase orographic height over the western US</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam/exercise_5.html">5: Modify sea surface temperature in the tropics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam/exercise_6.html">6: Adjust threshold for deep convection over land</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/paleo/paleo.html">Paleo</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/paleo/exercise_1.html">1: Preindustrial control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/paleo/exercise_2.html">2: mid-Holocene case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/paleo/exercise_3.html">3: Water isotope tracers in CESM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/cam-chem_waccm/cam-chem_waccm.html">Atmospheric chemistry</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam-chem_waccm/exercise_1.html">1: Control case: running with chemistry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam-chem_waccm/exercise_2.html">2: Test case: changing the chemistry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam-chem_waccm/exercise_3.html">3: Test case: changing the emissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam-chem_waccm/visualization.html">4: Visualization option with GEOV</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/clm_ctsm/clm_ctsm.html">Land</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/clm_ctsm/clm_exercise_1.html">1: Control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/clm_ctsm/clm_exercise_2.html">2: Use the BGC model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/clm_ctsm/clm_exercise_3.html">3: Modify input data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/pop/pop.html">Ocean</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/pop/pop_exercise_1.html">1: Control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/pop/pop_exercise_2.html">2: Turn off parameterization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/pop/pop_exercise_3.html">3: Modify wind stress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/pop/pop_exercise_4.html">4: Turn on the ecosystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/mom/mom_exercise_5.html">5: Control case using MOM6</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/cice/cice.html">Sea Ice</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cice/cice_exercise_1.html">1: Control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cice/cice_exercise_2.html">2: Tune the albedo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cice/cice_exercise_3.html">3: Modify the snow conductivity</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/cism/cism.html">Land Ice</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cism/cism_exercise_1.html">CISM Challenge Exercise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cism/cism_exercise_2.html">Looking at the simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cism/cism_exercise_3.html">Computing ice sheet related sea level change from a CISM simulation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/bgc/bgc.html">Biogeochemistry</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/bgc/bgc_exercise_1.html">1: Set up a BGC case</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../diagnostics/diagnostics.html">Diagnostics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/cam/cam.html">Atmosphere</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/cam/basics_cam.html">Basic Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/cam/advanced_cam.html">Advanced Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/clm_ctsm/clm_ctsm.html">Land</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/clm_ctsm/basics_clm.html">Basic Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/pop/pop.html">Ocean</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/pop/basics_pop.html">Basic Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/pop/advanced_pop.html">Advanced Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/mom/basics_mom.html">Basic Plotting with MOM6</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/cice/cice.html">Sea Ice</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/cice/basics_cice.html">Basic Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/cice/advanced_cice.html">Advanced Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../diagnostics/cupid.html">CUPiD</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/additional/additional.html">Additional Topics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/postprocessing.html">Postprocessing data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/cvdp.html">CVDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/analysis_tools.html">CESM analysis tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/adf.html">ADF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/uxarray.html">UXarray</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/resources_overview.html">Resources</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../resources/ncar_hpc.html">NCAR Supercomputer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/ncar_hpc_module.html">Modules on NCAR HPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/tutorial_one_time_setup.html">Tutorial one time setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/tutorial_queue_account.html">Tutorial queue and account</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/terminals.html">Terminal Windows</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../resources/unix.html">UNIX</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/unix-cheatsheet.html">UNIX cheatsheet</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/text_editors.html">Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/github.html">Github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/fortran.html">Fortran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/netcdf.html">NetCDF files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/porting.html">Porting</a></li>
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NCAR/CESM-Tutorial" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NCAR/CESM-Tutorial/issues/new?title=Issue%20on%20page%20%2Fnotebooks/modifications/xml/model_control_files.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/modifications/xml/model_control_files.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>How to Modify XML Files (*.xml)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-with-xmlchange">1. Editing with <strong><code class="docutils literal notranslate"><span class="pre">xmlchange</span></code></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-xml-variables-with-xmlquery">2. Searching xml variables with <strong><code class="docutils literal notranslate"><span class="pre">xmlquery</span></code></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-subgroup-functionality-of-xmlchange">3. Use the subgroup functionality of <strong><code class="docutils literal notranslate"><span class="pre">xmlchange</span></code></strong></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="how-to-modify-xml-files-xml">
+<h1>How to Modify XML Files (*.xml)<a class="headerlink" href="#how-to-modify-xml-files-xml" title="Link to this heading">#</a></h1>
+<p>Now let’s learn how to edit and search for variables in an <code class="docutils literal notranslate"><span class="pre">*.xml</span></code> file</p>
+<p>We will use <strong><code class="docutils literal notranslate"><span class="pre">xmlchange</span></code></strong> to modify xml variables and use <strong><code class="docutils literal notranslate"><span class="pre">xmlquery</span></code></strong> to search xml variables. Note that you <em>can</em> change XML files manually, but using the <code class="docutils literal notranslate"><span class="pre">xmlchange</span></code> script prevents XML errors and ensures there is a record of your changes in the <code class="docutils literal notranslate"><span class="pre">CaseStatus</span></code> file.</p>
+<p>For the examples below, you can follow along by going to your <code class="docutils literal notranslate"><span class="pre">CASEROOT</span></code> directory b1850.basics that you completed in the Basics section.</p>
+<hr class="docutils" />
+<section id="editing-with-xmlchange">
+<h2>1. Editing with <strong><code class="docutils literal notranslate"><span class="pre">xmlchange</span></code></strong><a class="headerlink" href="#editing-with-xmlchange" title="Link to this heading">#</a></h2>
+<p>When modifying an <code class="docutils literal notranslate"><span class="pre">*.xml</span></code> file, we highly recommend using the <strong><code class="docutils literal notranslate"><span class="pre">xmlchange</span></code></strong> tool. This is done using the syntax <code class="docutils literal notranslate"><span class="pre">./xmlchange</span> <span class="pre">VARIABLE=VALUE</span></code> in your case directory.</p>
+<p>The xml files can also be edited manually with your favorate text editor (vi, emacs, etc.), but users should take care not to introduce any formatting errors that could lead to incomplete environment variable settings. You can use your text editor to take a look at the xml files – you will find descriptions of each variable, which can be very helpful in understanding what they control.</p>
+<p>Here is an example for using <code class="docutils literal notranslate"><span class="pre">xmlchange</span></code>.  If you want to change the length of your run to one month, edit <code class="docutils literal notranslate"><span class="pre">env_run.xml</span></code> via the <code class="docutils literal notranslate"><span class="pre">xmlchange</span></code> tool by typing on the command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xmlchange</span> <span class="n">STOP_OPTION</span><span class="o">=</span><span class="n">nmonths</span><span class="p">,</span><span class="n">STOP_N</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<div class="alert alert-warning">
+   <summary>
+        <img src="https://freesvg.org/img/bulb_on.png" width="20px">
+       <font face="Times New Roman" color='blue' size="4">Tips!</font>
+    </summary>
+<p>When using xmlchange to modify multiple environment variables, use comma (and no space!) in between variables.<br><br />
+You can always find help by typing <code class="docutils literal notranslate"><span class="pre">./xmlchange</span> <span class="pre">--help</span></code></p>
+</div><div class="alert alert-warning">  
+<details>  
+<summary><font face="Times New Roman" color='blue' size="4">Click here for example output of  "./xmlchange --help"</font></summary><br>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xmlchange</span> <span class="o">--</span><span class="n">help</span>
+</pre></div>
+</div>
+<br>
+<p><strong>Output: </strong><br></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">xmlchange</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">d</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">s</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">caseroot</span> <span class="n">CASEROOT</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">append</span><span class="p">]</span>
+                 <span class="p">[</span><span class="o">--</span><span class="n">subgroup</span> <span class="n">SUBGROUP</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="nb">id</span> <span class="n">ID</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">val</span> <span class="n">VAL</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">file</span> <span class="n">FILE</span><span class="p">]</span>
+                 <span class="p">[</span><span class="o">--</span><span class="n">delimiter</span> <span class="n">DELIMITER</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">dryrun</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">noecho</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">f</span><span class="p">]</span>
+                 <span class="p">[</span><span class="o">-</span><span class="n">loglevel</span> <span class="n">LOGLEVEL</span><span class="p">]</span>
+                 <span class="p">[</span><span class="n">listofsettings</span><span class="p">]</span>
+
+<span class="n">Allows</span> <span class="n">changing</span> <span class="n">variables</span> <span class="ow">in</span> <span class="n">env_</span><span class="o">*</span><span class="n">xml</span> <span class="n">files</span> <span class="n">via</span> <span class="n">a</span> <span class="n">command</span><span class="o">-</span><span class="n">line</span> <span class="n">interface</span><span class="o">.</span>
+
+<span class="n">This</span> <span class="n">provides</span> <span class="n">two</span> <span class="n">main</span> <span class="n">benefits</span> <span class="n">over</span> <span class="n">editing</span> <span class="n">the</span> <span class="n">xml</span> <span class="n">files</span> <span class="n">by</span> <span class="n">hand</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">Settings</span> <span class="n">are</span> <span class="n">checked</span> <span class="n">immediately</span> <span class="k">for</span> <span class="n">validity</span>
+  <span class="o">-</span> <span class="n">Settings</span> <span class="n">are</span> <span class="n">echoed</span> <span class="n">to</span> <span class="n">the</span> <span class="n">CaseStatus</span> <span class="n">file</span><span class="p">,</span> <span class="n">providing</span> <span class="n">a</span> <span class="s2">&quot;paper trail&quot;</span> <span class="n">of</span>
+    <span class="n">changes</span> <span class="n">made</span> <span class="n">by</span> <span class="n">the</span> <span class="n">user</span><span class="o">.</span>
+
+<span class="n">Examples</span><span class="p">:</span>
+
+   <span class="n">To</span> <span class="nb">set</span> <span class="n">a</span> <span class="n">single</span> <span class="n">variable</span><span class="p">:</span>
+      <span class="o">./</span><span class="n">xmlchange</span> <span class="n">REST_N</span><span class="o">=</span><span class="mi">4</span>
+
+   <span class="n">To</span> <span class="nb">set</span> <span class="n">multiple</span> <span class="n">variables</span> <span class="n">at</span> <span class="n">once</span><span class="p">:</span>
+      <span class="o">./</span><span class="n">xmlchange</span> <span class="n">REST_OPTION</span><span class="o">=</span><span class="n">ndays</span><span class="p">,</span><span class="n">REST_N</span><span class="o">=</span><span class="mi">4</span>
+
+   <span class="n">Alternative</span> <span class="n">syntax</span> <span class="p">(</span><span class="n">no</span> <span class="n">longer</span> <span class="n">recommended</span><span class="p">,</span> <span class="n">but</span> <span class="n">supported</span> <span class="k">for</span> <span class="n">backwards</span>
+   <span class="n">compatibility</span><span class="p">;</span> <span class="n">only</span> <span class="n">works</span> <span class="k">for</span> <span class="n">a</span> <span class="n">single</span> <span class="n">variable</span> <span class="n">at</span> <span class="n">a</span> <span class="n">time</span><span class="p">):</span>
+      <span class="o">./</span><span class="n">xmlchange</span> <span class="o">--</span><span class="nb">id</span> <span class="n">REST_N</span> <span class="o">--</span><span class="n">val</span> <span class="mi">4</span>
+
+   <span class="n">Several</span> <span class="n">xml</span> <span class="n">variables</span> <span class="n">that</span> <span class="n">have</span> <span class="n">settings</span> <span class="k">for</span> <span class="n">each</span> <span class="n">component</span> <span class="n">have</span> <span class="n">somewhat</span> <span class="n">special</span> <span class="n">treatment</span><span class="o">.</span>
+   <span class="n">The</span> <span class="n">variables</span> <span class="n">that</span> <span class="n">this</span> <span class="n">currently</span> <span class="n">applies</span> <span class="n">to</span> <span class="n">are</span><span class="p">:</span>
+    <span class="n">NTASKS</span><span class="p">,</span> <span class="n">NTHRDS</span><span class="p">,</span> <span class="n">ROOTPE</span><span class="p">,</span> <span class="n">PIO_TYPENAME</span><span class="p">,</span> <span class="n">PIO_STRIDE</span><span class="p">,</span> <span class="n">PIO_NUMTASKS</span>
+   <span class="n">For</span> <span class="n">example</span><span class="p">,</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">tasks</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">components</span> <span class="n">to</span> <span class="mi">16</span><span class="p">,</span> <span class="n">use</span><span class="p">:</span>
+      <span class="o">./</span><span class="n">xmlchange</span> <span class="n">NTASKS</span><span class="o">=</span><span class="mi">16</span>
+   <span class="n">To</span> <span class="nb">set</span> <span class="n">just</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">tasks</span> <span class="k">for</span> <span class="n">the</span> <span class="n">atm</span> <span class="n">component</span><span class="p">,</span> <span class="n">use</span><span class="p">:</span>
+      <span class="o">./</span><span class="n">xmlchange</span> <span class="n">NTASKS_ATM</span><span class="o">=</span><span class="mi">16</span>
+
+   <span class="n">The</span> <span class="n">CIME</span> <span class="n">case</span> <span class="n">xml</span> <span class="n">variables</span> <span class="n">are</span> <span class="n">grouped</span> <span class="n">together</span> <span class="ow">in</span> <span class="n">xml</span> <span class="n">elements</span> <span class="o">&lt;</span><span class="n">group</span><span class="o">&gt;&lt;/</span><span class="n">group</span><span class="o">&gt;.</span>
+   <span class="n">This</span> <span class="ow">is</span> <span class="n">done</span> <span class="n">to</span> <span class="n">associate</span> <span class="n">together</span> <span class="n">xml</span> <span class="n">variables</span> <span class="k">with</span> <span class="n">common</span> <span class="n">features</span><span class="o">.</span>
+   <span class="n">Most</span> <span class="n">variables</span> <span class="n">are</span> <span class="n">only</span> <span class="n">associated</span> <span class="k">with</span> <span class="n">one</span> <span class="n">group</span><span class="o">.</span> <span class="n">However</span><span class="p">,</span> <span class="ow">in</span> <span class="n">env_batch</span><span class="o">.</span><span class="n">xml</span><span class="p">,</span>
+   <span class="n">there</span> <span class="n">are</span> <span class="n">also</span> <span class="n">xml</span> <span class="n">variables</span> <span class="n">that</span> <span class="n">are</span> <span class="n">associated</span> <span class="k">with</span> <span class="n">each</span> <span class="n">potential</span> <span class="n">batch</span> <span class="n">job</span><span class="o">.</span>
+   <span class="n">For</span> <span class="n">these</span> <span class="n">variables</span><span class="p">,</span> <span class="n">the</span> <span class="s1">&#39;--subgroup&#39;</span> <span class="n">option</span> <span class="n">may</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">specify</span> <span class="n">a</span> <span class="n">particular</span>
+   <span class="n">group</span> <span class="k">for</span> <span class="n">which</span> <span class="n">the</span> <span class="n">variable</span><span class="s1">&#39;s value will be adjusted.</span>
+   
+<span class="o">...</span>
+
+</pre></div>
+</div>
+</details>
+</div>
+<br><div class="alert alert-info">
+<strong>Evaluate your understanding</strong>
+<p>If you want to manually resubmit an initial case that previously had a <code class="docutils literal notranslate"><span class="pre">CONTINUE_RUN</span></code> value of <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>, how do you change it to <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>?</p>
+</div>
+<div class="alert alert-success">  
+<details>  
+<summary><font face="Times New Roman" color='blue' size="4">Click here for the solution</font></summary><br>
+<p>Use <font face="Courier"><strong>xmlchange</strong></font> to modify the variable value with the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">./</span><span class="n">xmlchange</span> <span class="n">CONTINUE_RUN</span><span class="o">=</span><span class="n">TRUE</span> 
+</pre></div>
+</div>
+</details>
+</div>
+<br>
+</section>
+<hr class="docutils" />
+<section id="searching-xml-variables-with-xmlquery">
+<h2>2. Searching xml variables with <strong><code class="docutils literal notranslate"><span class="pre">xmlquery</span></code></strong><a class="headerlink" href="#searching-xml-variables-with-xmlquery" title="Link to this heading">#</a></h2>
+<p>We recommend using the <strong><code class="docutils literal notranslate"><span class="pre">xmlquery</span></code></strong> tool in your case directory to query xml variables.</p>
+<p>For example, to find out the run type of your job, search for xml variable <code class="docutils literal notranslate"><span class="pre">RUN_TYPE</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xmlquery</span> <span class="n">RUN_TYPE</span>
+</pre></div>
+</div>
+<div class="alert alert-warning">
+   <summary>
+        <img src="https://freesvg.org/img/bulb_on.png" width="20px">
+       <font face="Times New Roman" color='blue' size="4">Tips!</font>
+    </summary>
+<p>You can always find help by typing <code class="docutils literal notranslate"><span class="pre">./xmlquery</span> <span class="pre">--help</span></code></p>
+</div><p>This will return the default <code class="docutils literal notranslate"><span class="pre">RUN_TYPE</span></code> value:</p>
+<blockquote>
+<div><p>RUN_TYPE: hybrid</p>
+</div></blockquote>
+<br><div class="alert alert-info">
+<strong>Evaluate your understanding</strong>
+<p>Let’s check if the variables in the previous exercise are properly modified.</p>
+<p>Query for the value of <code class="docutils literal notranslate"><span class="pre">STOP_N</span></code>, <code class="docutils literal notranslate"><span class="pre">STOP_OPTION</span></code>, and <code class="docutils literal notranslate"><span class="pre">CONTINUE_RUN</span></code>.</p>
+</div>
+<div class="alert alert-success">
+<details>   
+   <summary>
+        <img src="https://freesvg.org/img/help-browser.png" width="20px">
+       <font face="Times New Roman" color='blue' size="4">Click here for the solution</font>
+    </summary>
+<p>Use <code class="docutils literal notranslate"><span class="pre">xmlquery</span></code> to search the variables with the command:
+<br></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">./</span><span class="n">xmlquery</span> <span class="n">STOP_N</span><span class="p">,</span><span class="n">STOP_OPTION</span><span class="p">,</span><span class="n">CONTINUE_RUN</span> 
+</pre></div>
+</div>
+<br>    
+If you see: 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">STOP_N</span><span class="p">:</span> <span class="mi">1</span> 
+<span class="o">&gt;</span><span class="n">STOP_OPTION</span><span class="p">:</span> <span class="n">nmonths</span> 
+<span class="o">&gt;</span><span class="n">CONTINUE_RUN</span><span class="p">:</span> <span class="n">TRUE</span> 
+</pre></div>
+</div>
+<br>
+    Great!  You have successfully queried these variables. 
+<br>
+</details>
+</div><br>
+</section>
+<hr class="docutils" />
+<section id="use-the-subgroup-functionality-of-xmlchange">
+<h2>3. Use the subgroup functionality of <strong><code class="docutils literal notranslate"><span class="pre">xmlchange</span></code></strong><a class="headerlink" href="#use-the-subgroup-functionality-of-xmlchange" title="Link to this heading">#</a></h2>
+<p>Now let’s first try to find out the wallclock time of your job, search for xml variable <code class="docutils literal notranslate"><span class="pre">JOB_WALLCLOCK_TIME</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xmlquery</span> <span class="n">JOB_WALLCLOCK_TIME</span>
+</pre></div>
+</div>
+<div class="alert alert-warning">
+   <summary>
+        <img src="https://freesvg.org/img/bulb_on.png" width="20px">
+       <font face="Times New Roman" color='blue' size="4">Tips!</font>
+    </summary>
+<p>If you are unsure about the full name of the xml variable, you can query variables with a partial match, using <code class="docutils literal notranslate"><span class="pre">--partial-match</span></code> or <code class="docutils literal notranslate"><span class="pre">-p</span></code>.</p>
+<p>For example: <code class="docutils literal notranslate"><span class="pre">./xmlquery</span> <span class="pre">-p</span> <span class="pre">WALLCLOCK</span></code></p>
+</div><br>
+You will find that the query of wallclock time returns multiple instances:<blockquote>
+<div><p>Results in group case.run <br>
+JOB_WALLCLOCK_TIME: 00:30:00</p>
+</div></blockquote>
+<blockquote>
+<div><p>Results in group case.st_archive<br>
+JOB_WALLCLOCK_TIME: 00:30:00</p>
+</div></blockquote>
+<p>The variable <code class="docutils literal notranslate"><span class="pre">JOB_WALLCLOCK_TIME</span></code> has two instances in two different subgroups: <code class="docutils literal notranslate"><span class="pre">case.run</span></code> and <code class="docutils literal notranslate"><span class="pre">case.st_archive</span></code>. <br></p>
+<p>Then, how do we specify which instance we want to modify?</p>
+<p>For variables that have multiple instances, we can use the <strong>“subgroups”</strong> functionality in <code class="docutils literal notranslate"><span class="pre">xmlchange</span></code>.
+For example, if we want to change the default <code class="docutils literal notranslate"><span class="pre">JOB_WALLCLOCK_TIME</span></code> from 30 minutes to 1 hour for the short term archiver subgroup, type in the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">xmlchange</span> <span class="o">--</span><span class="n">subgroup</span> <span class="n">case</span><span class="o">.</span><span class="n">st_archive</span> <span class="n">JOB_WALLCLOCK_TIME</span><span class="o">=</span><span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+</pre></div>
+</div>
+<p>Try it yourself! Type in the command above and use <code class="docutils literal notranslate"><span class="pre">xmlquery</span></code> to check if your modifications are correctly applied.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/modifications/xml"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="overview.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Overview</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="run_length.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Controlling Run Length</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-with-xmlchange">1. Editing with <strong><code class="docutils literal notranslate"><span class="pre">xmlchange</span></code></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-xml-variables-with-xmlquery">2. Searching xml variables with <strong><code class="docutils literal notranslate"><span class="pre">xmlquery</span></code></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-subgroup-functionality-of-xmlchange">3. Use the subgroup functionality of <strong><code class="docutils literal notranslate"><span class="pre">xmlchange</span></code></strong></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By NCAR/CGD Staff
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
