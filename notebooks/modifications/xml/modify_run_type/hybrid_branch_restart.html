@@ -1,0 +1,855 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Hybrid, Branch and Startup &#8212; CESM Tutorial</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/modifications/xml/modify_run_type/hybrid_branch_restart';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Variables Related to Run Type" href="run_variables.html" />
+    <link rel="prev" title="Modifying the Type of Run" href="../modify_run_type.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/ncar_logo.png" class="logo__image only-light" alt="CESM Tutorial - Home"/>
+    <script>document.write(`<img src="../../../../_static/ncar_logo.png" class="logo__image only-dark" alt="CESM Tutorial - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../README.html">
+                    Welcome to the CESM Tutorial
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../intro/intro_overview.html">Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../intro/components.html">What is CESM ?</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../intro/coupling.html">CIME (Advanced)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../intro/cesm_webpage.html">CESM Webpage</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../intro/project.html">CESM Working Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../intro/getting_involved.html">Getting Involved</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../intro/getting_help.html">Getting Help</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../intro/community_experiments.html">Community Experiments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../intro/cesm_expts/clim_data_gateway.html">Climate Data Gateway</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../intro/cesm_expts/clim_data_guide.html">Climate Data Guide</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../prereqs/prereqs_overview.html">Prerequisites for Success</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../prereqs/exercises.html">Exercise Overview</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../basics/basics_overview.html">Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../basics/cesm_workspaces.html">Workspaces</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../basics/code_overview.html">CESM code</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../basics/code/git_download_cesm.html">Download CESM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../basics/code/cesm_code_explore.html">Explore CESM Code</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../basics/cesm_workflow.html">CESM Workflow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../basics/cesm_workflow/create_newcase.html">Create New Case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../basics/cesm_workflow/case_setup.html">Case Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../basics/cesm_workflow/case_build.html">Case Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../basics/cesm_workflow/case_submit.html">Case Submit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../basics/cesm_workflow/model_output.html">Model Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../basics/cesm_workflow/checking_jobs_and_status.html">Checking Your Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../basics/cesm_workflow/create_clone.html">Create Clone (Advanced)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../basics/exercises_overview.html">Exercise Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../basics/exercises/first_B1850.html">Your first CESM run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../basics/exercises/second_B1850.html">Extending your run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../basics/exercises/examine_history_B1850.html">Examine History Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../basics/exercises/extra.html">Explore Further</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../basics/exercises/review_questions.html">Review Questions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../xml.html">Simple XML Modifications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_control_files.html">How to Modify XML Files (*.xml)</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../run_length.html">Controlling Run Length</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../run_length/starting_and_stopping.html">Starting and Stopping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../run_length/restarting.html">Restarting a Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../run_length/changing_run_length.html">Changing Run Length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../run_length/timing_files.html">Using Timing Files</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../modify_run_type.html">Modifying the Type of Run</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Hybrid, Branch and Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="run_variables.html">Variables Related to Run Type</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../physics_timestep.html">Physics Timestep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other_xml_variables.html">Other Useful XML Variables</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../exercises.html">Exercise Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../exercises/xml_length_exercise.html">Exercise 1: Modify run length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../exercises/xml_runtype_exercise.html">Exercise 2: Modify run type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../exercises/xml_timestep_exercise.html">Exercise 3: Change physics timestep</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../namelist/namelist.html">Namelist Modifications</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../namelist/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../namelist/documentation.html">Namelist Variables Documentation</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../namelist/output.html">Customizing Output</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../namelist/output/output_cam.html">Customize CAM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../namelist/output/output_clm.html">Customize CLM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../namelist/output/output_cice.html">Customize CICE output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../namelist/output/output_pop.html">Customize POP output</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../namelist/exercises_overview.html">Exercise Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../namelist/exercises/exercise_cam_output.html">Modify CAM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../namelist/exercises/exercise_tuning_parameter.html">Change a tuning parameter in CAM</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../troubleshooting/troubleshooting.html">Troubleshooting runtime errors</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../troubleshooting/log_files.html">The log files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../troubleshooting/debugging_flag.html">Adding debugging info</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../troubleshooting/exercises_overview.html">Exercise Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../troubleshooting/exercises/troubleshooting_cam.html">Debugging CAM</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../sourcemods/sourcemods.html">Source Modifications</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../sourcemods/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sourcemods/add_fields_cam.html">Source Modification Example</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../sourcemods/exercises_overview.html">Exercise Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../sourcemods/exercises/exercise_add_field.html">Add output variable in CAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../sourcemods/exercises/exercise_rain_threshold.html">Modify the <code class="docutils literal notranslate"><span class="pre">rain_threshold</span></code> in CLM</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../challenge/challenge.html">Challenge Exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../challenge/cam/cam.html">Atmosphere</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/cam/exercise_1.html">1: Control case: F2000climo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/cam/exercise_2.html">2: Historical compset: FHIST</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/cam/exercise_3.html">3: Starting FHIST from spunup state in 1850</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/cam/exercise_4.html">4: Increase orographic height over the western US</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/cam/exercise_5.html">5: Modify sea surface temperature in the tropics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/cam/exercise_6.html">6: Adjust threshold for deep convection over land</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../challenge/paleo/paleo.html">Paleo</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/paleo/exercise_1.html">1: Preindustrial control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/paleo/exercise_2.html">2: mid-Holocene case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/paleo/exercise_3.html">3: Water isotope tracers in CESM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../challenge/cam-chem_waccm/cam-chem_waccm.html">Atmospheric chemistry</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/cam-chem_waccm/exercise_1.html">1: Control case: running with chemistry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/cam-chem_waccm/exercise_2.html">2: Test case: changing the chemistry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/cam-chem_waccm/exercise_3.html">3: Test case: changing the emissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/cam-chem_waccm/visualization.html">4: Visualization option with GEOV</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../challenge/clm_ctsm/clm_ctsm.html">Land</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/clm_ctsm/clm_exercise_1.html">1: Control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/clm_ctsm/clm_exercise_2.html">2: Use the BGC model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/clm_ctsm/clm_exercise_3.html">3: Modify input data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../challenge/pop/pop.html">Ocean</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/pop/pop_exercise_1.html">1: Control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/pop/pop_exercise_2.html">2: Turn off parameterization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/pop/pop_exercise_3.html">3: Modify wind stress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/pop/pop_exercise_4.html">4: Turn on the ecosystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/mom/mom_exercise_5.html">5: Control case using MOM6</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../challenge/cice/cice.html">Sea Ice</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/cice/cice_exercise_1.html">1: Control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/cice/cice_exercise_2.html">2: Tune the albedo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/cice/cice_exercise_3.html">3: Modify the snow conductivity</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../challenge/cism/cism.html">Land Ice</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/cism/cism_exercise_1.html">CISM Challenge Exercise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/cism/cism_exercise_2.html">Looking at the simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/cism/cism_exercise_3.html">Computing ice sheet related sea level change from a CISM simulation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../challenge/bgc/bgc.html">Biogeochemistry</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../challenge/bgc/bgc_exercise_1.html">1: Set up a BGC case</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../diagnostics/diagnostics.html">Diagnostics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../diagnostics/cam/cam.html">Atmosphere</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../diagnostics/cam/basics_cam.html">Basic Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../diagnostics/cam/advanced_cam.html">Advanced Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../diagnostics/clm_ctsm/clm_ctsm.html">Land</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../diagnostics/clm_ctsm/basics_clm.html">Basic Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../diagnostics/pop/pop.html">Ocean</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../diagnostics/pop/basics_pop.html">Basic Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../diagnostics/pop/advanced_pop.html">Advanced Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../diagnostics/mom/basics_mom.html">Basic Plotting with MOM6</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../diagnostics/cice/cice.html">Sea Ice</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../diagnostics/cice/basics_cice.html">Basic Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../diagnostics/cice/advanced_cice.html">Advanced Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../diagnostics/cupid.html">CUPiD</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../diagnostics/additional/additional.html">Additional Topics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../diagnostics/additional/postprocessing.html">Postprocessing data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../diagnostics/additional/cvdp.html">CVDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../diagnostics/additional/analysis_tools.html">CESM analysis tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../diagnostics/additional/adf.html">ADF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../diagnostics/additional/uxarray.html">UXarray</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../resources/resources_overview.html">Resources</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../resources/ncar_hpc.html">NCAR Supercomputer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../resources/ncar_hpc_module.html">Modules on NCAR HPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../resources/tutorial_one_time_setup.html">Tutorial one time setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../resources/tutorial_queue_account.html">Tutorial queue and account</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/terminals.html">Terminal Windows</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../resources/unix.html">UNIX</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../resources/unix-cheatsheet.html">UNIX cheatsheet</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/text_editors.html">Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/github.html">Github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/fortran.html">Fortran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/netcdf.html">NetCDF files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../resources/porting.html">Porting</a></li>
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NCAR/CESM-Tutorial" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NCAR/CESM-Tutorial/issues/new?title=Issue%20on%20page%20%2Fnotebooks/modifications/xml/modify_run_type/hybrid_branch_restart.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../../_sources/notebooks/modifications/xml/modify_run_type/hybrid_branch_restart.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Hybrid, Branch and Startup</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-three-run-types">1. The three run types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#startup">- STARTUP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branch">- BRANCH</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid">- HYBRID</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-use-branch-vs-hybrid">2. When to use branch vs. hybrid?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#restart-files-for-branch-and-hybrid-runs">3. Restart files for branch and hybrid runs</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="hybrid-branch-and-startup">
+<h1>Hybrid, Branch and Startup<a class="headerlink" href="#hybrid-branch-and-startup" title="Link to this heading">#</a></h1>
+<p>The CESM can be initialized in one of three ways: startup, hybrid and branch. These are set with the variable <strong><code class="docutils literal notranslate"><span class="pre">$RUN_TYPE</span></code></strong> in <code class="docutils literal notranslate"><span class="pre">env_run.xml</span></code>.</p>
+<br>
+<hr class="docutils" />
+<section id="the-three-run-types">
+<h2>1. The three run types<a class="headerlink" href="#the-three-run-types" title="Link to this heading">#</a></h2>
+<section id="startup">
+<h3>- STARTUP<a class="headerlink" href="#startup" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>In a startup run (the default), all model components are initialized from the basic <strong>default initial conditions</strong>. The coupler does not need an initial file.</p></li>
+</ul>
+</section>
+<section id="branch">
+<h3>- BRANCH<a class="headerlink" href="#branch" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>In a branch run, all components are initialized using <strong>a consistent set of restart files from a previous run</strong> (determined by the <a class="reference internal" href="run_variables.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">$RUN_REFCASE</span></code></span></a> and <a class="reference internal" href="run_variables.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">$RUN_REFDATE</span></code></span></a> variables in <font face="Courier"><strong>env_run.xml</strong></font>).</p></li>
+<li><p>The case name is generally changed for a branch run, although it does not have to be.</p></li>
+<li><p>In a branch run, setting <a class="reference internal" href="run_variables.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">$RUN_STARTDATE</span></code></span></a> is ignored because the model components obtain the start date from their restart datasets. Therefore, <strong>the start date cannot be changed for a branch run</strong>. This is the same mechanism that is used for performing a restart run (where <code class="docutils literal notranslate"><span class="pre">$CONTINUE_RUN</span></code> is set to TRUE in the <font face="Courier"><strong>env_run.xml</strong></font> file).</p></li>
+<li><p>Branch runs are typically used when sensitivity or parameter studies are required, or when settings for history file output streams need to be modified while still maintaining <strong>bit-for-bit reproducibility</strong>.</p></li>
+</ul>
+</section>
+<section id="hybrid">
+<h3>- HYBRID<a class="headerlink" href="#hybrid" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>A hybrid run indicates that CESM is initialized more like a startup, but uses initialization datasets from a previous case. This is somewhat analogous to a branch run with relaxed restart constraints.</p></li>
+<li><p>A hybrid run allows users to bring together combinations of initial/restart files from a previous case (specified by <a class="reference internal" href="run_variables.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">$RUN_REFCASE</span></code></span></a>) at a given model output date (specified by <a class="reference internal" href="run_variables.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">$RUN_REFDATE</span></code></span></a>). Unlike a branch run, the starting date of a hybrid run (specified by <a class="reference internal" href="run_variables.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">$RUN_STARTDATE</span></code></span></a>) can be modified relative to the reference case.</p></li>
+<li><p>In a hybrid run, the model does not continue in a bit-for-bit fashion with respect to the reference case. The resulting climate, however, should be continuous provided that no model source code or namelists are changed in the hybrid run.</p></li>
+<li><p>The atmosphere is initialized from initial condition files generated by a user-specified CESM simulation. The land, runoff, ocean and ice are initialized from restart files generated by a user-specified CESM simulation. No coupler file is needed.</p></li>
+</ul>
+<br>
+<p>It is important to remember that the <strong><code class="docutils literal notranslate"><span class="pre">$RUN_TYPE</span></code> variable is only relevant when a run is initialized</strong>. Let’s again take a look at the exercises we did in the chapter of <a class="reference internal" href="../run_length/changing_run_length.html"><span class="std std-doc">Changing run length</span></a>:</p>
+<br><div class="alert alert-info">
+<strong>Evaluate your understanding</strong>
+<p>The tutorial version of the CESM simulates ~10 model years per wallclock day on Derecho. The maximum wallclock request is 12 hours.
+If you want to run the model for 100 years, what values should be set for <code class="docutils literal notranslate"><span class="pre">STOP_OPTION</span></code>, <code class="docutils literal notranslate"><span class="pre">STOP_N</span></code> and <code class="docutils literal notranslate"><span class="pre">RESUBMIT</span></code>?</p>
+<p>We worked out that for a total of 100 years, we will need 20 submissions. We can set:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STOP_OPTION</span> <span class="o">=</span> <span class="s1">&#39;nyears&#39;</span><span class="p">,</span> <span class="n">STOP_N</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">RESUBMIT</span> <span class="o">=</span> <span class="mi">19</span>
+</pre></div>
+</div>
+<br>    
+<p>Now, <strong>if you want this run to be a hybrid run, what variables should you modify, and at which stage?</strong></p>
+</div><div class="alert alert-warning">
+<details>   
+   <summary>
+        <img src="https://freesvg.org/img/bulb_on.png" width="20px">
+       <font face="Times New Roman" color='blue' size="4">Hint!</font>
+    </summary>
+<p>The <code class="docutils literal notranslate"><span class="pre">$RUN_TYPE</span></code> variable is only important at the initial run when <code class="docutils literal notranslate"><span class="pre">CONTINUE_RUN</span></code> is set to <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>.
+</details></p>
+</div><div class="alert alert-success">
+<details>   
+   <summary>
+        <img src="https://freesvg.org/img/help-browser.png" width="20px">
+       <font face="Times New Roman" color='blue' size="4">Click here for the solution</font>
+    </summary>
+<p>Set <code class="docutils literal notranslate"><span class="pre">RUN_TYPE='hybrid'</span></code> in <font face="Courier"><strong>env_run.xml</strong></font> before submitting the initial run.</p>
+<p>Bonus question: <br></p>
+<p>What happens if you set <code class="docutils literal notranslate"><span class="pre">run_type='branch'</span></code> after the 2nd resubmission when the <code class="docutils literal notranslate"><span class="pre">CONTINUE_RUN=TRUE</span></code>? <br></p>
+<p>Answer: Nothing changes, because <code class="docutils literal notranslate"><span class="pre">RUN_TYPE</span></code> is only relevant for an initial run when <code class="docutils literal notranslate"><span class="pre">CONTINUE_RUN</span></code> is set to <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>!</p>
+</details>
+</div><br>
+<p>One more!</p>
+<div class="alert alert-info">
+<strong>Evaluate your understanding</strong>
+<p>In the exercise above, if you have set <code class="docutils literal notranslate"><span class="pre">RUN_TYPE='hybrid'</span></code> and <code class="docutils literal notranslate"><span class="pre">RESUBMIT=19</span></code> before the initial run, what are the value of <code class="docutils literal notranslate"><span class="pre">CONTINUE_RUN</span></code>, <code class="docutils literal notranslate"><span class="pre">RESUBMIT</span></code>, and <code class="docutils literal notranslate"><span class="pre">RUN_TYPE</span></code> at the time of:</p>
+<ul class="simple">
+<li><p>the initial submission of 5 years</p></li>
+<li><p>the next submission of 5 years</p></li>
+<li><p>the 3rd run (2nd resubmission) of 5 years?</p></li>
+</ul>
+</div><div class="alert alert-success">
+<details>   
+   <summary>
+        <img src="https://freesvg.org/img/help-browser.png" width="20px">
+       <font face="Times New Roman" color='blue' size="4">Click here for the solution </font>
+    </summary>
+<ul>
+<li><p><strong>the initial submission of 5 years</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">CONTINUE_RUN</span><span class="o">=</span><span class="n">FALSE</span><span class="p">,</span> <span class="n">RESUBMIT</span><span class="o">=</span><span class="mi">19</span><span class="p">,</span> <span class="n">RUN_TYPE</span><span class="o">=</span><span class="s1">&#39;hybrid&#39;</span> 
+</pre></div>
+</div>
+<p>because when the run is first initialized, <code class="docutils literal notranslate"><span class="pre">CONTINUE_RUN=FALSE</span></code><br>
+<br></p>
+</li>
+<li><p><strong>the next submission of 5 years</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CONTINUE_RUN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">,</span> <span class="n">RESUBMIT</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">RUN_TYPE</span><span class="o">=</span><span class="s1">&#39;hybrid&#39;</span>
+</pre></div>
+</div>
+<p>because <code class="docutils literal notranslate"><span class="pre">RESUBMIT&gt;0</span></code>, <code class="docutils literal notranslate"><span class="pre">CONTINUE_RUN</span></code> will automatically switch to <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> after the initial run, but <code class="docutils literal notranslate"><span class="pre">RUN_TYPE</span></code> won’t change. <br>
+<br></p>
+</li>
+<li><p><strong>the 3rd run (2nd resubmission) of 5 years</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CONTINUE_RUN</span><span class="o">=</span><span class="n">TRUE</span><span class="p">,</span> <span class="n">RESUBMIT</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">RUN_TYPE</span><span class="o">=</span><span class="s1">&#39;hybrid&#39;</span> 
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">CONTINUE_RUN</span></code> stays to be <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>, <code class="docutils literal notranslate"><span class="pre">RESUBMIT</span></code> decreases by 1, <code class="docutils literal notranslate"><span class="pre">RUN_TYPE</span></code> won’t change.</p>
+</li>
+</ul>
+</details>
+</div><br>
+<hr class="docutils" />
+<br></section>
+</section>
+<section id="when-to-use-branch-vs-hybrid">
+<h2>2. When to use branch vs. hybrid?<a class="headerlink" href="#when-to-use-branch-vs-hybrid" title="Link to this heading">#</a></h2>
+<p>Branch and hybrid runs are useful if you have an experiment which only slightly differs from your control, but you want to make a slight modification, add history output, or start your simulation from a CESM spun-up initial state and maintaining an exact restart (which mimics what the model would do if it had kept running in the original setup).</p>
+<ul class="simple">
+<li><p><strong>Use a hybrid run</strong>: for most applications where you do NOT need bit for bit restart. You CAN specify a new start date for your model run.</p></li>
+<li><p><strong>Use a branch run</strong>: only for applications which require exact restart. It is typically used when sensitivity or parameter studies are required, or when settings for history file output streams need to be modified while still maintaining bit-for-bit reproducibility. You CANNOT specify a new start date for your model run. It will be assigned by the reference case (<a class="reference internal" href="run_variables.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">$RUN_REFDATE</span></code></span></a>).</p></li>
+</ul>
+<br>
+<hr class="docutils" />
+<br></section>
+<section id="restart-files-for-branch-and-hybrid-runs">
+<h2>3. Restart files for branch and hybrid runs<a class="headerlink" href="#restart-files-for-branch-and-hybrid-runs" title="Link to this heading">#</a></h2>
+<p>For runs that are initialized as hybrid or branch runs, we will need restart/initial files from previous model runs (as specified by the variables, <a class="reference internal" href="run_variables.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">$RUN_REFCASE</span></code></span></a> and <a class="reference internal" href="run_variables.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">$RUN_REFDATE</span></code></span></a>). See the Chapter <a class="reference internal" href="run_variables.html"><span class="std std-doc">Run variables related to run type</span></a> for details.</p>
+<p>Let’s take a look back at the <a class="reference internal" href="../run_length/restarting.html"><span class="std std-doc">Chapter on restart files</span></a> to refresh our memory!</p>
+<p>It is important to note that these required files must be prestaged by the user to the case run directory (<code class="docutils literal notranslate"><span class="pre">$RUNDIR</span></code>) before the model run starts. This is normally done by just copying the contents of the relevant <code class="docutils literal notranslate"><span class="pre">$RUN_REFCASE/rest/$RUN_REFDATE.00000</span></code> directory.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/modifications/xml/modify_run_type"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../modify_run_type.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Modifying the Type of Run</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="run_variables.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Variables Related to Run Type</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-three-run-types">1. The three run types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#startup">- STARTUP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#branch">- BRANCH</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid">- HYBRID</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-use-branch-vs-hybrid">2. When to use branch vs. hybrid?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#restart-files-for-branch-and-hybrid-runs">3. Restart files for branch and hybrid runs</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By NCAR/CGD Staff
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
