@@ -9,7 +9,15 @@ This repository includes materials designed to be an introduction to running the
 
 ## Goals of This Tutorial
 
-**Through this online tutorial you will learn how to run the CESM model, modify the model experiments, and use the model output. These tutorial materials are designed for the CESM version 2 (CESM2)**
+**Through this tutorial, you will learn how to:
+
+- Create and run CESM simulations.
+- Understand the structure and configuration of CESM experiments.
+- Modify model settings, forcings, and input datasets.
+- Analyze and interpret model output.
+- Design and perform simple scientific experiments using CESM.
+
+The materials are primarily based on CESM3 concepts and workflows, although many of the principles apply to other versions of CESM as well.**
 
 ## Yearly In-Person Tutorials
 
@@ -22,8 +30,8 @@ This material is based upon work supported by the National Center for Atmospheri
 ## Acknowledgements
 
 A number of people have been critical to this effort, including:
-- Cecile Hannay, David Bailey, Peter Lawrence, Hui Li, Sophia Macarewich, Jesse Nusbaumer, Adam Phillips, and Kate Thayer-Calder who serve on the CESM tutorial committee and put together the tutorial materials.
-- Alice DuVivier, Brian Dobbins, Gunter Leguy, and Gustavo Marques, who helped test materials and have contributed substantially.
+- Cecile Hannay, Alice DuVivier, David Bailey, Peter Lawrence, Hui Li, Sophia Macarewich, Jesse Nusbaumer, Adam Phillips, and Kate Thayer-Calder who serve on the CESM tutorial committee and put together the tutorial materials.
+- Brian Dobbins, Gunter Leguy, and Gustavo Marques, who helped test materials and have contributed substantially.
 - Elizabeth Faircloth, who supports the CESM program administratively and without whom everything would probably fall apart.
 - David Lawrence, who supported this effort as CESM chief scientist.
 - Testers, others...
