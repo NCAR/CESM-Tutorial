@@ -113,7 +113,6 @@ chapters:
     - file: notebooks/challenge/cam/exercise_3
     - file: notebooks/challenge/cam/exercise_4
     - file: notebooks/challenge/cam/exercise_5
-    - file: notebooks/challenge/cam/exercise_6
   - file: notebooks/challenge/paleo/paleo
     sections:
     - file: notebooks/challenge/paleo/exercise_1
