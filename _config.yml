@@ -8,6 +8,8 @@ logo: images/ncar_logo.png
 sphinx:
   config:
     html_show_copyright: false
+    html_theme_options:
+      show_navbar_depth: 3
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
