@@ -108,6 +108,7 @@ chapters:
   sections:
   - file: notebooks/challenge/cam/cam
     sections:
+    - file: notebooks/challenge/cam/exercise_0
     - file: notebooks/challenge/cam/exercise_1
     - file: notebooks/challenge/cam/exercise_2
     - file: notebooks/challenge/cam/exercise_3
