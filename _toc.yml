@@ -84,6 +84,7 @@ chapters:
     - file: notebooks/namelist/output/output_mom
   - file: notebooks/namelist/exercises_overview
     sections:
+    - file: notebooks/namelist/exercises/exercise_cam_interpolate
     - file: notebooks/namelist/exercises/exercise_cam_output
     - file: notebooks/namelist/exercises/exercise_tuning_parameter
 
