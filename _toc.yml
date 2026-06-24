@@ -81,7 +81,7 @@ chapters:
     - file: notebooks/namelist/output/output_cam
     - file: notebooks/namelist/output/output_clm
     - file: notebooks/namelist/output/output_cice
-    - file: notebooks/namelist/output/output_pop
+    - file: notebooks/namelist/output/output_mom
   - file: notebooks/namelist/exercises_overview
     sections:
     - file: notebooks/namelist/exercises/exercise_cam_output
