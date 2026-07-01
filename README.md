@@ -9,7 +9,7 @@ This repository includes materials designed to be an introduction to running the
 
 ## Goals of This Tutorial
 
-**Through this tutorial, you will learn how to:
+<strong>Through this tutorial, you will learn how to:
 
 - Create and run CESM simulations.
 - Understand the structure and configuration of CESM experiments.
@@ -17,7 +17,7 @@ This repository includes materials designed to be an introduction to running the
 - Analyze and interpret model output.
 - Design and perform simple scientific experiments using CESM.
 
-The materials are primarily based on CESM3 concepts and workflows, although many of the principles apply to other versions of CESM as well.**
+The materials are primarily based on CESM3 concepts and workflows, although many of the principles apply to other versions of CESM as well.</strong>
 
 ## Yearly In-Person Tutorials
 
