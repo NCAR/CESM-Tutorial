@@ -81,9 +81,10 @@ chapters:
     - file: notebooks/namelist/output/output_cam
     - file: notebooks/namelist/output/output_clm
     - file: notebooks/namelist/output/output_cice
-    - file: notebooks/namelist/output/output_pop
+    - file: notebooks/namelist/output/output_mom
   - file: notebooks/namelist/exercises_overview
     sections:
+    - file: notebooks/namelist/exercises/exercise_cam_interpolate
     - file: notebooks/namelist/exercises/exercise_cam_output
     - file: notebooks/namelist/exercises/exercise_tuning_parameter
 
@@ -130,13 +131,12 @@ chapters:
     - file: notebooks/challenge/clm_ctsm/clm_exercise_1
     - file: notebooks/challenge/clm_ctsm/clm_exercise_2
     - file: notebooks/challenge/clm_ctsm/clm_exercise_3
-  - file: notebooks/challenge/pop/pop
+  - file: notebooks/challenge/mom/mom
     sections:
-    - file: notebooks/challenge/pop/pop_exercise_1
-    - file: notebooks/challenge/pop/pop_exercise_2
-    - file: notebooks/challenge/pop/pop_exercise_3
-    - file: notebooks/challenge/pop/pop_exercise_4
-    - file: notebooks/challenge/mom/mom_exercise_5
+    - file: notebooks/challenge/mom/mom_exercise_1
+    - file: notebooks/challenge/mom/mom_exercise_2
+    - file: notebooks/challenge/mom/mom_exercise_3
+    - file: notebooks/challenge/mom/mom_exercise_4
   - file: notebooks/challenge/cice/cice
     sections:
     - file: notebooks/challenge/cice/cice_exercise_1
@@ -162,11 +162,10 @@ chapters:
   - file: notebooks/diagnostics/clm_ctsm/clm_ctsm
     sections:
     - file: notebooks/diagnostics/clm_ctsm/basics_clm
-  - file: notebooks/diagnostics/pop/pop
+  - file: notebooks/diagnostics/mom/mom
     sections:
-    - file: notebooks/diagnostics/pop/basics_pop
-    - file: notebooks/diagnostics/pop/advanced_pop
     - file: notebooks/diagnostics/mom/basics_mom
+    - file: notebooks/diagnostics/mom/advanced_mom
   - file: notebooks/diagnostics/cice/cice
     sections:
     - file: notebooks/diagnostics/cice/basics_cice
