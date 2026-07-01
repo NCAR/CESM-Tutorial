@@ -5,6 +5,10 @@ title: CESM Tutorial
 author: NCAR/CGD Staff
 logo: images/ncar_logo.png
 
+# Removing CESM2 Porting for 2026 tutorial (need to update to CESM3 in future)
+exclude_patterns:
+  - notebooks/resources/porting.ipynb
+
 sphinx:
   config:
     html_show_copyright: false
