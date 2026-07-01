@@ -194,6 +194,6 @@ chapters:
   - file: notebooks/resources/github
   - file: notebooks/resources/fortran
   - file: notebooks/resources/netcdf
-  - file: notebooks/resources/porting
+  # - file: notebooks/resources/porting
 
 
