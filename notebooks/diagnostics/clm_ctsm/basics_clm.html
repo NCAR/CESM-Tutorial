@@ -1,0 +1,1168 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Basic Land Model Plotting &#8212; CESM Tutorial</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/diagnostics/clm_ctsm/basics_clm';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Sea Ice" href="../cice/cice.html" />
+    <link rel="prev" title="Land" href="clm_ctsm.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/ncar_logo.png" class="logo__image only-light" alt="CESM Tutorial - Home"/>
+    <script>document.write(`<img src="../../../_static/ncar_logo.png" class="logo__image only-dark" alt="CESM Tutorial - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../intro/intro_overview.html">Introduction</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../intro/components.html">What is CESM ?</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/coupling.html">CIME (Advanced)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../intro/cesm_webpage.html">CESM Webpage</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/project.html">CESM Working Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/getting_involved.html">Getting Involved</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/getting_help.html">Getting Help</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../intro/community_experiments.html">Community Experiments</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/cesm_expts/clim_data_guide.html">Climate Data Guide</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../prereqs/prereqs_overview.html">Prerequisites for Success</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../prereqs/exercises.html">Exercise Overview</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../basics/basics_overview.html">Basics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/cesm_workspaces.html">Workspaces</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../basics/code_overview.html">CESM code</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/code/git_download_cesm.html">Download CESM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/code/cesm_code_explore.html">Explore CESM Code</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../basics/cesm_workflow.html">CESM Workflow</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/create_newcase.html">Create New Case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/case_setup.html">Case Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/case_build.html">Case Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/case_submit.html">Case Submit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/model_output.html">Model Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/checking_jobs_and_status.html">Checking Your Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/create_clone.html">Create Clone (Advanced)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../basics/exercises_overview.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/exercises/first_B1850.html">Your first CESM run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/exercises/second_B1850.html">Extending your run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/exercises/examine_history_B1850.html">Examine History Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/exercises/extra.html">Explore Further</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/exercises/review_questions.html">Review Questions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modifications/xml.html">Simple XML Modifications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modifications/xml/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modifications/xml/model_control_files.html">How to Modify XML Files (*.xml)</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modifications/xml/run_length.html">Controlling Run Length</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/run_length/starting_and_stopping.html">Starting and Stopping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/run_length/restarting.html">Restarting a Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/run_length/changing_run_length.html">Changing Run Length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/run_length/timing_files.html">Using Timing Files</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modifications/xml/modify_run_type.html">Modifying the Type of Run</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/modify_run_type/hybrid_branch_restart.html">Hybrid, Branch and Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/modify_run_type/run_variables.html">Variables Related to Run Type</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modifications/xml/physics_timestep.html">Physics Timestep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modifications/xml/other_xml_variables.html">Other Useful XML Variables</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modifications/xml/exercises.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/exercises/xml_length_exercise.html">Exercise 1: Modify run length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/exercises/xml_runtype_exercise.html">Exercise 2: Modify run type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/exercises/xml_timestep_exercise.html">Exercise 3: Change physics timestep</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../namelist/namelist.html">Namelist Modifications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../namelist/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../namelist/documentation.html">Namelist Variables Documentation</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../namelist/output.html">Customizing Output</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_cam.html">Customize CAM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_clm.html">Customize CLM Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_cice.html">Customize CICE output</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_mom.html">Customize MOM output</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../namelist/exercises_overview.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/exercises/exercise_cam_interpolate.html">Interpolate CAM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/exercises/exercise_cam_output.html">Modify CAM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/exercises/exercise_tuning_parameter.html">Change a tuning parameter in CAM</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../troubleshooting/troubleshooting.html">Troubleshooting runtime errors</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../troubleshooting/log_files.html">The log files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../troubleshooting/debugging_flag.html">Adding debugging info</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../troubleshooting/exercises_overview.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../troubleshooting/exercises/troubleshooting_cam.html">Diagnose a runtime failure</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../sourcemods/sourcemods.html">Source Modifications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sourcemods/overview.html">Source code modifications with SourceMods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sourcemods/add_fields_cam.html">Source Modification Example</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../sourcemods/exercises_overview.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../sourcemods/exercises/exercise_add_field.html">Add output variable in CAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sourcemods/exercises/exercise_rain_threshold.html">Modify the <code class="docutils literal notranslate"><span class="pre">rain_threshold</span></code> in CLM</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../challenge/challenge.html">Challenge Exercises</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/cam/cam.html">Atmosphere</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam/exercise_1.html">1: Control case: FHISTC_LTso</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam/exercise_2.html">2: Pre-Industrial Compset: F1850C_LTso</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam/exercise_3.html">3: Starting a Historical Simulation from a Spun-Up State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam/exercise_4.html">4: Modify sea surface temperature in the tropics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam/exercise_5.html">5: Adjust threshold for deep convection over land</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/paleo/paleo.html">Paleo</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/paleo/exercise_1.html">1: Preindustrial control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/paleo/exercise_2.html">2: mid-Holocene case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/paleo/exercise_3.html">3: Water isotope tracers in CESM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/cam-chem_waccm/cam-chem_waccm.html">Atmospheric chemistry</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam-chem_waccm/exercise_1.html">1: Control case: running with chemistry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam-chem_waccm/exercise_2.html">2: Test case: changing the chemistry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam-chem_waccm/exercise_3.html">3: Test case: changing the emissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam-chem_waccm/visualization.html">4: Visualization option with GEOV</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/clm_ctsm/clm_ctsm.html">Land</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/clm_ctsm/clm_exercise_1.html">1: Control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/clm_ctsm/clm_exercise_2.html">2: Use the BGC model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/clm_ctsm/clm_exercise_3.html">3: Modify input data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/mom/mom.html">Ocean</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/mom/mom_exercise_1.html">1: Control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/mom/mom_exercise_2.html">2: Turn off submesoscale parameterization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/mom/mom_exercise_3.html">3: Modify wind stress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/mom/mom_exercise_4.html">4: Turn on the ecosystem</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/cice/cice.html">Sea Ice</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cice/cice_exercise_1.html">1: Control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cice/cice_exercise_2.html">2: Tune the albedo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cice/cice_exercise_3.html">3: Modify the snow conductivity</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/cism/cism.html">Land Ice</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cism/cism_exercise_1.html">CISM Challenge Exercise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cism/cism_exercise_2.html">Looking at the simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cism/cism_exercise_3.html">Computing ice sheet related sea level change from a CISM simulation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/bgc/bgc.html">Biogeochemistry</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/bgc/bgc_exercise_1.html">1: Set up a BGC case</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../diagnostics.html">Diagnostics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cam/cam.html">Atmosphere</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cam/basics_cam.html">Basic Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cam/advanced_cam.html">Advanced Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="clm_ctsm.html">Land</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Basic Land Model Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cice/cice.html">Sea Ice</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cice/basics_cice.html">Basic Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cice/advanced_cice.html">Advanced Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../cupid.html">CUPiD</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../additional/additional.html">Additional Topics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../additional/postprocessing.html">Postprocessing data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../additional/cvdp.html">CVDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../additional/analysis_tools.html">CESM analysis tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../additional/adf.html">ADF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../additional/uxarray.html">UXarray</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/resources_overview.html">Resources</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../resources/ncar_hpc.html">NCAR Supercomputer</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/ncar_hpc_module.html">Modules on NCAR HPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/tutorial_one_time_setup.html">Tutorial one time setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/tutorial_queue_account.html">Tutorial queue and account</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/terminals.html">Terminal Windows</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../resources/unix.html">UNIX</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/unix-cheatsheet.html">UNIX cheatsheet</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/text_editors.html">Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/github.html">Github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/fortran.html">Fortran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/netcdf.html">NetCDF files</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/diagnostics/clm_ctsm/basics_clm.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Basic Land Model Plotting</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-visualizations">Global Visualizations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-objectives">Notebook Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-formatting-data">1. Reading and formatting data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-to-the-data">1.1 Point to the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#printing-information-about-the-dataset-is-helpful-for-understanding-your-data">Printing information about the dataset is helpful for understanding your data.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-calculations">1.2 Simple Calculations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting">2. Plotting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easy-plots-using-uxarray">2.1 Easy plots using Uxarray</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-differences">2.2 Calculating differences</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-time-series">2.3 Calculating Time Series</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-time-series">2.3.1 Global time series</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#next-calculate-and-plot-a-global-weighted-sum">Next, calculate and plot a global weighted sum</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subset-data-for-a-point">2.3.2 Subset data for a point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-an-annual-weighted-mean-and-create-customized-plots">2.4 Calculate an annual weighted mean and create customized plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-monthly-weights">2.4.1 Calculate monthly weights</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-credit-challenge">Extra credit challenge</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="basic-land-model-plotting">
+<h1>Basic Land Model Plotting<a class="headerlink" href="#basic-land-model-plotting" title="Link to this heading">#</a></h1>
+<p><strong>BEFORE BEGINNING THIS EXERCISE</strong> -  Check that your kernel (upper right corner, above) is <code class="docutils literal notranslate"><span class="pre">cupid-analysis</span></code>. This should be the default kernel, but if it is not, click on that button and select <code class="docutils literal notranslate"><span class="pre">cupid-analysis</span></code>.  Note that if you do not have <code class="docutils literal notranslate"><span class="pre">cupid-analysis</span></code> as an option in your environment list, go to the <code class="docutils literal notranslate"><span class="pre">diagnostics/cupid.ipynb</span></code> notebook, and run the first two cells.</p>
+<p>This activity was developed primarily by Will Wieder.</p>
+<hr class="docutils" />
+<section id="global-visualizations">
+<h2>Global Visualizations<a class="headerlink" href="#global-visualizations" title="Link to this heading">#</a></h2>
+<p>These are examples of typical variables and plots that we look at in land model diagnostics. You can see examples of <a class="reference external" href="https://webext.cgd.ucar.edu/BLTHIST/b.e30_alpha08o.BHISTC_MTt4s.ne30_t232_wgx3.330_branch/lnd/b.e30_alpha08o.BHISTC_MTt4s.ne30_t232_wgx3.330_branch_1850_2021_vs_b.e30_alpha07g.BHISTC_LTso.ne30_t232_wgx3.271_1850_2013/website/">land model output from CESM3 development runs here</a>. These plots were generated by the python-based land diagnostic framework (LDF), which was shameless built on work from the atmosphere diagnostics framework (<a class="reference external" href="https://github.com/NCAR/ADF">ADF</a>).  You can also see the sample plots from the older, ncl-based <a class="reference external" href="https://www2.cesm.ucar.edu/experiments/cesm2.0/land/diagnostics/clm_diag_PCKG.html">land model dagnostics package here</a>. More information on CUPiD: CESM Unified Postprocessing and Diagnostics is here: <a class="reference external" href="https://github.com/NCAR/CUPiD">CUPID</a>.</p>
+</section>
+<section id="notebook-objectives">
+<h2>Notebook Objectives<a class="headerlink" href="#notebook-objectives" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Become familiar with Jupyter Notebooks</p></li>
+<li><p>Begin getting acquainted with python packages and their utilities</p></li>
+<li><p>Plot a map and timeseries of global results</p></li>
+</ol>
+<hr class="docutils" />
+<p>History files from CESM are saved in netcdf format (denoted with the <code class="docutils literal notranslate"><span class="pre">.nc</span></code> file extension), a file format commonly used for storing large, multi-dimensional scientific variables.
+Netcdf files are platform independent and self-describing; each file includes metadata that describes the data, including: <strong>variables</strong>, <strong>dimensions</strong>, and <strong>attributes</strong>.</p>
+<hr class="docutils" />
+<p><em>We’ll start by loading some packages</em></p>
+<p>The first step is to import the libraries needed to plot the data. Here we will use <code class="docutils literal notranslate"><span class="pre">uxarray</span></code> as a tool to read the netCDF file and plot results. Uxarray is like xarray, but it operates directly on unstructured data, like results from the SE dycore used in CESM3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># python packages</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">glob</span><span class="w"> </span><span class="kn">import</span> <span class="n">glob</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">os.path</span><span class="w"> </span><span class="kn">import</span> <span class="n">join</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">uxarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ux</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">netCDF4</span><span class="w"> </span><span class="kn">import</span> <span class="n">num2date</span>
+
+<span class="c1"># some resources for plotting</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.path</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mpath</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.feature</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cfeature</span>
+
+<span class="c1"># And to avoid anoying warnings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">ux</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<span class="c1"># Working with ux version 2025.6.0</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-info">
+<p><b>NOTE:</b>  This example largely uses features of uxarray and
+matplotlib packages. We won’t go into the basics
+of python or features included in these packages, but there are lots of
+resources to help get you started. Some of these are listed below.</p>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ncar.github.io/python-tutorial/tutorials/yourfirst.html">NCAR python tutorial</a>, which introduces python, the conda package manager, and more on github.</p></li>
+<li><p><a class="reference external" href="https://ncar.github.io/esds/blog/tag/python-tutorial-series/">NCAR ESDS tutorial series</a>, features several recorded tutorials on a wide variety of topics.</p></li>
+<li><p><a class="reference external" href="https://uxarray.readthedocs.io/en/latest/">Uxarray</a>, which is actively being developed</p></li>
+<li><p><a class="reference external" href="https://projectpythia.org/">Project Pythia</a> links to lots of great resources!</p></li>
+<li><p><a class="reference external" href="https://geocat-examples.readthedocs.io/en/latest/">GeoCAT examples</a>, with some nice plotting examples</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="reading-and-formatting-data">
+<h2>1. Reading and formatting data<a class="headerlink" href="#reading-and-formatting-data" title="Link to this heading">#</a></h2>
+<p><strong>Note</strong>: the drop-down solutions, below, assume you used b1850.run_length output for plotting for this section</p>
+<section id="point-to-the-data">
+<h3>1.1 Point to the data<a class="headerlink" href="#point-to-the-data" title="Link to this heading">#</a></h3>
+<p>The first step is to grab land (CTSM) history files from a provided CESM model run</p>
+<p>For this example we will use:</p>
+<ul class="simple">
+<li><p>reflected solar radiation (FSR),</p></li>
+<li><p>incident solar radiation (FSDS), and</p></li>
+<li><p>exposed leaf area index (ELAI)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here we point to the archive directory from a longer B1850 simulation</span>
+<span class="n">run_name</span> <span class="o">=</span> <span class="s2">&quot;b1850.five_years&quot;</span> <span class="c1"># Name of CESM run</span>
+<span class="n">monthly_output_path</span> <span class="o">=</span> <span class="s2">&quot;/glade/campaign/cesm/tutorial/diagnostics_tutorial_archive/&quot;</span><span class="o">+</span><span class="n">run_name</span><span class="o">+</span><span class="s2">&quot;/lnd/hist/&quot;</span>
+
+<span class="c1"># Create path to all files, including unix wild card for all dates</span>
+<span class="n">files</span> <span class="o">=</span> <span class="p">[]</span> 
+<span class="n">files</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">monthly_output_path</span><span class="o">+</span><span class="n">run_name</span><span class="o">+</span> <span class="s2">&quot;.clm2.h0a.*&quot;</span><span class="p">))))</span>
+
+<span class="c1"># List of variables to read into our dataset</span>
+<span class="n">load_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;FSDS&#39;</span><span class="p">,</span> <span class="s1">&#39;FSR&#39;</span><span class="p">,</span> <span class="s1">&#39;ELAI&#39;</span><span class="p">,</span> <span class="s1">&#39;landfrac&#39;</span><span class="p">,</span> <span class="s1">&#39;area&#39;</span><span class="p">]</span>
+
+<span class="c1"># Define preprocess function to only keep specific variables</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">preprocess_vars</span><span class="p">(</span><span class="n">ds</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">ds</span><span class="p">[</span><span class="n">load_vars</span><span class="p">]</span>
+    
+<span class="c1"># uxarray needs to know about the grid file name.  </span>
+<span class="c1"># We&#39;ll get this from the mesh file used in our ne30 case</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="s1">&#39;/glade/campaign/cesm/cesmdata/inputdata/share/meshes/ne30pg3_ESMFmesh_cdf5_c20211018.nc&#39;</span>
+
+<span class="c1"># File IO can a little slow, but we&#39;re only reading in 5 years of data</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">ux</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">60</span><span class="p">],</span> <span class="n">preprocess</span><span class="o">=</span><span class="n">preprocess_vars</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><b>NOTE:</b> These are the raw history files that CTSM writes out.</p>
+<p>By default, they include grid cell averaged monthly means for different state and flux variables (<code class="docutils literal notranslate"><span class="pre">h0a</span></code>).</p>
+<div class="alert alert-block alert-info">
+    <b>TIP:</b> If you want to look at other variables, the <b>fields</b> variable in the cell below is where you can modify what we're reading off of the CLM history files.
+</div>
+<section id="printing-information-about-the-dataset-is-helpful-for-understanding-your-data">
+<h4>Printing information about the dataset is helpful for understanding your data.<a class="headerlink" href="#printing-information-about-the-dataset-is-helpful-for-understanding-your-data" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><em>What dimensions do your data have?</em></p></li>
+<li><p><em>What are the coordinate variables?</em></p></li>
+<li><p><em>What variables are we looking at?</em></p></li>
+<li><p><em>Is there other helpful information, or are there attributes in the dataset we should be aware of?</em></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print information about the dataset</span>
+<span class="n">ds</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also print information about the variables in your dataset. The example below prints information about one of the data variables we read in. You can modify this cell to look at some of the other variables in the dataset.</p>
+<p><em>What are the units, long name, and dimensions of your data?</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="o">.</span><span class="n">FSDS</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="simple-calculations">
+<h2>1.2 Simple Calculations<a class="headerlink" href="#simple-calculations" title="Link to this heading">#</a></h2>
+<p>To begin with we’ll look at albedo that’s simulated by the model.</p>
+<p>Albedo can be calculated in several different ways, but the calculations use solar radiation terms that are handled within CTSM.</p>
+<p>Here we’ll look at ‘all sky albedo’, which is the ratio of reflected to incoming solar radiation (<strong>FSR/FSDS</strong>).
+Other intereresting variables might include latent heat flux or gross primary productivity.</p>
+<p>We will add this as a new variable in the dataset and add appropriate metadata.</p>
+<p><em>When doing calculations, it is important to avoid dividing by zero. Use the <code class="docutils literal notranslate"><span class="pre">.where</span></code> function for this purpose</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;ASA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">FSR</span><span class="o">/</span><span class="n">ds</span><span class="o">.</span><span class="n">FSDS</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">FSDS</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ds</span><span class="p">[</span><span class="s1">&#39;ASA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;unitless&#39;</span>
+<span class="n">ds</span><span class="p">[</span><span class="s1">&#39;ASA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;All sky albedo&#39;</span>
+<span class="c1"># Note, attributes aren&#39;t being assigned correctly</span>
+<span class="n">ds</span><span class="p">[</span><span class="s1">&#39;ASA&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+</section>
+<hr class="docutils" />
+<section id="plotting">
+<h2>2. Plotting<a class="headerlink" href="#plotting" title="Link to this heading">#</a></h2>
+<section id="easy-plots-using-uxarray">
+<h3>2.1 Easy plots using Uxarray<a class="headerlink" href="#easy-plots-using-uxarray" title="Link to this heading">#</a></h3>
+<p>To get a first look at the data, we can plot a month of data from the simulation, selecting the month using the <code class="docutils literal notranslate"><span class="pre">.isel</span></code> function.</p>
+<ul class="simple">
+<li><p>We will plot exposed leaf area index (variable = <code class="docutils literal notranslate"><span class="pre">ELAI</span></code>). Note that we select the variable by specifying our dataset, <code class="docutils literal notranslate"><span class="pre">ds</span></code>, and the variable.</p></li>
+<li><p>We also have to deal with time somehow, here we’ll just plot the max value</p></li>
+</ul>
+<p><em>More plotting examples are on the <a class="reference external" href="https://docs.Uxarray.dev/en/latest/user-guide/plotting.html">Uxarray web site</a></em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For LAI plots we&#39;ll make &#39;dead&#39; grids really stand out</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis_r</span>
+<span class="n">cmap</span><span class="o">.</span><span class="n">set_under</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;deeppink&#39;</span><span class="p">)</span> 
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap</span><span class="o">.</span><span class="n">resampled</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+
+<span class="n">domain</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">85</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">Robinson</span><span class="p">()},</span>
+                        <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="o">.</span><span class="n">set_global</span><span class="p">()</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_extent</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+<span class="n">raster</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">ELAI</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_raster</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
+    <span class="n">raster</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">axes</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">()</span> <span class="o">+</span> <span class="n">axes</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">img</span><span class="o">.</span><span class="n">set_clim</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">levels</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">vmax</span><span class="o">=</span><span class="n">levels</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">run_name</span><span class="o">+</span><span class="s1">&#39; max LAI&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-success">   
+<details>
+<summary><font face="Times New Roman" color='blue'>Click here for figure</font></summary><br>
+<p><img alt="plot example" src="../../../_images/basic_plots_maxELAI.png" /></p>
+<p><em><p style="text-align: center;"> Figure: maximum monthly exposed leaf area index (ELAI) </p></em></p>
+</details>
+</div></section>
+<hr class="docutils" />
+<section id="calculating-differences">
+<h3>2.2 Calculating differences<a class="headerlink" href="#calculating-differences" title="Link to this heading">#</a></h3>
+<p>We can calculate the differences between the maximum and minimum of the
+simulation to see how much all sky albedo (<code class="docutils literal notranslate"><span class="pre">ASA</span></code>) changes throughout the year.</p>
+<p>Below we’ll plot the max, min, and difference plots</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap</span><span class="o">.</span><span class="n">resampled</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span>
+          <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Max Albedo&#39;</span><span class="p">,</span> <span class="s1">&#39;Min Albedo&#39;</span><span class="p">,</span> <span class="s1">&#39;Max-min difference&#39;</span><span class="p">]</span>
+<span class="n">domain</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                        <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">Robinson</span><span class="p">()},</span>
+                        <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">9</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_global</span><span class="p">()</span>
+<span class="c1">#    axes[i].set_extent(domain, ccrs.PlateCarree())</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># max</span>
+        <span class="n">raster</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">ASA</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_raster</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="c1"># min</span>
+        <span class="n">raster</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">ASA</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_raster</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> <span class="c1"># difference</span>
+        <span class="n">raster</span> <span class="o">=</span> <span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">ASA</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="n">ds</span><span class="o">.</span><span class="n">ASA</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">to_raster</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    
+    <span class="n">img</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
+        <span class="n">raster</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">()</span> <span class="o">+</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
+        <span class="p">)</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">set_clim</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">levels</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">vmax</span><span class="o">=</span><span class="n">levels</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+    <span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Questions:</strong></p>
+<ul class="simple">
+<li><p>How do you think albedo changes at different times of year?</p></li>
+<li><p>What regions have the largest difference in their max and min albedos</p></li>
+<li><p><strong>What’s causing these albedo changes</strong> in different regions?</p></li>
+</ul>
+<div class="alert alert-success">   
+<details>
+<summary><font face="Times New Roman" color='blue'>Click here for figure</font></summary><br>
+<p><img alt="plot example" src="../../../_images/basic_plots_MaxMinASA.png" /></p>
+<p><em><p style="text-align: center;"> Figure: maximum, minumum and difference in monthly all sky albedo (ASA)</p></em></p>
+</details>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="calculating-time-series">
+<h2>2.3 Calculating Time Series<a class="headerlink" href="#calculating-time-series" title="Link to this heading">#</a></h2>
+<p>As above, the plotting function we use here requires data to be 1D or 2D. Therefore, to plot a time series we either need to average over an area or select a single point.</p>
+<section id="global-time-series">
+<h3>2.3.1 Global time series<a class="headerlink" href="#global-time-series" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Calculate weights:</p></li>
+</ol>
+<ul class="simple">
+<li><p>land area <code class="docutils literal notranslate"><span class="pre">la</span></code> that is the product of land fraction (fraction of land area in each grid cell) and the total area of the grid cell (which changes by latitude). Units are the same as area.</p></li>
+<li><p>land weights <code class="docutils literal notranslate"><span class="pre">weights</span></code>, the fractional weight that each grid makes to the global total, is calculated as the land area of each grid cell divided by the global sum of the land area.</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Use weights to calcualte global sums</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate land area and weights</span>
+<span class="n">ds</span><span class="p">[</span><span class="s1">&#39;la&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">area</span> <span class="o">*</span> <span class="n">ds</span><span class="o">.</span><span class="n">landfrac</span><span class="p">)</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ds</span><span class="p">[</span><span class="s1">&#39;la&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;la&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1e6</span>  <span class="c1">#converts from land area from km2 to m2 </span>
+<span class="n">ds</span><span class="p">[</span><span class="s1">&#39;la&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;m^2&#39;</span>
+<span class="n">ds</span><span class="p">[</span><span class="s1">&#39;weights&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;la&#39;</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;la&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="c1"># Check that weights sum to 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sum land weights&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;weights&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+<span class="c1"># quick plot (this is actually really slow) and it messes up plotting later in the notebook</span>
+
+<span class="n">ds</span><span class="p">[</span><span class="s1">&#39;weights&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Land Weights&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Look:</strong></p>
+<ul class="simple">
+<li><p>How is grid area different on the SE grid (above) compared to the FV grid below?</p></li>
+<li><p>What else do you notice about the plotting from uxarray on the SE grid and xarray on the FV grid?</p></li>
+</ul>
+<div class="alert alert-success">   
+<details>
+<summary><font face="Times New Roman" color='blue'>Click here for to see weights on SE and FV grids</font></summary><br>
+<p><em><p style="text-align: center;"> Figure: Weights from SE grid (upper plot) vs. the FV grid (lower plot) </p></em></p>
+<p><img alt="plot example" src="../../../_images/basic_plots_SEweights.png" />
+<img alt="plot example" src="../../../_images/basics_plot_71.png" /></p>
+</details>
+</div><section id="next-calculate-and-plot-a-global-weighted-sum">
+<h4>Next, calculate and plot a global weighted sum<a class="headerlink" href="#next-calculate-and-plot-a-global-weighted-sum" title="Link to this heading">#</a></h4>
+<div class="alert alert-block alert-info">
+<p><b>NOTE:</b>  You will likely want to calculate global weighted sum for a variety of different variables. For variables that have area-based units (e.g. GPP, gC/<b>m^2</b>/s), you need to use the land area variable when calculating a global sum. <b> Remember to pay attention to the units and apply any necessary conversions!</b> Keep in mind that grid cell area is reported in km^2.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculated global mean using weights</span>
+<span class="c1">## make sure you pay attention to units!</span>
+<span class="c1"># Plotting here is easier if we convert to an xarray dataset</span>
+<span class="n">global_mean</span> <span class="o">=</span> <span class="p">(</span><span class="n">ds</span> <span class="o">*</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;weights&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;n_face&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plotVars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ELAI&#39;</span><span class="p">,</span><span class="s1">&#39;ASA&#39;</span><span class="p">,</span> <span class="s1">&#39;FSDS&#39;</span><span class="p">,</span><span class="s1">&#39;FSR&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">plotVars</span><span class="p">)):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">global_mean</span><span class="p">[</span><span class="n">plotVars</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span> 
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Global mean &#39;</span><span class="o">+</span><span class="n">run_name</span><span class="p">)</span> <span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-success">   
+<details>
+<summary><font face="Times New Roman" color='blue'>Click here for the solution</font></summary><br>
+<p><img alt="plot example" src="../../../_images/basic_plots_globalTS.png" /></p>
+<p><em><p style="text-align: center;"> Figure: Plotting solution for global mean timeseries. </p></em></p>
+</details>
+</div></section>
+</section>
+<section id="subset-data-for-a-point">
+<h3>2.3.2 Subset data for a point<a class="headerlink" href="#subset-data-for-a-point" title="Link to this heading">#</a></h3>
+<p><em>NOTE</em> Subsetting currently only works on data arrays in uxarray</p>
+<p>In this setion we’ll:</p>
+<ol class="arabic simple">
+<li><p>Define the center point [longitude, latitude] in degrees</p></li>
+<li><p>Subset the dataaray for the nearest neighbor point</p></li>
+<li><p>Plot using xarray</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Define the center point [longitude, latitude] in degrees</span>
+<span class="n">point_coord</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">105.27</span><span class="p">,</span> <span class="mf">40.01</span><span class="p">]</span>  <span class="c1"># Boulder, CO example</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plotVars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ELAI&#39;</span><span class="p">,</span><span class="s1">&#39;ASA&#39;</span><span class="p">,</span> <span class="s1">&#39;FSDS&#39;</span><span class="p">,</span><span class="s1">&#39;FSR&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">plotVars</span><span class="p">)):</span>
+    <span class="n">subset_ds</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="n">plotVars</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">subset</span><span class="o">.</span><span class="n">nearest_neighbor</span><span class="p">(</span>
+        <span class="n">center_coord</span><span class="o">=</span><span class="n">point_coord</span><span class="p">,</span>
+        <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>                   <span class="c1"># Number of neighbors to return</span>
+        <span class="n">element</span><span class="o">=</span><span class="s2">&quot;face centers&quot;</span> <span class="c1"># Can also be &quot;nodes&quot; or &quot;edge centers&quot;</span>
+    <span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">subset_ds</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span> 
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">run_name</span><span class="o">+</span><span class="s1">&#39; subset for Boulder, CO&#39;</span><span class="p">)</span> <span class="p">;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-success">   
+<details>
+<summary><font face="Times New Roman" color='blue'>Click here for the solution</font></summary><br>
+<p><img alt="plot example" src="../../../_images/basic_plots_BoulderTS.png" /></p>
+<p><em><p style="text-align: center;"> Figure: Plotting solution for single point. </p></em></p>
+</details>
+</div><hr class="docutils" />
+</section>
+<hr class="docutils" />
+<section id="calculate-an-annual-weighted-mean-and-create-customized-plots">
+<h3>2.4 Calculate an annual weighted mean and create customized plots<a class="headerlink" href="#calculate-an-annual-weighted-mean-and-create-customized-plots" title="Link to this heading">#</a></h3>
+<p>Annual averages require a different kind of weighting: the number of days per month.
+This example creates python functions that allow you to easily calculate annual averages and create customized plots.</p>
+<div class="alert alert-block alert-info">
+<p><b>Python functions:</b> In python, creating a function allows us to use the same calculation numerous times instead of writing the same code repeatedly.</p>
+</div>
+<section id="calculate-monthly-weights">
+<h4>2.4.1 Calculate monthly weights<a class="headerlink" href="#calculate-monthly-weights" title="Link to this heading">#</a></h4>
+<p>The below code creates a function <code class="docutils literal notranslate"><span class="pre">weighted_annual_mean</span></code> to calculate monthly weights. Use this function any time you want to calculate weighted annual means.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a function that will calculate an annual mean weighted by days per month</span>
+<span class="n">plotVars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ELAI&#39;</span><span class="p">,</span><span class="s1">&#39;ASA&#39;</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">weighted_annual_mean</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+    <span class="n">mon_day</span>  <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">31</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">]),</span> <span class="n">dims</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">])</span>
+    <span class="n">mon_wgt</span>  <span class="o">=</span> <span class="n">mon_day</span><span class="o">/</span><span class="n">mon_day</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># rolling</span>
+            <span class="o">.</span><span class="n">construct</span><span class="p">(</span><span class="s2">&quot;month&quot;</span><span class="p">)</span> <span class="c1"># construct the array</span>
+            <span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span> <span class="c1"># slice so that the first element is [1..12], second is [13..24]</span>
+            <span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">mon_wgt</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;month&quot;</span><span class="p">]))</span>
+
+<span class="c1"># generate annual means</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">plotVars</span><span class="p">)):</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">weighted_annual_mean</span><span class="p">(</span>
+        <span class="n">ds</span><span class="p">[</span><span class="n">plotVars</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">chunk</span><span class="p">({</span><span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">}))</span>
+    
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">dsAnn</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="n">to_dataset</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">plotVars</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">dsAnn</span><span class="p">[</span><span class="n">plotVars</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">temp</span>
+
+<span class="c1"># Convert xarray dataset back to uxarray</span>
+<span class="n">uxAnn</span> <span class="o">=</span> <span class="n">ux</span><span class="o">.</span><span class="n">UxDataset</span><span class="o">.</span><span class="n">from_xarray</span><span class="p">(</span><span class="n">dsAnn</span><span class="p">,</span> <span class="n">uxgrid</span><span class="o">=</span><span class="n">ds</span><span class="o">.</span><span class="n">uxgrid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make a simple plot for the first year of data</span>
+<span class="n">plot_year</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">uxAnn</span><span class="o">.</span><span class="n">ELAI</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">plot_year</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span><span class="o">.</span><span class="n">opts</span><span class="p">(</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="n">run_name</span> <span class="o">+</span> <span class="s2">&quot; mean annual LAI, year &quot;</span> <span class="o">+</span>
+          <span class="nb">str</span><span class="p">(</span><span class="n">uxAnn</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="n">plot_year</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-success">   
+<details>
+<summary><font face="Times New Roman" color='blue'>Click here for the solution</font></summary><br>
+<p><img alt="plot example" src="../../../_images/basic_plots_annLAI.png" /></p>
+<p><em><p style="text-align: center;"> Figure: Plotting solution. </p></em></p>
+</details>
+</div></section>
+</section>
+</section>
+<section id="extra-credit-challenge">
+<h2>Extra credit challenge<a class="headerlink" href="#extra-credit-challenge" title="Link to this heading">#</a></h2>
+<p>If you have extra time &amp; energy, try running through this notebook with other variables. Interesting options could include:</p>
+<ul class="simple">
+<li><p>Latent heat flux (the sum of <code class="docutils literal notranslate"><span class="pre">FCTR</span></code>+<code class="docutils literal notranslate"><span class="pre">FCEV</span></code>+<code class="docutils literal notranslate"><span class="pre">FGEV</span></code>) or</p></li>
+<li><p>Gross Primary Production (<code class="docutils literal notranslate"><span class="pre">GPP</span></code>)</p></li>
+</ul>
+<div class="alert alert-block alert-warning">
+<p><b>HINT:</b> pay attention to units for these challenges.</p>
+</div></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "cupid-analysis"
+        },
+        kernelOptions: {
+            name: "cupid-analysis",
+            path: "./notebooks/diagnostics/clm_ctsm"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'cupid-analysis'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="clm_ctsm.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Land</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../cice/cice.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Sea Ice</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-visualizations">Global Visualizations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-objectives">Notebook Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-formatting-data">1. Reading and formatting data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#point-to-the-data">1.1 Point to the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#printing-information-about-the-dataset-is-helpful-for-understanding-your-data">Printing information about the dataset is helpful for understanding your data.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-calculations">1.2 Simple Calculations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting">2. Plotting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easy-plots-using-uxarray">2.1 Easy plots using Uxarray</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-differences">2.2 Calculating differences</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-time-series">2.3 Calculating Time Series</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-time-series">2.3.1 Global time series</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#next-calculate-and-plot-a-global-weighted-sum">Next, calculate and plot a global weighted sum</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subset-data-for-a-point">2.3.2 Subset data for a point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-an-annual-weighted-mean-and-create-customized-plots">2.4 Calculate an annual weighted mean and create customized plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-monthly-weights">2.4.1 Calculate monthly weights</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-credit-challenge">Extra credit challenge</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By NCAR/CGD Staff
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

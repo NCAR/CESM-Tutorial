@@ -1,0 +1,945 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Create New Case &#8212; CESM Tutorial</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/basics/cesm_workflow/create_newcase';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Case Setup" href="case_setup.html" />
+    <link rel="prev" title="CESM Workflow" href="../cesm_workflow.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/ncar_logo.png" class="logo__image only-light" alt="CESM Tutorial - Home"/>
+    <script>document.write(`<img src="../../../_static/ncar_logo.png" class="logo__image only-dark" alt="CESM Tutorial - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../intro/intro_overview.html">Introduction</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../intro/components.html">What is CESM ?</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/coupling.html">CIME (Advanced)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../intro/cesm_webpage.html">CESM Webpage</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/project.html">CESM Working Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/getting_involved.html">Getting Involved</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/getting_help.html">Getting Help</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../intro/community_experiments.html">Community Experiments</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/cesm_expts/clim_data_guide.html">Climate Data Guide</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../prereqs/prereqs_overview.html">Prerequisites for Success</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../prereqs/exercises.html">Exercise Overview</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../basics_overview.html">Basics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../cesm_workspaces.html">Workspaces</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../code_overview.html">CESM code</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../code/git_download_cesm.html">Download CESM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../code/cesm_code_explore.html">Explore CESM Code</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../cesm_workflow.html">CESM Workflow</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Create New Case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="case_setup.html">Case Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="case_build.html">Case Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="case_submit.html">Case Submit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model_output.html">Model Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="checking_jobs_and_status.html">Checking Your Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="create_clone.html">Create Clone (Advanced)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../exercises_overview.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../exercises/first_B1850.html">Your first CESM run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../exercises/second_B1850.html">Extending your run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../exercises/examine_history_B1850.html">Examine History Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../exercises/extra.html">Explore Further</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../exercises/review_questions.html">Review Questions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modifications/xml.html">Simple XML Modifications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modifications/xml/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modifications/xml/model_control_files.html">How to Modify XML Files (*.xml)</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modifications/xml/run_length.html">Controlling Run Length</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/run_length/starting_and_stopping.html">Starting and Stopping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/run_length/restarting.html">Restarting a Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/run_length/changing_run_length.html">Changing Run Length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/run_length/timing_files.html">Using Timing Files</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modifications/xml/modify_run_type.html">Modifying the Type of Run</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/modify_run_type/hybrid_branch_restart.html">Hybrid, Branch and Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/modify_run_type/run_variables.html">Variables Related to Run Type</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modifications/xml/physics_timestep.html">Physics Timestep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modifications/xml/other_xml_variables.html">Other Useful XML Variables</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modifications/xml/exercises.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/exercises/xml_length_exercise.html">Exercise 1: Modify run length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/exercises/xml_runtype_exercise.html">Exercise 2: Modify run type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/exercises/xml_timestep_exercise.html">Exercise 3: Change physics timestep</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../namelist/namelist.html">Namelist Modifications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../namelist/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../namelist/documentation.html">Namelist Variables Documentation</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../namelist/output.html">Customizing Output</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_cam.html">Customize CAM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_clm.html">Customize CLM Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_cice.html">Customize CICE output</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_mom.html">Customize MOM output</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../namelist/exercises_overview.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/exercises/exercise_cam_interpolate.html">Interpolate CAM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/exercises/exercise_cam_output.html">Modify CAM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/exercises/exercise_tuning_parameter.html">Change a tuning parameter in CAM</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../troubleshooting/troubleshooting.html">Troubleshooting runtime errors</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../troubleshooting/log_files.html">The log files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../troubleshooting/debugging_flag.html">Adding debugging info</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../troubleshooting/exercises_overview.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../troubleshooting/exercises/troubleshooting_cam.html">Diagnose a runtime failure</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../sourcemods/sourcemods.html">Source Modifications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sourcemods/overview.html">Source code modifications with SourceMods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sourcemods/add_fields_cam.html">Source Modification Example</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../sourcemods/exercises_overview.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../sourcemods/exercises/exercise_add_field.html">Add output variable in CAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sourcemods/exercises/exercise_rain_threshold.html">Modify the <code class="docutils literal notranslate"><span class="pre">rain_threshold</span></code> in CLM</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../challenge/challenge.html">Challenge Exercises</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/cam/cam.html">Atmosphere</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam/exercise_1.html">1: Control case: FHISTC_LTso</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam/exercise_2.html">2: Pre-Industrial Compset: F1850C_LTso</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam/exercise_3.html">3: Starting a Historical Simulation from a Spun-Up State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam/exercise_4.html">4: Modify sea surface temperature in the tropics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam/exercise_5.html">5: Adjust threshold for deep convection over land</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/paleo/paleo.html">Paleo</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/paleo/exercise_1.html">1: Preindustrial control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/paleo/exercise_2.html">2: mid-Holocene case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/paleo/exercise_3.html">3: Water isotope tracers in CESM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/cam-chem_waccm/cam-chem_waccm.html">Atmospheric chemistry</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam-chem_waccm/exercise_1.html">1: Control case: running with chemistry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam-chem_waccm/exercise_2.html">2: Test case: changing the chemistry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam-chem_waccm/exercise_3.html">3: Test case: changing the emissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam-chem_waccm/visualization.html">4: Visualization option with GEOV</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/clm_ctsm/clm_ctsm.html">Land</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/clm_ctsm/clm_exercise_1.html">1: Control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/clm_ctsm/clm_exercise_2.html">2: Use the BGC model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/clm_ctsm/clm_exercise_3.html">3: Modify input data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/mom/mom.html">Ocean</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/mom/mom_exercise_1.html">1: Control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/mom/mom_exercise_2.html">2: Turn off submesoscale parameterization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/mom/mom_exercise_3.html">3: Modify wind stress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/mom/mom_exercise_4.html">4: Turn on the ecosystem</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/cice/cice.html">Sea Ice</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cice/cice_exercise_1.html">1: Control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cice/cice_exercise_2.html">2: Tune the albedo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cice/cice_exercise_3.html">3: Modify the snow conductivity</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/cism/cism.html">Land Ice</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cism/cism_exercise_1.html">CISM Challenge Exercise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cism/cism_exercise_2.html">Looking at the simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cism/cism_exercise_3.html">Computing ice sheet related sea level change from a CISM simulation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/bgc/bgc.html">Biogeochemistry</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/bgc/bgc_exercise_1.html">1: Set up a BGC case</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../diagnostics/diagnostics.html">Diagnostics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/cam/cam.html">Atmosphere</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/cam/basics_cam.html">Basic Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/cam/advanced_cam.html">Advanced Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/clm_ctsm/clm_ctsm.html">Land</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/clm_ctsm/basics_clm.html">Basic Land Model Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/cice/cice.html">Sea Ice</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/cice/basics_cice.html">Basic Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/cice/advanced_cice.html">Advanced Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../diagnostics/cupid.html">CUPiD</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/additional/additional.html">Additional Topics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/postprocessing.html">Postprocessing data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/cvdp.html">CVDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/analysis_tools.html">CESM analysis tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/adf.html">ADF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/uxarray.html">UXarray</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/resources_overview.html">Resources</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../resources/ncar_hpc.html">NCAR Supercomputer</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/ncar_hpc_module.html">Modules on NCAR HPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/tutorial_one_time_setup.html">Tutorial one time setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/tutorial_queue_account.html">Tutorial queue and account</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/terminals.html">Terminal Windows</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../resources/unix.html">UNIX</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/unix-cheatsheet.html">UNIX cheatsheet</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/text_editors.html">Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/github.html">Github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/fortran.html">Fortran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/netcdf.html">NetCDF files</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/basics/cesm_workflow/create_newcase.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Create New Case</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-syntax">Command Syntax</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-arguments">Command Arguments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#casename">Casename</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution">Resolution</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cesm2-supported-grid-definitions">CESM2 Supported Grid Definitions</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compset">Compset</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cesm2-supported-compsets">CESM2 Supported Compsets</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machines">Machines</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="create-new-case">
+<h1>Create New Case<a class="headerlink" href="#create-new-case" title="Link to this heading">#</a></h1>
+<p>The tool that generates a new case is <code class="docutils literal notranslate"><span class="pre">create_newcase</span></code>. This tool is located in the <code class="docutils literal notranslate"><span class="pre">$SRCROOT</span></code> directory under the <code class="docutils literal notranslate"><span class="pre">cime/scripts</span></code> directory.</p>
+<p>After running <code class="docutils literal notranslate"><span class="pre">create_newcase</span></code>, a <code class="docutils literal notranslate"><span class="pre">$CASEROOT</span></code> directory is created. The directory <code class="docutils literal notranslate"><span class="pre">$CASEROOT</span></code> contains the scripts needed for the following steps (<code class="docutils literal notranslate"><span class="pre">case.setup</span></code>, <code class="docutils literal notranslate"><span class="pre">case.build</span></code> and <code class="docutils literal notranslate"><span class="pre">case.submit</span></code>)</p>
+<div style="text-align: center;">
+  <img src="../../../images/basics/CESM_create_newcase.png"
+       style="width:70%;">
+</div>
+<p><em><p style="text-align: center;"> Figure: Detailed view of the location of create_newcase</p></em></p>
+<p>For the current tutorial on Derecho, the paths are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$SRCROOT</span></code>     = <code class="docutils literal notranslate"><span class="pre">/glade/u/home/$USER/code/my_cesm_code</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$CASEROOT</span></code>    = <code class="docutils literal notranslate"><span class="pre">/glade/u/home/$USER/cases/$CASE</span></code>
+<br></p></li>
+</ul>
+<hr class="docutils" />
+<section id="command-syntax">
+<h2>Command Syntax<a class="headerlink" href="#command-syntax" title="Link to this heading">#</a></h2>
+<div class="alert alert-info">
+<p><strong>Go to the <code class="docutils literal notranslate"><span class="pre">cime/scripts</span></code> directory in the CESM code</strong><br></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd /glade/u/home/$USER/code/my_cesm_code/cime/scripts/
+</pre></div>
+</div>
+<br>
+<p><strong>Example of basic <code class="docutils literal notranslate"><span class="pre">./create_newcase</span></code> syntax: </strong><br></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>./create_newcase --case /glade/u/home/$USER/cases/CASE --res RES --compset COMPSET
+</pre></div>
+</div>
+</div>
+<p><strong>NOTE:</strong> Do not enter the example above at the command line. You will create your first case in the Exercise at the end of this section.<br></p>
+<div class="alert alert-info">  
+<details>
+<summary> <font face="Times New Roman" color='blue'>Click here for example output</font> </summary>
+<br>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Compset longname is 1850C_CAM70%LT_CLM60%BGC-CROP_CICE_MOM6_MOSART_DGLC%NOEVOLVE_WW3
+Compset specification file is /glade/u/home/$USER/code/myTutorialCode/cime_config/config_compsets.xml
+Automatically adding SESP to compset
+Compset forcing is 
+ATM component is CAM cam7 physics:CAM low top model 
+LND component is clm6.0:BGC (vert. resol. CN and methane) with prognostic crop:
+ICE component is Sea ICE (cice) model version 6
+OCN component is MOM6 OCEAN 
+ROF component is MOSART: MOdel for Scale Adaptive River Transport
+GLC component is Data glc model (DGLC) no evolve mode 
+WAV component is Wave Watch
+ESP component is Stub external system processing (ESP) component
+Pes     specification file is /glade/u/home/$USER/code/myTutorialCode/cime_config/config_pes.xml
+Compset specific settings: name is RUN_STARTDATE and value is 0001-01-01
+Compset specific settings: name is LND_SETS_DUST_EMIS_DRV_FLDS and value is FALSE
+Machine is derecho
+Pes setting: grid match    is a%ne16np4.pg3_l%ne16np4.pg3_oi%tx2_0v1 
+Pes setting: machine match is derecho 
+Pes setting: compset_match is CAM.*%LT.*MOM6(?!.*%MARBL-BIO) 
+Pes setting: pesize match  is M 
+Pes setting: grid          is a%ne16np4.pg3_l%ne16np4.pg3_oi%tx2_0v1_r%r05_g%gris4_w%wgx3v7_z%null_m%tx2_0v1 
+Pes setting: compset       is 1850C_CAM70%LT_CLM60%BGC-CROP_CICE_MOM6_MOSART_DGLC%NOEVOLVE_WW3_SESP 
+Pes setting: tasks       is {&#39;NTASKS_ATM&#39;: 896, &#39;NTASKS_LND&#39;: 128, &#39;NTASKS_ROF&#39;: 128, &#39;NTASKS_ICE&#39;: 256, &#39;NTASKS_OCN&#39;: 640, &#39;NTASKS_GLC&#39;: 64, &#39;NTASKS_WAV&#39;: 64, &#39;NTASKS_CPL&#39;: 896} 
+Pes setting: threads     is {&#39;NTHRDS_ATM&#39;: 1, &#39;NTHRDS_LND&#39;: 1, &#39;NTHRDS_ROF&#39;: 1, &#39;NTHRDS_ICE&#39;: 1, &#39;NTHRDS_OCN&#39;: 1, &#39;NTHRDS_GLC&#39;: 1, &#39;NTHRDS_WAV&#39;: 1, &#39;NTHRDS_CPL&#39;: 1} 
+Pes setting: rootpe      is {&#39;ROOTPE_ATM&#39;: 0, &#39;ROOTPE_LND&#39;: 0, &#39;ROOTPE_ROF&#39;: 128, &#39;ROOTPE_ICE&#39;: 256, &#39;ROOTPE_OCN&#39;: 896, &#39;ROOTPE_GLC&#39;: 576, &#39;ROOTPE_WAV&#39;: 512, &#39;ROOTPE_CPL&#39;: 0} 
+Pes setting: pstrid      is {} 
+Pes setting: excl_stride is {} 
+Pes other settings: {}
+Pes other settings append: {}
+setting additional fields from config_pes: {}, append {}
+ Compset is: 1850C_CAM70%LT_CLM60%BGC-CROP_CICE_MOM6_MOSART_DGLC%NOEVOLVE_WW3_SESP 
+ Grid is: a%ne16np4.pg3_l%ne16np4.pg3_oi%tx2_0v1_r%r05_g%gris4_w%wgx3v7_z%null_m%tx2_0v1 
+ Components in compset are: [&#39;cam&#39;, &#39;clm&#39;, &#39;cice&#39;, &#39;mom&#39;, &#39;mosart&#39;, &#39;dglc&#39;, &#39;ww3&#39;, &#39;sesp&#39;] 
+Using project from .cesm_proj: P93300606
+No charge_account info available, using value from PROJECT
+cesm model version found: cesm3_0_alpha09b-16-gfafcb75
+Batch_system_type is pbs
+job is case.run USER_REQUESTED_WALLTIME None USER_REQUESTED_QUEUE None WALLTIME_FORMAT %H:%M:%S
+job is case.st_archive USER_REQUESTED_WALLTIME None USER_REQUESTED_QUEUE None WALLTIME_FORMAT %H:%M:%S
+job is case.cupid USER_REQUESTED_WALLTIME None USER_REQUESTED_QUEUE None WALLTIME_FORMAT %H:%M:%S
+ Creating Case directory /glade/work/katec/sandboxes/cesm_cases/my.B1850C_LTso.ne16pg3_t201.test7
+
+</pre></div>
+</div>
+</details>
+</div>
+<p><strong>Notes:</strong></p>
+<ul class="simple">
+<li><p>For all user scripts you can run the script name followed by the <code class="docutils literal notranslate"><span class="pre">--h</span></code> or <code class="docutils literal notranslate"><span class="pre">--help</span></code> argument to see help documentation for that script and a list of all command line arguments for that script.</p></li>
+<li><p>Double dashes <code class="docutils literal notranslate"><span class="pre">--</span></code> are required with command line arguments</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="command-arguments">
+<h2>Command Arguments<a class="headerlink" href="#command-arguments" title="Link to this heading">#</a></h2>
+<p><img alt="Create New Case Command Image" src="../../../_images/CESM2_Create_Newcase_Command.png" /></p>
+<section id="casename">
+<h3>Casename<a class="headerlink" href="#casename" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">--case</span></code> is the argument that specifies the <strong>name</strong> and <strong>location</strong> of the case being created. In the example above, the casename is <code class="docutils literal notranslate"><span class="pre">CASE</span></code> and the location of the case is <code class="docutils literal notranslate"><span class="pre">/glade/u/home/$USER/cases/</span></code>. Note that if a path preceding the casename is not specified, then the case is created as a subdirectory of the <code class="docutils literal notranslate"><span class="pre">$CIMEROOT/scripts</span></code> directory.</p>
+<ul class="simple">
+<li><p>The path <code class="docutils literal notranslate"><span class="pre">/glade/u/home/$USER/cases/CASE</span></code> is your workspace <code class="docutils literal notranslate"><span class="pre">CASEROOT</span></code>, as described in the <a class="reference external" href="https://ncar.github.io/CESM-Tutorial/notebooks/basics/cesm_workspaces.html#workspace-overview">workspaces section</a>.</p></li>
+</ul>
+<p>In this tutorial we will use fairly simple names for the cases you create, build, and run. However, most CESM experiments have much longer casenames that provide information about the experiment at a glance. Knowing the CESM case naming conventions will help you navigate CESM community experiments. Information about the CESM naming is available at:</p>
+<div class="alert alert-info">
+<p><a class="reference external" href="https://www.cesm.ucar.edu/models/cesm2/naming-conventions">CESM case naming conventions</a></p>
+</div></section>
+<section id="resolution">
+<h3>Resolution<a class="headerlink" href="#resolution" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">--res</span></code> is the argument that specifies the <strong>model resolution or grid</strong>. In the example above, the resolution is <code class="docutils literal notranslate"><span class="pre">RES</span></code>. Each model resolution can be specified with the <code class="docutils literal notranslate"><span class="pre">--res</span></code> argument by its alias or its full long name. However, the long name conventions are generally quite lengthy, so it is useful if you become familiar with using the alias version. Because the atmosphere and land share a grid, and the ocean and sea ice share a grid, only two grids are specified by the alias using the following format: <code class="docutils literal notranslate"><span class="pre">atm/lnd_ocn/ice</span></code>.</p>
+<p><img alt="Create New Case Resolution Image" src="../../../_images/CESM2_Create_Newcase_Resolution.png" /></p>
+<section id="cesm2-supported-grid-definitions">
+<h4>CESM2 Supported Grid Definitions<a class="headerlink" href="#cesm2-supported-grid-definitions" title="Link to this heading">#</a></h4>
+<p><strong> Link for CESM Supported Grids: </strong>
+<br>
+<a class="reference external" href="http://www.cesm.ucar.edu/models/cesm2/config/grids.html">http://www.cesm.ucar.edu/models/cesm2/config/grids.html</a></p>
+<div class="alert alert-info">
+<strong>Cime Tool for listing configurations: </strong><br><br>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CIMEROOT</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">query_config</span> <span class="o">--</span><span class="n">grids</span> <span class="o">--</span><span class="n">long</span>
+</pre></div>
+</div>
+</div><div class="alert alert-info">  
+<details>
+<summary> <font face="Times New Roman" color='blue'>Click here for example output</font> </summary>
+<br>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">=========================================</span>
+    <span class="n">GRID</span> <span class="n">naming</span> <span class="n">convention</span>
+    <span class="o">=========================================</span>
+    <span class="n">The</span> <span class="n">notation</span> <span class="k">for</span> <span class="n">the</span> <span class="n">grid</span> <span class="n">longname</span> <span class="ow">is</span>
+        <span class="n">a</span><span class="o">%</span><span class="n">name_l</span><span class="o">%</span><span class="n">name_oi</span><span class="o">%</span><span class="n">name_r</span><span class="o">%</span><span class="n">name_m</span><span class="o">%</span><span class="n">mask_g</span><span class="o">%</span><span class="n">name_w</span><span class="o">%</span><span class="n">name</span>
+    <span class="n">where</span>
+        <span class="n">a</span><span class="o">%</span> <span class="o">=&gt;</span> <span class="n">atm</span><span class="p">,</span> <span class="n">l</span><span class="o">%</span> <span class="o">=&gt;</span> <span class="n">lnd</span><span class="p">,</span> <span class="n">oi</span><span class="o">%</span> <span class="o">=&gt;</span> <span class="n">ocn</span><span class="o">/</span><span class="n">ice</span><span class="p">,</span> <span class="n">r</span><span class="o">%</span> <span class="o">=&gt;</span> <span class="n">river</span><span class="p">,</span> <span class="n">m</span><span class="o">%</span> <span class="o">=&gt;</span> <span class="n">mask</span><span class="p">,</span> <span class="n">g</span><span class="o">%</span> <span class="o">=&gt;</span> <span class="n">glc</span><span class="p">,</span> <span class="n">w</span><span class="o">%</span> <span class="o">=&gt;</span> <span class="n">wav</span>
+
+    <span class="n">Supported</span> <span class="n">out</span> <span class="n">of</span> <span class="n">the</span> <span class="n">box</span> <span class="n">grid</span> <span class="n">configurations</span> <span class="n">are</span> <span class="n">given</span> <span class="n">via</span> <span class="n">alias</span> <span class="n">specification</span> <span class="ow">in</span>
+    <span class="n">the</span> <span class="n">file</span> <span class="s2">&quot;config_grids.xml&quot;</span><span class="o">.</span> <span class="n">Each</span> <span class="n">grid</span> <span class="n">alias</span> <span class="n">can</span> <span class="n">also</span> <span class="n">be</span> <span class="n">associated</span>  <span class="k">with</span> <span class="n">the</span>
+    <span class="n">following</span> <span class="n">optional</span> <span class="n">attributes</span>
+
+    <span class="n">compset</span>       <span class="p">(</span><span class="n">Regular</span> <span class="n">expression</span> <span class="k">for</span> <span class="n">compset</span> <span class="n">matches</span> <span class="n">that</span> <span class="n">are</span> <span class="n">required</span> <span class="k">for</span> <span class="n">this</span> <span class="n">grid</span><span class="p">)</span>
+    <span class="n">not_compset</span>   <span class="p">(</span><span class="n">Regular</span> <span class="n">expression</span> <span class="k">for</span> <span class="n">compset</span> <span class="n">matches</span> <span class="n">that</span> <span class="n">are</span> <span class="ow">not</span> <span class="n">permitted</span> <span class="n">this</span> <span class="n">grid</span><span class="p">)</span>
+
+    <span class="n">Using</span> <span class="n">the</span> <span class="n">alias</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">optional</span> <span class="s2">&quot;compset&quot;</span> <span class="ow">and</span> <span class="s2">&quot;not_compset&quot;</span> <span class="n">attributes</span> <span class="n">a</span> <span class="n">grid</span> <span class="n">longname</span> <span class="ow">is</span> <span class="n">created</span>
+    <span class="n">Note</span> <span class="n">that</span> <span class="n">the</span> <span class="n">mask</span> <span class="ow">is</span> <span class="k">for</span> <span class="n">information</span> <span class="n">only</span> <span class="o">-</span> <span class="ow">and</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">an</span> <span class="n">attribute</span> <span class="n">of</span> <span class="n">the</span> <span class="n">grid</span>
+    <span class="n">By</span> <span class="n">default</span><span class="p">,</span> <span class="k">if</span> <span class="n">the</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">specified</span> <span class="n">below</span><span class="p">,</span> <span class="n">it</span> <span class="n">will</span> <span class="n">be</span> <span class="nb">set</span> <span class="n">to</span> <span class="n">the</span> <span class="n">ocnice</span> <span class="n">grid</span>
+    <span class="n">And</span> <span class="k">if</span> <span class="n">there</span> <span class="ow">is</span> <span class="n">no</span> <span class="n">ocnice</span> <span class="n">grid</span> <span class="p">(</span><span class="n">such</span> <span class="k">as</span> <span class="k">for</span> <span class="n">single</span> <span class="n">column</span><span class="p">,</span> <span class="n">the</span> <span class="n">mask</span> <span class="ow">is</span> <span class="n">null</span> <span class="n">since</span> <span class="n">it</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">mean</span> <span class="n">anything</span><span class="p">)</span>
+
+     <span class="o">-------------------------------------------------------------</span>
+            <span class="n">default</span> <span class="n">component</span> <span class="n">grids</span><span class="p">:</span>
+
+     <span class="n">component</span>         <span class="n">compset</span>       <span class="n">value</span> 
+     <span class="o">-------------------------------------------------------------</span>
+     <span class="n">atm</span>      <span class="n">SATM</span>              <span class="n">null</span>      
+     <span class="n">lnd</span>      <span class="n">SLND</span>              <span class="n">null</span>      
+     <span class="n">ocnice</span>   <span class="n">SOCN</span>              <span class="n">null</span>      
+     <span class="n">rof</span>      <span class="n">SROF</span>              <span class="n">null</span>      
+     <span class="n">rof</span>      <span class="n">DWAV</span>              <span class="n">rx1</span>       
+     <span class="n">rof</span>      <span class="n">RTM</span>               <span class="n">r05</span>       
+     <span class="n">rof</span>      <span class="n">MOSART</span>            <span class="n">r05</span>       
+     <span class="n">rof</span>      <span class="n">MIZUROUTE</span>         <span class="n">r05mz</span>     
+     <span class="n">rof</span>      <span class="n">DROF</span>              <span class="n">rx1</span>       
+     <span class="n">rof</span>      <span class="n">DROF</span><span class="o">%</span><span class="n">CPLHIST</span>      <span class="n">r05</span>       
+     <span class="n">rof</span>      <span class="n">XROF</span>              <span class="n">r05</span>       
+     <span class="n">glc</span>      <span class="n">SGLC</span>              <span class="n">null</span>      
+     <span class="n">glc</span>      <span class="n">CISM2</span>             <span class="n">gris4</span>     
+     <span class="n">glc</span>      <span class="n">DGLC</span>              <span class="n">gris4</span>     
+     <span class="n">glc</span>      <span class="n">XGLC</span>              <span class="n">gris4</span>     
+     <span class="n">wav</span>      <span class="n">SWAV</span>              <span class="n">null</span>      
+     <span class="n">wav</span>      <span class="n">DWAV</span>              <span class="n">wgx3v7</span>    
+     <span class="n">wav</span>      <span class="n">WW3</span>               <span class="n">wgx3v7</span>    
+     <span class="n">wav</span>      <span class="n">XWAV</span>              <span class="n">wgx3v7</span>    
+     <span class="n">iac</span>      <span class="n">SIAC</span>              <span class="n">null</span>      
+     <span class="o">-------------------------------------------------------------</span>
+
+     <span class="n">alias</span><span class="p">:</span> <span class="n">g16_g16</span> <span class="p">(</span><span class="n">only</span> <span class="k">for</span> <span class="n">compsets</span> <span class="n">that</span> <span class="n">are</span> <span class="n">DATM</span><span class="o">.+</span><span class="n">DROF</span> <span class="p">)</span>
+
+       <span class="n">longname</span><span class="p">:</span> <span class="n">a</span><span class="o">%</span><span class="n">gx1v6_l</span><span class="o">%</span><span class="n">gx1v6_oi</span><span class="o">%</span><span class="n">gx1v6_r</span><span class="o">%</span><span class="n">null_g</span><span class="o">%</span><span class="n">null_w</span><span class="o">%</span><span class="n">null_z</span><span class="o">%</span><span class="n">null_m</span><span class="o">%</span><span class="n">gx1v6</span>
+       <span class="n">non</span><span class="o">-</span><span class="n">default</span> <span class="n">grids</span> <span class="n">are</span><span class="p">:</span> <span class="n">atm</span><span class="p">:</span><span class="n">gx1v6</span>  <span class="n">lnd</span><span class="p">:</span><span class="n">gx1v6</span>  <span class="n">ocnice</span><span class="p">:</span><span class="n">gx1v6</span>  
+    
+       <span class="n">gx1v6</span> <span class="ow">is</span> <span class="n">displaced</span> <span class="n">Greenland</span> <span class="n">pole</span> <span class="n">v6</span> <span class="mi">1</span><span class="o">-</span><span class="n">deg</span> <span class="n">grid</span><span class="p">:</span> <span class="k">with</span> <span class="n">domain</span> <span class="n">file</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>  
+
+     <span class="n">alias</span><span class="p">:</span> <span class="n">g17_g17</span> <span class="p">(</span><span class="n">only</span> <span class="k">for</span> <span class="n">compsets</span> <span class="n">that</span> <span class="n">are</span> <span class="n">DATM</span><span class="o">.+</span><span class="n">DROF</span> <span class="n">only</span> <span class="k">for</span> <span class="n">compsets</span> <span class="n">that</span> <span class="n">are</span> <span class="ow">not</span> <span class="n">_MOM</span> <span class="p">)</span>
+
+       <span class="n">longname</span><span class="p">:</span> <span class="n">a</span><span class="o">%</span><span class="n">gx1v7_l</span><span class="o">%</span><span class="n">gx1v7_oi</span><span class="o">%</span><span class="n">gx1v7_r</span><span class="o">%</span><span class="n">null_g</span><span class="o">%</span><span class="n">null_w</span><span class="o">%</span><span class="n">null_z</span><span class="o">%</span><span class="n">null_m</span><span class="o">%</span><span class="n">gx1v7</span>
+       <span class="n">non</span><span class="o">-</span><span class="n">default</span> <span class="n">grids</span> <span class="n">are</span><span class="p">:</span> <span class="n">atm</span><span class="p">:</span><span class="n">gx1v7</span>  <span class="n">lnd</span><span class="p">:</span><span class="n">gx1v7</span>  <span class="n">ocnice</span><span class="p">:</span><span class="n">gx1v7</span>  
+    
+       <span class="n">gx1v7</span> <span class="ow">is</span> <span class="n">displaced</span> <span class="n">Greenland</span> <span class="n">pole</span> <span class="mi">1</span><span class="o">-</span><span class="n">deg</span> <span class="n">grid</span> <span class="k">with</span> <span class="n">Caspian</span> <span class="k">as</span> <span class="n">a</span> <span class="n">land</span> <span class="n">feature</span><span class="p">:</span> <span class="k">with</span> <span class="n">domain</span> <span class="n">file</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>  
+
+<span class="o">...</span>
+</pre></div>
+</div>
+</details>
+</div>
+</section>
+</section>
+<section id="compset">
+<h3>Compset<a class="headerlink" href="#compset" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">--compset</span></code> is the argument that specifies the <strong>component set</strong>. In the example above, the compset is <code class="docutils literal notranslate"><span class="pre">COMPSET</span></code>. The compset specifies the component models and if they are active or not, forcing scenarios, and physics options for the models. As above, the <code class="docutils literal notranslate"><span class="pre">--compset</span></code> can be specified by its alias or its full long name. However, the long name conventions are generally quite lengthy, so it is useful if you become familiar with using the alias version.</p>
+<p><img alt="Create New Case Compset Image" src="../../../_images/CESM3_Create_Newcase_Compset.png" /></p>
+<p><strong>Note</strong>:</p>
+<ul class="simple">
+<li><p>Compsets are defined by different model components (active or data) and cime.</p></li>
+<li><p>Some compsets are scientifically supported and/or tested, while some are only defined. The CESM project will not provide comprehensive support for compsets that are only defined.</p></li>
+<li><p>Compsets determine which grid is required.</p></li>
+</ul>
+<section id="cesm2-supported-compsets">
+<h4>CESM2 Supported Compsets<a class="headerlink" href="#cesm2-supported-compsets" title="Link to this heading">#</a></h4>
+<p><strong> Link for CESM2 Supported Compsets: </strong>
+<br>
+<a class="reference external" href="http://www.cesm.ucar.edu/models/cesm2/config/compsets.html">http://www.cesm.ucar.edu/models/cesm2/config/compsets.html</a></p>
+<div class="alert alert-info">
+<strong>Cime Tool for listing configurations: </strong><br><br>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd /glade/u/home/$USER/code/my_cesm_code/cime/scripts/
+./query_config --compsets
+</pre></div>
+</div>
+</div><div class="alert alert-info">  
+<details>
+<summary> <font face="Times New Roman" color='blue'>Click here for example output</font> </summary>
+<br>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Active</span> <span class="n">component</span><span class="p">:</span> <span class="n">allactive</span>
+       <span class="o">--------------------------------------</span>
+       <span class="n">Compset</span> <span class="n">Alias</span><span class="p">:</span> <span class="n">Compset</span> <span class="n">Long</span> <span class="n">Name</span> 
+       <span class="o">--------------------------------------</span>
+   <span class="n">B1850C_MTt4s</span>         <span class="p">:</span> <span class="mi">1850</span><span class="n">C_CAM70</span><span class="o">%</span><span class="n">MT</span><span class="o">%</span><span class="n">CT4S2_CLM60</span><span class="o">%</span><span class="n">BGC</span><span class="o">-</span><span class="n">CROP_CICE_MOM6_MOSART_DGLC</span><span class="o">%</span><span class="n">NOEVOLVE_WW3</span>
+   <span class="n">B1850CM</span>              <span class="p">:</span> <span class="mi">1850</span><span class="n">C_CAM70</span><span class="o">%</span><span class="n">MT</span><span class="o">%</span><span class="n">CT4S2_CLM60</span><span class="o">%</span><span class="n">BGC</span><span class="o">-</span><span class="n">CROP_CICE_MOM6_MOSART_DGLC</span><span class="o">%</span><span class="n">NOEVOLVE_WW3</span>
+   <span class="n">B1850C_MTso</span>          <span class="p">:</span> <span class="mi">1850</span><span class="n">C_CAM70</span><span class="o">%</span><span class="n">MT_CLM60</span><span class="o">%</span><span class="n">BGC</span><span class="o">-</span><span class="n">CROP_CICE_MOM6_MOSART_DGLC</span><span class="o">%</span><span class="n">NOEVOLVE_WW3</span>
+   <span class="n">BHISTC_MTso</span>          <span class="p">:</span> <span class="n">HISTC_CAM70</span><span class="o">%</span><span class="n">MT_CLM60</span><span class="o">%</span><span class="n">BGC</span><span class="o">-</span><span class="n">CROP_CICE_MOM6_MOSART_DGLC</span><span class="o">%</span><span class="n">NOEVOLVE_WW3</span>
+   <span class="n">BHISTC_MTt4s</span>         <span class="p">:</span> <span class="n">HISTC_CAM70</span><span class="o">%</span><span class="n">MT</span><span class="o">%</span><span class="n">CT4S2_CLM60</span><span class="o">%</span><span class="n">BGC</span><span class="o">-</span><span class="n">CROP_CICE_MOM6_MOSART_DGLC</span><span class="o">%</span><span class="n">NOEVOLVE_WW3</span>
+   <span class="n">BHISTCM</span>              <span class="p">:</span> <span class="n">HISTC_CAM70</span><span class="o">%</span><span class="n">MT</span><span class="o">%</span><span class="n">CT4S2_CLM60</span><span class="o">%</span><span class="n">BGC</span><span class="o">-</span><span class="n">CROP_CICE_MOM6_MOSART_DGLC</span><span class="o">%</span><span class="n">NOEVOLVE_WW3</span>
+   <span class="n">BHISTC_MTso</span>          <span class="p">:</span> <span class="n">HISTC_CAM70</span><span class="o">%</span><span class="n">MT_CLM60</span><span class="o">%</span><span class="n">BGC</span><span class="o">-</span><span class="n">CROP_CICE_MOM6_MOSART_DGLC</span><span class="o">%</span><span class="n">NOEVOLVE_WW3</span>
+   <span class="n">B1850C_LTso</span>          <span class="p">:</span> <span class="mi">1850</span><span class="n">C_CAM70</span><span class="o">%</span><span class="n">LT_CLM60</span><span class="o">%</span><span class="n">BGC</span><span class="o">-</span><span class="n">CROP_CICE_MOM6_MOSART_DGLC</span><span class="o">%</span><span class="n">NOEVOLVE_WW3</span>
+   <span class="n">BHISTC_LTso</span>          <span class="p">:</span> <span class="n">HISTC_CAM70</span><span class="o">%</span><span class="n">LT_CLM60</span><span class="o">%</span><span class="n">BGC</span><span class="o">-</span><span class="n">CROP_CICE_MOM6_MOSART_DGLC</span><span class="o">%</span><span class="n">NOEVOLVE_WW3</span>
+   <span class="n">BHISTC_LT_DART</span>       <span class="p">:</span> <span class="n">HISTC_CAM70</span><span class="o">%</span><span class="n">LT_CLM60</span><span class="o">%</span><span class="n">BGC_CICE_MOM6_MOSART_DGLC</span><span class="o">%</span><span class="n">NOEVOLVE_SWAV</span>
+   <span class="n">B1850E_MTt4s</span>         <span class="p">:</span> <span class="mi">1850</span><span class="n">E_CAM70</span><span class="o">%</span><span class="n">MT</span><span class="o">%</span><span class="n">CT4S2_CLM60</span><span class="o">%</span><span class="n">BGC</span><span class="o">-</span><span class="n">CROP_CICE_MOM6_MOSART_DGLC</span><span class="o">%</span><span class="n">NOEVOLVE_WW3</span>
+   <span class="n">B1850EM</span>              <span class="p">:</span> <span class="mi">1850</span><span class="n">E_CAM70</span><span class="o">%</span><span class="n">MT</span><span class="o">%</span><span class="n">CT4S2_CLM60</span><span class="o">%</span><span class="n">BGC</span><span class="o">-</span><span class="n">CROP_CICE_MOM6_MOSART_DGLC</span><span class="o">%</span><span class="n">NOEVOLVE_WW3</span>
+   <span class="n">BHISTE_MTt4s</span>         <span class="p">:</span> <span class="n">HISTE_CAM70</span><span class="o">%</span><span class="n">MT</span><span class="o">%</span><span class="n">CT4S2_CLM60</span><span class="o">%</span><span class="n">BGC</span><span class="o">-</span><span class="n">CROP_CICE_MOM6_MOSART_DGLC</span><span class="o">%</span><span class="n">NOEVOLVE_WW3</span>
+   <span class="n">BHISTEM</span>              <span class="p">:</span> <span class="n">HISTE_CAM70</span><span class="o">%</span><span class="n">MT</span><span class="o">%</span><span class="n">CT4S2_CLM60</span><span class="o">%</span><span class="n">BGC</span><span class="o">-</span><span class="n">CROP_CICE_MOM6_MOSART_DGLC</span><span class="o">%</span><span class="n">NOEVOLVE_WW3</span>
+   <span class="n">ETEST</span>                <span class="p">:</span> <span class="mi">2000</span><span class="n">_CAM60_CLM50</span><span class="o">%</span><span class="n">SP_CICE_DOCN</span><span class="o">%</span><span class="n">SOM_MOSART_SGLC_SWAV_TEST</span>
+   <span class="n">E1850TEST</span>            <span class="p">:</span> <span class="mi">1850</span><span class="n">_CAM60_CLM50</span><span class="o">%</span><span class="n">SP_CICE_DOCN</span><span class="o">%</span><span class="n">SOM_MOSART_SGLC_SWAV_TEST</span>
+
+<span class="n">Active</span> <span class="n">component</span><span class="p">:</span> <span class="n">drv</span>
+       <span class="o">--------------------------------------</span>
+       <span class="n">Compset</span> <span class="n">Alias</span><span class="p">:</span> <span class="n">Compset</span> <span class="n">Long</span> <span class="n">Name</span> 
+       <span class="o">--------------------------------------</span>
+   <span class="n">AA</span>                   <span class="p">:</span> <span class="mi">2000</span><span class="n">_DATM</span><span class="o">%</span><span class="n">NYF_DLND</span><span class="o">%</span><span class="n">LCPL_DICE</span><span class="o">%</span><span class="n">SSMI_DOCN</span><span class="o">%</span><span class="n">DOM_DROF</span><span class="o">%</span><span class="n">NYF_SGLC_DWAV</span>
+   <span class="n">A</span>                    <span class="p">:</span> <span class="mi">2000</span><span class="n">_DATM</span><span class="o">%</span><span class="n">NYF_SLND_DICE</span><span class="o">%</span><span class="n">SSMI_DOCN</span><span class="o">%</span><span class="n">DOM_DROF</span><span class="o">%</span><span class="n">NYF_SGLC_SWAV</span>
+   <span class="n">ADSOM</span>                <span class="p">:</span> <span class="mi">2000</span><span class="n">_DATM</span><span class="o">%</span><span class="n">NYF_SLND_DICE</span><span class="o">%</span><span class="n">SSMI_DOCN</span><span class="o">%</span><span class="n">SOM_DROF</span><span class="o">%</span><span class="n">NYF_SGLC_SWAV_TEST</span>
+   <span class="n">ADSOMAQP</span>             <span class="p">:</span> <span class="mi">2000</span><span class="n">_DATM</span><span class="o">%</span><span class="n">NYF_SLND_SICE_DOCN</span><span class="o">%</span><span class="n">SOMAQP_SROF_SGLC_SWAV</span>
+   <span class="n">ADAQP3</span>               <span class="p">:</span> <span class="mi">2000</span><span class="n">_DATM</span><span class="o">%</span><span class="n">NYF_SLND_SICE_DOCN</span><span class="o">%</span><span class="n">AQP3_SROF_SGLC_SWAV</span>
+   <span class="n">ADAQPFILE</span>            <span class="p">:</span> <span class="mi">2000</span><span class="n">_DATM</span><span class="o">%</span><span class="n">NYF_SLND_SICE_DOCN</span><span class="o">%</span><span class="n">AQPFILE_SROF_SGLC_SWAV</span>
+   <span class="n">A1850DLND</span>            <span class="p">:</span> <span class="mi">1850</span><span class="n">_SATM_DLND</span><span class="o">%</span><span class="n">SCPL_SICE_SOCN_SROF_SGLC_SWAV</span>
+   <span class="n">ADWAV</span>                <span class="p">:</span> <span class="mi">2000</span><span class="n">_SATM_SLND_SICE_SOCN_SROF_SGLC_DWAV</span><span class="o">%</span><span class="n">CLIMO</span>
+   <span class="n">ADESP</span>                <span class="p">:</span> <span class="mi">2000</span><span class="n">_DATM</span><span class="o">%</span><span class="n">NYF_SLND_SICE_DOCN</span><span class="o">%</span><span class="n">SOMAQP_SROF_SGLC_SWAV_DESP</span><span class="o">%</span><span class="n">NOOP</span>
+   <span class="n">ADESP_TEST</span>           <span class="p">:</span> <span class="mi">2000</span><span class="n">_DATM</span><span class="o">%</span><span class="n">NYF_SLND_SICE_DOCN</span><span class="o">%</span><span class="n">SOMAQP_SROF_SGLC_SWAV_DESP</span><span class="o">%</span><span class="n">TEST</span>
+   <span class="n">AIAF</span>                 <span class="p">:</span> <span class="mi">2000</span><span class="n">_DATM</span><span class="o">%</span><span class="n">IAF_SLND_DICE</span><span class="o">%</span><span class="n">IAF_DOCN</span><span class="o">%</span><span class="n">IAF_DROF</span><span class="o">%</span><span class="n">IAF_SGLC_SWAV</span>
+   <span class="n">S</span>                    <span class="p">:</span> <span class="mi">2000</span><span class="n">_SATM_SLND_SICE_SOCN_SROF_SGLC_SWAV_SESP</span>
+   <span class="n">X</span>                    <span class="p">:</span> <span class="mi">2000</span><span class="n">_XATM_XLND_XICE_XOCN_XROF_XGLC_XWAV</span>
+
+<span class="o">...</span>
+</pre></div>
+</div>
+</details>
+</div>
+</section>
+</section>
+<section id="machines">
+<h3>Machines<a class="headerlink" href="#machines" title="Link to this heading">#</a></h3>
+<p>The argument <code class="docutils literal notranslate"><span class="pre">--mach</span></code> is not required on CESM supported machines, but is required on other machines.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/basics/cesm_workflow"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../cesm_workflow.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">CESM Workflow</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="case_setup.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Case Setup</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-syntax">Command Syntax</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-arguments">Command Arguments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#casename">Casename</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution">Resolution</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cesm2-supported-grid-definitions">CESM2 Supported Grid Definitions</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compset">Compset</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cesm2-supported-compsets">CESM2 Supported Compsets</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machines">Machines</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By NCAR/CGD Staff
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

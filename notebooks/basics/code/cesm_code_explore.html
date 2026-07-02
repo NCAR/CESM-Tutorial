@@ -1,0 +1,953 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Explore CESM Code &#8212; CESM Tutorial</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/basics/code/cesm_code_explore';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="CESM Workflow" href="../cesm_workflow.html" />
+    <link rel="prev" title="Download CESM" href="git_download_cesm.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/ncar_logo.png" class="logo__image only-light" alt="CESM Tutorial - Home"/>
+    <script>document.write(`<img src="../../../_static/ncar_logo.png" class="logo__image only-dark" alt="CESM Tutorial - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../intro/intro_overview.html">Introduction</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../intro/components.html">What is CESM ?</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/coupling.html">CIME (Advanced)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../intro/cesm_webpage.html">CESM Webpage</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/project.html">CESM Working Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/getting_involved.html">Getting Involved</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/getting_help.html">Getting Help</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../intro/community_experiments.html">Community Experiments</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/cesm_expts/clim_data_guide.html">Climate Data Guide</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../prereqs/prereqs_overview.html">Prerequisites for Success</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../prereqs/exercises.html">Exercise Overview</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../basics_overview.html">Basics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../cesm_workspaces.html">Workspaces</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../code_overview.html">CESM code</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="git_download_cesm.html">Download CESM</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Explore CESM Code</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cesm_workflow.html">CESM Workflow</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cesm_workflow/create_newcase.html">Create New Case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cesm_workflow/case_setup.html">Case Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cesm_workflow/case_build.html">Case Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cesm_workflow/case_submit.html">Case Submit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cesm_workflow/model_output.html">Model Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cesm_workflow/checking_jobs_and_status.html">Checking Your Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cesm_workflow/create_clone.html">Create Clone (Advanced)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../exercises_overview.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../exercises/first_B1850.html">Your first CESM run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../exercises/second_B1850.html">Extending your run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../exercises/examine_history_B1850.html">Examine History Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../exercises/extra.html">Explore Further</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../exercises/review_questions.html">Review Questions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modifications/xml.html">Simple XML Modifications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modifications/xml/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modifications/xml/model_control_files.html">How to Modify XML Files (*.xml)</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modifications/xml/run_length.html">Controlling Run Length</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/run_length/starting_and_stopping.html">Starting and Stopping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/run_length/restarting.html">Restarting a Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/run_length/changing_run_length.html">Changing Run Length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/run_length/timing_files.html">Using Timing Files</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modifications/xml/modify_run_type.html">Modifying the Type of Run</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/modify_run_type/hybrid_branch_restart.html">Hybrid, Branch and Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/modify_run_type/run_variables.html">Variables Related to Run Type</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modifications/xml/physics_timestep.html">Physics Timestep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modifications/xml/other_xml_variables.html">Other Useful XML Variables</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modifications/xml/exercises.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/exercises/xml_length_exercise.html">Exercise 1: Modify run length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/exercises/xml_runtype_exercise.html">Exercise 2: Modify run type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/exercises/xml_timestep_exercise.html">Exercise 3: Change physics timestep</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../namelist/namelist.html">Namelist Modifications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../namelist/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../namelist/documentation.html">Namelist Variables Documentation</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../namelist/output.html">Customizing Output</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_cam.html">Customize CAM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_clm.html">Customize CLM Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_cice.html">Customize CICE output</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_mom.html">Customize MOM output</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../namelist/exercises_overview.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/exercises/exercise_cam_interpolate.html">Interpolate CAM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/exercises/exercise_cam_output.html">Modify CAM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/exercises/exercise_tuning_parameter.html">Change a tuning parameter in CAM</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../troubleshooting/troubleshooting.html">Troubleshooting runtime errors</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../troubleshooting/log_files.html">The log files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../troubleshooting/debugging_flag.html">Adding debugging info</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../troubleshooting/exercises_overview.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../troubleshooting/exercises/troubleshooting_cam.html">Diagnose a runtime failure</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../sourcemods/sourcemods.html">Source Modifications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sourcemods/overview.html">Source code modifications with SourceMods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sourcemods/add_fields_cam.html">Source Modification Example</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../sourcemods/exercises_overview.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../sourcemods/exercises/exercise_add_field.html">Add output variable in CAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sourcemods/exercises/exercise_rain_threshold.html">Modify the <code class="docutils literal notranslate"><span class="pre">rain_threshold</span></code> in CLM</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../challenge/challenge.html">Challenge Exercises</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/cam/cam.html">Atmosphere</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam/exercise_1.html">1: Control case: FHISTC_LTso</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam/exercise_2.html">2: Pre-Industrial Compset: F1850C_LTso</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam/exercise_3.html">3: Starting a Historical Simulation from a Spun-Up State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam/exercise_4.html">4: Modify sea surface temperature in the tropics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam/exercise_5.html">5: Adjust threshold for deep convection over land</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/paleo/paleo.html">Paleo</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/paleo/exercise_1.html">1: Preindustrial control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/paleo/exercise_2.html">2: mid-Holocene case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/paleo/exercise_3.html">3: Water isotope tracers in CESM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/cam-chem_waccm/cam-chem_waccm.html">Atmospheric chemistry</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam-chem_waccm/exercise_1.html">1: Control case: running with chemistry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam-chem_waccm/exercise_2.html">2: Test case: changing the chemistry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam-chem_waccm/exercise_3.html">3: Test case: changing the emissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cam-chem_waccm/visualization.html">4: Visualization option with GEOV</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/clm_ctsm/clm_ctsm.html">Land</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/clm_ctsm/clm_exercise_1.html">1: Control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/clm_ctsm/clm_exercise_2.html">2: Use the BGC model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/clm_ctsm/clm_exercise_3.html">3: Modify input data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/mom/mom.html">Ocean</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/mom/mom_exercise_1.html">1: Control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/mom/mom_exercise_2.html">2: Turn off submesoscale parameterization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/mom/mom_exercise_3.html">3: Modify wind stress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/mom/mom_exercise_4.html">4: Turn on the ecosystem</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/cice/cice.html">Sea Ice</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cice/cice_exercise_1.html">1: Control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cice/cice_exercise_2.html">2: Tune the albedo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cice/cice_exercise_3.html">3: Modify the snow conductivity</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/cism/cism.html">Land Ice</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cism/cism_exercise_1.html">CISM Challenge Exercise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cism/cism_exercise_2.html">Looking at the simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/cism/cism_exercise_3.html">Computing ice sheet related sea level change from a CISM simulation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../challenge/bgc/bgc.html">Biogeochemistry</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../challenge/bgc/bgc_exercise_1.html">1: Set up a BGC case</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../diagnostics/diagnostics.html">Diagnostics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/cam/cam.html">Atmosphere</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/cam/basics_cam.html">Basic Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/cam/advanced_cam.html">Advanced Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/clm_ctsm/clm_ctsm.html">Land</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/clm_ctsm/basics_clm.html">Basic Land Model Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/cice/cice.html">Sea Ice</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/cice/basics_cice.html">Basic Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/cice/advanced_cice.html">Advanced Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../diagnostics/cupid.html">CUPiD</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/additional/additional.html">Additional Topics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/postprocessing.html">Postprocessing data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/cvdp.html">CVDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/analysis_tools.html">CESM analysis tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/adf.html">ADF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/uxarray.html">UXarray</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/resources_overview.html">Resources</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../resources/ncar_hpc.html">NCAR Supercomputer</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/ncar_hpc_module.html">Modules on NCAR HPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/tutorial_one_time_setup.html">Tutorial one time setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/tutorial_queue_account.html">Tutorial queue and account</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/terminals.html">Terminal Windows</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../resources/unix.html">UNIX</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/unix-cheatsheet.html">UNIX cheatsheet</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/text_editors.html">Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/github.html">Github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/fortran.html">Fortran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/netcdf.html">NetCDF files</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/basics/code/cesm_code_explore.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Explore CESM Code</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-locate-your-cesm-source-code-directory">Step 1. Locate Your CESM Source Code Directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-examine-the-cime-directory">Step 2. Examine the CIME Directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-examine-the-cesm-components-area">Step 3. Examine the CESM Components Area</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-look-at-the-community-atmosphere-model-cam-component-model">Step 4. Look at the Community Atmosphere Model (CAM) Component Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="explore-cesm-code">
+<h1>Explore CESM Code<a class="headerlink" href="#explore-cesm-code" title="Link to this heading">#</a></h1>
+<p>Now that you have downloaded CESM into your workspace, it is useful to become familiar with its directory structure. In this exercise, you will explore the main areas of the CESM source code and learn where key tools and model components are located.</p>
+<p>Specifically, in this exercise we will:</p>
+<ul class="simple">
+<li><p>Step 1. Locate your CESM source code directory (<code class="docutils literal notranslate"><span class="pre">$SRCROOT</span></code>).</p></li>
+<li><p>Step 2. Examine the CIME Directory area.</p></li>
+<li><p>Step 3. Examine the Model Components area.</p></li>
+<li><p>Step 4. Take a closer look at the Community Atmosphere Model (CAM) Component Model.</p></li>
+</ul>
+ <br> <p>For the current tutorial on derecho, the path to the CESM code is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$SRCROOT = /glade/u/home/$USER/code/my_cesm_code
+</pre></div>
+</div>
+<div style="text-align: center;">
+  <img src="../../../images/basics/CESM_Workspaces_Code_wide.png"
+       alt="CESM directories"
+       style="width:30%;">
+</div>
+<div style="text-align: center;">
+  <em>Figure: Detailed view of the CESM Code Directory</em>
+</div>
+<section id="step-1-locate-your-cesm-source-code-directory">
+<h2>Step 1. Locate Your CESM Source Code Directory<a class="headerlink" href="#step-1-locate-your-cesm-source-code-directory" title="Link to this heading">#</a></h2>
+<p>Before exploring the CESM source tree, let’s first determine where we are currently located in the file system and navigate to the CESM code directory (<code class="docutils literal notranslate"><span class="pre">$SRCROOT</span></code>) if we are not already there.</p>
+<div class="alert alert-info">
+<strong>Exercise </strong><br>
+<p>Open a terminal and determine your current working directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pwd</span>
+</pre></div>
+</div>
+<br>
+<p>The expected output is:<br></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/glade/u/home/$USER/code/my_cesm_code
+</pre></div>
+</div>
+<br>
+<p>If your output matches the path above, you are already in the CESM source code directory and can continue to the next step. (If you have not done anything since the last exercise then you will already be in the <code class="docutils literal notranslate"><span class="pre">$SRCROOT</span></code> location)</p>
+<p>If your output is different, navigate to the CESM source code directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd /glade/u/home/$USER/code/my_cesm_code
+</pre></div>
+</div>
+<p>You are now located in your CESM source code workspace (<code class="docutils literal notranslate"><span class="pre">$SRCROOT</span></code>).</p>
+<p>To see the contents of the directory, use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>You should see several directories and files, including:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">bin</span>
+<span class="n">ccs_config</span>
+<span class="n">ChangeLog</span>
+<span class="n">ChangeLog_template</span>
+<span class="n">cime</span>
+<span class="n">cime_config</span>
+<span class="n">components</span>
+<span class="n">describe_version</span>
+<span class="n">doc</span>
+<span class="n">libraries</span>
+<span class="n">LICENSE</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">README</span><span class="o">.</span><span class="n">rst</span>
+<span class="n">share</span>
+<span class="n">tools</span>
+</pre></div>
+</div>
+<p>These directories form the top level of the CESM source tree and will be used throughout the remainder of the tutorial.</p>
+<p>If your directory contents differ significantly from those shown above, ask for assistance before proceeding.</p>
+</section>
+<section id="step-2-examine-the-cime-directory">
+<h2>Step 2. Examine the CIME Directory<a class="headerlink" href="#step-2-examine-the-cime-directory" title="Link to this heading">#</a></h2>
+<p>One of the most important directories in CESM is the <strong>CIME</strong> directory.</p>
+<p>The CIME(Common Infrastructure for Modeling the Earth) directory provides the framework that integrates the CESM component models and manages the workflow for configuring, building, and running simulations.</p>
+<div class="alert alert-info">
+<strong>Exercise </strong><br>
+- Move into the CIME directory:
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">cime</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>List its contents:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>You should see several directories, including:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">doc</span>
+<span class="n">scripts</span>
+<span class="n">tools</span>
+<span class="n">utils</span>
+</pre></div>
+</div>
+<p>The most important directory for many CESM users is the <strong>scripts</strong> directory, which contains the tools used to create and manage cases.</p>
+<ul class="simple">
+<li><p>Change into the scripts directory:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">scripts</span>
+</pre></div>
+</div>
+<p>List its contents:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">-</span><span class="n">l</span>
+</pre></div>
+</div>
+<p>Notice the following scripts:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">create_newcase</span>
+<span class="n">create_clone</span>
+<span class="n">create_test</span>
+<span class="n">query_config</span>
+<span class="n">query_testlists</span>
+</pre></div>
+</div>
+<p>Throughout this tutorial, <strong>create_newcase</strong> will be one of the most frequently used commands.</p>
+<p><strong>Check Your Understanding</strong></p>
+<p>What is the purpose of the <code class="docutils literal notranslate"><span class="pre">create_newcase</span></code> command?</p>
+<p><em>Hint: It is used to create a new CESM experiment (or “case”) that can later be configured, built, and run.</em></p>
+</div>
+</section>
+<section id="step-3-examine-the-cesm-components-area">
+<h2>Step 3. Examine the CESM Components Area<a class="headerlink" href="#step-3-examine-the-cesm-components-area" title="Link to this heading">#</a></h2>
+<p>In your terminal window, we will now move to the Components Directory and examine the contents of the individual sub models.</p>
+<p><img alt="CESM directories" src="../../../_images/CESM_Code_Components_List.png" />
+<em><p style="text-align: center;"> Figure: CESM2 Code Components </p></em></p>
+<div class="alert alert-info">
+- Change back to the Code Workspace Location:
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd /glade/u/home/$USER/code/my_cesm_code
+</pre></div>
+</div>
+<p>OR
+Alternatively, you can use the <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">../..</span></code> to move up two levels in the directory hierarchy.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">../..</span>
+</pre></div>
+</div>
+<br>
+<ul class="simple">
+<li><p>Change into the <code class="docutils literal notranslate"><span class="pre">components</span></code> area of the code workspace: <br></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">components</span>
+</pre></div>
+</div>
+<br>
+<ul class="simple">
+<li><p>List the contents of the Components Directory: <br></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<br>
+<p>Expected Output: <br></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cam</span>
+<span class="n">cdeps</span>
+<span class="n">cice</span>
+<span class="n">cism</span>
+<span class="n">clm</span>
+<span class="n">cmeps</span>
+<span class="n">mizuRoute</span>
+<span class="n">mom</span>
+<span class="n">mosart</span>
+<span class="n">rtm</span>
+<span class="n">ww3</span>
+</pre></div>
+</div>
+<p>Each directory contains the source code for a different Earth system component or supporting infrastructure:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CAM</p></td>
+<td><p>Community Atmosphere Model (atmosphere)</p></td>
+</tr>
+<tr class="row-odd"><td><p>CLM</p></td>
+<td><p>Community Land Model (land)</p></td>
+</tr>
+<tr class="row-even"><td><p>MOM</p></td>
+<td><p>Modular Ocean Model (ocean)</p></td>
+</tr>
+<tr class="row-odd"><td><p>CICE</p></td>
+<td><p>Sea Ice Model</p></td>
+</tr>
+<tr class="row-even"><td><p>CISM</p></td>
+<td><p>Community Ice Sheet Model (land ice)</p></td>
+</tr>
+<tr class="row-odd"><td><p>MOSART</p></td>
+<td><p>Model for Scale Adaptive River Transport</p></td>
+</tr>
+<tr class="row-even"><td><p>mizuRoute</p></td>
+<td><p>River routing model</p></td>
+</tr>
+<tr class="row-odd"><td><p>RTM</p></td>
+<td><p>Runoff Transport Model (legacy routing infrastructure)</p></td>
+</tr>
+<tr class="row-even"><td><p>WW3</p></td>
+<td><p>WaveWatch III (ocean waves)</p></td>
+</tr>
+<tr class="row-odd"><td><p>CMEPS</p></td>
+<td><p>Coupling infrastructure used to exchange information between component models</p></td>
+</tr>
+<tr class="row-even"><td><p>CDEPS</p></td>
+<td><p>Data components used to provide prescribed atmosphere, ocean, land, ice, and other forcing datasets</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Together, these components represent the major elements of the Earth system. During a CESM simulation, information such as heat, moisture, momentum, runoff, and sea-ice state is exchanged between components through the coupling infrastructure provided by CMEPS.
+Together, these components represent the major elements of the Earth system. During a CESM simulation, information such as heat, moisture, momentum, runoff, and sea-ice state is exchanged between components through the coupling infrastructure provided by CMEPS.</p>
+</div></section>
+<section id="step-4-look-at-the-community-atmosphere-model-cam-component-model">
+<h2>Step 4. Look at the Community Atmosphere Model (CAM) Component Model<a class="headerlink" href="#step-4-look-at-the-community-atmosphere-model-cam-component-model" title="Link to this heading">#</a></h2>
+<p>As a final exercise, let’s take a quick look at the Community Atmosphere Model (CAM), which provides the atmospheric component of CESM.</p>
+<div class="alert alert-info">
+<strong>Exercise</strong><br>
+<ul class="simple">
+<li><p>Change into the CAM source directory:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">cam</span>
+</pre></div>
+</div>
+<br>
+<ul class="simple">
+<li><p>List the contents of the CAM Directory: <br></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">-</span><span class="n">l</span>
+</pre></div>
+</div>
+<br>
+<p><strong>Expected Output: </strong><br></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">bin</span>
+<span class="n">bld</span>
+<span class="n">ccs_config</span>
+<span class="n">chem_proc</span>
+<span class="n">cime</span>
+<span class="n">cime_config</span>
+<span class="n">components</span>
+<span class="n">doc</span>
+<span class="n">libraries</span>
+<span class="n">LICENSE</span>
+<span class="n">manage_externals</span>
+<span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="n">share</span>
+<span class="n">src</span>
+<span class="n">test</span>
+<span class="n">tools</span>
+</pre></div>
+</div>
+<p>Several of these directories will become important as you begin working with CAM:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Directory</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">src</span></code></p></td>
+<td><p>Main CAM source code</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">chem_proc</span></code></p></td>
+<td><p>Atmospheric chemistry infrastructure</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">test</span></code></p></td>
+<td><p>CAM test cases and testing tools</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">doc</span></code></p></td>
+<td><p>CAM documentation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tools</span></code></p></td>
+<td><p>Utilities for development and analysis</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bld</span></code></p></td>
+<td><p>Build-related scripts and configuration files</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">src</span></code> directory is where most scientific development takes place and is the area you will explore in later exercises.</p>
+</div>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>In this section, you:</p>
+<ul class="simple">
+<li><p>Located the CESM source code directory (<code class="docutils literal notranslate"><span class="pre">$SRCROOT</span></code>).</p></li>
+<li><p>Explored the CIME infrastructure used to create and manage CESM cases.</p></li>
+<li><p>Examined the major CESM component models.</p></li>
+<li><p>Explored the structure of the Community Atmosphere Model (CAM).</p></li>
+</ul>
+<p>Understanding the CESM directory structure will make it easier to navigate the code, locate relevant files, and modify model components in future exercises.</p>
+<p><strong>Congratulations! You have completed the CESM code exploration exercise.</strong></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/basics/code"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="git_download_cesm.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Download CESM</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../cesm_workflow.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">CESM Workflow</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-locate-your-cesm-source-code-directory">Step 1. Locate Your CESM Source Code Directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-examine-the-cime-directory">Step 2. Examine the CIME Directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-examine-the-cesm-components-area">Step 3. Examine the CESM Components Area</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-look-at-the-community-atmosphere-model-cam-component-model">Step 4. Look at the Community Atmosphere Model (CAM) Component Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By NCAR/CGD Staff
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
