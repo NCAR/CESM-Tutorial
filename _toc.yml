@@ -147,6 +147,9 @@ chapters:
   - file: notebooks/challenge/bgc/bgc
     sections:
     - file: notebooks/challenge/bgc/bgc_exercise_1
+  - file: notebooks/challenge/ml/ml
+    sections:
+    - file: notebooks/challenge/ml/ml_exercise_1
 
 - file: notebooks/diagnostics/diagnostics
   sections:
