@@ -1,0 +1,1165 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4: Investigating Output &#8212; CESM Tutorial</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/challenge/clm_ctsm/clm_exercise_4';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="5: Investigating vegetation demographics with FATES" href="clm_exercise_5.html" />
+    <link rel="prev" title="3: Run CLM with FATES and modify input data" href="clm_exercise_3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/ncar_logo.png" class="logo__image only-light" alt="CESM Tutorial - Home"/>
+    <script>document.write(`<img src="../../../_static/ncar_logo.png" class="logo__image only-dark" alt="CESM Tutorial - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../intro/intro_overview.html">Introduction</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../intro/components.html">What is CESM ?</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/coupling.html">CIME (Advanced)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../intro/cesm_webpage.html">CESM Webpage</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/project.html">CESM Working Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/getting_involved.html">Getting Involved</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/getting_help.html">Getting Help</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../intro/community_experiments.html">Community Experiments</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/cesm_expts/clim_data_guide.html">Climate Data Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/cesm_expts/gdex.html">Geoscience Data Exchange (GDEX)</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../prereqs/prereqs_overview.html">Prerequisites for Success</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../prereqs/exercises.html">Exercise Overview</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../basics/basics_overview.html">Basics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/cesm_workspaces.html">Workspaces</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../basics/code_overview.html">CESM code</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/code/git_download_cesm.html">Download CESM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/code/cesm_code_explore.html">Explore CESM Code</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../basics/cesm_workflow.html">CESM Workflow</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/create_newcase.html">Create New Case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/case_setup.html">Case Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/case_build.html">Case Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/case_submit.html">Case Submit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/model_output.html">Model Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/checking_jobs_and_status.html">Checking Your Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/create_clone.html">Create Clone (Advanced)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../basics/exercises_overview.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/exercises/first_B1850.html">Your first CESM run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/exercises/second_B1850.html">Extending your run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/exercises/examine_history_B1850.html">Examine History Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/exercises/extra.html">Explore Further</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/exercises/review_questions.html">Review Questions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modifications/xml.html">Simple XML Modifications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modifications/xml/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modifications/xml/model_control_files.html">How to Modify XML Files (*.xml)</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modifications/xml/run_length.html">Controlling Run Length</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/run_length/starting_and_stopping.html">Starting and Stopping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/run_length/restarting.html">Restarting a Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/run_length/changing_run_length.html">Changing Run Length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/run_length/timing_files.html">Using Timing Files</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modifications/xml/modify_run_type.html">Modifying the Type of Run</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/modify_run_type/hybrid_branch_restart.html">Hybrid, Branch and Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/modify_run_type/run_variables.html">Variables Related to Run Type</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modifications/xml/physics_timestep.html">Physics Timestep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modifications/xml/other_xml_variables.html">Other Useful XML Variables</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modifications/xml/exercises.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/exercises/xml_length_exercise.html">Exercise 1: Modify run length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/exercises/xml_runtype_exercise.html">Exercise 2: Modify run type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/exercises/xml_timestep_exercise.html">Exercise 3: Change physics timestep</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../namelist/namelist.html">Namelist Modifications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../namelist/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../namelist/documentation.html">Namelist Variables Documentation</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../namelist/output.html">Customizing Output</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_cam.html">Customize CAM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_clm.html">Customize CLM Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_cice.html">Customize CICE output</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_mom.html">Customize MOM output</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../namelist/exercises_overview.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/exercises/exercise_cam_interpolate.html">Interpolate CAM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/exercises/exercise_cam_output.html">Modify CAM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/exercises/exercise_tuning_parameter.html">Change a tuning parameter in CAM</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../troubleshooting/troubleshooting.html">Troubleshooting runtime errors</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../troubleshooting/log_files.html">The log files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../troubleshooting/debugging_flag.html">Adding debugging info</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../troubleshooting/exercises_overview.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../troubleshooting/exercises/troubleshooting_cam.html">Diagnose a runtime failure</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../sourcemods/sourcemods.html">Source Modifications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sourcemods/overview.html">Source code modifications with SourceMods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sourcemods/add_fields_cam.html">Source Modification Example</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../sourcemods/exercises_overview.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../sourcemods/exercises/exercise_add_field.html">Add output variable in CAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sourcemods/exercises/exercise_rain_threshold.html">Modify the <code class="docutils literal notranslate"><span class="pre">rain_threshold</span></code> in CLM</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../challenge.html">Challenge Exercises</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cam/cam.html">Atmosphere</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cam/exercise_1.html">1: Control case: FHISTC_LTso</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cam/exercise_2.html">2: Pre-Industrial Compset: F1850C_LTso</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cam/exercise_3.html">3: Starting a Historical Simulation from a Spun-Up State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cam/exercise_4.html">4: Modify sea surface temperature in the tropics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cam/exercise_5.html">5: Adjust threshold for deep convection over land</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../paleo/paleo.html">Paleo</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../paleo/exercise_1.html">1: Preindustrial control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../paleo/exercise_2.html">2: mid-Holocene case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../paleo/exercise_3.html">3: Water isotope tracers in CESM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cam-chem_waccm/cam-chem_waccm.html">Atmospheric chemistry</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cam-chem_waccm/exercise_1.html">1: Control case: running with chemistry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cam-chem_waccm/exercise_2.html">2: Test case: changing the chemistry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cam-chem_waccm/exercise_3.html">3: Test case: changing the emissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cam-chem_waccm/visualization.html">4: Visualization option with GEOV</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="clm_ctsm.html">Land</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="clm_exercise_1.html">1: CLM SP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clm_exercise_2.html">2: CLM BGC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clm_exercise_3.html">3: Run CLM with FATES and modify input data</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">4: Investigating Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clm_exercise_5.html">5: Investigating vegetation demographics with FATES</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../mom/mom.html">Ocean</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mom/mom_exercise_1.html">1: Control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mom/mom_exercise_2.html">2: Turn off submesoscale parameterization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mom/mom_exercise_3.html">3: Modify wind stress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mom/mom_exercise_4.html">4: Turn on the ecosystem</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cice/cice.html">Sea Ice</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cice/cice_exercise_1.html">1: Control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cice/cice_exercise_2.html">2: Tune the albedo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cice/cice_exercise_3.html">3: Modify the snow conductivity</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cism/cism.html">Land Ice</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cism/cism_exercise_1.html">CISM Challenge Exercise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cism/cism_exercise_2.html">Looking at the simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cism/cism_exercise_3.html">Computing ice sheet related sea level change from a CISM simulation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../bgc/bgc.html">Biogeochemistry</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../bgc/bgc_exercise_1.html">Set up BGC case with CESM2.1</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../ml/ml.html">Machine Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../ml/ml_exercise_1.html">CAMulator Exercises: CESM Tutorial: Summer 2026</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../diagnostics/diagnostics.html">Diagnostics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/cam/cam.html">Atmosphere</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/cam/basics_cam.html">Basic Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/cam/advanced_cam.html">Advanced Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/clm_ctsm/clm_ctsm.html">Land</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/clm_ctsm/basics_clm.html">Basic Land Model Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/mom/mom.html">Ocean</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/mom/basics_mom.html">Basic Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/mom/advanced_mom.html">Advanced Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/cice/cice.html">Sea Ice</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/cice/basics_cice.html">Basic Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/cice/advanced_cice.html">Advanced Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../diagnostics/cupid.html">CUPiD</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/additional/additional.html">Additional Topics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/postprocessing.html">Postprocessing data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/cvdp.html">CVDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/analysis_tools.html">CESM analysis tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/adf.html">ADF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/uxarray.html">UXarray</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/resources_overview.html">Resources</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../resources/ncar_hpc.html">NCAR Supercomputer</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/ncar_hpc_module.html">Modules on NCAR HPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/tutorial_one_time_setup.html">Tutorial one time setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/tutorial_queue_account.html">Tutorial queue and account</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/terminals.html">Terminal Windows</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../resources/unix.html">UNIX</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/unix-cheatsheet.html">UNIX cheatsheet</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/text_editors.html">Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/github.html">Github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/fortran.html">Fortran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/netcdf.html">NetCDF files</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/challenge/clm_ctsm/clm_exercise_4.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>4: Investigating Output</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clm-and-clm-fates-output">CLM and CLM-FATES output</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#helper-functions">Helper functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-formatting-data">1. Reading and formatting data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-in-the-data">1.1 Read in the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#printing-information-about-the-dataset-is-helpful-for-understanding-your-data">Printing information about the dataset is helpful for understanding your data.</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-calculations">1.2 Simple Calculations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-plotting">2. Basic plotting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easy-plots-using-xarray">2.1. Easy plots using xarray</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question">Question</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-differences">2.2. Calculating differences</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fates-sp-vs-fates-sp-modified">FATES-SP vs. FATES-SP (modified)</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">Questions</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fates-sp-vs-clm-sp">FATES-SP vs. CLM-SP</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#do-the-differences-affect-other-variables">Do the differences affect other variables?</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Questions:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-clm-sp-and-clm-bgc">3. Comparing CLM-SP and CLM-BGC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Questions:</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="investigating-output">
+<h1>4: Investigating Output<a class="headerlink" href="#investigating-output" title="Link to this heading">#</a></h1>
+<p><strong>BEFORE BEGINNING THIS EXERCISE</strong> -  Check that your kernel (upper right corner, above) is <code class="docutils literal notranslate"><span class="pre">NPL</span> <span class="pre">2023a</span></code>. This should be the default kernel, but if it is not, click on that button and select <code class="docutils literal notranslate"><span class="pre">NPL</span> <span class="pre">2023a</span></code>.</p>
+<section id="clm-and-clm-fates-output">
+<h2>CLM and CLM-FATES output<a class="headerlink" href="#clm-and-clm-fates-output" title="Link to this heading">#</a></h2>
+<p>You’ve run four cases spanning two land model structures and two vegetation configurations:</p>
+<ul class="simple">
+<li><p>CLM-SP: standard “big-leaf” CLM with satellite-prescribed phenology</p></li>
+<li><p>CLM-BGC: big-leaf CLM with prognostic biogeochemistry (carbon/nitrogen cycling, prognostic LAI)</p></li>
+<li><p>FATES-SP: FATES with satellite-prescribed phenology and CRUJRA-2024 meteorology</p></li>
+<li><p>FATES-SP (modified parameters): the same FATES-SP configuration with a perturbed parameter file</p></li>
+</ul>
+<p>Together these let you make three comparisons, each isolating a different piece:</p>
+<ol class="arabic simple">
+<li><p>CLM-SP vs. FATES-SP: same prescribed phenology, different vegetation model, different meteorology.</p></li>
+<li><p>FATES-SP vs. FATES-SP (modified): how FATES output responds to a parameter change.</p></li>
+<li><p>CLM-SP vs. CLM-BGC: prescribed vs. prognostic vegetation within big-leaf CLM.</p></li>
+</ol>
+<p>While CLM-FATES and big-leaf CLM share many output variables (mostly CLM quantities like <code class="docutils literal notranslate"><span class="pre">ASA</span></code>, <code class="docutils literal notranslate"><span class="pre">FSR</span></code>, and <code class="docutils literal notranslate"><span class="pre">FSH</span></code> that don’t depend on the vegetation model) most vegetation-related quantities in a FATES run are simulated, calculated, and output by FATES itself. FATES variables carry their own names (typically prefixed <code class="docutils literal notranslate"><span class="pre">FATES_</span></code>), and their dimensions differ from big-leaf CLM: instead of the CLM PFT axis, FATES output is organized by FATES PFTs, size classes, and patch/cohort structure. Even the PFT definitions themselves differ between the two.</p>
+<p>This notebook walks through some basic CLM and CLM-FATES output for the global cases you just ran, and shows how to do some basic comparisons.</p>
+<p><em>We will start by loading some packages.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">functools</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<section id="helper-functions">
+<h3>Helper functions<a class="headerlink" href="#helper-functions" title="Link to this heading">#</a></h3>
+<p>These are a few helper functions that we will use in this notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">preprocess</span><span class="p">(</span><span class="n">data_set</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">data_vars</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Preprocesses an xarray Dataset by subsetting to specific variables - to be used on read-in</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data_set (xr.Dataset): input Dataset</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        xr.Dataset: output Dataset</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">data_set</span><span class="p">[</span><span class="n">data_vars</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">annual_sum</span><span class="p">(</span><span class="n">raw_values</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span> <span class="n">conversion_factor</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes annual sum</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        raw_values (xr.DataArray): input raw data</span>
+<span class="sd">        conversion_factor (float, optional): conversion factor. Defaults to 1.0</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        xr.DataArray: annual sum output</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">months</span> <span class="o">=</span> <span class="n">raw_values</span><span class="p">[</span><span class="s2">&quot;time.daysinmonth&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">conversion_factor</span> <span class="o">*</span> <span class="p">(</span><span class="n">months</span> <span class="o">*</span> <span class="n">raw_values</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;time.year&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">annual_mean</span><span class="p">(</span><span class="n">raw_values</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">,</span> <span class="n">conversion_factor</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes weighted annual mean using daysinmonth for missing-aware inputs.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        raw_values (xr.DataArray): input raw data</span>
+<span class="sd">        conversion_factor (float, optional): conversion factor. Defaults to 1.0</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        xr.DataArray: annual mean output</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">months</span> <span class="o">=</span> <span class="n">raw_values</span><span class="p">[</span><span class="s2">&quot;time.daysinmonth&quot;</span><span class="p">]</span>
+    
+    <span class="c1"># multiply by number of days in month and conversion factor</span>
+    <span class="n">weighted</span> <span class="o">=</span> <span class="p">(</span><span class="n">raw_values</span> <span class="o">*</span> <span class="n">conversion_factor</span><span class="p">)</span> <span class="o">*</span> <span class="n">months</span>
+
+    <span class="c1"># compute number of valid days per year</span>
+    <span class="n">valid_days</span> <span class="o">=</span> <span class="n">months</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">raw_values</span><span class="o">.</span><span class="n">notnull</span><span class="p">())</span>
+
+    <span class="c1"># group and sum weighted data and valid days</span>
+    <span class="n">ann_sum</span> <span class="o">=</span> <span class="n">weighted</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;time.year&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">days_per_year</span> <span class="o">=</span> <span class="n">valid_days</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;time.year&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ann_sum</span> <span class="o">/</span> <span class="n">days_per_year</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">days_per_year</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="reading-and-formatting-data">
+<h2>1. Reading and formatting data<a class="headerlink" href="#reading-and-formatting-data" title="Link to this heading">#</a></h2>
+<p><strong>Note</strong>: The exercises below assume you use <code class="docutils literal notranslate"><span class="pre">i.clm.sp</span></code>, <code class="docutils literal notranslate"><span class="pre">i.clm.bgc</span></code>, and <code class="docutils literal notranslate"><span class="pre">i.fates.year1</span></code> and <code class="docutils literal notranslate"><span class="pre">i.fates.year1.vcmax</span></code> output from the previous challenges for plotting for this section.</p>
+<section id="read-in-the-data">
+<h3>1.1 Read in the data<a class="headerlink" href="#read-in-the-data" title="Link to this heading">#</a></h3>
+<p>The first step is to grab the history files from the runs you completed in the challenge exercises. For these examples we will use gross primary production, latent heat flux, and sensible heat flux.</p>
+<p>Two of these are CLM variables that share a name across all four cases:</p>
+<ul class="simple">
+<li><p>latent heat flux (<code class="docutils literal notranslate"><span class="pre">EFLX_LH_TOT</span></code>)</p></li>
+<li><p>sensible heat flux (<code class="docutils literal notranslate"><span class="pre">FSH</span></code>)</p></li>
+</ul>
+<p>GPP is where the model structural differences show up. The variable name differs across all three configurations:</p>
+<ul class="simple">
+<li><p><strong>CLM-SP</strong>: <code class="docutils literal notranslate"><span class="pre">FPSN</span></code> - photosynthesis rate (SP mode doesn’t run the full carbon cycle, so there is no prognostic “GPP”)</p></li>
+<li><p><strong>CLM-BGC</strong>: <code class="docutils literal notranslate"><span class="pre">GPP</span></code> - gross primary production from the active biogeochemistry</p></li>
+<li><p><strong>FATES-SP</strong>, <strong>FATES-SP (modified)</strong>: <code class="docutils literal notranslate"><span class="pre">FATES_GPP</span></code> - GPP calculated output by FATES</p></li>
+</ul>
+<p>Note that the units for these variables are also all different! We will deal with this later…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># note: change the user here to your user name</span>
+<span class="n">user</span> <span class="o">=</span> <span class="s1">&#39;afoster&#39;</span>
+
+<span class="c1"># per-case config: archive case name + the GPP-like variable</span>
+<span class="n">cases</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;clm_sp&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;case&#39;</span><span class="p">:</span> <span class="s1">&#39;i.clm.sp.year1&#39;</span><span class="p">,</span> <span class="s1">&#39;gpp&#39;</span><span class="p">:</span> <span class="s1">&#39;FPSN&#39;</span><span class="p">},</span>  <span class="c1"># SP big-leaf: photosynthesis rate</span>
+    <span class="s1">&#39;clm_bgc&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;case&#39;</span><span class="p">:</span> <span class="s1">&#39;i.clm.bgc.month3&#39;</span><span class="p">,</span> <span class="s1">&#39;gpp&#39;</span><span class="p">:</span> <span class="s1">&#39;GPP&#39;</span><span class="p">},</span>  <span class="c1"># prognostic BGC: true GPP</span>
+    <span class="s1">&#39;fates_sp&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;case&#39;</span><span class="p">:</span> <span class="s1">&#39;i.fates.year1&#39;</span><span class="p">,</span> <span class="s1">&#39;gpp&#39;</span><span class="p">:</span> <span class="s1">&#39;FATES_GPP&#39;</span><span class="p">},</span>  <span class="c1"># FATES control</span>
+    <span class="s1">&#39;fates_vcmax&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;case&#39;</span><span class="p">:</span> <span class="s1">&#39;i.fates.year1.vcmax&#39;</span><span class="p">,</span> <span class="s1">&#39;gpp&#39;</span><span class="p">:</span> <span class="s1">&#39;FATES_GPP&#39;</span><span class="p">},</span>  <span class="c1"># FATES, vcmax modified</span>
+<span class="p">}</span>
+
+<span class="c1"># variables shared by every case</span>
+<span class="n">shared_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;EFLX_LH_TOT&#39;</span><span class="p">,</span> <span class="s1">&#39;FSH&#39;</span><span class="p">,</span> <span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="s1">&#39;landfrac&#39;</span><span class="p">]</span>
+
+<span class="c1"># FATES-only: gridcell fraction occupied by FATES</span>
+<span class="n">fates_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;FATES_FRACTION&#39;</span><span class="p">]</span>
+
+<span class="c1"># read in all datasets, supplying the correct `data_vars`</span>
+<span class="n">datasets</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">ref_coords</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">cfg</span> <span class="ow">in</span> <span class="n">cases</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">hist</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/glade/derecho/scratch/</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2">/archive/</span><span class="si">{</span><span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;case&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/lnd/hist&quot;</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hist</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;case&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">.clm2.h0a.*&quot;</span><span class="p">)))</span>
+
+    <span class="n">data_vars</span> <span class="o">=</span> <span class="n">shared_vars</span> <span class="o">+</span> <span class="p">[</span><span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;gpp&#39;</span><span class="p">]]</span>
+    <span class="k">if</span> <span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;gpp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;FATES&#39;</span><span class="p">):</span>
+        <span class="n">data_vars</span> <span class="o">+=</span> <span class="n">fates_vars</span>
+    
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span>
+        <span class="n">files</span><span class="p">,</span>
+        <span class="n">preprocess</span><span class="o">=</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">preprocess</span><span class="p">,</span> <span class="n">data_vars</span><span class="o">=</span><span class="n">data_vars</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">datasets</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><b>NOTE:</b> These are the raw history files that CTSM writes out.</p>
+<p>By default, they include grid cell averaged monthly means for different state and flux variables.</p>
+<div class="alert alert-block alert-info">
+    <b>TIP:</b> If you want to look at other variables, the <b>shared_vars</b> list in the cell above (for variables common to every case), the <b>fates_vars</b> list for variables only for FATES, or the <b>cases</b> config if you want to change the per-case GPP variable. Each case's read list is assembled from those.
+</div>
+<section id="printing-information-about-the-dataset-is-helpful-for-understanding-your-data">
+<h4>Printing information about the dataset is helpful for understanding your data.<a class="headerlink" href="#printing-information-about-the-dataset-is-helpful-for-understanding-your-data" title="Link to this heading">#</a></h4>
+<p>Let’s start with one of the FATES cases:</p>
+<ul class="simple">
+<li><p>What dimensions do your data have?</p></li>
+<li><p>What are the coordinate variables?</p></li>
+<li><p>What variables are we looking at?</p></li>
+<li><p>Is there other helpful information, or are there attributes in the dataset we should be aware of?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print information about the FATES control dataset</span>
+<span class="n">datasets</span><span class="p">[</span><span class="s1">&#39;fates_sp&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also print information about the variables in your dataset. The example below prints information about one of the data variables (<code class="docutils literal notranslate"><span class="pre">FATES_GPP</span></code>) we read in. You can modify this cell to look at some of the other variables in the dataset.</p>
+<p><em>What are the units, long name, and dimensions of your data?</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datasets</span><span class="p">[</span><span class="s1">&#39;fates_sp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">FATES_GPP</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="simple-calculations">
+<h3>1.2 Simple Calculations<a class="headerlink" href="#simple-calculations" title="Link to this heading">#</a></h3>
+<p>Before we can compare GPP across the four runs, we need to get them into the correct units and format. Two corrections are needed:</p>
+<ol class="arabic simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">FATES_FRACTION</span></code> correction (FATES cases only)</strong>: FATES doesn’t know how much of each gridcell is occupied by natural vegetation, so the gridcell average implicitly assumes all of it is. We correct by multiplying the FATES history area-weighted values by <code class="docutils literal notranslate"><span class="pre">FATES_FRACTION</span></code>.</p></li>
+<li><p><strong>Unit conversion (all cases)</strong>: The three GPP-like variables come out in different units (<code class="docutils literal notranslate"><span class="pre">FPSN</span></code> as a photosynthesis rate in μmol CO<sub>2</sub> m<sup>-2</sup> s<sup>-1</sup>, <code class="docutils literal notranslate"><span class="pre">GPP</span></code> in gC m<sup>-2</sup> s<sup>-1</sup>, and <code class="docutils literal notranslate"><span class="pre">FATES_GPP</span></code> in kgC m<sup>-2</sup> s<sup>-1</sup>) We convert all three to a common gC m<sup>-2</sup> s<sup>-1</sup> so the runs are actually comparable.</p></li>
+</ol>
+<p>We’ll store the result under a common variable name (<code class="docutils literal notranslate"><span class="pre">GPP</span></code>) in every dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GPP_CONVERSION</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;FPSN&#39;</span><span class="p">:</span> <span class="mf">1e-6</span> <span class="o">*</span> <span class="mf">12.011</span><span class="p">,</span>  <span class="c1"># umol CO2 m-2 s-1 -&gt; gC m-2 s-1  (1e-6 mol/umol * 12.011 gC/mol)</span>
+    <span class="s1">&#39;GPP&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>  <span class="c1"># gC m-2 s-1 -&gt; gC m-2 s-1  (already there)</span>
+    <span class="s1">&#39;FATES_GPP&#39;</span><span class="p">:</span> <span class="mf">1000.0</span><span class="p">,</span>  <span class="c1"># kg C m-2 s-1 -&gt; gC m-2 s-1  (1000 g/kg)</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">cfg</span> <span class="ow">in</span> <span class="n">cases</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+    <span class="n">gpp_orig</span> <span class="o">=</span> <span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;gpp&#39;</span><span class="p">]</span>  <span class="c1"># native GPP-like variable for this case</span>
+    <span class="n">da</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="n">gpp_orig</span><span class="p">]</span>
+
+    <span class="c1"># FATES only: correct for FATES fraction</span>
+    <span class="k">if</span> <span class="n">gpp_orig</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;FATES&#39;</span><span class="p">):</span>
+        <span class="n">da</span> <span class="o">=</span> <span class="n">da</span> <span class="o">*</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;FATES_FRACTION&#39;</span><span class="p">]</span>
+
+    <span class="c1"># unify units -&gt; gC m-2 s-1</span>
+    <span class="n">gpp</span> <span class="o">=</span> <span class="n">da</span> <span class="o">*</span> <span class="n">GPP_CONVERSION</span><span class="p">[</span><span class="n">gpp_orig</span><span class="p">]</span>
+    <span class="n">gpp</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="n">gpp_orig</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>  <span class="c1"># copy source attrs</span>
+    <span class="n">gpp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;gC m-2 s-1&#39;</span>  <span class="c1"># then fix the ones we changed</span>
+    <span class="n">gpp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;gross primary production&#39;</span>
+    <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;GPP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gpp</span>  <span class="c1"># common name across all four cases</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>After this, every dataset has a <code class="docutils literal notranslate"><span class="pre">GPP</span></code> in identical units, and we can now plot with this variable instead of using a different one for each dataset.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="basic-plotting">
+<h2>2. Basic plotting<a class="headerlink" href="#basic-plotting" title="Link to this heading">#</a></h2>
+<section id="easy-plots-using-xarray">
+<h3>2.1. Easy plots using xarray<a class="headerlink" href="#easy-plots-using-xarray" title="Link to this heading">#</a></h3>
+<p>To get a first look at the data, we can plot a year of data from one of the simulations. We’ll start with <strong>CLM-SP</strong>, the first case you ran.</p>
+<div class="alert alert-block alert-info">
+    <b>NOTE:</b> The plotting function only works with 1D or 2D data. Our data are 3D (time, lat, lon), so we need to specify a specific value `x`, `y`, and `col`.
+</div>
+<ul class="simple">
+<li><p>We’ll plot GPP (variable = <code class="docutils literal notranslate"><span class="pre">GPP</span></code>). Note that we select the variable by specifying our dataset (here <code class="docutils literal notranslate"><span class="pre">datasets['clm_sp']</span></code>) and then the variable.</p></li>
+<li><p>Because we standardized GPP in the previous step, this same code works for any of the four cases. Just swap <code class="docutils literal notranslate"><span class="pre">datasets['clm_sp']</span></code> for another key (e.g. <code class="docutils literal notranslate"><span class="pre">datasets['fates_sp']</span></code>).</p></li>
+</ul>
+<p><em>More plotting examples are on the <a class="reference external" href="https://docs.xarray.dev/en/latest/user-guide/plotting.html">xarray web site</a></em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datasets</span><span class="p">[</span><span class="s1">&#39;fates_sp&#39;</span><span class="p">][</span><span class="s1">&#39;GPP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;lon&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;lat&quot;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">4</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-success">   
+<details>
+<summary><font face="Times New Roman">Click here for the solution</font></summary><br>
+<p><img alt="plot example" src="../../../_images/clm_sp_plot_monthly_gpp.png" /></p>
+<p><em><p style="text-align: left;"> Figure: Plotting solution for monthly GPP for our CLM SP simulation. </p></em></p>
+</details>
+</div><section id="question">
+<h4>Question<a class="headerlink" href="#question" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>What do you notice in the Northern Hemisphere over the course of the year?</p></li>
+</ul>
+</section>
+</section>
+<section id="calculating-differences">
+<h3>2.2. Calculating differences<a class="headerlink" href="#calculating-differences" title="Link to this heading">#</a></h3>
+<section id="fates-sp-vs-fates-sp-modified">
+<h4>FATES-SP vs. FATES-SP (modified)<a class="headerlink" href="#fates-sp-vs-fates-sp-modified" title="Link to this heading">#</a></h4>
+<p>We can calculate the difference between the FATES control run and the one where we updated the vcmax parameter for PFT 1. The code below:</p>
+<ul class="simple">
+<li><p>Calculates annual GPP for both simulations (converting the standardized gC m<sup>-2</sup> s<sup>-1</sup> fluxes to an annual kgC m<sup>-2</sup> yr<sup>-1</sup> total)</p></li>
+<li><p>Weights by land fraction so we’re only looking at land</p></li>
+<li><p>Defines the difference as a new variable, <code class="docutils literal notranslate"><span class="pre">gpp_diff</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gpp_cf</span> <span class="o">=</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mf">1e-3</span>
+
+<span class="n">fates_sp</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">[</span><span class="s1">&#39;fates_sp&#39;</span><span class="p">]</span>
+<span class="n">fates_vcmax</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">[</span><span class="s1">&#39;fates_vcmax&#39;</span><span class="p">]</span>
+
+<span class="n">gpp_ann_control</span> <span class="o">=</span> <span class="n">annual_sum</span><span class="p">(</span><span class="n">fates_sp</span><span class="o">.</span><span class="n">GPP</span><span class="p">,</span> <span class="n">gpp_cf</span><span class="p">)</span> <span class="o">*</span> <span class="n">fates_sp</span><span class="o">.</span><span class="n">landfrac</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">gpp_ann_vcmax</span> <span class="o">=</span> <span class="n">annual_sum</span><span class="p">(</span><span class="n">fates_vcmax</span><span class="o">.</span><span class="n">GPP</span><span class="p">,</span> <span class="n">gpp_cf</span><span class="p">)</span> <span class="o">*</span> <span class="n">fates_vcmax</span><span class="o">.</span><span class="n">landfrac</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">gpp_diff</span> <span class="o">=</span> <span class="n">gpp_ann_vcmax</span> <span class="o">-</span> <span class="n">gpp_ann_control</span>
+<span class="n">gpp_diff</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;kgC m-2 yr-1&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;long_name&#39;</span><span class="p">:</span> <span class="s1">&#39;annual gross primary production difference (vcmax − control)&#39;</span><span class="p">}</span>
+<span class="n">gpp_diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.5</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-success">
+<details>
+<summary><font face="Times New Roman">Click here for the solution</font></summary><br>
+<p><img alt="plot example" src="notebooks/challenge/images/challenge/fates_vcmax_diff.png%22" /></p>
+<p><em><p style="text-align: left;"> Figure: Plotting solution comparing the two FATES simulations. </p></em></p>
+</details>
+</div><section id="questions">
+<h5>Questions<a class="headerlink" href="#questions" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p>How is GPP different for FATES simulation with the updated parameter value, relative to the control FATES simulation?</p></li>
+<li><p>Where are the differences the largest?</p></li>
+<li><p>Where are they absent?</p></li>
+</ul>
+<p><em><b>Hint</b>: you can check the <code class="docutils literal notranslate"><span class="pre">fates_pftname</span></code> variable in <code class="docutils literal notranslate"><span class="pre">/glade/u/home/$USER/code/my_cesm_code/CTSM/src/fates/parameter_files/fates_params_default.json</span></code> to see which PFT corresponds to which index.</em></p>
+</section>
+</section>
+<section id="fates-sp-vs-clm-sp">
+<h4>FATES-SP vs. CLM-SP<a class="headerlink" href="#fates-sp-vs-clm-sp" title="Link to this heading">#</a></h4>
+<p>Using the same methods, we can also compare our FATES-SP and CLM-SP cases:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clm_sp</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">[</span><span class="s1">&#39;clm_sp&#39;</span><span class="p">]</span>
+
+<span class="n">gpp_ann_clm</span> <span class="o">=</span> <span class="n">annual_sum</span><span class="p">(</span><span class="n">clm_sp</span><span class="o">.</span><span class="n">GPP</span><span class="p">,</span> <span class="n">gpp_cf</span><span class="p">)</span> <span class="o">*</span> <span class="n">clm_sp</span><span class="o">.</span><span class="n">landfrac</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">gpp_ann_fates</span> <span class="o">=</span> <span class="n">annual_sum</span><span class="p">(</span><span class="n">fates_sp</span><span class="o">.</span><span class="n">GPP</span><span class="p">,</span> <span class="n">gpp_cf</span><span class="p">)</span> <span class="o">*</span> <span class="n">fates_sp</span><span class="o">.</span><span class="n">landfrac</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">gpp_diff_model</span> <span class="o">=</span> <span class="n">gpp_ann_fates</span> <span class="o">-</span> <span class="n">gpp_ann_clm</span>
+<span class="n">gpp_diff_model</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;kgC m-2 yr-1&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;long_name&#39;</span><span class="p">:</span> <span class="s1">&#39;annual GPP difference (FATES-SP − CLM-SP)&#39;</span><span class="p">}</span>
+<span class="n">gpp_diff_model</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-success">   
+<details>
+<summary><font face="Times New Roman">Click here for the solution</font></summary><br>
+<p><img alt="plot example" src="../../../_images/fates_clm_gpp_diff.png" /></p>
+<p><em><p style="text-align: left;"> Figure: Plotting solution for comparing GPP between CLM-SP and FATES-SP. </p></em></p>
+</details>
+</div></section>
+<section id="do-the-differences-affect-other-variables">
+<h4>Do the differences affect other variables?<a class="headerlink" href="#do-the-differences-affect-other-variables" title="Link to this heading">#</a></h4>
+<p>To find out, we can plot <code class="docutils literal notranslate"><span class="pre">EFLX_LH_TOT</span></code>, which is latent heat flux. How do you think this will be affected?.</p>
+<p>Unlike GPP, <code class="docutils literal notranslate"><span class="pre">EFLX_LH_TOT</span></code> is computed and gridcell-averaged by the CLM for every case, so it needs no <code class="docutils literal notranslate"><span class="pre">FATES_FRACTION</span></code> correction and no unit conversion. We take an annual mean here rather than a sum, since it’s a flux density.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># latent heat flux difference: FATES control vs FATES vcmax </span>
+
+<span class="n">lh_ann_control</span> <span class="o">=</span> <span class="n">annual_mean</span><span class="p">(</span><span class="n">fates_sp</span><span class="o">.</span><span class="n">EFLX_LH_TOT</span><span class="p">)</span> <span class="o">*</span> <span class="n">fates_sp</span><span class="o">.</span><span class="n">landfrac</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">lh_ann_vcmax</span> <span class="o">=</span> <span class="n">annual_mean</span><span class="p">(</span><span class="n">fates_vcmax</span><span class="o">.</span><span class="n">EFLX_LH_TOT</span><span class="p">)</span> <span class="o">*</span> <span class="n">fates_vcmax</span><span class="o">.</span><span class="n">landfrac</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">lh_diff_param</span> <span class="o">=</span> <span class="n">lh_ann_vcmax</span> <span class="o">-</span> <span class="n">lh_ann_control</span>
+<span class="n">lh_diff_param</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;W m-2&#39;</span><span class="p">,</span>
+                       <span class="s1">&#39;long_name&#39;</span><span class="p">:</span> <span class="s1">&#39;annual mean latent heat flux difference (vcmax − control)&#39;</span><span class="p">}</span>
+<span class="n">lh_diff_param</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">20</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-success">   
+<details>
+<summary><font face="Times New Roman">Click here for the solution</font></summary><br>
+<p><img alt="plot example" src="../../../_images/fates_vcmax_lh_diff.png" /></p>
+<p><em><p style="text-align: left;"> Figure: Plotting solution for comparing latent heat flux between our two FATES cases. </p></em></p>
+</details>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># latent heat flux difference: CLM-SP vs FATES-SP</span>
+
+<span class="n">lh_ann_clm</span> <span class="o">=</span> <span class="n">annual_mean</span><span class="p">(</span><span class="n">clm_sp</span><span class="o">.</span><span class="n">EFLX_LH_TOT</span><span class="p">)</span> <span class="o">*</span> <span class="n">clm_sp</span><span class="o">.</span><span class="n">landfrac</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">lh_ann_fates</span> <span class="o">=</span> <span class="n">fates_sp</span><span class="o">.</span><span class="n">EFLX_LH_TOT</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">fates_sp</span><span class="o">.</span><span class="n">landfrac</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">lh_diff_model</span> <span class="o">=</span> <span class="n">lh_ann_fates</span> <span class="o">-</span> <span class="n">lh_ann_clm</span>
+<span class="n">lh_diff_model</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;W m-2&#39;</span><span class="p">,</span>
+                       <span class="s1">&#39;long_name&#39;</span><span class="p">:</span> <span class="s1">&#39;annual mean latent heat flux difference (FATES-SP − CLM-SP)&#39;</span><span class="p">}</span>
+<span class="n">lh_diff_model</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">30</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">30</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-success">   
+<details>
+<summary><font face="Times New Roman">Click here for the solution</font></summary><br>
+<p><img alt="plot example" src="../../../_images/clm_fates_lh_diff.png" /></p>
+<p><em><p style="text-align: left;"> Figure: Plotting solution for comparing latent heat flux between CLM-SP and FATES-SP. </p></em></p>
+</details>
+</div><section id="id1">
+<h5>Questions:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p>How is latent heat flux different for the two FATES cases?</p></li>
+<li><p>What about FATES vs. CLM?</p></li>
+<li><p>Try looking at sensible heat flux (<code class="docutils literal notranslate"><span class="pre">FSH</span></code>). What differences do you see?</p></li>
+</ul>
+<p><em>Note that you might want to change the minimun (<code class="docutils literal notranslate"><span class="pre">vmin</span></code>) and maximum (<code class="docutils literal notranslate"><span class="pre">vmax</span></code>) colorbar values for the plot when you change variables</em></p>
+</section>
+</section>
+</section>
+</section>
+<section id="comparing-clm-sp-and-clm-bgc">
+<h2>3. Comparing CLM-SP and CLM-BGC<a class="headerlink" href="#comparing-clm-sp-and-clm-bgc" title="Link to this heading">#</a></h2>
+<p>For the last comparison we will look at just CLM big leaf for prescribed vs prognostic vegetation. In CLM-SP, LAI and vegetation height are prescribed; in CLM-BGC, the carbon–nitrogen cycle runs prognostically and vegetation state evolves with the simulation.</p>
+<p>Additionally, the climate is different between the two runs. <code class="docutils literal notranslate"><span class="pre">IHIST</span></code> compsets by default starts in 1850 whereas the <code class="docutils literal notranslate"><span class="pre">I2000</span></code> compsets start in year 2000.</p>
+<p>The BGC case only ran for a few months, so we can’t take an annual total the way we did for the SP runs. Instead we will compare the two runs directly over the months they share.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clm_bgc</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">[</span><span class="s1">&#39;clm_bgc&#39;</span><span class="p">]</span>
+
+<span class="c1"># months available in the shorter BGC run</span>
+<span class="n">n_months</span> <span class="o">=</span> <span class="n">clm_bgc</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">size</span>
+
+<span class="n">clm_sp_short</span> <span class="o">=</span> <span class="n">clm_sp</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_months</span><span class="p">))</span>
+
+<span class="n">sec_per_day</span> <span class="o">=</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span>
+<span class="n">gpp_sp_mean</span> <span class="o">=</span> <span class="p">(</span><span class="n">clm_sp_short</span><span class="o">.</span><span class="n">GPP</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="n">sec_per_day</span><span class="p">)</span> <span class="o">*</span> <span class="n">clm_sp_short</span><span class="o">.</span><span class="n">landfrac</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">gpp_bgc_mean</span> <span class="o">=</span> <span class="p">(</span><span class="n">clm_bgc</span><span class="o">.</span><span class="n">GPP</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="n">sec_per_day</span><span class="p">)</span> <span class="o">*</span> <span class="n">clm_bgc</span><span class="o">.</span><span class="n">landfrac</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">gpp_diff_phen</span> <span class="o">=</span> <span class="n">gpp_bgc_mean</span> <span class="o">-</span> <span class="n">gpp_sp_mean</span>
+<span class="n">gpp_diff_phen</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;gC m-2 day-1&#39;</span><span class="p">,</span>
+                       <span class="s1">&#39;long_name&#39;</span><span class="p">:</span> <span class="s1">&#39;mean GPP difference over shared months (BGC − SP)&#39;</span><span class="p">}</span>
+<span class="n">gpp_diff_phen</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">5</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-success">   
+<details>
+<summary><font face="Times New Roman">Click here for the solution</font></summary><br>
+<p><img alt="plot example" src="../../../_images/clm_sp_bgc_diff.png" /></p>
+<p><em><p style="text-align: left;"> Figure: Plotting solution for comparing GPP between CLM-SP and CLM-BGC </p></em></p>
+</details>
+</div><section id="id2">
+<h3>Questions:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>What is the primary difference in GPP between the IHIST BGC case and the I2000 SP case?</p></li>
+<li><p>Why might this be occuring?</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "npl-2023a"
+        },
+        kernelOptions: {
+            name: "npl-2023a",
+            path: "./notebooks/challenge/clm_ctsm"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'npl-2023a'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="clm_exercise_3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">3: Run CLM with FATES and modify input data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="clm_exercise_5.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">5: Investigating vegetation demographics with FATES</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clm-and-clm-fates-output">CLM and CLM-FATES output</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#helper-functions">Helper functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-formatting-data">1. Reading and formatting data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-in-the-data">1.1 Read in the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#printing-information-about-the-dataset-is-helpful-for-understanding-your-data">Printing information about the dataset is helpful for understanding your data.</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-calculations">1.2 Simple Calculations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-plotting">2. Basic plotting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easy-plots-using-xarray">2.1. Easy plots using xarray</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#question">Question</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-differences">2.2. Calculating differences</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fates-sp-vs-fates-sp-modified">FATES-SP vs. FATES-SP (modified)</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">Questions</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fates-sp-vs-clm-sp">FATES-SP vs. CLM-SP</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#do-the-differences-affect-other-variables">Do the differences affect other variables?</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Questions:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-clm-sp-and-clm-bgc">3. Comparing CLM-SP and CLM-BGC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Questions:</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By NCAR/CGD Staff
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

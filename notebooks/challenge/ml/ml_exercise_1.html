@@ -1,0 +1,1706 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CAMulator Exercises: CESM Tutorial: Summer 2026 &#8212; CESM Tutorial</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/challenge/ml/ml_exercise_1';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Diagnostics" href="../../diagnostics/diagnostics.html" />
+    <link rel="prev" title="Machine Learning" href="ml.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/ncar_logo.png" class="logo__image only-light" alt="CESM Tutorial - Home"/>
+    <script>document.write(`<img src="../../../_static/ncar_logo.png" class="logo__image only-dark" alt="CESM Tutorial - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../intro/intro_overview.html">Introduction</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../intro/components.html">What is CESM ?</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/coupling.html">CIME (Advanced)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../intro/cesm_webpage.html">CESM Webpage</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/project.html">CESM Working Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/getting_involved.html">Getting Involved</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/getting_help.html">Getting Help</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../intro/community_experiments.html">Community Experiments</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/cesm_expts/clim_data_guide.html">Climate Data Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../intro/cesm_expts/gdex.html">Geoscience Data Exchange (GDEX)</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../prereqs/prereqs_overview.html">Prerequisites for Success</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../prereqs/exercises.html">Exercise Overview</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../basics/basics_overview.html">Basics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/cesm_workspaces.html">Workspaces</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../basics/code_overview.html">CESM code</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/code/git_download_cesm.html">Download CESM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/code/cesm_code_explore.html">Explore CESM Code</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../basics/cesm_workflow.html">CESM Workflow</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/create_newcase.html">Create New Case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/case_setup.html">Case Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/case_build.html">Case Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/case_submit.html">Case Submit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/model_output.html">Model Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/checking_jobs_and_status.html">Checking Your Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/cesm_workflow/create_clone.html">Create Clone (Advanced)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../basics/exercises_overview.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/exercises/first_B1850.html">Your first CESM run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/exercises/second_B1850.html">Extending your run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/exercises/examine_history_B1850.html">Examine History Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/exercises/extra.html">Explore Further</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../basics/exercises/review_questions.html">Review Questions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modifications/xml.html">Simple XML Modifications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modifications/xml/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modifications/xml/model_control_files.html">How to Modify XML Files (*.xml)</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modifications/xml/run_length.html">Controlling Run Length</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/run_length/starting_and_stopping.html">Starting and Stopping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/run_length/restarting.html">Restarting a Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/run_length/changing_run_length.html">Changing Run Length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/run_length/timing_files.html">Using Timing Files</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modifications/xml/modify_run_type.html">Modifying the Type of Run</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/modify_run_type/hybrid_branch_restart.html">Hybrid, Branch and Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/modify_run_type/run_variables.html">Variables Related to Run Type</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modifications/xml/physics_timestep.html">Physics Timestep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modifications/xml/other_xml_variables.html">Other Useful XML Variables</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modifications/xml/exercises.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/exercises/xml_length_exercise.html">Exercise 1: Modify run length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/exercises/xml_runtype_exercise.html">Exercise 2: Modify run type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modifications/xml/exercises/xml_timestep_exercise.html">Exercise 3: Change physics timestep</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../namelist/namelist.html">Namelist Modifications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../namelist/overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../namelist/documentation.html">Namelist Variables Documentation</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../namelist/output.html">Customizing Output</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_cam.html">Customize CAM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_clm.html">Customize CLM Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_cice.html">Customize CICE output</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/output/output_mom.html">Customize MOM output</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../namelist/exercises_overview.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/exercises/exercise_cam_interpolate.html">Interpolate CAM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/exercises/exercise_cam_output.html">Modify CAM output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../namelist/exercises/exercise_tuning_parameter.html">Change a tuning parameter in CAM</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../troubleshooting/troubleshooting.html">Troubleshooting runtime errors</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../troubleshooting/log_files.html">The log files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../troubleshooting/debugging_flag.html">Adding debugging info</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../troubleshooting/exercises_overview.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../troubleshooting/exercises/troubleshooting_cam.html">Diagnose a runtime failure</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../sourcemods/sourcemods.html">Source Modifications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sourcemods/overview.html">Source code modifications with SourceMods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sourcemods/add_fields_cam.html">Source Modification Example</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../sourcemods/exercises_overview.html">Exercise Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../sourcemods/exercises/exercise_add_field.html">Add output variable in CAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sourcemods/exercises/exercise_rain_threshold.html">Modify the <code class="docutils literal notranslate"><span class="pre">rain_threshold</span></code> in CLM</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../challenge.html">Challenge Exercises</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cam/cam.html">Atmosphere</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cam/exercise_1.html">1: Control case: FHISTC_LTso</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cam/exercise_2.html">2: Pre-Industrial Compset: F1850C_LTso</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cam/exercise_3.html">3: Starting a Historical Simulation from a Spun-Up State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cam/exercise_4.html">4: Modify sea surface temperature in the tropics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cam/exercise_5.html">5: Adjust threshold for deep convection over land</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../paleo/paleo.html">Paleo</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../paleo/exercise_1.html">1: Preindustrial control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../paleo/exercise_2.html">2: mid-Holocene case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../paleo/exercise_3.html">3: Water isotope tracers in CESM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cam-chem_waccm/cam-chem_waccm.html">Atmospheric chemistry</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cam-chem_waccm/exercise_1.html">1: Control case: running with chemistry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cam-chem_waccm/exercise_2.html">2: Test case: changing the chemistry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cam-chem_waccm/exercise_3.html">3: Test case: changing the emissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cam-chem_waccm/visualization.html">4: Visualization option with GEOV</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../clm_ctsm/clm_ctsm.html">Land</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../clm_ctsm/clm_exercise_1.html">1: CLM SP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../clm_ctsm/clm_exercise_2.html">2: CLM BGC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../clm_ctsm/clm_exercise_3.html">3: Run CLM with FATES and modify input data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../clm_ctsm/clm_exercise_4.html">4: Investigating Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../clm_ctsm/clm_exercise_5.html">5: Investigating vegetation demographics with FATES</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../mom/mom.html">Ocean</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mom/mom_exercise_1.html">1: Control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mom/mom_exercise_2.html">2: Turn off submesoscale parameterization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mom/mom_exercise_3.html">3: Modify wind stress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mom/mom_exercise_4.html">4: Turn on the ecosystem</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cice/cice.html">Sea Ice</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cice/cice_exercise_1.html">1: Control case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cice/cice_exercise_2.html">2: Tune the albedo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cice/cice_exercise_3.html">3: Modify the snow conductivity</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cism/cism.html">Land Ice</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cism/cism_exercise_1.html">CISM Challenge Exercise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cism/cism_exercise_2.html">Looking at the simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cism/cism_exercise_3.html">Computing ice sheet related sea level change from a CISM simulation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../bgc/bgc.html">Biogeochemistry</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../bgc/bgc_exercise_1.html">Set up BGC case with CESM2.1</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="ml.html">Machine Learning</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">CAMulator Exercises: CESM Tutorial: Summer 2026</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../diagnostics/diagnostics.html">Diagnostics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/cam/cam.html">Atmosphere</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/cam/basics_cam.html">Basic Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/cam/advanced_cam.html">Advanced Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/clm_ctsm/clm_ctsm.html">Land</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/clm_ctsm/basics_clm.html">Basic Land Model Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/mom/mom.html">Ocean</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/mom/basics_mom.html">Basic Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/mom/advanced_mom.html">Advanced Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/cice/cice.html">Sea Ice</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/cice/basics_cice.html">Basic Plotting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/cice/advanced_cice.html">Advanced Plotting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../diagnostics/cupid.html">CUPiD</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../diagnostics/additional/additional.html">Additional Topics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/postprocessing.html">Postprocessing data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/cvdp.html">CVDP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/analysis_tools.html">CESM analysis tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/adf.html">ADF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../diagnostics/additional/uxarray.html">UXarray</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/resources_overview.html">Resources</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../resources/ncar_hpc.html">NCAR Supercomputer</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/ncar_hpc_module.html">Modules on NCAR HPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/tutorial_one_time_setup.html">Tutorial one time setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/tutorial_queue_account.html">Tutorial queue and account</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/terminals.html">Terminal Windows</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../resources/unix.html">UNIX</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../resources/unix-cheatsheet.html">UNIX cheatsheet</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/text_editors.html">Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/github.html">Github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/fortran.html">Fortran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../resources/netcdf.html">NetCDF files</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/challenge/ml/ml_exercise_1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>CAMulator Exercises: CESM Tutorial: Summer 2026</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#camulator-is-a-global-machine-learned-autoregressive-emulator-trained-with-data-from-the-community-atmosphere-model-see-the-version-1-publication-here-https-arxiv-org-pdf-2504-06007"><strong>CAMulator</strong> is a global, machine-learned autoregressive emulator trained with data from the Community Atmosphere Model. See the version 1 publication here: https://arxiv.org/pdf/2504.06007</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#helpers">1. Helpers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-options">Run options</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#available-variables">Available variables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-run">2. Control run</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-a-uniform-sst-warming-2-k">3. Experiment A — uniform SST warming (+2 K)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons">4. Comparisons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clausiusclapeyron-water-scaling-sst-experiment">Clausius–Clapeyron water scaling (SST experiment)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enso-in-a-climatological-world-idealized-el-nino">7. ENSO in a climatological world (idealized El Niño)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-nino-blob-intervention">El Niño blob intervention</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="camulator-exercises-cesm-tutorial-summer-2026">
+<h1>CAMulator Exercises: CESM Tutorial: Summer 2026<a class="headerlink" href="#camulator-exercises-cesm-tutorial-summer-2026" title="Link to this heading">#</a></h1>
+<section id="camulator-is-a-global-machine-learned-autoregressive-emulator-trained-with-data-from-the-community-atmosphere-model-see-the-version-1-publication-here-https-arxiv-org-pdf-2504-06007">
+<h2><strong>CAMulator</strong> is a global, machine-learned autoregressive emulator trained with data from the Community Atmosphere Model. See the version 1 publication here: <a class="reference external" href="https://arxiv.org/pdf/2504.06007">https://arxiv.org/pdf/2504.06007</a><a class="headerlink" href="#camulator-is-a-global-machine-learned-autoregressive-emulator-trained-with-data-from-the-community-atmosphere-model-see-the-version-1-publication-here-https-arxiv-org-pdf-2504-06007" title="Link to this heading">#</a></h2>
+<p>Camulator was trained and is run using the <a class="reference external" href="https://github.com/NCAR/miles-credit/tree/main">CREDIT package</a>.</p>
+<p>The exercises below walk you through running a one-year <strong>control</strong> simulation with prescribed SST, CO2, Sea Ice, and Solar Insolation. We then run one simulation with a +2K perturbation to the SST (everything else same as control), and a second simulation using climitological SST with an idealized Gaussian ENSO SST signature. We then investigate some dynamic response to these perturbations.</p>
+<p>Simulations require a GPU and take approximately 8-10 minutes per annual simulation.</p>
+<p>Run the cell below to link to a pre-installed environment. you <strong>ONLY NEED TO RUN THIS ONCE</strong>. After executing, wait a few moments, and you should then be able to select the <code class="docutils literal notranslate"><span class="pre">credit_cesm</span></code> environment (from the dropdown in the upper right corner) and then execute the remainder of the notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>conda<span class="w"> </span>config<span class="w"> </span>--add<span class="w"> </span>envs_dirs<span class="w"> </span>/glade/work/dgagne/credit_cesm_envs/<span class="w">  </span>##<span class="w"> </span>ONLY<span class="w"> </span>RUN<span class="w"> </span>ONCE
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span><span class="o">,</span><span class="w"> </span><span class="nn">glob</span><span class="o">,</span><span class="w"> </span><span class="nn">subprocess</span><span class="o">,</span><span class="w"> </span><span class="nn">shlex</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">pty</span><span class="o">,</span><span class="w"> </span><span class="nn">select</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="helpers">
+<h2>1. Helpers<a class="headerlink" href="#helpers" title="Link to this heading">#</a></h2>
+<p>Address config keys by dotted path, write a per-experiment config copy, list the forecast’s years,
+perturb the per-year forcing store, drive the CREDIT CLI, and load rollouts back.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">write_config</span><span class="p">(</span><span class="n">overrides</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">out_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Deep-copy BASE_CONFIG, apply {dotted_key: value} overrides, dump to out_path.</span>
+
+<span class="sd">    Also injects the run options set in the &quot;Run options&quot; cell below: the output variable list</span>
+<span class="sd">    (SAVE_VARS, always) and — only when RUN_MODE == &#39;batch&#39; — the editable PBS options</span>
+<span class="sd">    (PBS_OPTIONS). Locked pbs keys (conda / job_name / ncpus / ngpus) are left exactly as-is.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">BASE_CONFIG</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">conf</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">dotted</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">overrides</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">set_by_path</span><span class="p">(</span><span class="n">conf</span><span class="p">,</span> <span class="n">dotted</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="c1"># user-selected output variables (short names -&gt; full &quot;CESM/.../&lt;short&gt;&quot; keys)</span>
+    <span class="n">set_by_path</span><span class="p">(</span><span class="n">conf</span><span class="p">,</span> <span class="s1">&#39;inference.output.variables&#39;</span><span class="p">,</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">SHORT_TO_FULL</span><span class="p">[</span><span class="n">s</span><span class="p">]}</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">SAVE_VARS</span><span class="p">])</span>
+    <span class="c1"># batch: apply the editable PBS options (credit submit reads the pbs: section)</span>
+    <span class="k">if</span> <span class="n">RUN_MODE</span> <span class="o">==</span> <span class="s1">&#39;batch&#39;</span><span class="p">:</span>
+        <span class="n">conf</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;pbs&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">PBS_OPTIONS</span><span class="p">)</span>
+    <span class="n">out_path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">out_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">yaml</span><span class="o">.</span><span class="n">safe_dump</span><span class="p">(</span><span class="n">conf</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out_path</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">forecast_years</span><span class="p">(</span><span class="n">start_datetime</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Years the forecast window spans (dynamic forcing is one Zarr per year), so we only perturb</span>
+<span class="sd">    the files actually read. Follows the selected start year + forecast_length.&quot;&quot;&quot;</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="n">start_datetime</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">end</span><span class="o">.</span><span class="n">year</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+    
+
+<span class="c1"># Encoding keys inherited from the source Zarr that clash with a fresh (v3) write.</span>
+<span class="n">_STRIP_ENC</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;chunks&quot;</span><span class="p">,</span> <span class="s2">&quot;preferred_chunks&quot;</span><span class="p">,</span> <span class="s2">&quot;compressor&quot;</span><span class="p">,</span> <span class="s2">&quot;compressors&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;filters&quot;</span><span class="p">,</span> <span class="s2">&quot;codecs&quot;</span><span class="p">,</span> <span class="s2">&quot;serializer&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">perturb_forcing</span><span class="p">(</span><span class="n">src_template</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dst_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">years</span><span class="p">,</span> <span class="n">edit_fn</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Write a perturbed copy of the per-year forcing store.</span>
+
+<span class="sd">    For each year in `years`, read the control `forcing_%Y.zarr`, apply edit_fn(ds)-&gt;ds, and</span>
+<span class="sd">    write a perturbed `forcing_&lt;year&gt;.zarr` into dst_dir — preserving the `forcing_%Y.zarr`</span>
+<span class="sd">    naming so the config&#39;s `%Y` template still resolves. Time is chunked by 1 (full otherwise)</span>
+<span class="sd">    to keep the rollout&#39;s per-step reads cheap. Returns the dst path *template* (with `%Y`).</span>
+
+<span class="sd">    Only the dynamic-forcing fields are touched; the prognostic initial condition still comes</span>
+<span class="sd">    from the config&#39;s (unchanged) prognostic store, so every run starts from the same state.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dst_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">dst_dir</span><span class="p">)</span>
+    <span class="n">dst_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">years</span><span class="p">:</span>
+        <span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_zarr</span><span class="p">(</span><span class="n">src_template</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;%Y&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+        <span class="n">ds</span> <span class="o">=</span> <span class="n">edit_fn</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+        <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">chunk</span><span class="p">({</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="n">d</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">dims</span> <span class="k">if</span> <span class="n">d</span> <span class="o">!=</span> <span class="s1">&#39;time&#39;</span><span class="p">}})</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">:</span>                       <span class="c1"># drop inherited encoding (chunks/codecs)</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">_STRIP_ENC</span><span class="p">:</span>
+                <span class="n">ds</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">encoding</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">dst_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;forcing_</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">.zarr&#39;</span>
+        <span class="n">ds</span><span class="o">.</span><span class="n">to_zarr</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  wrote </span><span class="si">{</span><span class="n">out</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">dst_dir</span> <span class="o">/</span> <span class="s1">&#39;forcing_%Y.zarr&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># --- the actual interventions (one field each; everything else stays at control) ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_sst</span><span class="p">(</span><span class="n">delta_k</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Uniform SST warming: SST -&gt; SST + delta_k everywhere, all times.&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_edit</span><span class="p">(</span><span class="n">ds</span><span class="p">):</span>
+        <span class="c1"># ds[&#39;SST&#39;] = ds[&#39;SST&#39;] + float(delta_k)</span>
+        <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;SST&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;SST&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">!=</span> <span class="mi">283</span><span class="p">,</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;SST&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="n">delta_k</span><span class="p">),</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;SST&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="c1"># only apply over ocean</span>
+        <span class="k">return</span> <span class="n">ds</span>
+    <span class="k">return</span> <span class="n">_edit</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">scale_co2</span><span class="p">(</span><span class="n">factor</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;CO2 increase: co2vmr_3d -&gt; factor * co2vmr_3d (e.g. 2.0 = doubling).&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_edit</span><span class="p">(</span><span class="n">ds</span><span class="p">):</span>
+        <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;co2vmr_3d&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;co2vmr_3d&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">factor</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ds</span>
+    <span class="k">return</span> <span class="n">_edit</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">run_credit</span><span class="p">(</span><span class="n">config_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">procs</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Run the rollout, interactively on THIS node or as a submitted PBS batch job.</span>
+
+<span class="sd">    RUN_MODE == &#39;interactive&#39; -&gt; `credit rollout` on this node&#39;s GPU (needs a GPU here).</span>
+<span class="sd">    RUN_MODE == &#39;batch&#39;       -&gt; `credit submit --mode rollout --cluster casper`, which builds a</span>
+<span class="sd">                                 PBS job from the config&#39;s pbs: section and submits it via qsub.</span>
+
+<span class="sd">    Output is forwarded through a pseudo-terminal (pty) so CREDIT&#39;s tqdm bar refreshes a single</span>
+<span class="sd">    line interactively; in batch mode this just streams the submission / job-id output.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">RUN_MODE</span> <span class="o">==</span> <span class="s1">&#39;batch&#39;</span><span class="p">:</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;credit submit --mode rollout --cluster casper -c </span><span class="si">{</span><span class="n">shlex</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">config_path</span><span class="p">))</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">CREDIT_CLI</span><span class="si">}</span><span class="s1"> -c </span><span class="si">{</span><span class="n">shlex</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">config_path</span><span class="p">))</span><span class="si">}</span><span class="s1"> -m </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s1"> -p </span><span class="si">{</span><span class="n">procs</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;$&#39;</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">main</span><span class="p">,</span> <span class="n">worker</span> <span class="o">=</span> <span class="n">pty</span><span class="o">.</span><span class="n">openpty</span><span class="p">()</span>
+    <span class="n">proc</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">shlex</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">cmd</span><span class="p">),</span> <span class="n">stdout</span><span class="o">=</span><span class="n">worker</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">worker</span><span class="p">,</span> <span class="n">close_fds</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">worker</span><span class="p">)</span>  <span class="c1"># parent only reads the main end</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">select</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="n">main</span><span class="p">],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="mf">0.1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">data</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">main</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>  <span class="c1"># main closes when the child exits</span>
+                    <span class="k">break</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+                    <span class="k">break</span>
+                <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">errors</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">))</span>
+                <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="n">proc</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">break</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
+        <span class="n">proc</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">proc</span><span class="o">.</span><span class="n">returncode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;command exited with code </span><span class="si">{</span><span class="n">proc</span><span class="o">.</span><span class="n">returncode</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">proc</span><span class="o">.</span><span class="n">returncode</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">load_rollout</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Open the NetCDF rollout (monthly files per the config) as one time-ordered dataset.</span>
+
+<span class="sd">    year:      keep only files for that valid year (files are named YYYY-MM.nc) — use when a run</span>
+<span class="sd">               spans more than one year so you don&#39;t open the whole rollout.</span>
+<span class="sd">    variables: subset to these (those that exist) before returning, so a later .load() reads only</span>
+<span class="sd">               what you actually need.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">output_dir</span><span class="p">),</span> <span class="s1">&#39;**&#39;</span><span class="p">,</span> <span class="s1">&#39;*.nc&#39;</span><span class="p">),</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">year</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">files</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;No .nc files (year=</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">) under </span><span class="si">{</span><span class="n">output_dir</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;by_coords&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">variables</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">present</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">variables</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">]</span>
+        <span class="n">missing</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">variables</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">present</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">missing</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  (note: not in output, skipped: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">missing</span><span class="p">)</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+        <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="n">present</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">ds</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">global_mean</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">lat_name</span><span class="o">=</span><span class="s1">&#39;latitude&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cosine-latitude-weighted global mean, collapsing lat/lon.&quot;&quot;&quot;</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">da</span><span class="p">[</span><span class="n">lat_name</span><span class="p">]</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">lat</span><span class="p">))</span>
+    <span class="n">lon_name</span> <span class="o">=</span> <span class="s1">&#39;lon&#39;</span> <span class="k">if</span> <span class="s1">&#39;lon&#39;</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">dims</span> <span class="k">else</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">da</span><span class="o">.</span><span class="n">dims</span> <span class="k">if</span> <span class="n">d</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">lat_name</span><span class="p">,)][</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">da</span><span class="o">.</span><span class="n">weighted</span><span class="p">(</span><span class="n">w</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="n">lat_name</span><span class="p">,</span> <span class="n">lon_name</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_by_path</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">dotted</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">dotted</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">d</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">set_by_path</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">dotted</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="n">dotted</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+    <span class="n">d</span><span class="p">[</span><span class="n">keys</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">value</span>
+
+
+<span class="c1">### NOT USER EDITS ###</span>
+<span class="n">BASE_CONFIG</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/glade/campaign/cisl/aiml/credit/cesm_exercise//camulator_cesm_tutorial_casper.yml&#39;</span><span class="p">)</span>
+
+<span class="c1"># Unified CREDIT CLI. `credit rollout` -&gt; credit/applications/rollout_gen2.py.</span>
+<span class="n">CREDIT_CLI</span> <span class="o">=</span> <span class="s1">&#39;credit rollout&#39;</span>
+
+<span class="c1"># Dotted keys into the config.</span>
+<span class="n">SAVE_LOC_KEY</span>    <span class="o">=</span> <span class="s1">&#39;save_loc&#39;</span>
+<span class="n">DYN_FORCING_KEY</span> <span class="o">=</span> <span class="s1">&#39;data.source.CESM.variables.dynamic_forcing.path&#39;</span>
+<span class="n">OUTPUT_KEY</span>      <span class="o">=</span> <span class="s1">&#39;inference.save_forecast&#39;</span>
+<span class="n">FCST_START_KEY</span>  <span class="o">=</span> <span class="s1">&#39;inference.single_forecast.start_datetime&#39;</span>
+<span class="n">FCST_LEN_KEY</span>    <span class="o">=</span> <span class="s1">&#39;inference.single_forecast.forecast_length&#39;</span>
+
+<span class="c1"># --- derive paths from the config ------------------------------------------------------</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">BASE_CONFIG</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">CONF</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">ROLLOUT_ROOT</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expandvars</span><span class="p">(</span><span class="n">get_by_path</span><span class="p">(</span><span class="n">CONF</span><span class="p">,</span> <span class="n">OUTPUT_KEY</span><span class="p">)))</span>   <span class="c1"># .../camulator_tutorial/rollout</span>
+<span class="n">RUN_ROOT</span>     <span class="o">=</span> <span class="n">ROLLOUT_ROOT</span><span class="o">.</span><span class="n">parent</span>                                       <span class="c1"># .../camulator_tutorial</span>
+<span class="n">FORCING_ROOT</span> <span class="o">=</span> <span class="n">RUN_ROOT</span> <span class="o">/</span> <span class="s1">&#39;forcing&#39;</span>                                      <span class="c1"># perturbed forcing (sibling of rollout)</span>
+
+<span class="c1"># Shared, read-only control forcing (a %Y forcing template): read from, never written to.</span>
+<span class="n">CONTROL_FORCING</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expandvars</span><span class="p">(</span><span class="n">get_by_path</span><span class="p">(</span><span class="n">CONF</span><span class="p">,</span> <span class="n">DYN_FORCING_KEY</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">(</span><span class="n">RUN_ROOT</span><span class="p">,</span> <span class="n">FORCING_ROOT</span><span class="p">,</span> <span class="n">ROLLOUT_ROOT</span><span class="p">):</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Config          :&#39;</span><span class="p">,</span> <span class="n">BASE_CONFIG</span><span class="p">,</span> <span class="s1">&#39;(exists:&#39;</span><span class="p">,</span> <span class="n">BASE_CONFIG</span><span class="o">.</span><span class="n">exists</span><span class="p">(),</span> <span class="s1">&#39;)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Output base     :&#39;</span><span class="p">,</span> <span class="n">RUN_ROOT</span><span class="p">,</span> <span class="s1">&#39;(from inference.save_forecast)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  rollout/      :&#39;</span><span class="p">,</span> <span class="n">ROLLOUT_ROOT</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  forcing/      :&#39;</span><span class="p">,</span> <span class="n">FORCING_ROOT</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Control forcing :&#39;</span><span class="p">,</span> <span class="n">CONTROL_FORCING</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Config          : /glade/work/cbecker/CREDIT-visit/miles-credit/config/gen_2/camulator/camulator_cesm_tutorial_casper.yml (exists: True )
+Output base     : /glade/derecho/scratch/cbecker/camulator_tutorial (from inference.save_forecast)
+  rollout/      : /glade/derecho/scratch/cbecker/camulator_tutorial/rollout
+  forcing/      : /glade/derecho/scratch/cbecker/camulator_tutorial/forcing
+Control forcing : /glade/campaign/cisl/aiml/credit/cesm_exercise/forcing/dynamic_forcing/%Y_forcing.zarr
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="run-options">
+<h2>Run options<a class="headerlink" href="#run-options" title="Link to this heading">#</a></h2>
+<p>Four knobs, applied automatically whenever an experiment cell builds its config.</p>
+<p><strong>1 — Simulation year (<code class="docutils literal notranslate"><span class="pre">SIM_YEAR</span></code>).</strong> Valid <strong>1980–2014</strong>. Sets <code class="docutils literal notranslate"><span class="pre">single_forecast.start_datetime</span></code> to <code class="docutils literal notranslate"><span class="pre">&lt;year&gt;-01-01</span></code>; the forecast length stays whatever the config specifies.</p>
+<p><strong>2 — How to run (<code class="docutils literal notranslate"><span class="pre">RUN_MODE</span></code>).</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'interactive'</span></code> <em>(default)</em> — runs <code class="docutils literal notranslate"><span class="pre">credit</span> <span class="pre">rollout</span></code> on <strong>this</strong> node; needs a GPU here.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'batch'</span></code> — submits a PBS job with <code class="docutils literal notranslate"><span class="pre">credit</span> <span class="pre">submit</span> <span class="pre">--mode</span> <span class="pre">rollout</span> <span class="pre">--cluster</span> <span class="pre">casper</span></code>, built from the config’s <code class="docutils literal notranslate"><span class="pre">pbs:</span></code> section. Use this if you don’t have an interactive GPU; the output is the submitted job id (check it with <code class="docutils literal notranslate"><span class="pre">qstat</span></code>).</p></li>
+</ul>
+<p><strong>3 — PBS options (<code class="docutils literal notranslate"><span class="pre">PBS_OPTIONS</span></code>, batch only).</strong> Pre-filled from the config; edit <code class="docutils literal notranslate"><span class="pre">walltime</span></code>, <code class="docutils literal notranslate"><span class="pre">mem</span></code>, <code class="docutils literal notranslate"><span class="pre">gpu_type</span></code>, <code class="docutils literal notranslate"><span class="pre">project</span></code> as needed. <strong>Locked</strong> (not exposed): <code class="docutils literal notranslate"><span class="pre">conda</span></code>, <code class="docutils literal notranslate"><span class="pre">job_name</span></code>, <code class="docutils literal notranslate"><span class="pre">ncpus</span></code>, <code class="docutils literal notranslate"><span class="pre">ngpus</span></code>.</p>
+<p><strong>4 — Output variables (<code class="docutils literal notranslate"><span class="pre">SAVE_VARS</span></code>).</strong> Short names from the table below; the default matches the config’s current set. Fewer variables → smaller, faster output. <strong>3-D fields (<code class="docutils literal notranslate"><span class="pre">U</span></code>, <code class="docutils literal notranslate"><span class="pre">V</span></code>, <code class="docutils literal notranslate"><span class="pre">T</span></code>, <code class="docutils literal notranslate"><span class="pre">Qtot</span></code>) are large.</strong></p>
+<section id="available-variables">
+<h3>Available variables<a class="headerlink" href="#available-variables" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>short</p></th>
+<th class="head text-center"><p>dims</p></th>
+<th class="head"><p>description</p></th>
+<th class="head"><p>units</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">U</span></code></p></td>
+<td class="text-center"><p>3D</p></td>
+<td><p>Zonal wind</p></td>
+<td><p>m/s</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">V</span></code></p></td>
+<td class="text-center"><p>3D</p></td>
+<td><p>Meridional wind</p></td>
+<td><p>m/s</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">T</span></code></p></td>
+<td class="text-center"><p>3D</p></td>
+<td><p>Temperature</p></td>
+<td><p>K</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Qtot</span></code></p></td>
+<td class="text-center"><p>3D</p></td>
+<td><p>Specific total water (vapor + condensate)</p></td>
+<td><p>kg/kg</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PS</span></code></p></td>
+<td class="text-center"><p>2D</p></td>
+<td><p>Surface pressure</p></td>
+<td><p>Pa</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TREFHT</span></code></p></td>
+<td class="text-center"><p>2D</p></td>
+<td><p>2 m reference-height temperature</p></td>
+<td><p>K</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PRECT</span></code></p></td>
+<td class="text-center"><p>2D</p></td>
+<td><p>Total precipitation (accumulated)</p></td>
+<td><p>m/6h · ×4000 = mm/day</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TS</span></code></p></td>
+<td class="text-center"><p>2D</p></td>
+<td><p>Surface (radiative) temperature</p></td>
+<td><p>K</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CLDHGH</span></code></p></td>
+<td class="text-center"><p>2D</p></td>
+<td><p>High cloud fraction</p></td>
+<td><p>0–1</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CLDLOW</span></code></p></td>
+<td class="text-center"><p>2D</p></td>
+<td><p>Low cloud fraction</p></td>
+<td><p>0–1</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CLDMED</span></code></p></td>
+<td class="text-center"><p>2D</p></td>
+<td><p>Mid-level cloud fraction</p></td>
+<td><p>0–1</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TAUX</span></code></p></td>
+<td class="text-center"><p>2D</p></td>
+<td><p>Zonal surface wind stress</p></td>
+<td><p>N/m²</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TAUY</span></code></p></td>
+<td class="text-center"><p>2D</p></td>
+<td><p>Meridional surface wind stress</p></td>
+<td><p>N/m²</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">U10</span></code></p></td>
+<td class="text-center"><p>2D</p></td>
+<td><p>10 m wind speed</p></td>
+<td><p>m/s</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">QFLX</span></code></p></td>
+<td class="text-center"><p>2D</p></td>
+<td><p>Surface moisture flux (accumulated)</p></td>
+<td><p>m/6h</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FSDS_J</span></code></p></td>
+<td class="text-center"><p>2D</p></td>
+<td><p>Downwelling shortwave at surface (accum.)</p></td>
+<td><p>J/m²/6h · ÷21600 = W/m²</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">FLDS_J</span></code></p></td>
+<td class="text-center"><p>2D</p></td>
+<td><p>Downwelling longwave at surface (accum.)</p></td>
+<td><p>J/m²/6h</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FSUS</span></code></p></td>
+<td class="text-center"><p>2D</p></td>
+<td><p>Upwelling shortwave at surface (accum.)</p></td>
+<td><p>J/m²/6h</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">FLUS</span></code></p></td>
+<td class="text-center"><p>2D</p></td>
+<td><p>Upwelling longwave at surface (accum.)</p></td>
+<td><p>J/m²/6h</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SHFLX</span></code></p></td>
+<td class="text-center"><p>2D</p></td>
+<td><p>Surface sensible heat flux (accum.)</p></td>
+<td><p>J/m²/6h</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">LHFLX</span></code></p></td>
+<td class="text-center"><p>2D</p></td>
+<td><p>Surface latent heat flux (accum.)</p></td>
+<td><p>J/m²/6h</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FSUTOA</span></code></p></td>
+<td class="text-center"><p>2D</p></td>
+<td><p>Upwelling solar flux at top of atmosphere</p></td>
+<td><p>W/m²</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">FLUT</span></code></p></td>
+<td class="text-center"><p>2D</p></td>
+<td><p>Upwelling longwave at top of model (OLR)</p></td>
+<td><p>W/m²</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># =========================== RUN OPTIONS =====================================</span>
+<span class="c1"># 1) Which year to simulate (valid 1980-2014). Sets single_forecast.start_datetime = &lt;year&gt;-01-01;</span>
+<span class="c1">#    the forecast length stays whatever the config specifies.</span>
+<span class="n">SIM_YEAR</span> <span class="o">=</span> <span class="mi">1995</span>
+<span class="n">START_DATETIME</span>  <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">SIM_YEAR</span><span class="si">}</span><span class="s1">-01-01T00:00Z&#39;</span>
+<span class="n">FORECAST_LENGTH</span> <span class="o">=</span> <span class="n">get_by_path</span><span class="p">(</span><span class="n">CONF</span><span class="p">,</span> <span class="n">FCST_LEN_KEY</span><span class="p">)</span>   <span class="c1"># config-derived, e.g. &#39;30d&#39; / &#39;364d&#39;</span>
+
+<span class="c1"># 2) How to run: &#39;interactive&#39; runs `credit rollout` on THIS node (needs a GPU here);</span>
+<span class="c1">#    &#39;batch&#39; submits a PBS job via `credit submit --mode rollout --cluster casper`</span>
+<span class="c1">#    (which builds the job from the config&#39;s pbs: section below).</span>
+<span class="n">RUN_MODE</span> <span class="o">=</span> <span class="s1">&#39;interactive&#39;</span>          <span class="c1"># &#39;interactive&#39; | &#39;batch&#39;</span>
+
+<span class="c1"># 3) PBS options for batch. Defaults pulled from the config&#39;s pbs: section; the locked keys</span>
+<span class="c1">#    (conda / job_name / ncpus / ngpus) are not exposed. Edit before submitting, e.g.</span>
+<span class="c1">#        PBS_OPTIONS[&#39;walltime&#39;] = &#39;01:00:00&#39;</span>
+<span class="n">_PBS_LOCKED</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;conda&#39;</span><span class="p">,</span> <span class="s1">&#39;job_name&#39;</span><span class="p">,</span> <span class="s1">&#39;ncpus&#39;</span><span class="p">,</span> <span class="s1">&#39;ngpus&#39;</span><span class="p">}</span>
+<span class="n">PBS_OPTIONS</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">(</span><span class="n">get_by_path</span><span class="p">(</span><span class="n">CONF</span><span class="p">,</span> <span class="s1">&#39;pbs&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{})</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_PBS_LOCKED</span><span class="p">}</span>
+
+<span class="c1"># 4) Which variables to save (short names; see the &quot;Available variables&quot; table above).</span>
+<span class="c1">#    Default = the config&#39;s current set. Fewer vars -&gt; smaller, faster output. 3-D fields are big.</span>
+<span class="n">SAVE_VARS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Qtot&#39;</span><span class="p">,</span> <span class="s1">&#39;PS&#39;</span><span class="p">,</span> <span class="s1">&#39;TREFHT&#39;</span><span class="p">,</span> <span class="s1">&#39;PRECT&#39;</span><span class="p">,</span> <span class="s1">&#39;CLDHGH&#39;</span><span class="p">,</span> <span class="s1">&#39;TAUX&#39;</span><span class="p">,</span> <span class="s1">&#39;SHFLX&#39;</span><span class="p">,</span> <span class="s1">&#39;LHFLX&#39;</span><span class="p">]</span>
+
+<span class="c1"># short-name -&gt; full output key (&quot;CESM/&lt;group&gt;/&lt;dim&gt;/&lt;short&gt;&quot;), built from the config&#39;s var groups</span>
+<span class="n">_VARS</span> <span class="o">=</span> <span class="n">get_by_path</span><span class="p">(</span><span class="n">CONF</span><span class="p">,</span> <span class="s1">&#39;data.source.CESM.variables&#39;</span><span class="p">)</span>
+<span class="n">SHORT_TO_FULL</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;CESM/</span><span class="si">{</span><span class="n">grp</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">dim</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1">&#39;</span>
+                 <span class="k">for</span> <span class="n">grp</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;prognostic&#39;</span><span class="p">,</span> <span class="s1">&#39;diagnostic&#39;</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">dk</span><span class="p">,</span> <span class="n">dim</span> <span class="ow">in</span> <span class="p">((</span><span class="s1">&#39;vars_3D&#39;</span><span class="p">,</span> <span class="s1">&#39;3d&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;vars_2D&#39;</span><span class="p">,</span> <span class="s1">&#39;2d&#39;</span><span class="p">))</span>
+                 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">(</span><span class="n">_VARS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">grp</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">dk</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[])}</span>
+
+<span class="n">_bad</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">SAVE_VARS</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">SHORT_TO_FULL</span><span class="p">]</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">_bad</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Unknown variable(s) </span><span class="si">{</span><span class="n">_bad</span><span class="si">}</span><span class="s1">. Available: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">SHORT_TO_FULL</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;SIM_YEAR    :&#39;</span><span class="p">,</span> <span class="n">SIM_YEAR</span><span class="p">,</span> <span class="s1">&#39;-&gt;&#39;</span><span class="p">,</span> <span class="n">START_DATETIME</span><span class="p">,</span> <span class="s1">&#39;| length&#39;</span><span class="p">,</span> <span class="n">FORECAST_LENGTH</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;RUN_MODE    :&#39;</span><span class="p">,</span> <span class="n">RUN_MODE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;PBS_OPTIONS :&#39;</span><span class="p">,</span> <span class="n">PBS_OPTIONS</span><span class="p">,</span> <span class="s1">&#39;  (batch only)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;SAVE_VARS   :&#39;</span><span class="p">,</span> <span class="n">SAVE_VARS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SIM_YEAR    : 1999 -&gt; 1999-01-01T00:00Z | length 364d
+RUN_MODE    : batch
+PBS_OPTIONS : {&#39;project&#39;: &#39;NAML0001&#39;, &#39;walltime&#39;: &#39;00:30:00&#39;, &#39;mem&#39;: &#39;64GB&#39;, &#39;gpu_type&#39;: &#39;h100&#39;}   (batch only)
+SAVE_VARS   : [&#39;Qtot&#39;, &#39;PS&#39;, &#39;TREFHT&#39;, &#39;PRECT&#39;, &#39;CLDHGH&#39;, &#39;TAUX&#39;, &#39;SHFLX&#39;, &#39;LHFLX&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="control-run">
+<h2>2. Control run<a class="headerlink" href="#control-run" title="Link to this heading">#</a></h2>
+<p>The origianl baseline everything is differenced against. Uses the shared control forcing <strong>untouched</strong> —
+we only redirect the output to <code class="docutils literal notranslate"><span class="pre">/glade/derecho/$USER/camulator_tutorial/rollout/control/</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">EXPERIMENT</span> <span class="o">=</span> <span class="s1">&#39;control&#39;</span>
+<span class="n">control_out</span> <span class="o">=</span> <span class="n">ROLLOUT_ROOT</span> <span class="o">/</span> <span class="n">EXPERIMENT</span>
+
+<span class="c1"># Control forcing is left as-is (shared, read-only); we redirect output and set the sim year.</span>
+<span class="n">control_cfg</span> <span class="o">=</span> <span class="n">write_config</span><span class="p">(</span>
+    <span class="n">overrides</span><span class="o">=</span><span class="p">{</span>
+        <span class="n">OUTPUT_KEY</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">control_out</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span>
+        <span class="n">FCST_START_KEY</span><span class="p">:</span> <span class="n">START_DATETIME</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">out_path</span><span class="o">=</span><span class="n">control_out</span> <span class="o">/</span> <span class="s1">&#39;config.yml&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">run_credit</span><span class="p">(</span><span class="n">control_cfg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ credit submit --mode rollout --cluster casper -c /glade/derecho/scratch/cbecker/camulator_tutorial/rollout/control/config.yml
+INFO:credit.cli._submit:
+========================================================
+  Ensemble rollout plan
+========================================================
+  Cluster        : casper
+  Account        : NAML0001
+  Config         : /glade/derecho/scratch/cbecker/camulator_tutorial/rollout/control/config.yml
+  Init times     : 1  (1 per job)
+  Ensemble size  : 1  →  1 total forecasts
+  Parallel jobs  : 1  (all start at once, no dependencies)
+  GPUs per job   : 1
+  Walltime/job   : 00:30:00
+========================================================
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="experiment-a-uniform-sst-warming-2-k">
+<h2>3. Experiment A — uniform SST warming (+2 K)<a class="headerlink" href="#experiment-a-uniform-sst-warming-2-k" title="Link to this heading">#</a></h2>
+<p><strong>Intervention:</strong> <code class="docutils literal notranslate"><span class="pre">SST</span> <span class="pre">+2K</span></code> over the ocean, all times (CO2/ice/solar untouched).</p>
+<p><strong>Expectation:</strong> a moister atmosphere (precipitable water ≈ +7%/K) but weaker precip response(≈ +1–3%/K).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">EXPERIMENT</span> <span class="o">=</span> <span class="s1">&#39;sst_plus2K&#39;</span>
+<span class="n">DELTA_SST</span> <span class="o">=</span> <span class="mf">2.0</span>  <span class="c1"># K</span>
+<span class="n">years</span> <span class="o">=</span> <span class="n">forecast_years</span><span class="p">(</span><span class="n">START_DATETIME</span><span class="p">,</span> <span class="n">FORECAST_LENGTH</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Perturbing forcing years:&#39;</span><span class="p">,</span> <span class="n">years</span><span class="p">)</span>
+
+<span class="c1"># 1) perturbed forcing copy -&gt; forcing/&lt;experiment&gt;/forcing_%Y.zarr</span>
+<span class="n">sst_forcing</span> <span class="o">=</span> <span class="n">perturb_forcing</span><span class="p">(</span>
+    <span class="n">src_template</span><span class="o">=</span><span class="n">CONTROL_FORCING</span><span class="p">,</span>
+    <span class="n">dst_dir</span><span class="o">=</span><span class="n">FORCING_ROOT</span> <span class="o">/</span> <span class="n">EXPERIMENT</span><span class="p">,</span>
+    <span class="n">years</span><span class="o">=</span><span class="n">years</span><span class="p">,</span>
+    <span class="n">edit_fn</span><span class="o">=</span><span class="n">add_sst</span><span class="p">(</span><span class="n">DELTA_SST</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="c1"># 2) config copy: perturbed forcing, output dir, and the selected sim year</span>
+<span class="n">sst_cfg</span> <span class="o">=</span> <span class="n">write_config</span><span class="p">(</span>
+    <span class="n">overrides</span><span class="o">=</span><span class="p">{</span>
+        <span class="n">DYN_FORCING_KEY</span><span class="p">:</span> <span class="n">sst_forcing</span><span class="p">,</span>
+        <span class="n">OUTPUT_KEY</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">ROLLOUT_ROOT</span> <span class="o">/</span> <span class="n">EXPERIMENT</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span>
+        <span class="n">FCST_START_KEY</span><span class="p">:</span> <span class="n">START_DATETIME</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">out_path</span><span class="o">=</span><span class="n">ROLLOUT_ROOT</span> <span class="o">/</span> <span class="n">EXPERIMENT</span> <span class="o">/</span> <span class="s1">&#39;config.yml&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># 3) run</span>
+<span class="n">run_credit</span><span class="p">(</span><span class="n">sst_cfg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Perturbing forcing years: [1995]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/glade/work/cbecker/conda-envs/credit-aiml/lib/python3.12/site-packages/zarr/api/asynchronous.py:247: ZarrUserWarning: Consolidated metadata is currently not part in the Zarr format 3 specification. It may not be supported by other zarr implementations and may change in the future.
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  wrote /glade/derecho/scratch/cbecker/camulator_tutorial/forcing/sst_plus2K/forcing_1995.zarr
+$ credit rollout -c /glade/derecho/scratch/cbecker/camulator_tutorial/rollout/sst_plus2K/config.yml -m none -p 4
+INFO:credit.datasets.schema:Loading channel schema from /glade/campaign/cisl/aiml/credit/cesm_exercise/channel_schema.yaml
+&lt;frozen importlib._bootstrap&gt;:488: RuntimeWarning: numpy.ndarray size changed, may indicate binary incompatibility. Expected 16 from C header, got 96 from PyObject
+INFO:credit.models:Loading the CAMulator model with a conv decoder head and skip connections ...
+INFO:credit.models.base_model:Loading a model with pre-trained weights from path /glade/campaign/cisl/aiml/credit/cesm_exercise/checkpoint.pt
+INFO:credit.models.camulator:Adding spectral norm to all conv and linear layers
+INFO:credit.models.checkpoint:All keys matched successfully
+INFO:credit.datasets.multi_source:MultiSourceDataset: registered dataset &#39;CESM&#39; with class &#39;LocalDataset&#39;
+INFO:rollout_gen2:Rank 0/1: 1 init time(s), 1456 steps each
+INFO:credit.trainers.rollout_utils:Forecast init: 1995-01-01T00Z  steps: 1456  fhr_max: 8736h
+Rollout 1995-01-01T00Z: 100% 1456/1456 [05:21&lt;00:00,  4.53it/s]
+Saved: /glade/derecho/scratch/cbecker/camulator_tutorial/rollout/sst_plus2K/19950101_0000Z/1995.nc
+INFO:credit.trainers.rollout_utils:Done: 1995-01-01T00Z
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="comparisons">
+<h2>4. Comparisons<a class="headerlink" href="#comparisons" title="Link to this heading">#</a></h2>
+<p>Load into memory — only the year and variables the plots + CC diagnostic need. Depending on the amount of variables selected, this could take a few minutes.</p>
+<p>A few diagnostics are presented from the existing control vs SST+2K runs. Spin-up (first month) is dropped.</p>
+<ol class="arabic simple">
+<li><p><strong>Zonal-mean Warming and Precipitation Distributions</strong> <code class="docutils literal notranslate"><span class="pre">ΔTREFHT</span></code> vs latitude: a uniform +2 K SST does <strong>not</strong> give uniform
+surface warming (structure / polar amplification).</p></li>
+<li><p><strong>Atmospheric Moisture Budget with mean warming</strong> Clausius–Clapeyron (~7 %/K)</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">LOAD_YEAR</span> <span class="o">=</span> <span class="n">SIM_YEAR</span>                    <span class="c1"># which simulated year to analyze</span>
+<span class="n">LIGHT_VARS</span>  <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TREFHT&#39;</span><span class="p">,</span> <span class="s1">&#39;PRECT&#39;</span><span class="p">,</span> <span class="s1">&#39;PS&#39;</span><span class="p">,</span> <span class="s1">&#39;Qtot&#39;</span><span class="p">]</span>       <span class="c1"># small 2-D fields (plots + precip) -&gt; load into memory</span>
+<span class="n">STREAM_VARS</span> <span class="o">=</span> <span class="p">[]</span>            <span class="c1"># used only by the PW integral -&gt; keep LAZY so it streams</span>
+<span class="n">NEEDED_VARS</span> <span class="o">=</span> <span class="n">LIGHT_VARS</span> <span class="o">+</span> <span class="n">STREAM_VARS</span>
+
+<span class="n">ctrl</span> <span class="o">=</span> <span class="n">load_rollout</span><span class="p">(</span><span class="n">ROLLOUT_ROOT</span> <span class="o">/</span> <span class="s1">&#39;control&#39;</span><span class="p">,</span>    <span class="n">year</span><span class="o">=</span><span class="n">LOAD_YEAR</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="n">NEEDED_VARS</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+<span class="n">sst</span>  <span class="o">=</span> <span class="n">load_rollout</span><span class="p">(</span><span class="n">ROLLOUT_ROOT</span> <span class="o">/</span> <span class="s1">&#39;sst_plus2K&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="n">LOAD_YEAR</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="n">NEEDED_VARS</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 3.05 s, sys: 23.6 s, total: 26.7 s
+Wall time: 46.8 s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">VAR</span> <span class="o">=</span> <span class="s1">&#39;TREFHT&#39;</span>  <span class="c1"># 2 m temperature (prognostic)</span>
+
+<span class="c1"># --- global-mean time series -------------------------------------------------</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">ds</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="p">[(</span><span class="n">ctrl</span><span class="p">,</span> <span class="s1">&#39;control&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">sst</span><span class="p">,</span> <span class="s1">&#39;SST +2K&#39;</span><span class="p">)]:</span>
+    <span class="n">global_mean</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="n">VAR</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Global-mean </span><span class="si">{</span><span class="n">VAR</span><span class="si">}</span><span class="s1">  (</span><span class="si">{</span><span class="n">LOAD_YEAR</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;K&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/04c4e3fec15c9a96562a1915ed0df7da09223b9682652dc630e0ef4adb01eb12.png" src="../../../_images/04c4e3fec15c9a96562a1915ed0df7da09223b9682652dc630e0ef4adb01eb12.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">var_props</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;TREFHT&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;unit&#39;</span><span class="p">:</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span>   <span class="s1">&#39;cmap&#39;</span><span class="p">:</span> <span class="s1">&#39;RdBu_r&#39;</span><span class="p">},</span>
+    <span class="s1">&#39;PRECT&#39;</span><span class="p">:</span>  <span class="p">{</span><span class="s1">&#39;unit&#39;</span><span class="p">:</span> <span class="s1">&#39;m/s&#39;</span><span class="p">,</span> <span class="s1">&#39;cmap&#39;</span><span class="p">:</span> <span class="s1">&#39;BrBG&#39;</span><span class="p">},</span>   
+    <span class="s1">&#39;PS&#39;</span><span class="p">:</span>     <span class="p">{</span><span class="s1">&#39;unit&#39;</span><span class="p">:</span> <span class="s1">&#39;Pa&#39;</span><span class="p">,</span>  <span class="s1">&#39;cmap&#39;</span><span class="p">:</span> <span class="s1">&#39;PuOr&#39;</span><span class="p">}}</span>    
+<span class="n">variables</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">var_props</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+<span class="c1"># 2. Calculate the difference (SST +2K - control) for all three variables</span>
+<span class="n">diff_arrays</span> <span class="o">=</span> <span class="p">[</span><span class="n">sst</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="n">ctrl</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                         <span class="n">subplot_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()))</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">ravel</span><span class="p">()):</span>
+    <span class="n">var</span> <span class="o">=</span> <span class="n">variables</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">unit</span> <span class="o">=</span> <span class="n">var_props</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="s1">&#39;unit&#39;</span><span class="p">]</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">var_props</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="s1">&#39;cmap&#39;</span><span class="p">]</span>
+    
+    <span class="n">diff_arrays</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">cbar_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Δ</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="s1">&#39;shrink&#39;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">})</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SST +2K − control: </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">SIM_YEAR</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/9025b1857e8a7cbbffe4c3468f10781b062b291a46dbc7a3b4fe22d7b8834ffc.png" src="../../../_images/9025b1857e8a7cbbffe4c3468f10781b062b291a46dbc7a3b4fe22d7b8834ffc.png" />
+</div>
+</div>
+</section>
+<section id="clausiusclapeyron-water-scaling-sst-experiment">
+<h2>Clausius–Clapeyron water scaling (SST experiment)<a class="headerlink" href="#clausiusclapeyron-water-scaling-sst-experiment" title="Link to this heading">#</a></h2>
+<p>Two numbers from the SST-warming run: column <strong>water vapor</strong> (precipitable water, from <code class="docutils literal notranslate"><span class="pre">Qtot</span></code>) should
+rise ~7 %/K (via the Clausius–Clapeyron rate).</p>
+<p>Method: paired <code class="docutils literal notranslate"><span class="pre">pert</span> <span class="pre">−</span> <span class="pre">ctrl</span></code> (cancels common model drift), drop a spin-up, cosine-latitude-weighted
+global mean, time-average, normalize by the <em>actual</em> global-mean warming (<code class="docutils literal notranslate"><span class="pre">ΔTREFHT</span></code>, &lt; the 2 K imposed
+over ocean). Precipitable water is a <strong>mass-weighted</strong> vertical integral of <code class="docutils literal notranslate"><span class="pre">Qtot</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hybrid-sigma coefficients from the mass_fixer&#39;s statics file (config-derived), loaded once as</span>
+<span class="c1"># float32 so the column integral stays float32 (avoids a float64 memory blow-up).</span>
+<span class="n">STATICS_PHYSICS</span> <span class="o">=</span> <span class="n">get_by_path</span><span class="p">(</span><span class="n">CONF</span><span class="p">,</span> <span class="s1">&#39;postblocks.per_step.mass_fixer.args.save_loc_physics&#39;</span><span class="p">)</span>
+<span class="n">_ST</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">STATICS_PHYSICS</span><span class="p">)</span>
+
+<span class="n">_HYAI</span> <span class="o">=</span> <span class="n">_ST</span><span class="p">[</span><span class="s1">&#39;hyai&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>          <span class="c1"># interface hybrid coeffs (length nlev+1)</span>
+<span class="n">_HYBI</span> <span class="o">=</span> <span class="n">_ST</span><span class="p">[</span><span class="s1">&#39;hybi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+<span class="n">_ILEV</span> <span class="o">=</span> <span class="n">_HYAI</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>                                 <span class="c1"># interface dim name, auto-detected (e.g. &#39;ilev&#39;)</span>
+<span class="n">_G</span>  <span class="o">=</span> <span class="mf">9.80665</span>                                         <span class="c1"># Gravity</span>
+<span class="n">_P0</span> <span class="o">=</span> <span class="mf">100000.0</span>   <span class="c1"># Pa; CAM ref pressure</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">precipitable_water</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">q_var</span><span class="o">=</span><span class="s1">&#39;Qtot&#39;</span><span class="p">,</span> <span class="n">ps_var</span><span class="o">=</span><span class="s1">&#39;PS&#39;</span><span class="p">,</span> <span class="n">lev</span><span class="o">=</span><span class="s1">&#39;level&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mass-weighted column water: PW = (1/g) Σ q_k Δp_k  [kg/m² == mm].</span>
+
+<span class="sd">    Δp from the hybrid interfaces p = hyai*P0 + hybi*PS. NOT a plain level-sum. Stays float32 and,</span>
+<span class="sd">    if Qtot/PS are lazy, stays lazy — so the reduction streams over the 3-D cube (bounded memory).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">p_int</span> <span class="o">=</span> <span class="n">_HYAI</span> <span class="o">*</span> <span class="n">_P0</span> <span class="o">+</span> <span class="n">_HYBI</span> <span class="o">*</span> <span class="n">ds</span><span class="p">[</span><span class="n">ps_var</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>     <span class="c1"># (..., ilev)</span>
+    <span class="n">dp</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">p_int</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">_ILEV</span><span class="p">))</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="n">_ILEV</span><span class="p">:</span> <span class="n">lev</span><span class="p">})</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;level&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">lev</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">coords</span><span class="p">:</span>
+        <span class="n">dp</span> <span class="o">=</span> <span class="n">dp</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">({</span><span class="n">lev</span><span class="p">:</span> <span class="n">ds</span><span class="p">[</span><span class="n">lev</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">})</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="n">q_var</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">dp</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">lev</span><span class="p">)</span> <span class="o">/</span> <span class="n">_G</span>
+
+
+<span class="n">SPINUP_DAYS</span> <span class="o">=</span> <span class="mi">30</span>   <span class="c1"># discard atmospheric adjustment (~water-vapor residence time)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_after_spinup</span><span class="p">(</span><span class="n">da</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">da</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">SPINUP_DAYS</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">/</span> <span class="mi">6</span><span class="p">),</span> <span class="kc">None</span><span class="p">))</span>    <span class="c1"># 6-hourly steps</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">scaling_per_K</span><span class="p">(</span><span class="n">pert</span><span class="p">,</span> <span class="n">ctrl</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Paired %/K for precip (PRECT) and precipitable water (Qtot column), normalized by the actual</span>
+<span class="sd">    global-mean warming ΔT. Spin-up is sliced up front so the heavy integral runs on less data;</span>
+<span class="sd">    differencing pert-ctrl cancels common model drift.&quot;&quot;&quot;</span>
+    <span class="n">p</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">_after_spinup</span><span class="p">(</span><span class="n">pert</span><span class="p">),</span> <span class="n">_after_spinup</span><span class="p">(</span><span class="n">ctrl</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">gm</span><span class="p">(</span><span class="n">da</span><span class="p">):</span> <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">global_mean</span><span class="p">(</span><span class="n">da</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">))</span>        <span class="c1"># triggers the streaming compute</span>
+    <span class="n">dT</span> <span class="o">=</span> <span class="n">gm</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;TREFHT&#39;</span><span class="p">])</span> <span class="o">-</span> <span class="n">gm</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;TREFHT&#39;</span><span class="p">])</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pct</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">fc</span><span class="p">):</span> <span class="k">return</span> <span class="p">(</span><span class="n">gm</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span> <span class="o">-</span> <span class="n">gm</span><span class="p">(</span><span class="n">fc</span><span class="p">))</span> <span class="o">/</span> <span class="n">gm</span><span class="p">(</span><span class="n">fc</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;dT&#39;</span><span class="p">:</span> <span class="n">dT</span><span class="p">,</span>
+        <span class="s1">&#39;precip_pct_per_K&#39;</span><span class="p">:</span> <span class="n">pct</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;PRECT&#39;</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;PRECT&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="n">dT</span><span class="p">,</span>
+        <span class="s1">&#39;pw_pct_per_K&#39;</span><span class="p">:</span>     <span class="n">pct</span><span class="p">(</span><span class="n">precipitable_water</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="n">precipitable_water</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="o">/</span> <span class="n">dT</span><span class="p">,</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># Clausius–Clapeyron scaling for the SST-warming experiment (sst vs ctrl).</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">scaling_per_K</span><span class="p">(</span><span class="n">sst</span><span class="p">,</span> <span class="n">ctrl</span><span class="p">)</span>
+<span class="n">n_avg</span> <span class="o">=</span> <span class="n">sst</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">SPINUP_DAYS</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">/</span> <span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ΔT (global-mean TREFHT)    : </span><span class="si">{</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;dT&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">+.2f</span><span class="si">}</span><span class="s2"> K&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Precipitation scaling      : </span><span class="si">{</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;precip_pct_per_K&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">+.1f</span><span class="si">}</span><span class="s2"> %/K   (expect ~1-3)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Precipitable-water scaling : </span><span class="si">{</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;pw_pct_per_K&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">+.1f</span><span class="si">}</span><span class="s2"> %/K   (expect ~7, Clausius-Clapeyron)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(spin-up dropped: </span><span class="si">{</span><span class="n">SPINUP_DAYS</span><span class="si">}</span><span class="s2"> d | steps averaged: </span><span class="si">{</span><span class="n">n_avg</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ΔT (global-mean TREFHT)    : +1.29 K
+Precipitation scaling      : +11.3 %/K   (expect ~1-3)
+Precipitable-water scaling : +8.7 %/K   (expect ~7, Clausius-Clapeyron)
+(spin-up dropped: 30 d | steps averaged: 1336)
+CPU times: user 27.5 s, sys: 34.5 s, total: 1min 1s
+Wall time: 2min 27s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Define the two variables you want to plot side-by-side</span>
+<span class="n">variables</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TREFHT&#39;</span><span class="p">,</span> <span class="s1">&#39;PRECT&#39;</span><span class="p">]</span> 
+
+<span class="c1"># Handle dimension names dynamically</span>
+<span class="n">LAT</span> <span class="o">=</span> <span class="s1">&#39;latitude&#39;</span> <span class="k">if</span> <span class="s1">&#39;latitude&#39;</span> <span class="ow">in</span> <span class="n">ctrl</span><span class="o">.</span><span class="n">dims</span> <span class="k">else</span> <span class="s1">&#39;lat&#39;</span>
+<span class="n">LON</span> <span class="o">=</span> <span class="s1">&#39;longitude&#39;</span> <span class="k">if</span> <span class="s1">&#39;longitude&#39;</span> <span class="ow">in</span> <span class="n">ctrl</span><span class="o">.</span><span class="n">dims</span> <span class="k">else</span> <span class="s1">&#39;lon&#39;</span>
+
+<span class="c1"># Create a 1x2 grid of subplots with a wider figure size</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Loop through the variables and their corresponding axes</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">var</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">variables</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    
+    <span class="c1"># Calculate the time-mean anomaly, then the zonal mean</span>
+    <span class="n">diff_map</span> <span class="o">=</span> <span class="p">(</span><span class="n">_after_spinup</span><span class="p">(</span><span class="n">sst</span><span class="p">[</span><span class="n">var</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span> 
+              <span class="o">-</span> <span class="n">_after_spinup</span><span class="p">(</span><span class="n">ctrl</span><span class="p">[</span><span class="n">var</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">))</span>     <span class="c1"># (lat, lon)</span>
+    <span class="n">diff_zonal</span> <span class="o">=</span> <span class="n">diff_map</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">LON</span><span class="p">)</span>                        <span class="c1"># (lat,)</span>
+
+    <span class="c1"># Plot on the specific axis</span>
+    <span class="n">diff_zonal</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">LAT</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    
+    <span class="c1"># Add the zero reference line</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+    
+    <span class="c1"># Dynamically label the x-axis and title based on the variable</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Δ</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Zonal-mean Δ</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">LOAD_YEAR</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Only label the y-axis (latitude) on the leftmost plot to keep it clean</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;latitude&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># Automatically adjust spacing so the plots don&#39;t overlap</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/38d67798d51483b14f6c4b258d682a7c8cd9bc773feb30c7b472112d13aaa134.png" src="../../../_images/38d67798d51483b14f6c4b258d682a7c8cd9bc773feb30c7b472112d13aaa134.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 857 ms, sys: 268 ms, total: 1.13 s
+Wall time: 1.12 s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># #2  Land vs ocean warming contrast. Land mask from the static LANDM_COSLAT (config-derived).</span>
+<span class="n">STATIC_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expandvars</span><span class="p">(</span><span class="n">get_by_path</span><span class="p">(</span><span class="n">CONF</span><span class="p">,</span> <span class="s1">&#39;data.source.CESM.variables.static.path&#39;</span><span class="p">))</span>
+<span class="n">_landm</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">STATIC_PATH</span><span class="p">)[</span><span class="s1">&#39;LANDM_COSLAT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+<span class="n">is_land</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">_landm</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="n">LAT</span><span class="p">,</span> <span class="n">LON</span><span class="p">),</span>
+                       <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="n">LAT</span><span class="p">:</span> <span class="n">ctrl</span><span class="p">[</span><span class="n">LAT</span><span class="p">],</span> <span class="n">LON</span><span class="p">:</span> <span class="n">ctrl</span><span class="p">[</span><span class="n">LON</span><span class="p">]})</span>
+<span class="n">_coslat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">ctrl</span><span class="p">[</span><span class="n">LAT</span><span class="p">]))</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_region_mean</span><span class="p">(</span><span class="n">da</span><span class="p">,</span> <span class="n">region</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">da</span><span class="o">.</span><span class="n">weighted</span><span class="p">((</span><span class="n">_coslat</span> <span class="o">*</span> <span class="n">region</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">LAT</span><span class="p">,</span> <span class="n">LON</span><span class="p">]))</span>
+
+<span class="n">dT_land</span>  <span class="o">=</span> <span class="n">_region_mean</span><span class="p">(</span><span class="n">dT_map</span><span class="p">,</span> <span class="n">is_land</span><span class="p">)</span>      <span class="c1"># dT_map from cell #1</span>
+<span class="n">dT_ocean</span> <span class="o">=</span> <span class="n">_region_mean</span><span class="p">(</span><span class="n">dT_map</span><span class="p">,</span> <span class="o">~</span><span class="n">is_land</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ΔTREFHT land   = </span><span class="si">{</span><span class="n">dT_land</span><span class="si">:</span><span class="s1">+.2f</span><span class="si">}</span><span class="s1"> K&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ΔTREFHT ocean  = </span><span class="si">{</span><span class="n">dT_ocean</span><span class="si">:</span><span class="s1">+.2f</span><span class="si">}</span><span class="s1"> K&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ΔTREFHT land   = +0.81 K
+ΔTREFHT ocean  = +1.57 K
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="enso-in-a-climatological-world-idealized-el-nino">
+<h2>7. ENSO in a climatological world (idealized El Niño)<a class="headerlink" href="#enso-in-a-climatological-world-idealized-el-nino" title="Link to this heading">#</a></h2>
+<p>The runs above used the real, time-evolving SST for the chosen year, so whatever ENSO state that
+year happened to be in is baked into <em>both</em> control and perturbation. To study ENSO cleanly we instead
+start from a <strong>climatological-SST</strong> world — the mean seasonal cycle with interannual variability
+(El Niño / La Niña) removed — and then impose a simplified idealized El Niño.</p>
+<p><strong>Two 1990 runs (everything prescribed; only SST differs; 1990 was a relatively Neutral ENSO):</strong></p>
+<ol class="arabic simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">climo_control</span></code></strong>: 1990 forcing with SST replaced by climatology (<code class="docutils literal notranslate"><span class="pre">climo_sst_1990.zarr</span></code>). A
+“no-ENSO” baseline: the ocean carries only its mean seasonal cycle.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">climo_enso</span></code></strong>: Same climatological forcing plus a Gaussian warm SST blob in the
+equatorial central-eastern Pacific.</p></li>
+</ol>
+<p><strong>Potential Expectations from <code class="docutils literal notranslate"><span class="pre">climo_enso</span> <span class="pre">−</span> <span class="pre">climo_control</span></code>:</strong></p>
+<ul class="simple">
+<li><p><strong>Rain shifts east</strong> - enhanced convection/precip over the central-eastern Pacific where we warmed
+the ocean, and <em>suppressed</em> rain over the Maritime Continent / western Pacific: a weakened <strong>Walker
+circulation</strong> and relaxed trade winds (<code class="docutils literal notranslate"><span class="pre">TAUX</span></code>). Higher precip in NW CONUS; less in SE CONUS</p></li>
+<li><p><strong>Southern Oscillation</strong> -  Clear separation in the East and West Nodes (represented by <code class="docutils literal notranslate"><span class="pre">PS</span></code>)</p></li>
+<li><p><strong>Potential Teleconnections</strong> — a Pacific–North American (PNA)-like wave train arcing into the extratropics:
+<code class="docutils literal notranslate"><span class="pre">TREFHT</span></code> / circulation anomalies far from the blob (e.g. over North America) — the tropics steering
+mid-latitude weather.</p></li>
+<li><p><strong>Slight global-mean warming</strong> (we added heat), but the <em>pattern</em> is the story, not the global mean.</p></li>
+<li><p><strong>Caveats</strong> — CAMulator trained on <em>real</em> ENSO events, so an idealized Gaussian blob is somewhat
+out-of-distribution; read the teleconnection as <em>plausible</em>, not truth. And one year is a single
+realization, so expect internal-variability noise in the extratropical response.</p></li>
+</ul>
+<p>These runs are for <strong>1990</strong> (independent of <code class="docutils literal notranslate"><span class="pre">SIM_YEAR</span></code> above)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Climatological-SST control for 1990 -----------------------------------------------</span>
+<span class="n">CLIMO_YEAR</span>    <span class="o">=</span> <span class="mi">1990</span>
+<span class="n">CLIMO_START</span>   <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">CLIMO_YEAR</span><span class="si">}</span><span class="s1">-01-01T00:00Z&#39;</span>
+<span class="n">CLIMO_FORCING</span> <span class="o">=</span> <span class="s1">&#39;/glade/campaign/cisl/aiml/credit/cesm_exercise/forcing/dynamic_forcing/climo_sst_1990.zarr&#39;</span>
+
+<span class="n">climo_ctrl_out</span> <span class="o">=</span> <span class="n">ROLLOUT_ROOT</span> <span class="o">/</span> <span class="s1">&#39;climo_control&#39;</span>
+
+<span class="c1"># Replace the dynamic-forcing store with the climo-SST file (a single Zarr, no %Y), redirect the</span>
+<span class="c1"># output, and set the 1990 start. Solar / sea ice / CO2 / initial condition are the config defaults.</span>
+<span class="n">climo_ctrl_cfg</span> <span class="o">=</span> <span class="n">write_config</span><span class="p">(</span>
+    <span class="n">overrides</span><span class="o">=</span><span class="p">{</span>
+        <span class="n">DYN_FORCING_KEY</span><span class="p">:</span> <span class="n">CLIMO_FORCING</span><span class="p">,</span>
+        <span class="n">OUTPUT_KEY</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">climo_ctrl_out</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span>
+        <span class="n">FCST_START_KEY</span><span class="p">:</span> <span class="n">CLIMO_START</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">out_path</span><span class="o">=</span><span class="n">climo_ctrl_out</span> <span class="o">/</span> <span class="s1">&#39;config.yml&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">run_credit</span><span class="p">(</span><span class="n">climo_ctrl_cfg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>$ credit rollout -c /glade/derecho/scratch/cbecker/camulator_tutorial/rollout/climo_control/config.yml -m none -p 4
+INFO:credit.datasets.schema:Loading channel schema from /glade/campaign/cisl/aiml/credit/cesm_exercise/channel_schema.yaml
+&lt;frozen importlib._bootstrap&gt;:488: RuntimeWarning: numpy.ndarray size changed, may indicate binary incompatibility. Expected 16 from C header, got 96 from PyObject
+INFO:credit.models:Loading the CAMulator model with a conv decoder head and skip connections ...
+INFO:credit.models.base_model:Loading a model with pre-trained weights from path /glade/campaign/cisl/aiml/credit/cesm_exercise/checkpoint.pt
+INFO:credit.models.camulator:Adding spectral norm to all conv and linear layers
+INFO:credit.models.checkpoint:All keys matched successfully
+INFO:credit.datasets.multi_source:MultiSourceDataset: registered dataset &#39;CESM&#39; with class &#39;LocalDataset&#39;
+INFO:rollout_gen2:Rank 0/1: 1 init time(s), 1456 steps each
+INFO:credit.trainers.rollout_utils:Forecast init: 1990-01-01T00Z  steps: 1456  fhr_max: 8736h
+Rollout 1990-01-01T00Z:   0% 0/1456 [00:00&lt;?, ?it/s][W709 11:54:53.274019002 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 139760500736 bytes (free: 76965347328, total: 85045477376).
+[W709 11:54:53.277782790 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 139760500736 bytes (free: 77024067584, total: 85045477376).
+Rollout 1990-01-01T00Z: 100% 1456/1456 [07:27&lt;00:00,  3.25it/s]
+Saved: /glade/derecho/scratch/cbecker/camulator_tutorial/rollout/climo_control/19900101_0000Z/1990.nc
+INFO:credit.trainers.rollout_utils:Done: 1990-01-01T00Z
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<section id="el-nino-blob-intervention">
+<h3>El Niño blob intervention<a class="headerlink" href="#el-nino-blob-intervention" title="Link to this heading">#</a></h3>
+<p>Add a Gaussian warm SST anomaly (amplitude <code class="docutils literal notranslate"><span class="pre">ENSO_AMP</span></code> K) centered in the equatorial central-eastern
+Pacific — elongated zonally (broad in longitude, narrow in latitude), like a real El Niño — on top of
+the climatological SST, <strong>ocean only</strong> (the land fill is left untouched). Everything else is identical
+to <code class="docutils literal notranslate"><span class="pre">climo_control</span></code>, so <code class="docutils literal notranslate"><span class="pre">climo_enso</span> <span class="pre">−</span> <span class="pre">climo_control</span></code> isolates the response to the anomaly we imposed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Idealized El Niño: Gaussian SST blob added on top of the climatological forcing ---</span>
+<span class="n">ENSO_AMP</span>     <span class="o">=</span> <span class="mf">3.0</span>     <span class="c1"># peak SST anomaly (K)</span>
+<span class="n">ENSO_LAT0</span>    <span class="o">=</span> <span class="mf">0.0</span>     <span class="c1"># center latitude (equator)</span>
+<span class="n">ENSO_LON0</span>    <span class="o">=</span> <span class="mf">210.0</span>   <span class="c1"># center longitude (~150 W, central-eastern Pacific; grid is 0-360)</span>
+<span class="n">ENSO_SIG_LAT</span> <span class="o">=</span> <span class="mf">7.5</span>     <span class="c1"># latitudinal width  (deg, std dev) -&gt; narrow</span>
+<span class="n">ENSO_SIG_LON</span> <span class="o">=</span> <span class="mf">30.0</span>    <span class="c1"># longitudinal width (deg, std dev) -&gt; broad / zonally elongated</span>
+<span class="n">LAND_FILL</span>    <span class="o">=</span> <span class="mf">283.0</span>   <span class="c1"># SST land-fill value in this dataset (ocean = SST != LAND_FILL)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">add_enso_blob</span><span class="p">(</span><span class="n">amp</span><span class="p">,</span> <span class="n">lat0</span><span class="p">,</span> <span class="n">lon0</span><span class="p">,</span> <span class="n">sig_lat</span><span class="p">,</span> <span class="n">sig_lon</span><span class="p">,</span> <span class="n">land_fill</span><span class="o">=</span><span class="n">LAND_FILL</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add a Gaussian warm SST anomaly (El Nino-like) over OCEAN only; other fields untouched.&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_edit</span><span class="p">(</span><span class="n">ds</span><span class="p">):</span>
+        <span class="n">latn</span> <span class="o">=</span> <span class="s1">&#39;latitude&#39;</span> <span class="c1"># if &#39;latitude&#39;  in ds[&#39;SST&#39;].dims else &#39;lat&#39;</span>
+        <span class="n">lonn</span> <span class="o">=</span> <span class="s1">&#39;longitude&#39;</span><span class="c1"># if &#39;longitude&#39; in ds[&#39;SST&#39;].dims else &#39;lon&#39;</span>
+        <span class="n">blob</span> <span class="o">=</span> <span class="n">amp</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(((</span><span class="n">ds</span><span class="p">[</span><span class="n">latn</span><span class="p">]</span> <span class="o">-</span> <span class="n">lat0</span><span class="p">)</span> <span class="o">/</span> <span class="n">sig_lat</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+                                    <span class="o">+</span> <span class="p">((</span><span class="n">ds</span><span class="p">[</span><span class="n">lonn</span><span class="p">]</span> <span class="o">-</span> <span class="n">lon0</span><span class="p">)</span> <span class="o">/</span> <span class="n">sig_lon</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>   <span class="c1"># (lat, lon)</span>
+        <span class="n">sst</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;SST&#39;</span><span class="p">]</span>
+        <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;SST&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">sst</span> <span class="o">!=</span> <span class="n">land_fill</span><span class="p">,</span> <span class="n">sst</span> <span class="o">+</span> <span class="n">blob</span><span class="p">,</span> <span class="n">sst</span><span class="p">)</span>             <span class="c1"># ocean only; broadcasts over time</span>
+        <span class="k">return</span> <span class="n">ds</span>
+    <span class="k">return</span> <span class="n">_edit</span>
+
+<span class="c1"># 1) perturbed forcing (climatological SST + blob) -&gt; forcing/climo_enso/forcing_1990.zarr</span>
+<span class="n">enso_forcing</span> <span class="o">=</span> <span class="n">perturb_forcing</span><span class="p">(</span>
+    <span class="n">src_template</span><span class="o">=</span><span class="n">CLIMO_FORCING</span><span class="p">,</span>             <span class="c1"># single climo file; perturb rewrites the one year into USER dir</span>
+    <span class="n">dst_dir</span><span class="o">=</span><span class="n">FORCING_ROOT</span> <span class="o">/</span> <span class="s1">&#39;climo_enso&#39;</span><span class="p">,</span>
+    <span class="n">years</span><span class="o">=</span><span class="p">[</span><span class="n">CLIMO_YEAR</span><span class="p">],</span>
+    <span class="n">edit_fn</span><span class="o">=</span><span class="n">add_enso_blob</span><span class="p">(</span><span class="n">ENSO_AMP</span><span class="p">,</span> <span class="n">ENSO_LAT0</span><span class="p">,</span> <span class="n">ENSO_LON0</span><span class="p">,</span> <span class="n">ENSO_SIG_LAT</span><span class="p">,</span> <span class="n">ENSO_SIG_LON</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="c1"># 2) config copy: perturbed forcing, its own output dir, 1990 start (everything else = climo_control)</span>
+<span class="n">enso_cfg</span> <span class="o">=</span> <span class="n">write_config</span><span class="p">(</span>
+    <span class="n">overrides</span><span class="o">=</span><span class="p">{</span>
+        <span class="n">DYN_FORCING_KEY</span><span class="p">:</span> <span class="n">enso_forcing</span><span class="p">,</span>
+        <span class="n">OUTPUT_KEY</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">ROLLOUT_ROOT</span> <span class="o">/</span> <span class="s1">&#39;climo_enso&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span>
+        <span class="n">FCST_START_KEY</span><span class="p">:</span> <span class="n">CLIMO_START</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">out_path</span><span class="o">=</span><span class="n">ROLLOUT_ROOT</span> <span class="o">/</span> <span class="s1">&#39;climo_enso&#39;</span> <span class="o">/</span> <span class="s1">&#39;config.yml&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># 3) run</span>
+<span class="n">run_credit</span><span class="p">(</span><span class="n">enso_cfg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/glade/work/dgagne/credit_cesm_envs/credit_cesm/lib/python3.13/site-packages/zarr/api/asynchronous.py:231: ZarrUserWarning: Consolidated metadata is currently not part in the Zarr format 3 specification. It may not be supported by other zarr implementations and may change in the future.
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  wrote /glade/derecho/scratch/cbecker/camulator_tutorial/forcing/climo_enso/forcing_1990.zarr
+$ credit rollout -c /glade/derecho/scratch/cbecker/camulator_tutorial/rollout/climo_enso/config.yml -m none -p 4
+INFO:credit.datasets.schema:Loading channel schema from /glade/campaign/cisl/aiml/credit/cesm_exercise/channel_schema.yaml
+&lt;frozen importlib._bootstrap&gt;:488: RuntimeWarning: numpy.ndarray size changed, may indicate binary incompatibility. Expected 16 from C header, got 96 from PyObject
+INFO:credit.models:Loading the CAMulator model with a conv decoder head and skip connections ...
+INFO:credit.models.base_model:Loading a model with pre-trained weights from path /glade/campaign/cisl/aiml/credit/cesm_exercise/checkpoint.pt
+INFO:credit.models.camulator:Adding spectral norm to all conv and linear layers
+INFO:credit.models.checkpoint:All keys matched successfully
+INFO:credit.datasets.multi_source:MultiSourceDataset: registered dataset &#39;CESM&#39; with class &#39;LocalDataset&#39;
+INFO:rollout_gen2:Rank 0/1: 1 init time(s), 1456 steps each
+INFO:credit.trainers.rollout_utils:Forecast init: 1990-01-01T00Z  steps: 1456  fhr_max: 8736h
+Rollout 1990-01-01T00Z:   0% 0/1456 [00:00&lt;?, ?it/s][W709 12:16:03.948612914 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 139760500736 bytes (free: 76965347328, total: 85045477376).
+[W709 12:16:03.961038497 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 139760500736 bytes (free: 77024067584, total: 85045477376).
+Rollout 1990-01-01T00Z: 100% 1456/1456 [05:15&lt;00:00,  4.62it/s]
+Saved: /glade/derecho/scratch/cbecker/camulator_tutorial/rollout/climo_enso/19900101_0000Z/1990.nc
+INFO:credit.trainers.rollout_utils:Done: 1990-01-01T00Z
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">LOAD_YEAR</span> <span class="o">=</span> <span class="n">CLIMO_YEAR</span>
+<span class="n">LIGHT_VARS</span>  <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TREFHT&#39;</span><span class="p">,</span> <span class="s1">&#39;PRECT&#39;</span><span class="p">,</span> <span class="s1">&#39;PS&#39;</span><span class="p">]</span>   
+<span class="n">climo_ctrl</span> <span class="o">=</span> <span class="n">load_rollout</span><span class="p">(</span><span class="n">ROLLOUT_ROOT</span> <span class="o">/</span> <span class="s1">&#39;climo_control&#39;</span><span class="p">,</span>    <span class="n">year</span><span class="o">=</span><span class="n">LOAD_YEAR</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="n">LIGHT_VARS</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+<span class="n">climo_enso</span>  <span class="o">=</span> <span class="n">load_rollout</span><span class="p">(</span><span class="n">ROLLOUT_ROOT</span> <span class="o">/</span> <span class="s1">&#39;climo_enso&#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="n">LOAD_YEAR</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="n">LIGHT_VARS</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 406 ms, sys: 1.08 s, total: 1.49 s
+Wall time: 1.03 s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">climo_sst</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">CLIMO_FORCING</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;%Y&quot;</span><span class="p">,</span> <span class="s2">&quot;1990&quot;</span><span class="p">))[</span><span class="s1">&#39;SST&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span> 
+<span class="n">climo_enso_sst</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">enso_forcing</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;%Y&quot;</span><span class="p">,</span> <span class="s2">&quot;1990&quot;</span><span class="p">))[</span><span class="s1">&#39;SST&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">sst_diff</span> <span class="o">=</span> <span class="n">climo_enso_sst</span> <span class="o">-</span> <span class="n">climo_sst</span>
+<span class="n">arrays</span> <span class="o">=</span> <span class="p">[</span><span class="n">climo_sst</span><span class="p">,</span> <span class="n">climo_enso_sst</span><span class="p">,</span> <span class="n">sst_diff</span><span class="p">]</span>
+<span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Control SST (Climotology)&#39;</span><span class="p">,</span> <span class="s1">&#39;Pertrubed SST Climotology&#39;</span><span class="p">,</span> <span class="s1">&#39;SST Perturbation Difference&#39;</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">ravel</span><span class="p">()):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;viridis&#39;</span> 
+        <span class="n">center</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">cbar_label</span> <span class="o">=</span> <span class="s1">&#39;SST (K)&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;RdBu_r&#39;</span> 
+        <span class="n">center</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">cbar_label</span> <span class="o">=</span> <span class="s1">&#39;ΔSST (K)&#39;</span>
+    <span class="n">arrays</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">cbar_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">cbar_label</span><span class="p">,</span> <span class="s1">&#39;shrink&#39;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">},</span> <span class="n">center</span><span class="o">=</span><span class="n">center</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/48aae4121ba7b303d2f84dad4bc9402ed3fafac3935363cfbe9038f678e718c2.png" src="../../../_images/48aae4121ba7b303d2f84dad4bc9402ed3fafac3935363cfbe9038f678e718c2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var_props</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;TREFHT&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;unit&#39;</span><span class="p">:</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span>   <span class="s1">&#39;cmap&#39;</span><span class="p">:</span> <span class="s1">&#39;RdBu_r&#39;</span><span class="p">},</span> 
+    <span class="s1">&#39;PRECT&#39;</span><span class="p">:</span>  <span class="p">{</span><span class="s1">&#39;unit&#39;</span><span class="p">:</span> <span class="s1">&#39;m/s&#39;</span><span class="p">,</span> <span class="s1">&#39;cmap&#39;</span><span class="p">:</span> <span class="s1">&#39;BrBG&#39;</span><span class="p">},</span>   
+    <span class="s1">&#39;PS&#39;</span><span class="p">:</span>     <span class="p">{</span><span class="s1">&#39;unit&#39;</span><span class="p">:</span> <span class="s1">&#39;Pa&#39;</span><span class="p">,</span>  <span class="s1">&#39;cmap&#39;</span><span class="p">:</span> <span class="s1">&#39;PuOr&#39;</span><span class="p">}}</span>
+<span class="n">variables</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">var_props</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+<span class="c1"># 2. Calculate the difference (ENSO - control) for all three variables</span>
+<span class="n">diff_arrays</span> <span class="o">=</span> <span class="p">[</span><span class="n">climo_enso</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="n">climo_ctrl</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                         <span class="n">subplot_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">ravel</span><span class="p">()):</span>
+    <span class="n">var</span> <span class="o">=</span> <span class="n">variables</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">unit</span> <span class="o">=</span> <span class="n">var_props</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="s1">&#39;unit&#39;</span><span class="p">]</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">var_props</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="s1">&#39;cmap&#39;</span><span class="p">]</span>
+    <span class="n">diff_arrays</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>  <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">cbar_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Δ</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="s1">&#39;shrink&#39;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">})</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ENSO − control: </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">LOAD_YEAR</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/3bc5ff6c57c23a51b51059baadb062dae45b814f1660423b745b5aa20cbf2654.png" src="../../../_images/3bc5ff6c57c23a51b51059baadb062dae45b814f1660423b745b5aa20cbf2654.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-env-credit_cesm-py"
+        },
+        kernelOptions: {
+            name: "conda-env-credit_cesm-py",
+            path: "./notebooks/challenge/ml"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-env-credit_cesm-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ml.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Machine Learning</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../diagnostics/diagnostics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Diagnostics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#camulator-is-a-global-machine-learned-autoregressive-emulator-trained-with-data-from-the-community-atmosphere-model-see-the-version-1-publication-here-https-arxiv-org-pdf-2504-06007"><strong>CAMulator</strong> is a global, machine-learned autoregressive emulator trained with data from the Community Atmosphere Model. See the version 1 publication here: https://arxiv.org/pdf/2504.06007</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#helpers">1. Helpers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-options">Run options</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#available-variables">Available variables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-run">2. Control run</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment-a-uniform-sst-warming-2-k">3. Experiment A — uniform SST warming (+2 K)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons">4. Comparisons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clausiusclapeyron-water-scaling-sst-experiment">Clausius–Clapeyron water scaling (SST experiment)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enso-in-a-climatological-world-idealized-el-nino">7. ENSO in a climatological world (idealized El Niño)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-nino-blob-intervention">El Niño blob intervention</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By NCAR/CGD Staff
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
