@@ -2,7 +2,11 @@ name: JupyterBook
 #name: Build and Publish JupyterBook to GitHub Pages
 #
 on:
-  [push, workflow_dispatch]
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  pull_request:
 
 jobs:
   build:
@@ -24,6 +28,8 @@ jobs:
       run: |
         jupyter-book build .
     - name: Push _build/html to gh-pages
+      # The below condition allows publication on pushes to main (including PR merges) as well as workflow_dispatch from main.
+      if: github.ref == 'refs/heads/main'
       run: |
         sudo chown -R $(whoami):$(whoami) .
         git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
