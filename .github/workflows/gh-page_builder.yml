@@ -26,7 +26,7 @@ jobs:
         PATH="${PATH}:${HOME}/.local/bin"
     - name: Build book HTML
       run: |
-        jupyter-book build .
+        jupyter-book build -W --keep-going .
     - name: Push _build/html to gh-pages
       # The below condition allows publication on pushes to main (including PR merges) as well as workflow_dispatch from main.
       if: github.ref == 'refs/heads/main'
