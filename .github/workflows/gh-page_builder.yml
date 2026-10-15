@@ -2,7 +2,11 @@ name: JupyterBook
 #name: Build and Publish JupyterBook to GitHub Pages
 #
 on:
-  [push, workflow_dispatch]
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  pull_request:
 
 jobs:
   build:
@@ -14,16 +18,18 @@ jobs:
       uses: actions/setup-python@v6
       with:
         python-version: 3.9
+        cache: 'pip'
     - name: Install Python dependencies
       run: |
         sudo apt-get install python3-pip
-        pip install ghp-import
-        pip install "jupyter-book<2"
+        pip install -r requirements.txt
         PATH="${PATH}:${HOME}/.local/bin"
     - name: Build book HTML
       run: |
-        jupyter-book build .
+        jupyter-book build -W --keep-going .
     - name: Push _build/html to gh-pages
+      # The below condition allows publication on pushes to main (including PR merges) as well as workflow_dispatch from main.
+      if: github.ref == 'refs/heads/main'
       run: |
         sudo chown -R $(whoami):$(whoami) .
         git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
