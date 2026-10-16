@@ -4,6 +4,9 @@ env:
   # How many open PRs to scan when matching the triggering run's head SHA to a PR.
   # Raise this if the repo ever has more open PRs than this at once.
   MAX_OPEN_PRS_TO_SCAN: 100
+  # Longest build log (in bytes) to paste into the PR comment. GitHub rejects comment bodies over
+  # 65536 characters, and the rest of the comment needs some room, so keep this comfortably below.
+  MAX_LOG_BYTES: 60000
 
 on:
   workflow_run:
@@ -57,6 +60,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
           PR_NUMBER: ${{ steps.find-pr.outputs.number }}
+          RUN_URL: ${{ github.event.workflow_run.html_url }}
         run: |
           # shopt here saves the literal globbed string if the glob on the logs= line finds no
           # matches, which will later cause an error at `cat`.
@@ -72,15 +76,26 @@ jobs:
             exit 3
           fi
           
+          # Keep the tail: sphinx prints its warning summary at the end.
+          log_bytes=$(wc -c < "${logs[0]}" | tr -d " ")
+          truncated=false
+          if (( log_bytes > MAX_LOG_BYTES )); then
+            truncated=true
+          fi
+
           {
             echo "### ❌ jupyter-book build failed"
             echo
+            if [[ "$truncated" == true ]]; then
+              echo "> ⚠️ Log was ${log_bytes} bytes; only the last ${MAX_LOG_BYTES} are shown below. See the [workflow run](${RUN_URL}) for the full log."
+              echo
+            fi
             echo '<details open="true">'
             echo "<summary>Build logs</summary>"
             echo
-            cat "${logs[0]}"
             # Four backticks so a ``` inside the log can't close the fence early.
             echo '````'
+            tail -c "$MAX_LOG_BYTES" "${logs[0]}"
             # Make sure the closing fence starts on its own line even if the log lacks a trailing newline.
             echo
             echo '````'
