@@ -78,9 +78,12 @@ jobs:
             echo '<details open="true">'
             echo "<summary>Build logs</summary>"
             echo
-            echo '```'
             cat "${logs[0]}"
-            echo '```'
+            # Four backticks so a ``` inside the log can't close the fence early.
+            echo '````'
+            # Make sure the closing fence starts on its own line even if the log lacks a trailing newline.
+            echo
+            echo '````'
             echo
             echo "</details>"
           } > comment-body.md
