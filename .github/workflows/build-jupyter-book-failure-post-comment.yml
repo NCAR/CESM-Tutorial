@@ -1,7 +1,6 @@
 name: Post PR comment with doc-build failure log
 
 env:
-  DOCS_FAILURE_ARTIFACT: build-failed
   # How many open PRs to scan when matching the triggering run's head SHA to a PR.
   # Raise this if the repo ever has more open PRs than this at once.
   MAX_OPEN_PRS_TO_SCAN: 100
@@ -21,27 +20,9 @@ jobs:
       pull-requests: write
       actions: read
     steps:
-      - name: Check for failure artifact
-        id: check
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPO: ${{ github.repository }}
-        run: |
-          gh api repos/$REPO/actions/runs/${{ github.event.workflow_run.id }}/artifacts \
-            --jq '.artifacts[] | select(.name == "${{ env.DOCS_FAILURE_ARTIFACT }}") | .id' > artifact_id.txt
-          
-          if [ -s artifact_id.txt ]; then
-            echo "found=true" >> $GITHUB_OUTPUT
-          else
-            echo "found=false" >> $GITHUB_OUTPUT
-          fi
-
       - name: Download logs
-        if: steps.check.outputs.found == 'true'
         uses: actions/download-artifact@v4
         with:
-          name: ${{ env.DOCS_FAILURE_ARTIFACT }}
-          path: ${{ env.DOCS_FAILURE_ARTIFACT }}
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -52,7 +33,6 @@ jobs:
       # but it can only ever land on the PR that produced it.
       - name: Find PR for triggering run
         id: find-pr
-        if: steps.check.outputs.found == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
@@ -73,12 +53,25 @@ jobs:
           echo "number=${PR_NUMBER}" >> "$GITHUB_OUTPUT"
 
       - name: Post comment
-        if: steps.check.outputs.found == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
           PR_NUMBER: ${{ steps.find-pr.outputs.number }}
         run: |
+          # shopt here saves the literal globbed string if the glob on the logs= line finds no
+          # matches, which will later cause an error at `cat`.
+          shopt -s nullglob
+
+          # Using an array here avoids issues with `wc -w` where filenames have spaces
+          logs=(*/build.log)
+          if (( ${#logs[@]} == 0 )); then
+            echo "::error::No build log in artifacts; nothing to post."
+            exit 2
+          elif (( ${#logs[@]} > 1 )); then
+            echo "::error::Expected 1 build log; found ${#logs[@]}: ${logs[*]}"
+            exit 3
+          fi
+          
           {
             echo "### ❌ jupyter-book build failed"
             echo
@@ -86,7 +79,7 @@ jobs:
             echo "<summary>Build logs</summary>"
             echo
             echo '```'
-            cat "${DOCS_FAILURE_ARTIFACT}/build.log"
+            cat "${logs[0]}"
             echo '```'
             echo
             echo "</details>"
