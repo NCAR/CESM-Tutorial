@@ -33,7 +33,10 @@ jobs:
       run: |
         set -o pipefail
         mkdir -p build-logs
-        jupyter-book build -W --keep-going --nitpick --quiet . 2>&1 | tee build-logs/build.log
+        jupyter-book build -W --keep-going --nitpick --quiet . 2>&1 | tee >(sed -E $'s/\x1b\\[[0-9;]*[a-zA-Z]//g' > "${GITHUB_WORKSPACE}/build-logs/build.log")
+      # The tee writes build.log for the PR comment (posted by
+      # build-jupyter-book-failure-post-comment.yml); the inner sed strips ANSI color
+      # codes that would otherwise render as garbage in the comment.
 
     # The next step only triggers on failure of above build-jupyter-book step on PRs.
     # It uploads logs that will be used by the build-jupyter-book-failure-post-comment.yml
