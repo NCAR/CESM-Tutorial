@@ -62,8 +62,7 @@ jobs:
           PR_NUMBER: ${{ steps.find-pr.outputs.number }}
           RUN_URL: ${{ github.event.workflow_run.html_url }}
         run: |
-          # shopt here saves the literal globbed string if the glob on the logs= line finds no
-          # matches, which will later cause an error at `cat`.
+          # shopt setting here makes the `logs=` line below return an empty array if no matches
           shopt -s nullglob
 
           # Using an array here avoids issues with `wc -w` where filenames have spaces
