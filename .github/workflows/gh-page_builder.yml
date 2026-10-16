@@ -1,6 +1,5 @@
 name: JupyterBook
-#name: Build and Publish JupyterBook to GitHub Pages
-#
+
 on:
   push:
     branches:
@@ -19,17 +18,38 @@ jobs:
       with:
         python-version: 3.9
         cache: 'pip'
+
     - name: Install Python dependencies
       run: |
         sudo apt-get install python3-pip
         pip install -r requirements.txt
         PATH="${PATH}:${HOME}/.local/bin"
+
     - name: Build book HTML
+      id: build-jupyter-book
       # The -W in the below command is intended to prevent the tutorial from being broken.
       # Do not remove it! If you can't figure out what the problem was, contact Sam Rabin
       # (samrabin@ucar.edu) or another software engineer for help.
       run: |
-        jupyter-book build -W --keep-going .
+        mkdir -p build-logs
+        jupyter-book build -W --keep-going . 2>&1 | tee build-logs/build.log
+
+    # The next two steps only trigger on failure of above build-jupyter-book step on PRs.
+    # They upload logs that will be used by the docs-pr-failure-post-comment.yml workflow.
+
+    - name: Record PR number on failure
+      if: failure() && steps.build-jupyter-book.outcome == 'failure' && github.event_name == 'pull_request'
+      run: |
+        mkdir -p build-logs
+        echo "${{ github.event.pull_request.number }}" > build-logs/pr_number.txt
+
+    - name: Upload logs on failure
+      if: failure() && steps.build-jupyter-book.outcome == 'failure' && github.event_name == 'pull_request'
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
+      with:
+        name: build-failed
+        path: build-logs/
+
     - name: Push _build/html to gh-pages
       # The below condition allows publication on pushes to main (including PR merges) as well as workflow_dispatch from main.
       if: github.ref == 'refs/heads/main'
