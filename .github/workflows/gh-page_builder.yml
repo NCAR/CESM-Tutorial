@@ -32,7 +32,7 @@ jobs:
       # (samrabin@ucar.edu) or another software engineer for help.
       run: |
         mkdir -p build-logs
-        jupyter-book build -W --keep-going --nitpick . 2>&1 | tee build-logs/build.log
+        jupyter-book build -W --keep-going --nitpick --quiet . 2>&1 | tee build-logs/build.log
 
     # The next step only triggers on failure of above build-jupyter-book step on PRs.
     # It uploads logs that will be used by the build-jupyter-book-failure-post-comment.yml
