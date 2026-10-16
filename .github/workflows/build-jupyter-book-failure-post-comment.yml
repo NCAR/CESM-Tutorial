@@ -65,8 +65,13 @@ jobs:
           # shopt setting here makes the `logs=` line below return an empty array if no matches
           shopt -s nullglob
 
-          # Using an array here avoids issues with `wc -w` where filenames have spaces
+          # Using an array here avoids issues with `wc -w` where filenames have spaces.
+          # download-artifact extracts a lone artifact straight into the workspace and nests
+          # under <artifact-name>/ only when the run uploaded more than one. Accept both.
           logs=(*/build.log)
+          if [[ -f build.log ]]; then
+            logs+=(build.log)
+          fi
           if (( ${#logs[@]} == 0 )); then
             echo "::error::No build log in artifacts; nothing to post."
             exit 2
