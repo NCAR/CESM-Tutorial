@@ -25,6 +25,9 @@ jobs:
         pip install -r requirements.txt
         PATH="${PATH}:${HOME}/.local/bin"
     - name: Build book HTML
+      # The -W in the below command is intended to prevent the tutorial from being broken.
+      # Do not remove it! If you can't figure out what the problem was, contact Sam Rabin
+      # (samrabin@ucar.edu) or another software engineer for help.
       run: |
         jupyter-book build -W --keep-going .
     - name: Push _build/html to gh-pages
