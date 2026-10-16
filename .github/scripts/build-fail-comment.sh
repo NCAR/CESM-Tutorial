@@ -2,8 +2,9 @@
 shopt -s nullglob
 
 # Using an array here avoids issues with `wc -w` where filenames have spaces.
-# download-artifact extracts a lone artifact straight into the workspace and nests
-# under <artifact-name>/ only when the run uploaded more than one. Accept both.
+# This runs inside the directory download-artifact extracted into. A lone artifact lands
+# straight in that directory and nests under <artifact-name>/ only when the run uploaded
+# more than one. Accept both.
 logs=(*/"${LOGFILE_BASENAME}")
 if [[ -f "${LOGFILE_BASENAME}" ]]; then
   logs+=("${LOGFILE_BASENAME}")
@@ -16,14 +17,12 @@ elif (( ${#logs[@]} > 1 )); then
   exit 3
 fi
 
-
 # Keep the tail: sphinx prints its warning summary at the end.
 log_bytes=$(wc -c < "${logs[0]}" | tr -d " ")
 truncated=false
 if (( log_bytes > MAX_LOG_BYTES )); then
   truncated=true
 fi
-
 
 # Generate the message
 {
