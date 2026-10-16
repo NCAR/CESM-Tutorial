@@ -1,5 +1,10 @@
 name: JupyterBook
 
+env:
+  # Basename (i.e., just the filename, not the path leading to it) of the log file. This must
+  # match LOGFILE_BASENAME from build-jupyter-book-failure-post-comment.yml.
+  LOGFILE_BASENAME: build.log
+
 on:
   push:
     branches:
@@ -33,8 +38,8 @@ jobs:
       run: |
         set -o pipefail
         mkdir -p build-logs
-        jupyter-book build -W --keep-going --nitpick --quiet . 2>&1 | tee >(sed -E $'s/\x1b\\[[0-9;]*[a-zA-Z]//g' > "${GITHUB_WORKSPACE}/build-logs/build.log")
-      # The tee writes build.log for the PR comment (posted by
+        jupyter-book build -W --keep-going --nitpick --quiet . 2>&1 | tee >(sed -E $'s/\x1b\\[[0-9;]*[a-zA-Z]//g' > "${GITHUB_WORKSPACE}/build-logs/${LOGFILE_BASENAME}")
+      # The tee writes the build log file for the PR comment (posted by
       # build-jupyter-book-failure-post-comment.yml); the inner sed strips ANSI color
       # codes that would otherwise render as garbage in the comment.
 

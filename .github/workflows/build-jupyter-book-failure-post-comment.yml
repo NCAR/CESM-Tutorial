@@ -7,6 +7,9 @@ env:
   # Longest build log (in bytes) to paste into the PR comment. GitHub rejects comment bodies over
   # 65536 characters, and the rest of the comment needs some room, so keep this comfortably below.
   MAX_LOG_BYTES: 60000
+  # Basename (i.e., just the filename, not the path leading to it) of the log file. This must
+  # match LOGFILE_BASENAME from gh-page_builder.yml.
+  LOGFILE_BASENAME: build.log
 
 on:
   workflow_run:
@@ -68,9 +71,9 @@ jobs:
           # Using an array here avoids issues with `wc -w` where filenames have spaces.
           # download-artifact extracts a lone artifact straight into the workspace and nests
           # under <artifact-name>/ only when the run uploaded more than one. Accept both.
-          logs=(*/build.log)
-          if [[ -f build.log ]]; then
-            logs+=(build.log)
+          logs=(*/"${LOGFILE_BASENAME}")
+          if [[ -f "${LOGFILE_BASENAME}" ]]; then
+            logs+=("${LOGFILE_BASENAME}")
           fi
           if (( ${#logs[@]} == 0 )); then
             echo "::error::No build log in artifacts; nothing to post."
