@@ -108,6 +108,17 @@ jobs:
             echo '````'
             echo
             echo "</details>"
+            echo
+            # Add explanation for "document isn't included in any toctree" issue
+            if grep -qF "document isn't included in any toctree" "${logs[0]}"; then
+              cat <<'EOF'
+          To resolve "document isn't included in any toctree" error(s), either:
+          * Add the relevant file(s) to `_toc.yml`, or
+          * Delete them, or
+          * Add them to `exclude_paths` in `_config.yml`.
+          EOF
+            fi
+            echo
           } > comment-body.md
 
           gh pr comment "$PR_NUMBER" --repo "$REPO" --body-file comment-body.md
