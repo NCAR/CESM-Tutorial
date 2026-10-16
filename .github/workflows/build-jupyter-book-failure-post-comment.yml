@@ -2,6 +2,9 @@ name: Post PR comment with doc-build failure log
 
 env:
   DOCS_FAILURE_ARTIFACT: build-failed
+  # How many open PRs to scan when matching the triggering run's head SHA to a PR.
+  # Raise this if the repo ever has more open PRs than this at once.
+  MAX_OPEN_PRS_TO_SCAN: 100
 
 on:
   workflow_run:
@@ -42,14 +45,40 @@ jobs:
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
+      # The artifact comes from a pull_request run, which a fork PR fully controls. Never take
+      # the PR number from it: this job has pull-requests: write, so a forged number would let a
+      # fork post on any PR. Instead look the PR up from the head SHA of the run that triggered
+      # us, which GitHub sets and the fork can't forge. The log body is still attacker-controlled,
+      # but it can only ever land on the PR that produced it.
+      - name: Find PR for triggering run
+        id: find-pr
+        if: steps.check.outputs.found == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          if ! [[ "$HEAD_SHA" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "::error::Unexpected head SHA '${HEAD_SHA}'; not posting comment."
+            exit 1
+          fi
+
+          PR_NUMBER=$(gh pr list --repo "$REPO" --state open --limit "$MAX_OPEN_PRS_TO_SCAN" --json number,headRefOid \
+            --jq ".[] | select(.headRefOid == \"${HEAD_SHA}\") | .number" | head -n 1)
+
+          if ! [[ "$PR_NUMBER" =~ ^[0-9]+$ ]]; then
+            echo "::error::No open PR found with head SHA ${HEAD_SHA}; not posting comment."
+            exit 1
+          fi
+          echo "number=${PR_NUMBER}" >> "$GITHUB_OUTPUT"
+
       - name: Post comment
         if: steps.check.outputs.found == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ steps.find-pr.outputs.number }}
         run: |
-          PR_NUMBER=$(cat "${DOCS_FAILURE_ARTIFACT}/pr_number.txt")
-
           {
             echo "### ❌ jupyter-book build failed"
             echo

@@ -34,14 +34,11 @@ jobs:
         mkdir -p build-logs
         jupyter-book build -W --keep-going . 2>&1 | tee build-logs/build.log
 
-    # The next two steps only trigger on failure of above build-jupyter-book step on PRs.
-    # They upload logs that will be used by the docs-pr-failure-post-comment.yml workflow.
-
-    - name: Record PR number on failure
-      if: failure() && steps.build-jupyter-book.outcome == 'failure' && github.event_name == 'pull_request'
-      run: |
-        mkdir -p build-logs
-        echo "${{ github.event.pull_request.number }}" > build-logs/pr_number.txt
+    # The next step only triggers on failure of above build-jupyter-book step on PRs.
+    # It uploads logs that will be used by the build-jupyter-book-failure-post-comment.yml
+    # workflow. Do not put anything in build-logs/ that that workflow must trust: on a
+    # fork PR, this job runs the fork's copy of this file, so the artifact's contents are
+    # attacker-controlled.
 
     - name: Upload logs on failure
       if: failure() && steps.build-jupyter-book.outcome == 'failure' && github.event_name == 'pull_request'
