@@ -1,6 +1,10 @@
 name: JupyterBook
-#name: Build and Publish JupyterBook to GitHub Pages
-#
+
+env:
+  # Basename (i.e., just the filename, not the path leading to it) of the log file. This must
+  # match LOGFILE_BASENAME from build-jupyter-book-failure-post-comment.yml.
+  LOGFILE_BASENAME: build.log
+
 on:
   push:
     branches:
@@ -19,14 +23,39 @@ jobs:
       with:
         python-version: 3.9
         cache: 'pip'
+
     - name: Install Python dependencies
       run: |
         sudo apt-get install python3-pip
         pip install -r requirements.txt
         PATH="${PATH}:${HOME}/.local/bin"
+
     - name: Build book HTML
+      id: build-jupyter-book
+      # The `-W --keep-going --nitpick` in the below command is intended to prevent the tutorial from being broken.
+      # Do not remove it! If you can't figure out what the problem was, contact Sam Rabin
+      # (samrabin@ucar.edu) or another software engineer for help.
       run: |
-        jupyter-book build -W --keep-going .
+        set -o pipefail
+        mkdir -p build-logs
+        jupyter-book build -W --keep-going --nitpick --quiet . 2>&1 | tee >(sed -E $'s/\x1b\\[[0-9;]*[a-zA-Z]//g' > "${GITHUB_WORKSPACE}/build-logs/${LOGFILE_BASENAME}")
+      # The tee writes the build log file for the PR comment (posted by
+      # build-jupyter-book-failure-post-comment.yml); the inner sed strips ANSI color
+      # codes that would otherwise render as garbage in the comment.
+
+    # The next step only triggers on failure of above build-jupyter-book step on PRs.
+    # It uploads logs that will be used by the build-jupyter-book-failure-post-comment.yml
+    # workflow. Do not put anything in build-logs/ that that workflow must trust: on a
+    # fork PR, this job runs the fork's copy of this file, so the artifact's contents are
+    # attacker-controlled.
+
+    - name: Upload logs on failure
+      if: failure() && steps.build-jupyter-book.outcome == 'failure' && github.event_name == 'pull_request'
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
+      with:
+        name: build-failed
+        path: build-logs/
+
     - name: Push _build/html to gh-pages
       # The below condition allows publication on pushes to main (including PR merges) as well as workflow_dispatch from main.
       if: github.ref == 'refs/heads/main'
